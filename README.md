@@ -1,17 +1,33 @@
 # Energy attack on question answering (Q.A.)
 
-## Requirements
+## Quicktart
+### Setup Environment
+- python3.6+
+- install libraries
 ```
-allennlp
-pytorh 0.4
-anaconda3 for python 3.6
+pip install -r requirements.txt
+```
+- download datasets & word2vec & en module for spacy
+```
+bash download.sh
 ```
 
-## For SQuAD2.0
-run '''bash download.sh''' to download the dataset and install some necessary packages.
-### UNet
-<!-- run '''bash download.sh''' to download the dataset and install some necessary packages. -->
-- python prepro.py
-- 'python train.py' for train
-- 'python train.py --eval' for evaluation
+## Train a model on SQuAD v2.0
+
+- preprocess data
+```
+python preprocess.py
+```
+
+- train a model (e.g., UNet)
+```
+python train.py --model unet
+```
+
+- evaluate a model (e.g., UNet)
+```
+python train.py --model unet --eval
+```
+
+
 
