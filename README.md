@@ -13,7 +13,7 @@ pip install -r requirements.txt
 bash download.sh
 ```
 
-## Train a model on SQuAD v2.0
+### Train a model on SQuAD v2.0
 
 - preprocess data
 ```
@@ -30,5 +30,9 @@ python train.py --model unet
 python train.py --model unet --eval
 ```
 
+### Attack the pre-trained model
+```
+python attack.py --model unet --dataset squad
+```
 
 
