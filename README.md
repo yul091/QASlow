@@ -35,4 +35,17 @@ python train.py --model unet --eval
 python attack.py --model unet --dataset squad
 ```
 
-
+### TODO
+- :white_check_mark: prepare models
+- refactor ```attack.py```
+- implement some attacking methods
+- quantitative experiments
+  - get preliminary results
+  - scale the experiments
+  - evaluate ASR, BLEU, Preplex, distance metrics like SSIM, FID, ...
+  - ablation study
+- qualitative experiments
+  - visualize adversarial examples
+  - interpret adversarial examples (Grad-CAM, attention, etc.)
+- real-world case study
+- extending direction or future work
