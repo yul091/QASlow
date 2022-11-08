@@ -5,7 +5,7 @@
 # by xiaodl@microsoft.com
 ############################### 
 
-DATA_DIR=$(pwd)/data
+DATA_DIR=$(pwd)/SQuAD
 echo $DATA_DIR
 mkdir $DATA_DIR
 
@@ -29,9 +29,6 @@ wget https://s3.amazonaws.com/research.metamind.io/cove/wmtlstm-b142a7f2.pth -O 
 wget https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway_5.5B/elmo_2x4096_512_2048cnn_2xhighway_5.5B_weights.hdf5 -O $DATA_DIR/elmo_2x4096_512_2048cnn_2xhighway_5.5B_weights.hdf5
 wget https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway_5.5B/elmo_2x4096_512_2048cnn_2xhighway_5.5B_options.json -O $DATA_DIR/elmo_2x4096_512_2048cnn_2xhighway_5.5B_options.json
 
-# # Download Lib
-# pip3 install ujson
-# pip3 install spacy
 
 # Download Spacy language models
 python -m spacy download en # default English model (~50MB)

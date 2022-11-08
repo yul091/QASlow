@@ -17,7 +17,7 @@ from tqdm import tqdm
 from collections import Counter
 
 # random.seed(1023)
-nlp = spacy.load("en", parser=False)
+nlp = spacy.load("en_core_web_sm")
 
 
 def space_extend(matchobj):
@@ -485,7 +485,7 @@ def build_features(examples, data_type, out_file, word2idx_dict, char2idx_dict, 
 if __name__ == '__main__' :
 
     save_dir = 'SQuAD/'
-    word_emb_file = 'glove/glove.840B.300d.txt'
+    word_emb_file = 'SQuAD/glove.840B.300d.txt'
 
     if not os.path.isdir(save_dir) :
         os.mkdir(save_dir)

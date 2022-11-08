@@ -10,7 +10,7 @@ pip install -r requirements.txt
 ```
 - download datasets & word2vec & en module for spacy
 ```
-bash download.sh
+bash download_squad.sh
 ```
 
 ### Train a model on SQuAD v2.0

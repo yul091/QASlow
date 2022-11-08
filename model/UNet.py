@@ -537,7 +537,7 @@ class UNet(nn.Module):
         del und_passage_states, p_mask, und_ques_states, q_mask, logits1, logits2, has_log
         return loss
 
-    def get_predictions(self, logits1, logits2, ans_log, maxlen=15) :
+    def get_predictions(self, logits1, logits2, ans_log, maxlen=15):
         if self.use_pd:
             batch_size, P = logits1.size()
             outer = torch.matmul(F.softmax(logits1, -1).unsqueeze(2),
