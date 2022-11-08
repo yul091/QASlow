@@ -13,9 +13,9 @@ import torch.nn.functional as F
 import ujson as json
 
 from torch.autograd import Variable
-from utils.layers import StackedBRNN, Dropout, FullAttention, WordAttention, Summ, PointerNet
-from utils.dataset import get_data
-from utils.eval2 import evaluate
+from my_utils.layers import StackedBRNN, Dropout, FullAttention, WordAttention, Summ, PointerNet
+from my_utils.dataset import get_data
+from my_utils.eval2 import evaluate
 from allennlp.modules.elmo import Elmo
 
 

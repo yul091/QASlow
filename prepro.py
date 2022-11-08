@@ -14,12 +14,12 @@ import time
 import pickle
 from functools import partial
 from collections import Counter
-from utils.tokenizer import Vocabulary, reform_text, normalize_text, normal_query, END, build_vocab
-from utils.word2vec_utils import load_emb_vocab, build_embedding
-from utils.utils import set_environment
-from utils.data_utils import build_data, gen_name
+from my_utils.tokenizer import Vocabulary, reform_text, normalize_text, normal_query, END, build_vocab
+from my_utils.word2vec_utils import load_emb_vocab, build_embedding
+from my_utils.utils import set_environment
+from my_utils.data_utils import build_data, gen_name
 from config import set_args
-from utils.log_wrapper import create_logger
+from my_utils.log_wrapper import create_logger
 """
 This script is to preproces SQuAD dataset.
 """

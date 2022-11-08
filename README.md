@@ -3,7 +3,7 @@
 ## Quicktart
 
 ### Setup Environment
-- python3.6+
+- python3.6.9
 - install libraries
 ```
 pip install -r requirements.txt

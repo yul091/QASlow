@@ -6,7 +6,7 @@ import tqdm
 import json
 from functools import partial
 from collections import Counter
-from utils.tokenizer import Vocabulary, reform_text
+from my_utils.tokenizer import Vocabulary, reform_text
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 

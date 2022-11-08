@@ -26,3 +26,342 @@
 2022-11-07 09:20:50 [main        ] INFO     [300-dim word vector path: SQuAD/glove.840B.300d.txt]
 2022-11-07 09:20:50 [main        ] INFO     [Loading glove vocab.]
 2022-11-07 09:21:11 [main        ] INFO     [Build vocabulary]
+2022-11-08 12:14:11 [main        ] WARNING  [~Processing SQuAD dataset~]
+2022-11-08 12:14:11 [main        ] INFO     [The path of training data: SQuAD/train-v1.1.json]
+2022-11-08 12:14:11 [main        ] INFO     [The path of validation data: SQuAD/dev-v1.1.json]
+2022-11-08 12:14:11 [main        ] INFO     [300-dim word vector path: SQuAD/glove.840B.300d.txt]
+2022-11-08 12:14:11 [main        ] INFO     [Loading glove vocab.]
+2022-11-08 12:14:46 [main        ] INFO     [Build vocabulary]
+2022-11-08 12:17:32 [main        ] WARNING  [~Processing SQuAD dataset~]
+2022-11-08 12:17:32 [main        ] INFO     [The path of training data: SQuAD/train-v1.1.json]
+2022-11-08 12:17:32 [main        ] INFO     [The path of validation data: SQuAD/dev-v1.1.json]
+2022-11-08 12:17:32 [main        ] INFO     [300-dim word vector path: SQuAD/glove.840B.300d.txt]
+2022-11-08 12:17:32 [main        ] INFO     [Loading glove vocab.]
+2022-11-08 12:18:09 [main        ] INFO     [Build vocabulary]
+2022-11-08 12:19:38 [main        ] INFO     [Done with vocabulary collection]
+2022-11-08 12:19:38 [main        ] INFO     [Loading resource]
+2022-11-08 12:22:36 [main        ] WARNING  [~Processing SQuAD dataset~]
+2022-11-08 12:22:36 [main        ] INFO     [The path of training data: SQuAD/train-v1.1.json]
+2022-11-08 12:22:36 [main        ] INFO     [The path of validation data: SQuAD/dev-v1.1.json]
+2022-11-08 12:22:36 [main        ] INFO     [300-dim word vector path: SQuAD/glove.840B.300d.txt]
+2022-11-08 12:22:36 [main        ] INFO     [Loading glove vocab.]
+2022-11-08 12:23:12 [main        ] INFO     [Build vocabulary]
+2022-11-08 12:24:42 [main        ] INFO     [Done with vocabulary collection]
+2022-11-08 12:24:42 [main        ] INFO     [Loading resource]
+2022-11-08 12:30:34 [main        ] WARNING  [~Processing SQuAD dataset~]
+2022-11-08 12:30:34 [main        ] INFO     [The path of training data: SQuAD/train-v1.1.json]
+2022-11-08 12:30:34 [main        ] INFO     [The path of validation data: SQuAD/dev-v1.1.json]
+2022-11-08 12:30:34 [main        ] INFO     [300-dim word vector path: SQuAD/glove.840B.300d.txt]
+2022-11-08 12:30:34 [main        ] INFO     [Loading glove vocab.]
+2022-11-08 12:31:10 [main        ] INFO     [Build vocabulary]
+2022-11-08 12:32:41 [main        ] INFO     [Done with vocabulary collection]
+2022-11-08 12:32:41 [main        ] INFO     [Loading resource]
+2022-11-08 12:37:16 [main        ] WARNING  [~Processing SQuAD dataset~]
+2022-11-08 12:37:16 [main        ] INFO     [The path of training data: SQuAD/train-v1.1.json]
+2022-11-08 12:37:16 [main        ] INFO     [The path of validation data: SQuAD/dev-v1.1.json]
+2022-11-08 12:37:16 [main        ] INFO     [300-dim word vector path: SQuAD/glove.840B.300d.txt]
+2022-11-08 12:37:16 [main        ] INFO     [Loading glove vocab.]
+2022-11-08 12:37:52 [main        ] INFO     [Build vocabulary]
+2022-11-08 12:39:21 [main        ] INFO     [Done with vocabulary collection]
+2022-11-08 12:39:21 [main        ] INFO     [Loading resource]
+2022-11-08 12:39:21 [main        ] INFO     [building embedding]
+2022-11-08 12:40:06 [main        ] INFO     [building training data]
+2022-11-08 12:58:03 [main        ] INFO     [building dev data]
+2022-11-08 01:00:24 [main        ] WARNING  [It totally took 23.124710822105406 minutes to processe the data!!]
+2022-11-08 01:35:25 [main        ] INFO     [Launching the SAN]
+2022-11-08 01:35:25 [main        ] INFO     [Loading data]
+2022-11-08 01:35:41 [main        ] INFO     [
+############# Model Arch of SAN #############
+DNetwork(
+  (dropout): DropoutWrapper()
+  (lexicon_encoder): LexiconEncoder(
+    (dropout): DropoutWrapper()
+    (dropout_emb): DropoutWrapper()
+    (dropout_cove): DropoutWrapper()
+    (embedding): Embedding(90981, 300, padding_idx=0)
+    (ContextualEmbed): ContextualEmbed(
+      (embedding): Embedding(90981, 300, padding_idx=0)
+      (rnn1): LSTM(300, 300, bidirectional=True)
+      (rnn2): LSTM(600, 300, bidirectional=True)
+    )
+    (prealign): AttentionWrapper(
+      (score_func): SimilarityWrapper(
+        (score_func): DotProductProject(
+          (dropout): DropoutWrapper()
+          (proj_1): Linear(in_features=300, out_features=128, bias=False)
+          (proj_2): Linear(in_features=300, out_features=128, bias=False)
+        )
+      )
+    )
+    (pos_embedding): Embedding(54, 12, padding_idx=0)
+    (ner_embedding): Embedding(41, 8, padding_idx=0)
+    (doc_pwnn): PositionwiseNN(
+      (w_0): Conv1d(1224, 256, kernel_size=(1,), stride=(1,))
+      (w_1): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+      (dropout): DropoutWrapper()
+    )
+    (que_pwnn): PositionwiseNN(
+      (w_0): Conv1d(900, 256, kernel_size=(1,), stride=(1,))
+      (w_1): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+      (dropout): DropoutWrapper()
+    )
+  )
+  (doc_encoder_low): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (doc_encoder_high): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (query_encoder_low): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (query_encoder_high): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (query_understand): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(512, 128, bidirectional=True)
+  )
+  (deep_attn): DeepAttentionWrapper(
+    (dropout): DropoutWrapper()
+    (attn_list): ModuleList(
+      (0): AttentionWrapper(
+        (score_func): SimilarityWrapper(
+          (score_func): DotProductProject(
+            (dropout): DropoutWrapper()
+            (proj_1): Linear(in_features=1412, out_features=128, bias=False)
+            (proj_2): Linear(in_features=1412, out_features=128, bias=False)
+          )
+        )
+      )
+      (1): AttentionWrapper(
+        (score_func): SimilarityWrapper(
+          (score_func): DotProductProject(
+            (dropout): DropoutWrapper()
+            (proj_1): Linear(in_features=1412, out_features=128, bias=False)
+            (proj_2): Linear(in_features=1412, out_features=128, bias=False)
+          )
+        )
+      )
+      (2): AttentionWrapper(
+        (score_func): SimilarityWrapper(
+          (score_func): DotProductProject(
+            (dropout): DropoutWrapper()
+            (proj_1): Linear(in_features=1412, out_features=128, bias=False)
+            (proj_2): Linear(in_features=1412, out_features=128, bias=False)
+          )
+        )
+      )
+    )
+  )
+  (doc_understand): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(1280, 128, bidirectional=True)
+  )
+  (doc_self_attn): AttentionWrapper(
+    (score_func): SimilarityWrapper(
+      (score_func): DotProductProject(
+        (dropout): DropoutWrapper()
+        (proj_1): Linear(in_features=2436, out_features=128, bias=False)
+        (proj_2): Linear(in_features=2436, out_features=128, bias=False)
+      )
+    )
+  )
+  (doc_mem_gen): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(512, 128, bidirectional=True)
+  )
+  (query_sum_attn): SelfAttnWrapper(
+    (att): LinearSelfAttn(
+      (linear): Linear(in_features=256, out_features=1, bias=True)
+      (dropout): DropoutWrapper()
+    )
+  )
+  (decoder): SAN(
+    (attn_b): FlatSimilarityWrapper(
+      (att_dropout): DropoutWrapper()
+      (score_func): BilinearFlatSim(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (dropout): DropoutWrapper()
+      )
+    )
+    (attn_e): FlatSimilarityWrapper(
+      (att_dropout): DropoutWrapper()
+      (score_func): BilinearFlatSim(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (dropout): DropoutWrapper()
+      )
+    )
+    (rnn): GRUCell(256, 256)
+    (dropout): DropoutWrapper()
+  )
+)
+]
+2022-11-08 01:35:42 [main        ] INFO     [Total number of params: 9194034]
+2022-11-08 01:44:33 [main        ] INFO     [Launching the SAN]
+2022-11-08 01:44:33 [main        ] INFO     [Loading data]
+2022-11-08 01:44:53 [main        ] INFO     [
+############# Model Arch of SAN #############
+DNetwork(
+  (dropout): DropoutWrapper()
+  (lexicon_encoder): LexiconEncoder(
+    (dropout): DropoutWrapper()
+    (dropout_emb): DropoutWrapper()
+    (dropout_cove): DropoutWrapper()
+    (embedding): Embedding(90981, 300, padding_idx=0)
+    (ContextualEmbed): ContextualEmbed(
+      (embedding): Embedding(90981, 300, padding_idx=0)
+      (rnn1): LSTM(300, 300, bidirectional=True)
+      (rnn2): LSTM(600, 300, bidirectional=True)
+    )
+    (prealign): AttentionWrapper(
+      (score_func): SimilarityWrapper(
+        (score_func): DotProductProject(
+          (dropout): DropoutWrapper()
+          (proj_1): Linear(in_features=300, out_features=128, bias=False)
+          (proj_2): Linear(in_features=300, out_features=128, bias=False)
+        )
+      )
+    )
+    (pos_embedding): Embedding(54, 12, padding_idx=0)
+    (ner_embedding): Embedding(41, 8, padding_idx=0)
+    (doc_pwnn): PositionwiseNN(
+      (w_0): Conv1d(1224, 256, kernel_size=(1,), stride=(1,))
+      (w_1): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+      (dropout): DropoutWrapper()
+    )
+    (que_pwnn): PositionwiseNN(
+      (w_0): Conv1d(900, 256, kernel_size=(1,), stride=(1,))
+      (w_1): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+      (dropout): DropoutWrapper()
+    )
+  )
+  (doc_encoder_low): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (doc_encoder_high): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (query_encoder_low): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (query_encoder_high): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(856, 128, bidirectional=True)
+  )
+  (query_understand): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(512, 128, bidirectional=True)
+  )
+  (deep_attn): DeepAttentionWrapper(
+    (dropout): DropoutWrapper()
+    (attn_list): ModuleList(
+      (0): AttentionWrapper(
+        (score_func): SimilarityWrapper(
+          (score_func): DotProductProject(
+            (dropout): DropoutWrapper()
+            (proj_1): Linear(in_features=1412, out_features=128, bias=False)
+            (proj_2): Linear(in_features=1412, out_features=128, bias=False)
+          )
+        )
+      )
+      (1): AttentionWrapper(
+        (score_func): SimilarityWrapper(
+          (score_func): DotProductProject(
+            (dropout): DropoutWrapper()
+            (proj_1): Linear(in_features=1412, out_features=128, bias=False)
+            (proj_2): Linear(in_features=1412, out_features=128, bias=False)
+          )
+        )
+      )
+      (2): AttentionWrapper(
+        (score_func): SimilarityWrapper(
+          (score_func): DotProductProject(
+            (dropout): DropoutWrapper()
+            (proj_1): Linear(in_features=1412, out_features=128, bias=False)
+            (proj_2): Linear(in_features=1412, out_features=128, bias=False)
+          )
+        )
+      )
+    )
+  )
+  (doc_understand): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(1280, 128, bidirectional=True)
+  )
+  (doc_self_attn): AttentionWrapper(
+    (score_func): SimilarityWrapper(
+      (score_func): DotProductProject(
+        (dropout): DropoutWrapper()
+        (proj_1): Linear(in_features=2436, out_features=128, bias=False)
+        (proj_2): Linear(in_features=2436, out_features=128, bias=False)
+      )
+    )
+  )
+  (doc_mem_gen): OneLayerBRNN(
+    (dropout): DropoutWrapper()
+    (rnn): LSTM(512, 128, bidirectional=True)
+  )
+  (query_sum_attn): SelfAttnWrapper(
+    (att): LinearSelfAttn(
+      (linear): Linear(in_features=256, out_features=1, bias=True)
+      (dropout): DropoutWrapper()
+    )
+  )
+  (decoder): SAN(
+    (attn_b): FlatSimilarityWrapper(
+      (att_dropout): DropoutWrapper()
+      (score_func): BilinearFlatSim(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (dropout): DropoutWrapper()
+      )
+    )
+    (attn_e): FlatSimilarityWrapper(
+      (att_dropout): DropoutWrapper()
+      (score_func): BilinearFlatSim(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (dropout): DropoutWrapper()
+      )
+    )
+    (rnn): GRUCell(256, 256)
+    (dropout): DropoutWrapper()
+  )
+)
+]
+2022-11-08 01:44:53 [main        ] INFO     [Total number of params: 9194034]
+2022-11-08 01:44:53 [main        ] WARNING  [At epoch 0]
+2022-11-08 01:44:56 [main        ] INFO     [#updates[     1] train loss[10.12947] remaining[1:42:59]]
+2022-11-08 01:49:26 [main        ] INFO     [#updates[   100] train loss[8.66389] remaining[1:59:45]]
+2022-11-08 01:54:38 [main        ] INFO     [#updates[   200] train loss[8.25425] remaining[2:03:41]]
+2022-11-08 01:59:22 [main        ] INFO     [#updates[   300] train loss[7.90267] remaining[1:57:38]]
+2022-11-08 02:03:41 [main        ] INFO     [#updates[   400] train loss[7.67425] remaining[1:49:51]]
+2022-11-08 02:08:20 [main        ] INFO     [#updates[   500] train loss[7.51302] remaining[1:44:56]]
+2022-11-08 02:12:44 [main        ] INFO     [#updates[   600] train loss[7.38447] remaining[1:39:11]]
+2022-11-08 02:17:18 [main        ] INFO     [#updates[   700] train loss[7.25843] remaining[1:34:20]]
+2022-11-08 02:21:57 [main        ] INFO     [#updates[   800] train loss[7.15522] remaining[1:29:47]]
+2022-11-08 02:26:22 [main        ] INFO     [#updates[   900] train loss[7.08690] remaining[1:24:41]]
+2022-11-08 02:30:52 [main        ] INFO     [#updates[  1000] train loss[7.00202] remaining[1:19:54]]
+2022-11-08 02:35:14 [main        ] INFO     [#updates[  1100] train loss[6.93136] remaining[1:14:57]]
+2022-11-08 02:39:32 [main        ] INFO     [#updates[  1200] train loss[6.86312] remaining[1:10:02]]
+2022-11-08 02:44:22 [main        ] INFO     [#updates[  1300] train loss[6.79829] remaining[1:05:47]]
+2022-11-08 02:48:50 [main        ] INFO     [#updates[  1400] train loss[6.74683] remaining[1:01:06]]
+2022-11-08 02:53:34 [main        ] INFO     [#updates[  1500] train loss[6.69296] remaining[0:56:41]]
+2022-11-08 02:57:57 [main        ] INFO     [#updates[  1600] train loss[6.63771] remaining[0:51:57]]
+2022-11-08 03:02:10 [main        ] INFO     [#updates[  1700] train loss[6.57871] remaining[0:47:11]]
+2022-11-08 03:07:02 [main        ] INFO     [#updates[  1800] train loss[6.52569] remaining[0:42:48]]
+2022-11-08 03:11:14 [main        ] INFO     [#updates[  1900] train loss[6.47377] remaining[0:38:04]]
+2022-11-08 03:15:23 [main        ] INFO     [#updates[  2000] train loss[6.40642] remaining[0:33:23]]
+2022-11-08 03:19:43 [main        ] INFO     [#updates[  2100] train loss[6.34880] remaining[0:28:48]]
+2022-11-08 03:23:40 [main        ] INFO     [#updates[  2200] train loss[6.28347] remaining[0:24:09]]
+2022-11-08 03:27:36 [main        ] INFO     [#updates[  2300] train loss[6.22773] remaining[0:19:33]]
+2022-11-08 03:31:42 [main        ] INFO     [#updates[  2400] train loss[6.16452] remaining[0:15:02]]
+2022-11-08 03:35:46 [main        ] INFO     [#updates[  2500] train loss[6.10888] remaining[0:10:33]]
+2022-11-08 03:39:57 [main        ] INFO     [#updates[  2600] train loss[6.05093] remaining[0:06:06]]
+2022-11-08 03:43:49 [main        ] INFO     [#updates[  2700] train loss[5.99907] remaining[0:01:40]]

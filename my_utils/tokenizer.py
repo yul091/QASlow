@@ -126,10 +126,10 @@ def build_vocab(data, glove_vocab=None, sort_all=False, thread=24, clean_on=Fals
     print('Collect vocab/pos counter/ner counter')
     # docs
     docs = [reform_text(sample['context']) for sample in data]
-    doc_tokened = [doc for doc in nlp.pipe(docs, batch_size=10000, n_process=thread)]
+    doc_tokened = [doc for doc in nlp.pipe(docs, batch_size=10000, n_threads=thread)]
     print('Done with doc tokenize')
     questions = [reform_text(sample['question']) for sample in data]
-    questions_tokened = [question for question in nlp.pipe(questions, batch_size=10000, n_process=thread)]
+    questions_tokened = [question for question in nlp.pipe(questions, batch_size=10000, n_threads=thread)]
     print('Done with question tokenize')
 
     tag_counter = Counter()
