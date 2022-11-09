@@ -65,8 +65,6 @@ def main():
                           batch_size=args.batch_size,
                           gpu=args.cuda, is_train=False, elmo_on=args.elmo_on)
 
-
-
     test_data = None
     test_gold = None
 
@@ -91,6 +89,7 @@ def main():
     logger.info("Total number of params: {}".format(model.total_param))
     if args.cuda:
         model.cuda()
+        logger.info('Shift model to GPU !!!')
 
     best_em_score, best_f1_score = 0.0, 0.0
 

@@ -17,12 +17,12 @@ bash download_squad.sh
 
 - preprocess data
 ```
-python preprocess.py
+python prepro.py
 ```
 
-- train a model (e.g., UNet)
+- train a model (e.g., SAN)
 ```
-python train.py --model unet
+python train_san.py
 ```
 
 - evaluate a model (e.g., UNet)
