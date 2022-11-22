@@ -1,17 +1,17 @@
 # Energy attack on Dialogue Generation
 
-## Quicktart
+## Quickstart
 
 ### Setup Environment
 - python3.8+
 - install ParlAI:
-ParlAI currently requires Python3.8+ and Pytorch 1.6 or higher. Dependencies of the core modules are listed in `requirements.txt`. To install all dependencies, run:
+ParlAI currently requires Python3.8+ and Pytorch 1.6 or higher. Dependencies of the core modules are listed in `requirements.txt`. To install all dependencies, run the following:
 ```
 pip install parlai
 ```
 
-### Train and evaluate a model on specific task(s)
-All needed data will be downloaded to `data/` folder. If you need to clear out the space used by these files, you can safely delete these directories and any files needed will be downloaded again.
+### Train and evaluate a model on a specific task(s)
+All needed data will be downloaded to `data/` folder. If you need to clear out the space used by these files, you can safely delete these directories, and any files required will be downloaded again.
 
 - Seq2seq model on PersonaChat dataset:
 ```
@@ -40,7 +40,7 @@ python attack.py --m seq2seq --t personachat
 - quantitative experiments
   - get preliminary results
   - scale the experiments
-  - evaluate ASR, BLEU, Preplex, distance metrics like SSIM, FID, ...
+  - evaluate ASR, BLEU, Perplex, distance metrics like SSIM, FID, ...
   - ablation study
 - qualitative experiments
   - visualize adversarial examples
