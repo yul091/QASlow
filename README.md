@@ -47,3 +47,8 @@ python attack.py --m seq2seq --t personachat
   - interpret adversarial examples (Grad-CAM, attention, etc.)
 - real-world case study
 - extending direction or future work
+
+### Course Project
+[Report](https://www.overleaf.com/read/cvvhfbrykfcr)
+
+[Slides](https://github.com/yul091/QASlow/raw/main/course_project/Presentation.pptx)
