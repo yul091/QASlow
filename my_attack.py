@@ -108,6 +108,7 @@ class BaseAttacker:
         index_list = [i * self.num_beams for i in range(batch_size + 1)]
         pred_len, seqs, out_scores = self.get_prediction(text)
 
+
         scores = [[] for _ in range(batch_size)]
         for out_s in out_scores:
             for i in range(batch_size):
@@ -131,7 +132,7 @@ class SlowAttacker(BaseAttacker):
     def leave_eos_loss(self, scores, pred_len):
         loss = []
         for i, s in enumerate(scores):
-            s[:, self.pad_token_id] = 1e-12
+            s[:, self.pad_token_id] = 1e-12 # T X V
             eos_p = self.softmax(s)[:pred_len[i], self.eos_token_id]
             loss.append(self.bce_loss(eos_p, torch.zeros_like(eos_p)))
         return loss
@@ -251,6 +252,7 @@ class WordAttacker(SlowAttacker):
 
     def compute_loss(self, text):
         scores, seqs, pred_len = self.compute_score(text)
+        print("scores: {}, seqs: {}, pred_len: {}".format(scores.size(), seqs.size(), pred_len.size()))
         loss_list = self.leave_eos_target_loss(scores, seqs, pred_len)
         # loss_list = self.leave_eos_loss(scores, pred_len)
         return loss_list
@@ -432,5 +434,40 @@ if __name__ == "__main__":
     )
 
     sentence = "Congratulations. Do you come from a big family?"
-    adv_text = attacker.run_attack(sentence)
-    print(adv_text)
+    print("Original sentence: ", sentence)
+    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+
+    input_ids = tokenizer(sentence, return_tensors="pt", padding=True).input_ids
+    input_ids = input_ids.to(device)
+    
+    outputs = dialogue(
+        model, 
+        input_ids,
+        early_stopping=False, 
+        num_beams=4,
+        num_beam_groups=1, 
+        use_cache=True,
+        max_length=128,
+    )
+    output = tokenizer.batch_decode(outputs['sequences'], skip_special_tokens=True)[0]
+    print("Generated sentence: ", output)
+
+    _, adv_his = attacker.run_attack(sentence)
+    print("Adversarial sentence: ", adv_his[0][0])
+
+    input_ids = tokenizer(adv_his[0][0], return_tensors="pt", padding=True).input_ids
+    input_ids = input_ids.to(device)
+    
+    outputs = dialogue(
+        model, 
+        input_ids,
+        early_stopping=False, 
+        num_beams=4,
+        num_beam_groups=1, 
+        use_cache=True,
+        max_length=128,
+    )
+    output = tokenizer.batch_decode(outputs['sequences'], skip_special_tokens=True)[0]
+    print("Generated sentence: ", output)
+
+
