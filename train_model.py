@@ -24,12 +24,15 @@ def main():
         model_name_or_path="facebook/bart-base",
         max_source_length=256,
         max_target_length=256,
+        val_max_target_length=256,
         pad_to_max_length=False,
         ignore_pad_token_for_loss=True,
         max_train_samples=None,
+        max_eval_samples=None,
         preprocessing_num_workers=None,
         overwrite_cache=True,
-        output_dir='.',
+        output_dir='results',
+        num_beams=4,
     )
 
     training_args = Seq2SeqTrainingArguments(

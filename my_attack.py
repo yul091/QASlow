@@ -222,7 +222,7 @@ class SlowAttacker(BaseAttacker):
             grad = self.embedding.grad
             # print("embedding grad: ", grad)
             new_strings = self.mutation(current_adv_text, grad, modify_pos)
-            print('new strings: ', new_strings)
+            # print('new strings: ', new_strings)
             try:
                 if new_strings:
                     current_adv_text, current_len = self.select_best(new_strings)
