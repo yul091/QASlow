@@ -102,12 +102,12 @@ def main():
         model_inputs["labels"] = labels["input_ids"]
         return model_inputs
 
+    # Tokenize train and eval dataset
     column_names = train_dataset.column_names
 
     if data_args.max_train_samples is not None:
         train_dataset = train_dataset.select(range(data_args.max_train_samples))
 
-    
     train_dataset = train_dataset.map(
         preprocess_bst,
         batched=True,
@@ -176,7 +176,6 @@ def main():
         data_collator=data_collator,
         compute_metrics=compute_metrics if training_args.predict_with_generate else None,
     )
-
 
     # Training
     if training_args.do_train:

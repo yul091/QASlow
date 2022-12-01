@@ -2,3 +2,4 @@ transformers
 datasets
 nltk
 sacrebleu
+tqdm

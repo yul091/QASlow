@@ -1,73 +1,64 @@
-import datetime
-import os
+import nltk
+
 import torch
-import argparse
-from my_utils import *
+from transformers import (
+    AutoConfig, 
+    AutoTokenizer, 
+    AutoModelForSeq2SeqLM,
+    AutoModelForMaskedLM,
+)
+from datasets import load_dataset
+from my_attack import WordAttacker, StructureAttacker
 
-
-if not os.path.isdir('adv'):
-    os.mkdir('adv')
-
-MAX_TESTING_NUM = 500
-
-
-def main(task_id, attack_id, beam):
-    model_name = MODEL_NAME_LIST[task_id]
-    # device = torch.device(7)
-    device = torch.device('cuda')
-    model, tokenizer, space_token, dataset, src_lang, tgt_lang = load_model_dataset(model_name)
-    print('load model %s successful' % model_name)
-    beam = model.config.num_beams if beam is None else beam
-    config = {
-        'num_beams': beam,
-        'num_beam_groups': model.config.num_beam_groups,
-        'max_per': 3,
-        'max_len': 100,
-        'src': src_lang,
-        'tgt': tgt_lang
-    }
-    attack_class = ATTACKLIST[attack_id]
-    attack = attack_class(model, tokenizer, space_token, device, config)
-    task_name = 'attack_type:' + str(attack_id) + '_' + 'model_type:' + str(task_id)
-
-    results = []
-    t1 = datetime.datetime.now()
-    for i, src_text in enumerate(dataset):
-        if i == 0:
-            continue
-        if i >= MAX_TESTING_NUM:
-            break
-        # src_text = 'See gewohnt comprehensive for more information. </s>' # 'dataset[21]
-        src_text = src_text.replace('\n', '')
-        is_success, adv_his = attack.run_attack([src_text])
-        if not is_success:
-            print('error')
-        for tmp in adv_his:
-            assert type(tmp[0]) == str
-            assert type(tmp[1]) == int
-            assert type(tmp[2]) == float
-
-        if len(adv_his) != config['max_per'] + 1:
-            delta = config['max_per'] + 1 - len(adv_his)
-            for _ in range(delta):
-                adv_his.append(adv_his[-1])
-
-        assert len(adv_his) == config['max_per'] + 1
-        results.append(adv_his)
-        torch.save(results, 'adv/' + task_name + '_' + str(beam) + '.adv')
-    t2 = datetime.datetime.now()
-    print(t2 - t1)
-    torch.save(results, 'adv/' + task_name + '_' + str(beam) + '.adv')
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Transformer')
-    parser.add_argument('--data', default=3, type=int, help='experiment subjects')
-    parser.add_argument('--attack', default=6, type=int, help='attack type')
-    parser.add_argument('--beam', default=None, type=int, help='beam size')
-    args = parser.parse_args()
-    main(args.data, args.attack, args.beam)
-    exit(0)
+nltk.download('averaged_perceptron_tagger')
 
 
 
+def main():
+
+    model_name_or_path = "results/" # "facebook/bart-base", "results/"
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+
+    config = AutoConfig.from_pretrained(model_name_or_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
+
+    bst_dataset = load_dataset("blended_skill_talk")
+    test_dataset = bst_dataset['test']
+
+    attacker = WordAttacker(
+        device=device,
+        tokenizer=tokenizer,
+        model=model,
+        config=config,
+    )
+    # attacker = StructureAttacker(
+    #     device=device,
+    #     tokenizer=tokenizer,
+    #     model=model,
+    #     config=config,
+    # )
+
+    # sentence = "Congratulations. Do you come from a big family?"
+    for sentences in test_dataset['free_messages'][:2]:
+        for sentence in sentences:
+            print("\nOriginal sentence: ", sentence)
+            input_ids = tokenizer(sentence, return_tensors="pt").input_ids
+            input_ids = input_ids.to(device)
+            
+            outputs = model.generate(input_ids, max_length=128, do_sample=False)
+            output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
+            print("Generated sentence ({}): {}".format(outputs[0].size(-1), output))
+
+            success, adv_his = attacker.run_attack(sentence)
+            if success:
+                print("Adversarial sentence: ", adv_his[-1][0])
+            else:
+                print("No adversarial sentence found!")
+
+            input_ids = tokenizer(adv_his[-1][0], return_tensors="pt").input_ids
+            input_ids = input_ids.to(device)
+            
+            outputs = model.generate(input_ids, max_length=128, do_sample=False)
+            output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
+            print("Generated sentence ({}): {}".format(outputs[0].size(-1), output))

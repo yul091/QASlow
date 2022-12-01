@@ -13,17 +13,19 @@ from transformers import (
     AutoModelForMaskedLM,
 )
 from DialogueAPI import dialogue
+import pdb
 
 
 class BaseAttacker:
     def __init__(self, 
                  device,
+                 tokenizer,
                  model,
                  config):
       
         self.device = device
         self.model = model.to(self.device)
-        self.tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+        self.tokenizer = tokenizer
 
         self.embedding = self.model.get_input_embeddings().weight
         self.specical_token = self.tokenizer.all_special_tokens
@@ -32,8 +34,8 @@ class BaseAttacker:
         self.pad_token_id = self.model.config.pad_token_id
         self.num_beams = self.model.config.num_beams
         self.num_beam_groups = self.model.config.num_beam_groups
-        self.max_len = self._get_hparam(config, 'max_len', 128)
-        self.max_per = self._get_hparam(config, 'max_per', 1000)
+        self.max_len = self._get_hparam(config, 'max_len', 64)
+        self.max_per = self._get_hparam(config, 'max_per', 3)
 
         self.softmax = nn.Softmax(dim=1)
         self.bce_loss = nn.BCELoss()
@@ -125,9 +127,10 @@ class BaseAttacker:
 class SlowAttacker(BaseAttacker):
     def __init__(self, 
                  device,
+                 tokenizer,
                  model,
                  config):
-        super(SlowAttacker, self).__init__(device, model, config)
+        super(SlowAttacker, self).__init__(device, tokenizer, model, config)
 
     def leave_eos_loss(self, scores, pred_len):
         loss = []
@@ -139,7 +142,7 @@ class SlowAttacker(BaseAttacker):
 
     def leave_eos_target_loss(self, scores, seqs, pred_len):
         loss = []
-        for i, s in enumerate(scores):
+        for i, s in enumerate(scores): # s: T X V
             # if self.pad_token_id != self.eos_token_id:
             s[:, self.pad_token_id] = 1e-12
             softmax_v = self.softmax(s)
@@ -156,41 +159,40 @@ class SlowAttacker(BaseAttacker):
         """
         Select generated strings which induce longest output sentences.
         """
-        seqs = []
+        pred_len = []
+        # seqs = []
         batch_num = len(new_strings) // batch_size
         if batch_size * batch_num != len(new_strings):
             batch_num += 1
+
         for i in range(batch_num):
             st, ed = i * batch_size, min(i * batch_size + batch_size, len(new_strings))
             input_ids = self.tokenizer(new_strings[st:ed], return_tensors="pt", padding=True).input_ids
             input_ids = input_ids.to(self.device)
-            
-            # outputs = self.model.generate_with_grad(
-            #     input_ids, 
-            #     num_beams=self.num_beams, 
-            #     output_scores=True, 
-            #     max_length=self.max_len,
-            #     return_dict_in_generate=True
-            # )
-            outputs = dialogue(
-                self.model, 
-                input_ids,
-                early_stopping=False, 
-                num_beams=self.num_beams,
-                num_beam_groups=self.num_beam_groups, 
-                use_cache=True,
+            outputs = self.model.generate(
+                input_ids, 
+                num_beams=self.num_beams, 
                 max_length=self.max_len,
+                return_dict_in_generate=True,
             )
-            seqs.extend(outputs['sequences'].tolist())
+            # seqs.extend(output)
+            # print("output", outputs['sequences'])
+            # seqs.extend(outputs['sequences'].tolist())
+            lengths = [self.compute_seq_len(seq) for seq in outputs['sequences']]
+            # pdb.set_trace()
+            pred_len.extend(lengths)
+            
+        # pred_len = np.array([self.compute_seq_len(torch.tensor(seq)) for seq in seqs])
+        pred_len = np.array(pred_len)
+        # pdb.set_trace()
 
-        pred_len = np.array([self.compute_seq_len(torch.tensor(seq)) for seq in seqs])
         assert len(new_strings) == len(pred_len)
         return new_strings[pred_len.argmax()], max(pred_len)
 
     def prepare_attack(self, text):
         ori_len = self.get_trans_len(text)[0] # original sentence length
-        best_adv_text, best_len = deepcopy(text[0]), ori_len
-        current_adv_text, current_len = deepcopy(text[0]), ori_len  # current_adv_text: List[str]
+        best_adv_text, best_len = deepcopy(text), ori_len
+        current_adv_text, current_len = deepcopy(text), ori_len  # current_adv_text: List[str]
         return ori_len, (best_adv_text, best_len), (current_adv_text, current_len)
 
     def compute_loss(self, text):
@@ -208,7 +210,9 @@ class SlowAttacker(BaseAttacker):
         assert len(text) != 1
         # torch.autograd.set_detect_anomaly(True)
         ori_len, (best_adv_text, best_len), (current_adv_text, current_len) = self.prepare_attack(text)
-        adv_his = [(deepcopy(current_adv_text), deepcopy(current_len), 0.0)]
+        # print("Original best generation length: {}".format(best_len))
+        # adv_his = [(deepcopy(current_adv_text), deepcopy(current_len), 0.0)]
+        adv_his = []
         modify_pos = []
 
         pbar = tqdm(range(self.max_per))
@@ -223,36 +227,35 @@ class SlowAttacker(BaseAttacker):
             # print("embedding grad: ", grad)
             new_strings = self.mutation(current_adv_text, grad, modify_pos)
             # print('new strings: ', new_strings)
-            try:
-                if new_strings:
-                    current_adv_text, current_len = self.select_best(new_strings)
-                    log_str = "%d, %d, %.2f" % (it, len(new_strings), best_len / ori_len)
-                    pbar.set_description(log_str)
-                    if current_len > best_len:
-                        best_adv_text = deepcopy(current_adv_text)
-                        best_len = current_len
-                    t2 = time.time()
-                    adv_his.append((best_adv_text, int(best_len), t2 - t1))
-                else:
-                    return False, adv_his
-            except:
-                return False, adv_his
-            
-        return True, adv_his
+            if new_strings:
+                current_adv_text, current_len = self.select_best(new_strings)
+                # print("Current adversarial text: {}, best generation length: {}".format(current_adv_text, current_len))
+                log_str = "%d, %d, %.2f" % (it, len(new_strings), best_len / ori_len)
+                pbar.set_description(log_str)
+                if current_len > best_len:
+                    best_adv_text = deepcopy(current_adv_text)
+                    best_len = current_len
+                t2 = time.time()
+                adv_his.append((best_adv_text, int(best_len), t2 - t1))
 
+        if adv_his:
+            return True, adv_his
+        else:
+            return False, [(deepcopy(current_adv_text), deepcopy(current_len), 0.0)]
 
 
 
 class WordAttacker(SlowAttacker):
     def __init__(self, 
                  device,
+                 tokenizer,
                  model,
                  config):
-        super(WordAttacker, self).__init__(device, model, config)
+        super(WordAttacker, self).__init__(device, tokenizer, model, config)
 
     def compute_loss(self, text):
-        scores, seqs, pred_len = self.compute_score(text)
-        print("scores: {}, seqs: {}, pred_len: {}".format(scores.size(), seqs.size(), pred_len.size()))
+        scores, seqs, pred_len = self.compute_score(text) # [T X V], [T], [1]
+        # print("scores: {}, seqs: {}, pred_len: {}".format(scores[0].size(), seqs, pred_len))
         loss_list = self.leave_eos_target_loss(scores, seqs, pred_len)
         # loss_list = self.leave_eos_loss(scores, pred_len)
         return loss_list
@@ -272,17 +275,21 @@ class WordAttacker(SlowAttacker):
                     base_ids[pos] = tgt_t
                     break
 
-        current_text = self.tokenizer.decode(current_ids)
+        # current_text = self.tokenizer.decode(current_ids, skip_special_tokens=True)
+        # print("current ids: ", current_ids)
         for pos, t in enumerate(current_ids):
             if t not in self.specical_id:
+                # print('current position: ', pos, ' current id: ', t)
                 cnt, grad_t = 0, grad[t]
                 score = (self.embedding - self.embedding[t]).mm(grad_t.reshape([-1, 1])).reshape([-1])
                 index = score.argsort()
+                # print('sorted index: ', index)
                 for tgt_t in index:
                     if tgt_t not in self.specical_token:
                         new_base_ids = base_ids.clone()
                         new_base_ids[pos] = tgt_t
-                        candidate_s = self.tokenizer.decode(new_base_ids)
+                        # print('substituted id: ', tgt_t)
+                        candidate_s = self.tokenizer.decode(new_base_ids, skip_special_tokens=True)
                         # if new_tag[pos][:2] == ori_tag[pos][:2]:
                         new_strings.append(candidate_s)
                         cnt += 1
@@ -294,6 +301,7 @@ class WordAttacker(SlowAttacker):
 
     def mutation(self, current_adv_text, grad, modify_pos):
         new_strings = self.token_replace_mutation(current_adv_text, grad, modify_pos)
+        # print('new strings: ', new_strings)
         return new_strings
 
 
@@ -302,9 +310,10 @@ class WordAttacker(SlowAttacker):
 class StructureAttacker(SlowAttacker):
     def __init__(self, 
                  device,
+                 tokenizer,
                  model,
                  config):
-        super(StructureAttacker, self).__init__(device, model, config)
+        super(StructureAttacker, self).__init__(device, tokenizer, model, config)
 
         bertmodel = AutoModelForMaskedLM.from_pretrained('bert-base-uncased')
         self.bertmodel = bertmodel.eval().to(self.device)
@@ -413,61 +422,81 @@ class StructureAttacker(SlowAttacker):
 
 
 
+def postprocess_text(preds, labels):
+    preds = [pred.strip() for pred in preds]
+    labels = [[label.strip()] for label in labels]
+    return preds, labels
+
+def compute_metrics(preds, labels, metric, tokenizer):
+    if not isinstance(preds, list):
+        preds = [preds]
+    if not isinstance(labels, list):
+        labels = [labels]
+    preds, labels = postprocess_text(preds, labels)
+    result = metric.compute(predictions=preds, references=labels)
+    return result['score']
+
 
 
 if __name__ == "__main__":
-    nltk.download('averaged_perceptron_tagger')
-    
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-    config = AutoConfig.from_pretrained("facebook/bart-base")
-    model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-base")
 
-    # attacker = WordAttacker(
-    #     device=device,
-    #     model=model,
-    #     config=config,
-    # )
-    attacker = StructureAttacker(
+    from datasets import load_metric
+    nltk.download('averaged_perceptron_tagger')
+
+    model_name_or_path = "results/" # "facebook/bart-base", "results/"
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+
+    config = AutoConfig.from_pretrained(model_name_or_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
+
+
+    attacker = WordAttacker(
         device=device,
+        tokenizer=tokenizer,
         model=model,
         config=config,
     )
+    # attacker = StructureAttacker(
+    #     device=device,
+    #     tokenizer=tokenizer,
+    #     model=model,
+    #     config=config,
+    # )
 
-    sentence = "Congratulations. Do you come from a big family?"
-    print("Original sentence: ", sentence)
-    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+    metric = load_metric("sacrebleu")
 
-    input_ids = tokenizer(sentence, return_tensors="pt", padding=True).input_ids
+    sentence = "The quick brown fox jumps over the lazy dog."
+    label = "That's so cute! What do you do for a living?"
+
+    print("\nOriginal sentence: ", sentence)
+    input_ids = tokenizer(sentence, return_tensors="pt").input_ids
     input_ids = input_ids.to(device)
+    t1 = time.time()
     
-    outputs = dialogue(
-        model, 
-        input_ids,
-        early_stopping=False, 
-        num_beams=4,
-        num_beam_groups=1, 
-        use_cache=True,
-        max_length=128,
-    )
-    output = tokenizer.batch_decode(outputs['sequences'], skip_special_tokens=True)[0]
-    print("Generated sentence: ", output)
+    outputs = model.generate(input_ids, max_length=64, do_sample=False)
+    output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
+    t2 = time.time()
+    prediction_lens = np.count_nonzero(outputs[0].cpu() != tokenizer.pad_token_id)
+    print("Generated sentence: {}".format(output))
+    eval_scores = compute_metrics(output, label, metric, tokenizer)
+    print("Generated sentence length: {}, bleu: {}, latency: {}".format(prediction_lens, eval_scores, t2-t1))
 
-    _, adv_his = attacker.run_attack(sentence)
-    print("Adversarial sentence: ", adv_his[0][0])
+    success, adv_his = attacker.run_attack(sentence)
+    if success:
+        print("Adversarial sentence: ", adv_his[-1][0])
+    else:
+        print("No adversarial sentence found!")
 
-    input_ids = tokenizer(adv_his[0][0], return_tensors="pt", padding=True).input_ids
+    input_ids = tokenizer(adv_his[-1][0], return_tensors="pt").input_ids
     input_ids = input_ids.to(device)
-    
-    outputs = dialogue(
-        model, 
-        input_ids,
-        early_stopping=False, 
-        num_beams=4,
-        num_beam_groups=1, 
-        use_cache=True,
-        max_length=128,
-    )
-    output = tokenizer.batch_decode(outputs['sequences'], skip_special_tokens=True)[0]
-    print("Generated sentence: ", output)
+    t1 = time.time()
+    outputs = model.generate(input_ids, max_length=64, do_sample=False)
+    output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
+    t2 = time.time()
+    prediction_lens = np.count_nonzero(outputs[0].cpu() != tokenizer.pad_token_id)
+    print("Generated sentence: {}".format(output))
+    eval_scores = compute_metrics(output, label, metric, tokenizer)
+    print("Generated sentence length: {}, bleu: {}, latency: {}".format(prediction_lens, eval_scores, t2-t1))
 
 
