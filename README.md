@@ -33,8 +33,8 @@ parlai eval_model -m ir_baseline -t personachat -dt valid
 python attack.py --m seq2seq --t personachat
 ```
 
-### TODO
-- :white_check_mark: prepare models
+### Plan
+- prepare models
 - refactor ```attack.py```
 - implement some attacking methods
 - quantitative experiments
