@@ -146,8 +146,8 @@ if __name__ == "__main__":
     #     main(max_num_samples, max_per)
 
     # Demo
-    max_num_samples = 5
-    max_per = 1
+    max_num_samples = 100
+    max_per = 3
     main(max_num_samples, max_per)
 
 
