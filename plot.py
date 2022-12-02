@@ -29,7 +29,7 @@ plt.plot(eps, adv_bleus, linestyle='--', marker='^', markersize=4, color='blue',
 plt.grid(color='silver', linestyle='--', linewidth=0.3)
 plt.xlabel('Perturbation times')
 plt.ylabel('BLEU')
-plt.title('Output length vs. Perturbation times')
+plt.title('BLEU score vs. Perturbation times')
 plt.savefig('BLEUs.png')
 
 
