@@ -16,6 +16,7 @@ pip install -r requirements.txt
 ```
 python train_model.py
 ```
+- Or you can directly download our pre-trained [model](https://drive.google.com/drive/folders/1rWexrwHCgCFYiNVk2yFKSI8iV8baWfFt?usp=sharing) 
 
 ### Attack a pre-trained model
 ```
