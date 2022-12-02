@@ -3,34 +3,23 @@
 ## Quickstart
 
 ### Setup Environment
-- python3.8+
-- install ParlAI:
-ParlAI currently requires Python3.8+ and Pytorch 1.6 or higher. Dependencies of the core modules are listed in `requirements.txt`. To install all dependencies, run the following:
+- python 3.10.6
+- pytorch 1.13.0
+- Install dependencies
 ```
-pip install parlai
+pip install -r requirements.txt
 ```
 
 ### Train and evaluate a model on a specific task(s)
-All needed data will be downloaded to `data/` folder. If you need to clear out the space used by these files, you can safely delete these directories, and any files required will be downloaded again.
 
-- Seq2seq model on PersonaChat dataset:
+- BART on BlendedSkillTalk:
 ```
-parlai train_model -t personachat -m seq2seq -mf results/personachat/seq2seq -bs 32 --num-epochs 20
-```
-
-- Transformer model on Blended_skill_talk dataset:
-```
-parlai train_model -t blended_skill_talk -m transformer/generator -mf results/blended_skill_talk/transformer/generator --n-layers 3 --embedding-size 300 --ffn-size 600 --n-heads 4 --num-epochs 20 -bs 32 --dropout 0.1 --embedding-type fasttext_cc
-```
-
-- Evaluate an IR baseline model on the validation set of the Personachat task:
-```
-parlai eval_model -m ir_baseline -t personachat -dt valid
+python train_model.py
 ```
 
 ### Attack a pre-trained model
 ```
-python attack.py --m seq2seq --t personachat
+python attack.py
 ```
 
 ### Plan
