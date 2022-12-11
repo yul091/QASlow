@@ -14,7 +14,7 @@ from my_attack import WordAttacker, StructureAttacker, compute_metrics
 
 # nltk.download('averaged_perceptron_tagger')
 
-def main(max_num_samples=100, max_per=3):
+def main(max_num_samples=100, max_per=3, max_len=128):
 
     random.seed(2019)
     model_name_or_path = "results/" # "facebook/bart-base", "results/"
@@ -35,7 +35,7 @@ def main(max_num_samples=100, max_per=3):
         device=device,
         tokenizer=tokenizer,
         model=model,
-        max_len=64,
+        max_len=max_len,
         max_per=max_per,
     )
 
@@ -56,7 +56,7 @@ def main(max_num_samples=100, max_per=3):
             input_ids = input_ids.to(device)
             t1 = time.time()
             
-            outputs = model.generate(input_ids, max_length=64, do_sample=False)
+            outputs = model.generate(input_ids, max_length=max_len, do_sample=False)
             output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
             t2 = time.time()
             pred_len = np.count_nonzero(outputs[0].cpu() != tokenizer.pad_token_id)
@@ -82,7 +82,7 @@ def main(max_num_samples=100, max_per=3):
             input_ids = tokenizer(adv_his[-1][0], return_tensors="pt").input_ids
             input_ids = input_ids.to(device)
             t1 = time.time()
-            outputs = model.generate(input_ids, max_length=64, do_sample=False)
+            outputs = model.generate(input_ids, max_length=max_len, do_sample=False)
             output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
             t2 = time.time()
             adv_pred_len = np.count_nonzero(outputs[0].cpu() != tokenizer.pad_token_id)
@@ -121,22 +121,6 @@ def main(max_num_samples=100, max_per=3):
     #     for line in adv_lens:
     #         f.write(str(line) + "\n")
 
-    # with open("ori_bleu.txt", "w") as f:
-    #     for line in ori_bleus:
-    #         f.write(str(line) + "\n")
-
-    # with open("adv_bleu.txt", "w") as f:
-    #     for line in adv_bleus:
-    #         f.write(str(line) + "\n")
-
-    # with open("ori_time.txt", "w") as f:
-    #     for line in ori_time:
-    #         f.write(str(line) + "\n")
-
-    # with open("adv_time.txt", "w") as f:
-    #     for line in adv_time:
-    #         f.write(str(line) + "\n")
-
 
 
 if __name__ == "__main__":
@@ -148,6 +132,7 @@ if __name__ == "__main__":
     # Demo
     max_num_samples = 100
     max_per = 3
-    main(max_num_samples, max_per)
+    max_len = 128
+    main(max_num_samples, max_per, max_len)
 
 

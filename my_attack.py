@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import time
 import nltk
 import numpy as np
@@ -31,8 +32,8 @@ class BaseAttacker:
         self.embedding = self.model.get_input_embeddings().weight
         self.specical_token = self.tokenizer.all_special_tokens
         self.specical_id = self.tokenizer.all_special_ids
-        self.eos_token_id = self.model.config.eos_token_id
-        self.pad_token_id = self.model.config.pad_token_id
+        self.eos_token_id = self.tokenizer.eos_token_id
+        self.pad_token_id = self.tokenizer.pad_token_id
         self.num_beams = self.model.config.num_beams
         self.num_beam_groups = self.model.config.num_beam_groups
         self.max_len = max_len
@@ -49,10 +50,10 @@ class BaseAttacker:
 
         return default
 
-    def run_attack(self, x):
+    def run_attack(self, text):
         pass
 
-    def compute_loss(self, x):
+    def compute_loss(self, text):
         pass
 
     def compute_seq_len(self, seq):
@@ -170,8 +171,8 @@ class SlowAttacker(BaseAttacker):
 
         for i in range(batch_num):
             st, ed = i * batch_size, min(i * batch_size + batch_size, len(new_strings))
-            input_ids = self.tokenizer(new_strings[st:ed], return_tensors="pt", padding=True).input_ids
-            input_ids = input_ids.to(self.device)
+            inputs = self.tokenizer(new_strings[st:ed], return_tensors="pt", padding=True)
+            input_ids = inputs.input_ids.to(self.device)
             outputs = self.model.generate(
                 input_ids, 
                 num_beams=self.num_beams, 
@@ -251,42 +252,38 @@ class WordAttacker(SlowAttacker):
                  max_per=3):
         super(WordAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
 
+
     def compute_loss(self, text):
-        scores, seqs, pred_len = self.compute_score(text) # [T X V], [T], [1]
-        # print("scores: {}, seqs: {}, pred_len: {}".format(scores[0].size(), seqs, pred_len))
+        scores, seqs, pred_len = self.compute_score(text) # list of [T X V], [T], [1]
         loss_list = self.leave_eos_target_loss(scores, seqs, pred_len)
         # loss_list = self.leave_eos_loss(scores, pred_len)
         return loss_list
     
 
-    def token_replace_mutation(self, current_adv_text, grad, modified_pos):
+    def token_replace_mutation(self, current_adv_text, grad):
         new_strings = []
-        current_ids = self.tokenizer(current_adv_text, return_tensors="pt", padding=True).input_ids[0]
+        words = self.tokenizer.tokenize(current_adv_text)
+        current_inputs = self.tokenizer(current_adv_text, return_tensors="pt", padding=True)
+        current_ids = current_inputs.input_ids[0].to(self.device)
         base_ids = current_ids.clone()
-        for pos in modified_pos:
-            t = current_ids[0][pos]
-            grad_t = grad[t]
-            score = (self.embedding - self.embedding[t]).mm(grad_t.reshape([-1, 1])).reshape([-1])
-            index = score.argsort()
-            for tgt_t in index:
-                if tgt_t not in self.specical_token:
-                    base_ids[pos] = tgt_t
-                    break
+
+        # masked_texts = self.get_masked_sentence(current_adv_text)
+        # all_candidates = []
+        # for masked_text in masked_texts:
+        #     top_k_tokens = self.get_masked_predictions(masked_text)
+        #     all_candidates.append(top_k_tokens)
 
         # current_text = self.tokenizer.decode(current_ids, skip_special_tokens=True)
         # print("current ids: ", current_ids)
         for pos, t in enumerate(current_ids):
             if t not in self.specical_id:
-                # print('current position: ', pos, ' current id: ', t)
                 cnt, grad_t = 0, grad[t]
                 score = (self.embedding - self.embedding[t]).mm(grad_t.reshape([-1, 1])).reshape([-1])
                 index = score.argsort()
-                # print('sorted index: ', index)
                 for tgt_t in index:
                     if tgt_t not in self.specical_token:
                         new_base_ids = base_ids.clone()
                         new_base_ids[pos] = tgt_t
-                        # print('substituted id: ', tgt_t)
                         candidate_s = self.tokenizer.decode(new_base_ids, skip_special_tokens=True)
                         # if new_tag[pos][:2] == ori_tag[pos][:2]:
                         new_strings.append(candidate_s)
@@ -298,7 +295,7 @@ class WordAttacker(SlowAttacker):
 
 
     def mutation(self, current_adv_text, grad, modify_pos):
-        new_strings = self.token_replace_mutation(current_adv_text, grad, modify_pos)
+        new_strings = self.token_replace_mutation(current_adv_text, grad)
         # print('new strings: ', new_strings)
         return new_strings
 
@@ -310,12 +307,17 @@ class StructureAttacker(SlowAttacker):
                  device,
                  tokenizer,
                  model,
-                 config):
-        super(StructureAttacker, self).__init__(device, tokenizer, model, config)
+                 max_len=64,
+                 max_per=3):
+        super(StructureAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
 
-        bertmodel = AutoModelForMaskedLM.from_pretrained('bert-base-uncased')
+        # BERT initialization
+        self.berttokenizer = AutoTokenizer.from_pretrained('bert-large-uncased')
+        self.mask_token = self.berttokenizer.mask_token
+        bertmodel = AutoModelForMaskedLM.from_pretrained('bert-large-uncased')
         self.bertmodel = bertmodel.eval().to(self.device)
         self.num_of_perturb = 50
+
 
     def compute_loss(self, text):
         scores, seqs, pred_len = self.compute_score(text)
@@ -349,11 +351,11 @@ class StructureAttacker(SlowAttacker):
         # For each idx, use Bert to generate k (i.e., num) candidate tokens
         original_word = tokens[masked_index]
         low_tokens = [x.lower() for x in tokens]
-        low_tokens[masked_index] = '[MASK]'
+        low_tokens[masked_index] = self.mask_token
 
         # Try whether all the tokens are in the vocabulary
         try:
-            indexed_tokens = self.tokenizer.convert_tokens_to_ids(low_tokens)
+            indexed_tokens = self.berttokenizer.convert_tokens_to_ids(low_tokens)
             tokens_tensor = torch.tensor([indexed_tokens])
             tokens_tensor = tokens_tensor.to(self.model.device)
             prediction = self.bertmodel(tokens_tensor)
@@ -366,7 +368,7 @@ class StructureAttacker(SlowAttacker):
 
         # get the similar words
         topk_Idx = torch.topk(prediction[0][0, masked_index], self.num_of_perturb)[1].tolist()
-        topk_tokens = self.tokenizer.convert_ids_to_tokens(topk_Idx)
+        topk_tokens = self.berttokenizer.convert_ids_to_tokens(topk_Idx)
 
         # Remove the tokens that only contains 0 or 1 char (e.g., i, a, s)
         # This step could be further optimized by filtering more tokens (e.g., non-english tokens)
@@ -384,7 +386,7 @@ class StructureAttacker(SlowAttacker):
                 new_t = self.tokenizer.encode(tokens[masked_index])[0]
                 new_tensor = ori_tensors.clone()
                 new_tensor[masked_index] = new_t
-                new_sentence = self.tokenizer.decode(new_tensor)
+                new_sentence = self.tokenizer.decode(new_tensor, skip_special_tokens=True)
                 new_sentences.append(new_sentence)
         tokens[masked_index] = original_word
         return new_sentences
@@ -485,11 +487,19 @@ if __name__ == "__main__":
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
 
 
-    attacker = WordAttacker(
+    # attacker = WordAttacker(
+    #     device=device,
+    #     tokenizer=tokenizer,
+    #     model=model,
+    #     max_len=64,
+    #     max_per=1,
+    # )
+
+    attacker = StructureAttacker(
         device=device,
         tokenizer=tokenizer,
         model=model,
-        max_len=64,
+        max_len=128,
         max_per=1,
     )
 
