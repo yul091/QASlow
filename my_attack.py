@@ -13,7 +13,10 @@ from transformers import (
     AutoModelForSeq2SeqLM,
     AutoModelForMaskedLM,
 )
+import stanza
+from nltk.corpus import wordnet as wn
 from DialogueAPI import dialogue
+from utils import GrammarChecker
 import pdb
 
 
@@ -30,8 +33,8 @@ class BaseAttacker:
         self.tokenizer = tokenizer
 
         self.embedding = self.model.get_input_embeddings().weight
-        self.specical_token = self.tokenizer.all_special_tokens
-        self.specical_id = self.tokenizer.all_special_ids
+        self.special_token = self.tokenizer.all_special_tokens
+        self.special_id = self.tokenizer.all_special_ids
         self.eos_token_id = self.tokenizer.eos_token_id
         self.pad_token_id = self.tokenizer.pad_token_id
         self.num_beams = self.model.config.num_beams
@@ -171,7 +174,8 @@ class SlowAttacker(BaseAttacker):
 
         for i in range(batch_num):
             st, ed = i * batch_size, min(i * batch_size + batch_size, len(new_strings))
-            inputs = self.tokenizer(new_strings[st:ed], return_tensors="pt", padding=True)
+            batch_strings = [x[1] for x in new_strings[st:ed]]
+            inputs = self.tokenizer(batch_strings, return_tensors="pt", padding=True)
             input_ids = inputs.input_ids.to(self.device)
             outputs = self.model.generate(
                 input_ids, 
@@ -210,36 +214,38 @@ class SlowAttacker(BaseAttacker):
         """
         assert len(text) != 1
         # torch.autograd.set_detect_anomaly(True)
-        ori_len, (best_adv_text, best_len), (current_adv_text, current_len) = self.prepare_attack(text)
-        # adv_his = [(deepcopy(current_adv_text), deepcopy(current_len), 0.0)]
+        ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len) = self.prepare_attack(text)
+        # adv_his = [(deepcopy(cur_adv_text), deepcopy(cur_len), 0.0)]
         adv_his = []
-        modify_pos = []
+        modify_pos = [] # record already modified positions (avoid recovering to the original token)
         pbar = tqdm(range(self.max_per))
         t1 = time.time()
 
         for it in pbar:
-            loss_list = self.compute_loss([current_adv_text])
+            loss_list = self.compute_loss([cur_adv_text])
             loss = sum(loss_list)
             self.model.zero_grad()
             loss.backward()
             grad = self.embedding.grad
-            new_strings = self.mutation(current_adv_text, grad, modify_pos)
+            new_strings = self.mutation(cur_adv_text, grad, modify_pos)
 
             if new_strings:
-                current_adv_text, current_len = self.select_best(new_strings)
+                # print("new_strings: ", new_strings)
+                (cur_pos, cur_adv_text), cur_len = self.select_best(new_strings)
+                modify_pos.append(cur_pos)
                 log_str = "%d, %d, %.2f" % (it, len(new_strings), best_len / ori_len)
                 pbar.set_description(log_str)
 
-                if current_len > best_len:
-                    best_adv_text = deepcopy(current_adv_text)
-                    best_len = current_len
+                if cur_len > best_len:
+                    best_adv_text = deepcopy(cur_adv_text)
+                    best_len = cur_len
                 t2 = time.time()
                 adv_his.append((best_adv_text, int(best_len), t2 - t1))
 
         if adv_his:
             return True, adv_his
         else:
-            return False, [(deepcopy(current_adv_text), deepcopy(current_len), 0.0)]
+            return False, [(deepcopy(cur_adv_text), deepcopy(cur_len), 0.0)]
 
 
 
@@ -260,7 +266,7 @@ class WordAttacker(SlowAttacker):
         return loss_list
     
 
-    def token_replace_mutation(self, current_adv_text, grad):
+    def token_replace_mutation(self, current_adv_text, grad, modified_pos):
         new_strings = []
         words = self.tokenizer.tokenize(current_adv_text)
         current_inputs = self.tokenizer(current_adv_text, return_tensors="pt", padding=True)
@@ -294,8 +300,8 @@ class WordAttacker(SlowAttacker):
         return new_strings
 
 
-    def mutation(self, current_adv_text, grad, modify_pos):
-        new_strings = self.token_replace_mutation(current_adv_text, grad)
+    def mutation(self, current_adv_text, grad, modified_pos):
+        new_strings = self.token_replace_mutation(current_adv_text, grad, modified_pos)
         # print('new strings: ', new_strings)
         return new_strings
 
@@ -317,6 +323,62 @@ class StructureAttacker(SlowAttacker):
         bertmodel = AutoModelForMaskedLM.from_pretrained('bert-large-uncased')
         self.bertmodel = bertmodel.eval().to(self.device)
         self.num_of_perturb = 50
+        self.grammar = GrammarChecker()
+
+        self.pos_dict = {'NOUN': 'n', 'VERB': 'v', 'ADV': 'r', 'ADJ': 'a'}
+        self.pos_processor = stanza.Pipeline('en', processors='tokenize, mwt, pos, lemma')
+        self.skip_pos_tags = ['DT', 'PDT', 'POS', 'PRP', 'PRP$', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'NNP']
+
+
+    def get_pos(self, sentence, mask_index):
+        processed_sentence = self.pos_processor(sentence)
+        pos_list = []
+        word_lemma = None
+
+        for sentence in processed_sentence.sentences:
+            for i, word in enumerate(sentence.words):
+                pos_list.append(word.upos)
+                if i == mask_index:
+                    word_lemma = word.lemma
+
+        return pos_list, word_lemma
+
+    @staticmethod
+    def get_word_antonyms(word):
+        antonyms_lists = set()
+        for syn in wn.synsets(word):
+            for l in syn.lemmas():
+                if l.antonyms():
+                    antonyms_lists.add(l.antonyms()[0].name())
+        return list(antonyms_lists)
+
+
+    def get_synonyms(self, word, pos):
+        if word is None:
+            return []
+        if pos not in self.pos_dict.keys():
+            return []
+
+        synonyms = set()
+        for syn in wn.synsets(word):
+            if syn.pos() == self.pos_dict[pos]:
+                for lemma in syn.lemmas():
+                    synonyms.add(lemma.name())
+
+        if word in synonyms:
+            synonyms.remove(word)
+
+        return list(synonyms)
+
+
+    def formalize(self, text):
+        tokens = self.berttokenizer.tokenize(text)
+
+        if len(tokens) > self.max_len:
+            tokens = tokens[0:self.max_len]
+
+        string = self.berttokenizer.convert_tokens_to_string(tokens)
+        return string
 
 
     def compute_loss(self, text):
@@ -344,80 +406,113 @@ class StructureAttacker(SlowAttacker):
         return tokens, bert_masked_indexL
 
 
-    def perturbBert(self, tokens, ori_tensors, masked_indexL, masked_index):
-        new_sentences = list()
+    def perturbBert(self, cur_text, cur_tokens, cur_tags, cur_error, masked_index):
+        new_sentences = []
         # invalidChars = set(string.punctuation)
 
-        # For each idx, use Bert to generate k (i.e., num) candidate tokens
-        original_word = tokens[masked_index]
-        low_tokens = [x.lower() for x in tokens]
+        # For each idx, use BERT to generate k (i.e., num) candidate tokens
+        cur_tok = cur_tokens[masked_index]
+        low_tokens = [x.lower() for x in cur_tokens]
         low_tokens[masked_index] = self.mask_token
+
+        # Get the pos tag & synonyms of the masked word
+        # pos_list, word_lemma = self.get_pos(cur_text, masked_index)
+        # masked_word_pos = pos_list[masked_index]
+        # synonyms = self.get_synonyms(word_lemma, masked_word_pos)
+        antonyms = self.get_word_antonyms(cur_tok)
+        # print("antonyms: ", antonyms)
 
         # Try whether all the tokens are in the vocabulary
         try:
             indexed_tokens = self.berttokenizer.convert_tokens_to_ids(low_tokens)
-            tokens_tensor = torch.tensor([indexed_tokens])
-            tokens_tensor = tokens_tensor.to(self.model.device)
-            prediction = self.bertmodel(tokens_tensor)
+            tokens_tensor = torch.tensor([indexed_tokens]).to(self.device)
+            prediction = self.bertmodel(tokens_tensor)[0]
 
             # Skip the sentences that contain unknown words
-            # Another option is to mark the unknow words as [MASK]; we skip sentences to reduce fp caused by BERT
+            # Another option is to mark the unknow words as [MASK]; 
+            # we skip sentences to reduce fp caused by BERT
         except KeyError as error:
             print('skip a sentence. unknown token is %s' % error)
             return new_sentences
 
-        # get the similar words
-        topk_Idx = torch.topk(prediction[0][0, masked_index], self.num_of_perturb)[1].tolist()
+        # Get the similar words
+        probs = F.softmax(prediction[0, masked_index], dim=-1)
+        topk_Idx = torch.topk(probs, self.num_of_perturb, sorted=True)[1].tolist()
         topk_tokens = self.berttokenizer.convert_ids_to_tokens(topk_Idx)
 
         # Remove the tokens that only contains 0 or 1 char (e.g., i, a, s)
         # This step could be further optimized by filtering more tokens (e.g., non-english tokens)
         topk_tokens = list(filter(lambda x: len(x) > 1, topk_tokens))
+        topk_tokens = set(topk_tokens) - set(self.berttokenizer.all_special_tokens)
+        topk_tokens = list(topk_tokens - set(antonyms))
+        # topk_tokens = list(topk_tokens & set(synonyms))
+        # print("topk_tokens: ", topk_tokens)
 
         # Generate similar sentences
-        for t in topk_tokens:
+        for tok in topk_tokens:
             # if any(char in invalidChars for char in t):
             #     continue
-            tokens[masked_index] = t
-            new_pos_inf = nltk.tag.pos_tag(tokens)
+            cur_tokens[masked_index] = ' '+tok
+            new_pos_inf = nltk.tag.pos_tag(cur_tokens)
 
-            # only use the similar sentences whose similar token's tag is still the same
-            if new_pos_inf[masked_index][1][:2] == masked_indexL[masked_index][1][:2]:
-                new_t = self.tokenizer.encode(tokens[masked_index])[0]
-                new_tensor = ori_tensors.clone()
-                new_tensor[masked_index] = new_t
-                new_sentence = self.tokenizer.decode(new_tensor, skip_special_tokens=True)
-                new_sentences.append(new_sentence)
-        tokens[masked_index] = original_word
+            # Only use sentences whose similar token's tag is still the same
+            if new_pos_inf[masked_index][1] == cur_tags[masked_index][1]:
+                # print("[index {}] substituted: {}, pos tag: {}".format(
+                #     masked_index, tok, new_pos_inf[masked_index][1],
+                # ))
+                # new_t = self.tokenizer.encode(tokens[masked_index], add_special_tokens=False)[0]
+                # new_tensor = ori_tensors.clone()
+                # new_tensor[masked_index] = new_t
+                # new_sentence = self.tokenizer.decode(new_tensor, skip_special_tokens=True)
+                # new_sentence = self.formalize(new_sentence)
+                new_sentence = self.tokenizer.convert_tokens_to_string(cur_tokens)
+                # print("new sentence: ", new_sentence)
+                new_error = self.grammar.check(new_sentence)
+                if new_error <= cur_error:
+                    new_sentences.append((masked_index, new_sentence))
+
+        cur_tokens[masked_index] = cur_tok
         return new_sentences
 
 
+    def structure_mutation(self, cur_adv_text, grad, modified_pos):
+        """
+        cur_adv_text (string): the current adversarial text;
+        grad (tensor[V X E]): the gradient of the current adversarial text.
+        """
+        all_new_strings = []
+        important_tensor = (-grad.sum(1)).argsort() # sort token ids w.r.t. gradient
+        important_tokens = self.tokenizer.convert_ids_to_tokens(important_tensor.tolist())
+        cur_input = self.tokenizer(cur_adv_text, return_tensors="pt", add_special_tokens=False)
+        cur_tensor = cur_input['input_ids'][0]
+        cur_tokens, cur_tags = self.get_token_type(cur_tensor)
+        cur_error = self.grammar.check(cur_adv_text)
 
-    def structure_mutation(self, current_adv_text, grad):
-        new_strings = []
-        important_tensor = (-grad.sum(1)).argsort()
-        current_tensor = self.tokenizer(current_adv_text, return_tensors="pt", padding=True).input_ids[0]
-        ori_tokens, ori_tag = self.get_token_type(current_tensor)
+        assert len(cur_tokens) == len(cur_tensor)
+        assert len(cur_tokens) == len(cur_tags)
 
-        assert len(ori_tokens) == len(current_tensor)
-        assert len(ori_tokens) == len(ori_tag)
-        
-        current_tensor_list = current_tensor.tolist()
-        for t in important_tensor:
-            if int(t) not in current_tensor_list:
+
+        # For each important token (w.r.t. gradient), perturb it using BERT
+        # if it is in the current text
+        for tok in important_tokens:
+            if tok not in cur_tokens or tok in set(self.special_token):
                 continue
-            pos_list = torch.where(current_tensor.eq(int(t)))[0].tolist()
+
+            pos_list = [i for i, x in enumerate(cur_tokens) if x == tok]
+            # print("\ncurrent key token: {}, pos tag: {}".format(tok, cur_tags[pos_list[0]][1]))
+
             for pos in pos_list:
-                new_string = self.perturbBert(ori_tokens, current_tensor, ori_tag, pos)
-                new_strings.extend(new_string)
-            if len(new_strings) > 2000:
+                if (cur_tags[pos][1] not in self.skip_pos_tags) and (pos not in modified_pos):
+                    new_strings = self.perturbBert(cur_adv_text, cur_tokens, cur_tags, cur_error, pos)
+                    all_new_strings.extend(new_strings)
+            if len(all_new_strings) > 2000:
                 break
 
-        return new_strings
+        return all_new_strings
 
 
-    def mutation(self, current_adv_text, grad, modify_pos):
-        new_strings = self.structure_mutation(current_adv_text, grad)
+    def mutation(self, current_adv_text, grad, modified_pos):
+        new_strings = self.structure_mutation(current_adv_text, grad, modified_pos)
         return new_strings
 
 
@@ -477,6 +572,8 @@ def inference(sentence, label, model, tokenizer, metric, device):
 if __name__ == "__main__":
 
     from datasets import load_metric
+    # nltk.download('wordnet')
+    # nltk.download('omw-1.4')
     # nltk.download('averaged_perceptron_tagger')
 
     model_name_or_path = "results/" # "facebook/bart-base", "results/"
@@ -485,7 +582,6 @@ if __name__ == "__main__":
     config = AutoConfig.from_pretrained(model_name_or_path)
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
-
 
     # attacker = WordAttacker(
     #     device=device,
@@ -500,7 +596,7 @@ if __name__ == "__main__":
         tokenizer=tokenizer,
         model=model,
         max_len=128,
-        max_per=1,
+        max_per=5,
     )
 
     metric = load_metric("sacrebleu")

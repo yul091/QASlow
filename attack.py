@@ -31,13 +31,22 @@ def main(max_num_samples=100, max_per=3, max_len=128):
     sampled_test_dataset = test_dataset.select(ids)
     # print(sampled_test_dataset)
 
-    attacker = WordAttacker(
+    # attacker = WordAttacker(
+    #     device=device,
+    #     tokenizer=tokenizer,
+    #     model=model,
+    #     max_len=max_len,
+    #     max_per=max_per,
+    # )
+
+    attacker = StructureAttacker(
         device=device,
         tokenizer=tokenizer,
         model=model,
         max_len=max_len,
         max_per=max_per,
     )
+
 
     metric = load_metric("sacrebleu")
     ori_lens, adv_lens = [], []
