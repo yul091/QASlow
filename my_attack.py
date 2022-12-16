@@ -78,6 +78,7 @@ class BaseAttacker:
         # outputs = self.model.generate(
         #     input_ids, 
         #     num_beams=self.num_beams, 
+        #     num_beam_groups=self.num_beam_groups,
         #     output_scores=True, 
         #     max_length=self.max_len,
         #     return_dict_in_generate=True

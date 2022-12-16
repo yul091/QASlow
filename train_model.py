@@ -31,7 +31,7 @@ def main():
         max_eval_samples=None,
         preprocessing_num_workers=None,
         overwrite_cache=True,
-        output_dir='results',
+        output_dir='results/bart',
         num_beams=4,
     )
 
