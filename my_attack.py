@@ -215,7 +215,7 @@ class SlowAttacker(BaseAttacker):
         assert len(text) != 1
         # torch.autograd.set_detect_anomaly(True)
         ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len) = self.prepare_attack(text)
-        # adv_his = [(deepcopy(cur_adv_text), deepcopy(cur_len), 0.0)]
+        ori_context = cur_adv_text.split(self.tokenizer.eos_token)[0].strip()
         adv_his = []
         modify_pos = [] # record already modified positions (avoid recovering to the original token)
         pbar = tqdm(range(self.max_per))
@@ -227,8 +227,15 @@ class SlowAttacker(BaseAttacker):
             self.model.zero_grad()
             loss.backward()
             grad = self.embedding.grad
-            new_strings = self.mutation(cur_adv_text, grad, modify_pos)
 
+            # Only mutate the part after eos_token
+            cur_free_text = cur_adv_text.split(self.tokenizer.eos_token)[1].strip()
+            new_strings = self.mutation(cur_free_text, grad, modify_pos)
+            # Pad the original context
+            new_strings = [
+                (pos, ori_context + " " + self.tokenizer.eos_token + " " + adv_text)
+                for (pos, adv_text) in new_strings
+            ]
             if new_strings:
                 # print("new_strings: ", new_strings)
                 (cur_pos, cur_adv_text), cur_len = self.select_best(new_strings)
@@ -292,7 +299,7 @@ class WordAttacker(SlowAttacker):
                         new_base_ids[pos] = tgt_t
                         candidate_s = self.tokenizer.decode(new_base_ids, skip_special_tokens=True)
                         # if new_tag[pos][:2] == ori_tag[pos][:2]:
-                        new_strings.append(candidate_s)
+                        new_strings.append((pos, candidate_s))
                         cnt += 1
                         if cnt >= 50:
                             break
@@ -454,7 +461,6 @@ class StructureAttacker(SlowAttacker):
             #     continue
             cur_tokens[masked_index] = ' '+tok
             new_pos_inf = nltk.tag.pos_tag(cur_tokens)
-
             # Only use sentences whose similar token's tag is still the same
             if new_pos_inf[masked_index][1] == cur_tags[masked_index][1]:
                 # print("[index {}] substituted: {}, pos tag: {}".format(
@@ -487,25 +493,18 @@ class StructureAttacker(SlowAttacker):
         cur_tensor = cur_input['input_ids'][0]
         cur_tokens, cur_tags = self.get_token_type(cur_tensor)
         cur_error = self.grammar.check(cur_adv_text)
-
         assert len(cur_tokens) == len(cur_tensor)
         assert len(cur_tokens) == len(cur_tags)
-
-        # Search space: all the tokens after the first [EOS] token
-        eos_pos = cur_tokens.index(self.tokenizer.eos_token)
-        perturbable_pos = set(range(eos_pos+1, len(cur_tokens))) - set(modified_pos)
-        perturbable_tokens = set([x for i, x in enumerate(cur_tokens) if i in perturbable_pos])
 
         # For each important token (w.r.t. gradient), perturb it using BERT
         # if it is in the current text
         for tok in important_tokens:
-            if tok not in perturbable_tokens:
+            if tok not in cur_tokens:
                 continue
-
             pos_list = [i for i, x in enumerate(cur_tokens) if x == tok]
             # print("\ncurrent key token: {}, pos tag: {}".format(tok, cur_tags[pos_list[0]][1]))
             for pos in pos_list:
-                if (cur_tags[pos][1] not in self.skip_pos_tags):
+                if (cur_tags[pos][1] not in self.skip_pos_tags) and (pos not in modified_pos):
                     new_strings = self.perturbBert(cur_adv_text, cur_tokens, cur_tags, cur_error, pos)
                     all_new_strings.extend(new_strings)
             if len(all_new_strings) > 2000:

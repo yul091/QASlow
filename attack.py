@@ -47,7 +47,7 @@ def seq2seq_generation(
         original_context = ' '.join(
             persona_pieces + additional_context_pieces
         ) + previous_utterance
-        print("\nDialogue history: {}".format(previous_utterance))
+        print("\nDialogue history: {}".format(original_context))
 
         previous_utterance_pieces += [
             free_message,
@@ -64,20 +64,20 @@ def seq2seq_generation(
         print("U--{}".format(free_message))
         print("G--{}".format(output))
         pred_len = np.count_nonzero(outputs[0].cpu() != tokenizer.pad_token_id)
-        eval_scores = compute_metrics(output, guided_message, metric, tokenizer)
-        print("(length: {}, latency: {:.3f}, BLEU: {:.3f})".format(pred_len, t2-t1, eval_scores))
+        scores = compute_metrics(output, guided_message, metric, tokenizer)
+        print("(length: {}, latency: {:.3f}, BLEU: {:.3f})".format(pred_len, t2-t1, scores))
         ori_lens.append(pred_len)
-        ori_bleus.append(eval_scores)
+        ori_bleus.append(scores)
         ori_time.append(t2-t1)
 
         # Attack
         success, adv_his = attacker.run_attack(text)
         new_text = adv_his[-1][0]
-        previous_utterance = new_text.split(tokenizer.eos_token)[0].strip()
+        # new_context = new_text.split(tokenizer.eos_token)[0].strip()
         new_free_message = new_text.split(tokenizer.eos_token)[1].strip()
-        print("Dialogue history: {}".format(previous_utterance))
+        # print("Dialogue history: {}".format(new_context))
         if success:
-            print("U'--: {}".format(new_free_message))
+            print("U'--{}".format(new_free_message))
         else:
             print("Attack failed!")
 
@@ -89,10 +89,10 @@ def seq2seq_generation(
         t2 = time.time()
         print("G'--{}".format(output))
         adv_pred_len = np.count_nonzero(outputs[0].cpu() != tokenizer.pad_token_id)
-        eval_scores = compute_metrics(output, guided_message, metric, tokenizer)
-        print("(length: {}, latency: {:.3f}, BLEU: {:.3f})".format(pred_len, t2-t1, eval_scores))
+        adv_scores = compute_metrics(output, guided_message, metric, tokenizer)
+        print("(length: {}, latency: {:.3f}, BLEU: {:.3f})".format(adv_pred_len, t2-t1, adv_scores))
         adv_lens.append(adv_pred_len)
-        adv_bleus.append(eval_scores)
+        adv_bleus.append(adv_scores)
         adv_time.append(t2-t1)
 
         # ASR
@@ -222,7 +222,9 @@ def main(max_num_samples=5, max_per=3, max_len=256):
 
 if __name__ == "__main__":
     import nltk
-    # nltk.download('averaged_perceptron_tagger')
+    nltk.download('wordnet')
+    nltk.download('omw-1.4')
+    nltk.download('averaged_perceptron_tagger')
 
     max_num_samples = 1
     max_per = 5
