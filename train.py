@@ -73,7 +73,7 @@ def main(args):
 
     # Blended Skill Talk
     bst_dataset = load_dataset("blended_skill_talk")
-    column_names = bst_dataset.column_names
+    column_names = bst_dataset['train'].column_names
 
     # Tokenizer and model
     config = AutoConfig.from_pretrained(data_args.model_name_or_path)
@@ -87,7 +87,6 @@ def main(args):
     num_added_toks = tokenizer.add_tokens(['<SEP>'], special_tokens=True) ## this line is updated
     model.resize_token_embeddings(len(tokenizer))
     
-
     # Data processing
     def preprocess_bst(examples):
         num_entries = len(examples["free_messages"])
@@ -157,6 +156,7 @@ def main(args):
             num_proc=data_args.preprocessing_num_workers,
             load_from_cache_file=not data_args.overwrite_cache,
         )
+        print("train dataset: ", train_dataset)
     
     if training_args.do_eval:
         eval_dataset = bst_dataset['validation']
@@ -176,6 +176,7 @@ def main(args):
             num_proc=data_args.preprocessing_num_workers,
             load_from_cache_file=not data_args.overwrite_cache,
         )
+        print("validation dataset: ", eval_dataset)
 
     if training_args.do_predict:
         predict_dataset = bst_dataset['test']
@@ -195,6 +196,7 @@ def main(args):
             num_proc=data_args.preprocessing_num_workers,
             load_from_cache_file=not data_args.overwrite_cache,
         )
+        print("test dataset: ", predict_dataset)
 
 
     # Data collator

@@ -14,7 +14,11 @@ pip install -r requirements.txt
 
 - BART on BlendedSkillTalk:
 ```
-python train_model.py
+python train.py
+```
+- Or
+```
+bash train.sh
 ```
 - Or you can directly download our pre-trained [model](https://drive.google.com/drive/folders/1rWexrwHCgCFYiNVk2yFKSI8iV8baWfFt?usp=sharing) 
 
