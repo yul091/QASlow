@@ -71,14 +71,16 @@ def seq2seq_generation(
         ori_time.append(t2-t1)
 
         # Attack
-        success, adv_his = attacker.run_attack(free_message)
-        new_free_message = adv_his[-1][0]
+        success, adv_his = attacker.run_attack(text)
+        new_text = adv_his[-1][0]
+        previous_utterance = new_text.split(tokenizer.eos_token)[0].strip()
+        new_free_message = new_text.split(tokenizer.eos_token)[1].strip()
+        print("Dialogue history: {}".format(previous_utterance))
         if success:
-            print("U'--{}".format(new_free_message))
+            print("U'--: {}".format(new_free_message))
         else:
             print("Attack failed!")
 
-        new_text = original_context + ' ' + tokenizer.eos_token + ' ' + new_free_message
         input_ids = tokenizer(new_text, max_length=max_source_length, return_tensors="pt").input_ids
         input_ids = input_ids.to(device)
         t1 = time.time()
@@ -102,19 +104,11 @@ def seq2seq_generation(
 
 def main(max_num_samples=5, max_per=3, max_len=256):
     random.seed(2019)
-    model_name_or_path = "results/bart/checkpoint-1500" # "facebook/bart-base", "results/bart"
-    # device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-    device = torch.device('cpu')
+    model_name_or_path = "results/bart" # "facebook/bart-base", "results/bart"
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     config = AutoConfig.from_pretrained(model_name_or_path)
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)
-
-    # Add special tokens
-    # Define new special tokens: <PS>, <CTX>, <SEP>
-    num_added_toks = tokenizer.add_tokens(['<PS>'], special_tokens=True) ## this line is updated
-    num_added_toks = tokenizer.add_tokens(['<CTX>'], special_tokens=True) ## this line is updated
-    num_added_toks = tokenizer.add_tokens(['<SEP>'], special_tokens=True) ## this line is updated
-    model.resize_token_embeddings(len(tokenizer))
 
     # Load dataset
     bst_dataset = load_dataset("blended_skill_talk")

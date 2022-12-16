@@ -74,15 +74,7 @@ class BaseAttacker:
 
         input_ids = self.tokenizer(sentence, return_tensors="pt").input_ids.to(self.device)
         # ['sequences', 'sequences_scores', 'scores', 'beam_indices'] if num_beams != 1
-        # ['sequences', 'scores'] if num_beams = 1
-        # outputs = self.model.generate(
-        #     input_ids, 
-        #     num_beams=self.num_beams, 
-        #     num_beam_groups=self.num_beam_groups,
-        #     output_scores=True, 
-        #     max_length=self.max_len,
-        #     return_dict_in_generate=True
-        # )
+        # ['sequences', 'scores'] otherwise
         outputs = dialogue(
             self.model, 
             input_ids,
@@ -126,8 +118,6 @@ class BaseAttacker:
         scores = [torch.cat(s) for s in scores]
         scores = [s[:pred_len[i]] for i, s in enumerate(scores)]
         return scores, seqs, pred_len
-        
-
 
 
 
@@ -178,12 +168,21 @@ class SlowAttacker(BaseAttacker):
             batch_strings = [x[1] for x in new_strings[st:ed]]
             inputs = self.tokenizer(batch_strings, return_tensors="pt", padding=True)
             input_ids = inputs.input_ids.to(self.device)
-            outputs = self.model.generate(
-                input_ids, 
-                num_beams=self.num_beams, 
+            outputs = dialogue(
+                self.model, 
+                input_ids,
+                early_stopping=False, 
+                num_beams=self.num_beams,
+                num_beam_groups=self.num_beam_groups, 
+                use_cache=True,
                 max_length=self.max_len,
-                return_dict_in_generate=True,
             )
+            # outputs = self.model.generate(
+            #     input_ids, 
+            #     num_beams=self.num_beams, 
+            #     max_length=self.max_len,
+            #     return_dict_in_generate=True,
+            # )
             lengths = [self.compute_seq_len(seq) for seq in outputs['sequences']]
             # pdb.set_trace()
             pred_len.extend(lengths)
@@ -198,13 +197,13 @@ class SlowAttacker(BaseAttacker):
     def prepare_attack(self, text):
         ori_len = self.get_trans_len(text)[0] # original sentence length
         best_adv_text, best_len = deepcopy(text), ori_len
-        current_adv_text, current_len = deepcopy(text), ori_len  # current_adv_text: List[str]
-        return ori_len, (best_adv_text, best_len), (current_adv_text, current_len)
+        cur_adv_text, cur_len = deepcopy(text), ori_len  # current_adv_text: List[str]
+        return ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len)
 
     def compute_loss(self, text):
         raise NotImplementedError
 
-    def mutation(self, current_adv_text, grad, modified_pos):
+    def mutation(self, cur_adv_text, grad, modified_pos):
         raise NotImplementedError
 
     def run_attack(self, text):
@@ -267,22 +266,22 @@ class WordAttacker(SlowAttacker):
         return loss_list
     
 
-    def token_replace_mutation(self, current_adv_text, grad, modified_pos):
+    def token_replace_mutation(self, cur_adv_text, grad, modified_pos):
         new_strings = []
-        words = self.tokenizer.tokenize(current_adv_text)
-        current_inputs = self.tokenizer(current_adv_text, return_tensors="pt", padding=True)
-        current_ids = current_inputs.input_ids[0].to(self.device)
-        base_ids = current_ids.clone()
+        words = self.tokenizer.tokenize(cur_adv_text)
+        cur_inputs = self.tokenizer(cur_adv_text, return_tensors="pt", padding=True)
+        cur_ids = cur_inputs.input_ids[0].to(self.device)
+        base_ids = cur_ids.clone()
 
-        # masked_texts = self.get_masked_sentence(current_adv_text)
+        # masked_texts = self.get_masked_sentence(cur_adv_text)
         # all_candidates = []
         # for masked_text in masked_texts:
         #     top_k_tokens = self.get_masked_predictions(masked_text)
         #     all_candidates.append(top_k_tokens)
 
-        # current_text = self.tokenizer.decode(current_ids, skip_special_tokens=True)
-        # print("current ids: ", current_ids)
-        for pos, t in enumerate(current_ids):
+        # current_text = self.tokenizer.decode(cur_ids, skip_special_tokens=True)
+        # print("current ids: ", cur_ids)
+        for pos, t in enumerate(cur_ids):
             if t not in self.specical_id:
                 cnt, grad_t = 0, grad[t]
                 score = (self.embedding - self.embedding[t]).mm(grad_t.reshape([-1, 1])).reshape([-1])
@@ -301,8 +300,8 @@ class WordAttacker(SlowAttacker):
         return new_strings
 
 
-    def mutation(self, current_adv_text, grad, modified_pos):
-        new_strings = self.token_replace_mutation(current_adv_text, grad, modified_pos)
+    def mutation(self, cur_adv_text, grad, modified_pos):
+        new_strings = self.token_replace_mutation(cur_adv_text, grad, modified_pos)
         # print('new strings: ', new_strings)
         return new_strings
 
@@ -492,18 +491,21 @@ class StructureAttacker(SlowAttacker):
         assert len(cur_tokens) == len(cur_tensor)
         assert len(cur_tokens) == len(cur_tags)
 
+        # Search space: all the tokens after the first [EOS] token
+        eos_pos = cur_tokens.index(self.tokenizer.eos_token)
+        perturbable_pos = set(range(eos_pos+1, len(cur_tokens))) - set(modified_pos)
+        perturbable_tokens = set([x for i, x in enumerate(cur_tokens) if i in perturbable_pos])
 
         # For each important token (w.r.t. gradient), perturb it using BERT
         # if it is in the current text
         for tok in important_tokens:
-            if tok not in cur_tokens or tok in set(self.special_token):
+            if tok not in perturbable_tokens:
                 continue
 
             pos_list = [i for i, x in enumerate(cur_tokens) if x == tok]
             # print("\ncurrent key token: {}, pos tag: {}".format(tok, cur_tags[pos_list[0]][1]))
-
             for pos in pos_list:
-                if (cur_tags[pos][1] not in self.skip_pos_tags) and (pos not in modified_pos):
+                if (cur_tags[pos][1] not in self.skip_pos_tags):
                     new_strings = self.perturbBert(cur_adv_text, cur_tokens, cur_tags, cur_error, pos)
                     all_new_strings.extend(new_strings)
             if len(all_new_strings) > 2000:
@@ -512,8 +514,8 @@ class StructureAttacker(SlowAttacker):
         return all_new_strings
 
 
-    def mutation(self, current_adv_text, grad, modified_pos):
-        new_strings = self.structure_mutation(current_adv_text, grad, modified_pos)
+    def mutation(self, cur_adv_text, grad, modified_pos):
+        new_strings = self.structure_mutation(cur_adv_text, grad, modified_pos)
         return new_strings
 
 
@@ -537,7 +539,16 @@ def inference(sentence, label, model, tokenizer, metric, device):
     input_ids = tokenizer(sentence, return_tensors="pt").input_ids
     input_ids = input_ids.to(device)
     t1 = time.time()
-    outputs = model.generate(input_ids, max_length=64, do_sample=False)
+    # outputs = model.generate(input_ids, max_length=256, do_sample=False)
+    outputs = dialogue(
+        model, 
+        input_ids,
+        early_stopping=False, 
+        num_beams=4,
+        num_beam_groups=1, 
+        use_cache=True,
+        max_length=256,
+    )
     output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
     t2 = time.time()
     prediction_len = len(output.split())
@@ -558,7 +569,16 @@ def inference(sentence, label, model, tokenizer, metric, device):
     input_ids = tokenizer(adv_his[-1][0], return_tensors="pt").input_ids
     input_ids = input_ids.to(device)
     t1 = time.time()
-    outputs = model.generate(input_ids, max_length=64, do_sample=False)
+    # outputs = model.generate(input_ids, max_length=64, do_sample=False)
+    outputs = dialogue(
+        model, 
+        input_ids,
+        early_stopping=False, 
+        num_beams=4,
+        num_beam_groups=1, 
+        use_cache=True,
+        max_length=256,
+    )
     output = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
     t2 = time.time()
     prediction_len = len(output.split())
