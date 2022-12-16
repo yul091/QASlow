@@ -44,6 +44,7 @@ def main(args):
         evaluation_strategy="epoch",
         metric_for_best_model="eval_bleu",
         greater_is_better=True, # smaller eval loss is better
+        save_total_limit=2, # save 2 checkpoints (best and last)
         per_device_train_batch_size=args.per_device_train_batch_size,
         per_device_eval_batch_size=args.per_device_eval_batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
