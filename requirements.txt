@@ -1,5 +1,7 @@
 transformers==4.24.0
 datasets
+evaluate
+rouge_score
 nltk
 sacrebleu
 tqdm

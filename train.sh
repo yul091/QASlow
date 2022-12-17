@@ -2,7 +2,7 @@ MODEL_PATH=t5-small # 'facebook/bart-base', 't5-small'
 OUTPUT_DIR=results/t5 # 'results/bart', 'results/t5'
 EPOCHS=50
 
-CUDA_VISIBLE_DEVICES=0 python train.py \
+CUDA_VISIBLE_DEVICES=0 python train_seq2seq.py \
 --model_name_or_path $MODEL_PATH \
 --output_dir $OUTPUT_DIR \
 --do_train --do_eval --do_predict \

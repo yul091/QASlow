@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 - BART on BlendedSkillTalk:
 ```
-python train.py
+python train_seq2seq.py
 ```
 - Or
 ```
