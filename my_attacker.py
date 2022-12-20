@@ -73,8 +73,7 @@ class BaseAttacker:
             return s
 
         input_ids = self.tokenizer(sentence, return_tensors="pt").input_ids.to(self.device)
-        # ['sequences', 'sequences_scores', 'scores', 'beam_indices'] if num_beams != 1
-        # ['sequences', 'scores'] otherwise
+        # ['sequences', 'sequences_scores', 'scores', 'beam_indices']
         outputs = dialogue(
             self.model, 
             input_ids,
@@ -106,9 +105,9 @@ class BaseAttacker:
     
     def compute_score(self, text):
         batch_size = len(text)
+        # print("text: {}, batch_size: {}".format(text, batch_size))
         index_list = [i * self.num_beams for i in range(batch_size + 1)]
         pred_len, seqs, out_scores = self.get_prediction(text)
-
 
         scores = [[] for _ in range(batch_size)]
         for out_s in out_scores:
@@ -153,7 +152,7 @@ class SlowAttacker(BaseAttacker):
         return loss
 
     @torch.no_grad()
-    def select_best(self, new_strings, batch_size=30):
+    def select_best(self, new_strings, batch_size=10):
         """
         Select generated strings which induce longest output sentences.
         """
@@ -282,12 +281,12 @@ class WordAttacker(SlowAttacker):
         # current_text = self.tokenizer.decode(cur_ids, skip_special_tokens=True)
         # print("current ids: ", cur_ids)
         for pos, t in enumerate(cur_ids):
-            if t not in self.specical_id:
+            if t not in self.special_id and pos not in modified_pos:
                 cnt, grad_t = 0, grad[t]
                 score = (self.embedding - self.embedding[t]).mm(grad_t.reshape([-1, 1])).reshape([-1])
                 index = score.argsort()
                 for tgt_t in index:
-                    if tgt_t not in self.specical_token:
+                    if tgt_t not in self.special_token:
                         new_base_ids = base_ids.clone()
                         new_base_ids[pos] = tgt_t
                         candidate_s = self.tokenizer.decode(new_base_ids, skip_special_tokens=True)

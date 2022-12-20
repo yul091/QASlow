@@ -3,7 +3,7 @@
 ## Quickstart
 
 ### Setup Environment
-- python 3.10.6
+- python 3.10.8
 - pytorch 1.13.0
 - Install dependencies
 ```
@@ -42,7 +42,8 @@ python attack.py
 - real-world case study
 - extending direction or future work
 
+<!-- 
 ### Course Project
 [Report](https://www.overleaf.com/read/cvvhfbrykfcr)
 
-[Slides](https://github.com/yul091/QASlow/raw/main/course_project/Presentation.pptx)
+[Slides](https://github.com/yul091/QASlow/raw/main/course_project/Presentation.pptx) -->

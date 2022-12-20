@@ -224,3 +224,5 @@ class GrammarChecker:
         '''
         matches = self.lang_tool.check(sentence)
         return len(matches)
+
+

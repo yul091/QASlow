@@ -7,4 +7,5 @@ sacrebleu
 tqdm
 matplotlib
 stanza
+sklearn
 language_tool_python==2.7.1
