@@ -15,8 +15,8 @@ from datasets import load_dataset
 import evaluate
 import OpenAttack
 from DialogueAPI import dialogue
-from my_attacker import WordAttacker, StructureAttacker
-
+from attacker.my_attacker import WordAttacker, StructureAttacker
+from attacker.PWWS import PWWSAttacker
 
 
 def get_prediction(sentence, model, tokenizer, num_beams, num_beam_groups, max_len, device):
@@ -152,7 +152,7 @@ def seq2seq_generation(
         ori_time.append(t2-t1)
 
         # Attack
-        success, adv_his = attacker.run_attack(text)
+        success, adv_his = attacker.run_attack(text, guided_message)
         new_text = adv_his[-1][0]
         new_free_message = new_text.split(tokenizer.eos_token)[1].strip()
         if success:
@@ -212,7 +212,8 @@ def main(args):
     max_len = args.max_len
     max_per = args.max_per
 
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+    # device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+    device = torch.device('cpu')
     config = AutoConfig.from_pretrained(model_name_or_path)
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)
@@ -224,7 +225,7 @@ def main(args):
     sampled_test_dataset = test_dataset.select(ids)
 
     # Define attack method
-    if args.attack_strategy == 'word':
+    if args.attack_strategy.lower() == 'word':
         attacker = WordAttacker(
             device=device,
             tokenizer=tokenizer,
@@ -232,8 +233,16 @@ def main(args):
             max_len=max_len,
             max_per=max_per,
         )
-    else:
+    elif args.attack_strategy.lower() == 'structure':
         attacker = StructureAttacker(
+            device=device,
+            tokenizer=tokenizer,
+            model=model,
+            max_len=max_len,
+            max_per=max_per,
+        )
+    elif args.attack_strategy.lower() == 'pwws':
+        attacker = PWWSAttacker(
             device=device,
             tokenizer=tokenizer,
             model=model,
@@ -299,74 +308,10 @@ def main(args):
     #         f.write(str(line) + "\n")
 
 
-class MyClassifier(OpenAttack.Classifier):
-    def __init__(self, model, tokenizer, num_beams, num_beam_groups, max_len, device):
-        nltk.download('vader_lexicon')
-        self.model = model.to(device)
-        self.tokenizer = tokenizer
-        self.eos_token_id = self.tokenizer.eos_token_id
-        self.num_beams = num_beams
-        self.num_beam_groups = num_beam_groups
-        self.max_len = max_len
-        self.device = device
-
-    def get_pred(self, input_):
-        def remove_pad(s):
-            for i, tk in enumerate(s):
-                if tk == self.eos_token_id and i != 0:
-                    return s[:i + 1]
-            return s
-
-        seqs = self.get_prob(input_).argmax(axis=-1) # (batch_size, max_len)
-        seqs = [remove_pad(seq) for seq in seqs]
-        return seqs
-        
-    # access to the classification probability scores with respect input sentences
-    def get_prob(self, input_):
-        """
-        input_: a list of sentences
-        """
-        # ret = []
-        # for sent in input_:
-            # # SentimentIntensityAnalyzer calculates scores of “neg” and “pos” for each instance
-            # res = self.model.polarity_scores(sent)
-            # # we use 𝑠𝑜𝑐𝑟𝑒_𝑝𝑜𝑠 / (𝑠𝑐𝑜𝑟𝑒_𝑛𝑒𝑔 + 𝑠𝑐𝑜𝑟𝑒_𝑝𝑜𝑠) to represent the probability of positive sentiment
-            # # Adding 10^−6 is a trick to avoid dividing by zero.
-            # prob = (res["pos"] + 1e-6) / (res["neg"] + res["pos"] + 2e-6)
-            # ret.append(np.array([1 - prob, prob]))
-            # input_ids = self.tokenizer(sent, return_tensors="pt").input_ids.to(self.device)
-            # # ['sequences', 'sequences_scores', 'scores', 'beam_indices']
-            # outputs = dialogue(
-            #     model, 
-            #     input_ids,
-            #     early_stopping=False, 
-            #     num_beams=self.num_beams,
-            #     num_beam_groups=self.num_beam_groups, 
-            #     use_cache=True,
-            #     max_length=self.max_len,
-            # )
-            # out_scores = outputs['scores']
-            # print("sequences: ", outputs['sequences'].shape)
-            # print("out_scores: ", [x.shape for x in out_scores])
-        scores, seqs, pred_len = compute_score(
-            input_, self.model, self.tokenizer, 
-            self.num_beams, self.num_beam_groups, self.max_len, self.device
-        )
-        # print("scores: ", scores)
-        # ret.append(scores.detach().cpu().numpy())
-        scores = torch.stack(scores, dim=0).detach().cpu().numpy()
-        print(scores.shape)
-
-        # The get_prob method finally returns a np.ndarray of shape (len(input_), 2). See Classifier for detail.
-        return scores
-
-
-
 if __name__ == "__main__":
-    import nltk
     import argparse
     import ssl
-    from itertools import chain
+    # import nltk
     # nltk.download('wordnet')
     # nltk.download('omw-1.4')
     # nltk.download('averaged_perceptron_tagger')
@@ -386,87 +331,4 @@ if __name__ == "__main__":
                         choices=['structure', 'word', 'pwws'], 
                         help="Attack strategy")
     args = parser.parse_args()
-    # main(args)
-
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path)
-    model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name_or_path)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    attacker = OpenAttack.attackers.GANAttacker()
-    # victim = MyClassifier(model, tokenizer, args.num_beams, args.num_beam_groups, args.max_len, device)
-    victim = OpenAttack.classifiers.TransformersClassifier(
-        model=model,
-        tokenizer=tokenizer,
-        device=device,
-        embedding_layer=model.get_input_embeddings(),
-        max_length=args.max_len,
-        batch_size=5,
-        lang="english",
-    )
-    attack_eval = OpenAttack.AttackEval(
-        attacker=attacker, 
-        victim=victim,
-        language="english",
-        tokenizer=tokenizer,
-        metrics=[OpenAttack.metric.BLEU(tokenizer), OpenAttack.metric.Fluency()],
-    )
-    bst_dataset = load_dataset(args.dataset)
-    test_dataset = bst_dataset['test']
-    column_names = bst_dataset['test'].column_names
-    # Data processing
-    def preprocess_bst(examples):
-        num_entries = len(examples["free_messages"])
-        persona_pieces = [
-            f"<PS> {examples['personas'][0]}",
-            f"<PS> {examples['personas'][1]}",
-        ]
-        if examples['context'] == "wizard_of_wikipedia":
-            additional_context_pieces = [f"<CTX> {examples['additional_context']}. <SEP> "]
-        else:
-            additional_context_pieces = ["<SEP> "]
-
-        previous_utterance_pieces = examples["previous_utterance"]
-        inputs, labels = [], []
-        for entry_idx in range(num_entries):
-            free_message = examples['free_messages'][entry_idx]
-            guided_message = examples['guided_messages'][entry_idx]
-
-            previous_utterance = ' <SEP> '.join(previous_utterance_pieces)
-            original_context = ' '.join(
-                persona_pieces + additional_context_pieces
-            ) + previous_utterance
-            # Input & Output
-            text = original_context + ' ' + tokenizer.eos_token + ' ' + free_message
-            inputs.append(text)
-            labels.append(guided_message)
-            previous_utterance_pieces += [
-                free_message,
-                guided_message,
-            ]
-
-        return {
-            "x": inputs,
-            "y": labels,
-        }
-
-
-    def group_texts(examples):
-        # ['input_ids', 'attention_mask', 'labels']
-        concatenated_examples = {k: list(chain(*examples[k])) for k in examples.keys()}
-        return concatenated_examples
-
-    test_dataset = test_dataset.map(
-        preprocess_bst,
-        batched=False,
-        num_proc=None,
-        remove_columns=column_names,
-        load_from_cache_file=False,
-    )
-    test_dataset = test_dataset.map(
-        group_texts,
-        batched=True,
-        num_proc=None,
-        load_from_cache_file=False,
-    )
-    attack_eval.eval(test_dataset, visualize=False)
-
-
+    main(args)

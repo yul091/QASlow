@@ -8,4 +8,5 @@ tqdm
 matplotlib
 stanza
 sklearn
+OpenAttack
 language_tool_python==2.7.1
