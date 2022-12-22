@@ -24,6 +24,7 @@ class WordAttacker(SlowAttacker):
                  max_len=64,
                  max_per=3):
         super(WordAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
+        self.num_of_perturb = 50
 
 
     def compute_loss(self, text):
@@ -61,7 +62,7 @@ class WordAttacker(SlowAttacker):
                         # if new_tag[pos][:2] == ori_tag[pos][:2]:
                         new_strings.append((pos, candidate_s))
                         cnt += 1
-                        if cnt >= 50:
+                        if cnt >= self.num_of_perturb:
                             break
 
         return new_strings

@@ -13,7 +13,6 @@ from transformers import (
 )
 from datasets import load_dataset
 import evaluate
-import OpenAttack
 from DialogueAPI import dialogue
 from attacker.my_attacker import WordAttacker, StructureAttacker
 from attacker.PWWS import PWWSAttacker
@@ -115,7 +114,6 @@ def seq2seq_generation(
         input_ids = tokenizer(text, max_length=max_source_length, return_tensors="pt").input_ids
         input_ids = input_ids.to(device)
         t1 = time.time()
-        # outputs = model.generate(input_ids, max_length=max_target_length, do_sample=False)
         outputs = dialogue(
             model, 
             input_ids,
@@ -212,8 +210,7 @@ def main(args):
     max_len = args.max_len
     max_per = args.max_per
 
-    # device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-    device = torch.device('cpu')
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     config = AutoConfig.from_pretrained(model_name_or_path)
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)

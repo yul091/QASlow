@@ -152,28 +152,28 @@ def dialogue(
             "Diverse beam search cannot be used in sampling mode. Make sure that `do_sample` is set to `False`."
         )
 
-    # 7. prepare distribution pre_processing samplers
-    logits_processor = module._get_logits_processor(
-        input_ids_seq_length=input_ids.shape[-1],
-        exponential_decay_length_penalty=exponential_decay_length_penalty,
-        renormalize_logits=renormalize_logits,
-        repetition_penalty=repetition_penalty,
-        no_repeat_ngram_size=no_repeat_ngram_size,
-        encoder_no_repeat_ngram_size=encoder_no_repeat_ngram_size,
-        encoder_input_ids=inputs_tensor,
-        bad_words_ids=bad_words_ids,
-        min_length=min_length,
-        max_length=max_length,
-        eos_token_id=eos_token_id,
-        forced_bos_token_id=forced_bos_token_id,
-        forced_eos_token_id=forced_eos_token_id,
-        prefix_allowed_tokens_fn=prefix_allowed_tokens_fn,
-        num_beams=num_beams,
-        num_beam_groups=num_beam_groups,
-        diversity_penalty=diversity_penalty,
-        remove_invalid_values=remove_invalid_values,
-        logits_processor=logits_processor,
-    )
+    # # 7. prepare distribution pre_processing samplers
+    # logits_processor = module._get_logits_processor(
+    #     input_ids_seq_length=input_ids.shape[-1],
+    #     exponential_decay_length_penalty=exponential_decay_length_penalty,
+    #     renormalize_logits=renormalize_logits,
+    #     repetition_penalty=repetition_penalty,
+    #     no_repeat_ngram_size=no_repeat_ngram_size,
+    #     encoder_no_repeat_ngram_size=encoder_no_repeat_ngram_size,
+    #     encoder_input_ids=inputs_tensor,
+    #     bad_words_ids=bad_words_ids,
+    #     min_length=min_length,
+    #     max_length=max_length,
+    #     eos_token_id=eos_token_id,
+    #     forced_bos_token_id=forced_bos_token_id,
+    #     forced_eos_token_id=forced_eos_token_id,
+    #     prefix_allowed_tokens_fn=prefix_allowed_tokens_fn,
+    #     num_beams=num_beams,
+    #     num_beam_groups=num_beam_groups,
+    #     diversity_penalty=diversity_penalty,
+    #     remove_invalid_values=remove_invalid_values,
+    #     logits_processor=logits_processor,
+    # )
 
     # 8. prepare stopping criteria
     stopping_criteria = module._get_stopping_criteria(

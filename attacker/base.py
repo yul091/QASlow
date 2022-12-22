@@ -97,7 +97,7 @@ class BaseAttacker:
         out_res = [self.tokenizer.decode(seq, skip_special_tokens=True) for seq in seqs]
         return out_res, pred_len
 
-    def compute_score(self, text):
+    def compute_batch_score(self, text):
         batch_size = len(text)
         index_list = [i * self.num_beams for i in range(batch_size + 1)]
         pred_len, seqs, out_scores = self.get_prediction(text)
@@ -111,33 +111,22 @@ class BaseAttacker:
         scores = [s[:pred_len[i]] for i, s in enumerate(scores)]
         return scores, seqs, pred_len
     
-    # def compute_score(self, text, batch_size=None):
-    #     total_size = len(text)
-    #     if batch_size is None:
-    #         batch_size = len(text)
+    def compute_score(self, text, batch_size=None):
+        total_size = len(text)
+        if batch_size is None:
+            batch_size = len(text)
 
-    #     if batch_size < total_size:
-    #         pred_len, seqs, out_scores = [], [], []
-    #         for start in range(0, total_size, batch_size):
-    #             end = min(start + batch_size, total_size)
-    #             p_len, seq, out_score = self.get_prediction(text[start: end])
-    #             print("start: {}, end: {}, p_len: {}, seq: {}, out_score: {}".format(start, end, p_len, len(seq), [os.shape for os in out_score]))
-    #             pred_len.extend(p_len)
-    #             seqs.extend(seq)
-    #             out_scores.extend(out_score)
-    #     else:
-    #         pred_len, seqs, out_scores = self.get_prediction(text)
-
-    #     index_list = [i * self.num_beams for i in range(total_size + 1)]
-    #     scores = [[] for _ in range(total_size)]
-    #     for out_s in out_scores:
-    #         for i in range(total_size):
-    #             curr_index = index_list[i]
-    #             scores[i].append(out_s[curr_index: curr_index + 1])
-    #     scores = [torch.cat(s) for s in scores]
-    #     scores = [s[:pred_len[i]] for i, s in enumerate(scores)]
-    #     print("scores: {}, seqs: {}, pred_len: {}".format(len(scores), len(seqs), pred_len))
-    #     return scores, seqs, pred_len
+        if batch_size < total_size:
+            scores, seqs, pred_len = [], [], []
+            for start in range(0, total_size, batch_size):
+                end = min(start + batch_size, total_size)
+                score, seq, p_len = self.compute_batch_score(text[start: end])
+                pred_len.extend(p_len)
+                seqs.extend(seq)
+                scores.extend(score)
+        else:
+            scores, seqs, pred_len = self.compute_batch_score(text)
+        return scores, seqs, pred_len
 
 
 
@@ -165,7 +154,7 @@ class SlowAttacker(BaseAttacker):
             s[:, self.pad_token_id] = 1e-12
             softmax_v = self.softmax(s)
             eos_p = softmax_v[:pred_len[i], self.eos_token_id]
-            target_p = torch.stack([softmax_v[idx, s] for idx, s in enumerate(seqs[i][1:])])
+            target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(seqs[i][1:])])
             target_p = target_p[:pred_len[i]]
             pred = eos_p + target_p
             pred[-1] = pred[-1] / 2
@@ -178,7 +167,6 @@ class SlowAttacker(BaseAttacker):
         Select generated strings which induce longest output sentences.
         """
         pred_len = []
-        # seqs = []
         batch_num = len(new_strings) // batch_size
         if batch_size * batch_num != len(new_strings):
             batch_num += 1
@@ -198,13 +186,9 @@ class SlowAttacker(BaseAttacker):
                 max_length=self.max_len,
             )
             lengths = [self.compute_seq_len(seq) for seq in outputs['sequences']]
-            # pdb.set_trace()
             pred_len.extend(lengths)
             
-        # pred_len = np.array([self.compute_seq_len(torch.tensor(seq)) for seq in seqs])
         pred_len = np.array(pred_len)
-        # pdb.set_trace()
-
         assert len(new_strings) == len(pred_len)
         return new_strings[pred_len.argmax()], max(pred_len)
 
@@ -227,7 +211,7 @@ class SlowAttacker(BaseAttacker):
         (3) Save the adversarial samples -- adv_his.
         """
         assert len(text) != 1
-        # torch.autograd.set_detect_anomaly(True)
+        torch.autograd.set_detect_anomaly(True)
         ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len) = self.prepare_attack(text)
         ori_context = cur_adv_text.split(self.eos_token)[0].strip()
         adv_his = []
@@ -254,7 +238,6 @@ class SlowAttacker(BaseAttacker):
                 for (pos, adv_text) in new_strings
             ]
             if new_strings:
-                # print("new_strings: ", new_strings)
                 (cur_pos, cur_adv_text), cur_len = self.select_best(new_strings)
                 modify_pos.append(cur_pos)
                 log_str = "%d, %d, %.2f" % (it, len(new_strings), best_len / ori_len)

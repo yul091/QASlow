@@ -23,8 +23,17 @@ bash train.sh
 - Or you can directly download our pre-trained [model](https://drive.google.com/drive/folders/1rWexrwHCgCFYiNVk2yFKSI8iV8baWfFt?usp=sharing) 
 
 ### Attack a pre-trained model
+- Structure attack on BART on BlendedSkillTalk
 ```
-python attack.py
+python attack.py --attack_strategy structure --model_name_or_path results/bart --dataset blended_skill_talk
+```
+- Word attack on T5 on BlendedSkillTalk
+```
+python attack.py --attack_strategy word --model_name_or_path results/t5 --dataset blended_skill_talk
+```
+- Baseline attacks (PWWS) on BART on BlendedSkillTalk
+```
+python attack.py --attack_strategy pwws --model_name_or_path results/t5 --dataset blended_skill_talk
 ```
 
 ### Plan
