@@ -17,6 +17,7 @@ from DialogueAPI import dialogue
 from attacker.my_attacker import WordAttacker, StructureAttacker
 from attacker.PWWS import PWWSAttacker
 from attacker.SCPN import SCPNAttacker
+from attacker.VIPER import VIPERAttacker
 
 
 def get_prediction(sentence, model, tokenizer, num_beams, num_beam_groups, max_len, device):
@@ -259,6 +260,14 @@ def main(args):
             max_len=max_len,
             max_per=max_per,
         )
+    elif args.attack_strategy.lower() == 'viper':
+        attacker = VIPERAttacker(
+            device=device,
+            tokenizer=tokenizer,
+            model=model,
+            max_len=max_len,
+            max_per=max_per,
+        )
     else:
         raise ValueError("Invalid attack strategy!")
 
@@ -341,7 +350,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=2019, help="Random seed")
     parser.add_argument("--attack_strategy", "--a", type=str, 
                         default='structure', 
-                        choices=['structure', 'word', 'pwws', 'scpn'], 
+                        choices=['structure', 'word', 'pwws', 'scpn', 'viper'], 
                         help="Attack strategy")
     args = parser.parse_args()
     main(args)
