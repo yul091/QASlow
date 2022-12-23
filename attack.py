@@ -16,6 +16,7 @@ import evaluate
 from DialogueAPI import dialogue
 from attacker.my_attacker import WordAttacker, StructureAttacker
 from attacker.PWWS import PWWSAttacker
+from attacker.SCPN import SCPNAttacker
 
 
 def get_prediction(sentence, model, tokenizer, num_beams, num_beam_groups, max_len, device):
@@ -215,6 +216,10 @@ def main(args):
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)
 
+    # WORD_ATT_METHODS = ['word', 'structure', 'pwws']
+    # if args.attack_strategy.lower() not in WORD_ATT_METHODS:
+    #     max_per = 1
+
     # Load dataset
     bst_dataset = load_dataset(dataset)
     test_dataset = bst_dataset['test']
@@ -246,6 +251,17 @@ def main(args):
             max_len=max_len,
             max_per=max_per,
         )
+    elif args.attack_strategy.lower() == 'scpn':
+        attacker = SCPNAttacker(
+            device=device,
+            tokenizer=tokenizer,
+            model=model,
+            max_len=max_len,
+            max_per=max_per,
+        )
+    else:
+        raise ValueError("Invalid attack strategy!")
+
 
     # metric = load_metric("sacrebleu")
     bleu = evaluate.load("bleu")
@@ -325,7 +341,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=2019, help="Random seed")
     parser.add_argument("--attack_strategy", "--a", type=str, 
                         default='structure', 
-                        choices=['structure', 'word', 'pwws'], 
+                        choices=['structure', 'word', 'pwws', 'scpn'], 
                         help="Attack strategy")
     args = parser.parse_args()
     main(args)
