@@ -64,7 +64,12 @@ class BaseAttacker:
         if self.task == 'seq2seq':
             text = sentence
         else:
-            text = [s + self.eos_token for s in sentence]
+            if isinstance(sentence, list):
+                text = [s + self.eos_token for s in sentence]
+            elif isinstance(sentence, str):
+                text = sentence + self.eos_token
+            else:
+                raise ValueError("sentence should be a list of string or a string")
 
         inputs = self.tokenizer(
             text, 
@@ -74,6 +79,7 @@ class BaseAttacker:
             max_length=self.max_len,
         )
         input_ids = inputs['input_ids'].to(self.device)
+        # print("input_ids ({}): {}".format(input_ids.shape, input_ids))
         # ['sequences', 'sequences_scores', 'scores', 'beam_indices']
         outputs = dialogue(
             self.model, 
@@ -85,9 +91,9 @@ class BaseAttacker:
             max_length=self.max_len,
         )
         if self.task == 'seq2seq':
-            seqs = outputs['sequences']
+            seqs = outputs['sequences'].detach()
         else:
-            seqs = outputs['sequences'][:, input_ids.shape[-1]:]
+            seqs = outputs['sequences'][:, input_ids.shape[-1]:].detach()
         seqs = [remove_pad(seq) for seq in seqs]
         out_scores = outputs['scores']
         pred_len = [self.compute_seq_len(seq) for seq in seqs]

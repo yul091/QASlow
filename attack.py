@@ -20,6 +20,8 @@ from attacker.PWWS import PWWSAttacker
 from attacker.SCPN import SCPNAttacker
 from attacker.VIPER import VIPERAttacker
 
+def prepare_sent(text: str):
+    return text.strip().capitalize()
 
 
 def generation(
@@ -35,15 +37,15 @@ def generation(
     device,
 ):
     # Set up
-    max_source_length = args.max_source_length
-    max_target_length = args.max_target_length
+    max_source_length = args.max_len
+    max_target_length = args.max_len
     num_beams = args.num_beams 
     num_beam_groups = args.num_beam_groups
 
     num_entries = len(instance["free_messages"])
     persona_pieces = [
-        f"<PS> {instance['personas'][0]}",
-        f"<PS> {instance['personas'][1]}",
+        f"<PS> {prepare_sent(instance['personas'][0])}",
+        f"<PS> {prepare_sent(instance['personas'][1])}",
     ]
     if instance['context'] == "wizard_of_wikipedia":
         additional_context_pieces = [f"<CTX> {instance['additional_context']}. <SEP> "]
@@ -58,14 +60,13 @@ def generation(
     ori_time, adv_time = [], []
     att_success = 0
     for entry_idx in range(num_entries):
-        free_message = instance['free_messages'][entry_idx]
-        guided_message = instance['guided_messages'][entry_idx]
+        free_message = prepare_sent(instance['free_messages'][entry_idx])
+        guided_message = prepare_sent(instance['guided_messages'][entry_idx])
         previous_utterance = ' <SEP> '.join(previous_utterance_pieces)
         original_context = ' '.join(
             persona_pieces + additional_context_pieces
         ) + previous_utterance
         print("\nDialogue history: {}".format(original_context))
-
         previous_utterance_pieces += [
             free_message,
             guided_message,
@@ -359,7 +360,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--max_num_samples", type=int, default=1, help="Number of samples to attack")
     parser.add_argument("--max_per", type=int, default=5, help="Number of perturbation iterations per sample")
-    parser.add_argument("--max_len", type=int, default=256, help="Maximum length of generated sequence")
+    parser.add_argument("--max_len", type=int, default=512, help="Maximum length of generated sequence")
     parser.add_argument("--num_beams", type=int, default=4, help="Number of beams")
     parser.add_argument("--num_beam_groups", type=int, default=1, help="Number of beam groups")
     parser.add_argument("--model_name_or_path", type=str, 
@@ -368,14 +369,6 @@ if __name__ == "__main__":
                         help="Path to model")
     parser.add_argument("--dataset", type=str, default="blended_skill_talk", help="Dataset to attack")
     parser.add_argument("--seed", type=int, default=2019, help="Random seed")
-    parser.add_argument('--max_source_length',
-                        type=int,
-                        default=512,
-                        help='The maximum total input sequence length after tokenization. Sequences longer than this will be truncated, sequences shorter will be padded.')
-    parser.add_argument('--max_target_length',
-                        type=int,
-                        default=512,
-                        help='The maximum total sequence length for target text after tokenization. Sequences longer than this will be truncated, sequences shorter will be padded.')
     parser.add_argument("--attack_strategy", "--a", type=str, 
                         default='structure', 
                         choices=['structure', 'word', 'pwws', 'scpn', 'viper'], 
