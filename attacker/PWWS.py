@@ -14,8 +14,11 @@ class PWWSAttacker(SlowAttacker):
                  tokenizer: Optional[Tokenizer] = None,
                  model: Optional[torch.nn.Module] = None,
                  max_len: int = 64,
-                 max_per: int = 3):
-        super(PWWSAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
+                 max_per: int = 3,
+                 task: str = "seq2seq"):
+        super(PWWSAttacker, self).__init__(
+            device, tokenizer, model, max_len, max_per, task,
+        )
         self.unk_token = tokenizer.unk_token
         self.default_tokenizer = PunctTokenizer()
         self.substitute = WordNetSubstitute()

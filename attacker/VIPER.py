@@ -25,9 +25,12 @@ class VIPERAttacker(SlowAttacker):
                  prob : float = 0.3,
                  topn : int = 12,
                  generations : int = 120,
-                 method: str = "eces"):
+                 method: str = "eces",
+                 task: str = "seq2seq"):
 
-        super(VIPERAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
+        super(VIPERAttacker, self).__init__(
+            device, tokenizer, model, max_len, max_per, task,
+        )
         self.prob = prob
         self.topn = topn
         self.generations = generations

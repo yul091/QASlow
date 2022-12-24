@@ -14,12 +14,12 @@ class BaseAttacker:
                  tokenizer,
                  model,
                  max_len=64,
-                 max_per=3):
+                 max_per=3,
+                 task='seq2seq'):
       
         self.device = device
         self.model = model.to(self.device)
         self.tokenizer = tokenizer
-
         self.embedding = self.model.get_input_embeddings().weight
         self.special_token = self.tokenizer.all_special_tokens
         self.special_id = self.tokenizer.all_special_ids
@@ -30,7 +30,7 @@ class BaseAttacker:
         self.num_beam_groups = self.model.config.num_beam_groups
         self.max_len = max_len
         self.max_per = max_per
-
+        self.task = task
         self.softmax = nn.Softmax(dim=1)
         self.bce_loss = nn.BCELoss()
 
@@ -54,14 +54,20 @@ class BaseAttacker:
             return int(len(seq) - sum(seq.eq(self.pad_token_id))) - 1
 
     def get_prediction(self, sentence):
+        # print("sentence: ", sentence)
         def remove_pad(s):
             for i, tk in enumerate(s):
                 if tk == self.eos_token_id and i != 0:
                     return s[:i + 1]
             return s
 
+        if self.task == 'seq2seq':
+            text = sentence
+        else:
+            text = [s + self.eos_token for s in sentence]
+
         inputs = self.tokenizer(
-            sentence, 
+            text, 
             return_tensors="pt", 
             padding=True, 
             truncation=True, 
@@ -78,7 +84,10 @@ class BaseAttacker:
             use_cache=True,
             max_length=self.max_len,
         )
-        seqs = outputs['sequences']
+        if self.task == 'seq2seq':
+            seqs = outputs['sequences']
+        else:
+            seqs = outputs['sequences'][:, input_ids.shape[-1]:]
         seqs = [remove_pad(seq) for seq in seqs]
         out_scores = outputs['scores']
         pred_len = [self.compute_seq_len(seq) for seq in seqs]
@@ -136,8 +145,11 @@ class SlowAttacker(BaseAttacker):
                  tokenizer,
                  model,
                  max_len=64,
-                 max_per=3):
-        super(SlowAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
+                 max_per=3,
+                 task='seq2seq'):
+        super(SlowAttacker, self).__init__(
+            device, tokenizer, model, max_len, max_per, task,
+        )
 
     def leave_eos_loss(self, scores, pred_len):
         loss = []
@@ -173,8 +185,17 @@ class SlowAttacker(BaseAttacker):
 
         for i in range(batch_num):
             st, ed = i * batch_size, min(i * batch_size + batch_size, len(new_strings))
-            batch_strings = [x[1] for x in new_strings[st:ed]]
-            inputs = self.tokenizer(batch_strings, return_tensors="pt", padding=True)
+            if self.task == 'seq2seq':
+                batch_strings = [x[1] for x in new_strings[st:ed]]
+            else:
+                batch_strings = [x[1] + self.eos_token for x in new_strings[st:ed]]
+            inputs = self.tokenizer(
+                batch_strings, 
+                return_tensors="pt",
+                max_length=self.max_len,
+                truncation=True,
+                padding=True,
+            )
             input_ids = inputs.input_ids.to(self.device)
             outputs = dialogue(
                 self.model, 

@@ -22,8 +22,11 @@ class WordAttacker(SlowAttacker):
                  tokenizer,
                  model,
                  max_len=64,
-                 max_per=3):
-        super(WordAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
+                 max_per=3,
+                 task='seq2seq'):
+        super(WordAttacker, self).__init__(
+            device, tokenizer, model, max_len, max_per, task,
+        )
         self.num_of_perturb = 50
 
 
@@ -80,8 +83,11 @@ class StructureAttacker(SlowAttacker):
                  tokenizer,
                  model,
                  max_len=64,
-                 max_per=3):
-        super(StructureAttacker, self).__init__(device, tokenizer, model, max_len, max_per)
+                 max_per=3,
+                 task='seq2seq'):
+        super(StructureAttacker, self).__init__(
+            device, tokenizer, model, max_len, max_per, task,
+        )
 
         # BERT initialization
         self.berttokenizer = AutoTokenizer.from_pretrained('bert-large-uncased')
