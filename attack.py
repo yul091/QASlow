@@ -1,6 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
-
+import os
 import time
 import random
 import numpy as np
@@ -47,6 +47,7 @@ class DGAttack:
         self.ori_time, self.adv_time = [], []
         self.att_success = 0
         self.total_pairs = 0
+        self.record = []
 
     def prepare_sent(self, text: str):
         return text.strip().capitalize()
@@ -181,6 +182,7 @@ class DGAttack:
             if guided_message is None:
                 continue
             print("\nDialogue history: {}".format(original_context))
+            self.record.append("\nDialogue history: {}".format(original_context))
             prev_utt_pc += [
                 free_message,
                 guided_message,
@@ -193,9 +195,14 @@ class DGAttack:
 
             output, time_gap = self.get_prediction(text)  
             print("U--{} (y--{})".format(free_message, guided_message))
+            self.record.append("U--{} (y--{})".format(free_message, guided_message))
             print("G--{}".format(output))
+            self.record.append("G--{}".format(output))
             bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, guided_message)
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
+                pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
+            ))
+            self.record.append("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
             self.ori_lens.append(pred_len)
@@ -213,13 +220,19 @@ class DGAttack:
                 new_free_message = new_text.split('<SEP>')[1].strip()
             if success:
                 print("U'--{}".format(new_free_message))
+                self.record.append("U'--{}".format(new_free_message))
             else:
                 print("Attack failed!")
+                self.record.append("Attack failed!")
 
             output, time_gap = self.get_prediction(new_text)
             print("G'--{}".format(output))
+            self.record.append("G'--{}".format(output))
             bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, guided_message)
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
+                adv_pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
+            ))
+            self.record.append("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 adv_pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
             self.adv_lens.append(adv_pred_len)
@@ -247,8 +260,21 @@ class DGAttack:
         Ori_t = np.mean(self.ori_time)
         Adv_t = np.mean(self.adv_time)
 
-        return Ori_len, Adv_len, Ori_bleu, Adv_bleu, Ori_rouge, Adv_rouge, \
-            Ori_meteor, Adv_meteor, Ori_t, Adv_t
+        # Summarize eval results
+        print("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor,
+        ))
+        self.record.append("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor, 
+        ))
+        print("Perturbed output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
+        ))
+        self.record.append("Perturbed output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
+        ))
+        print("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
+        self.record.append("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
 
 
 def main(args):
@@ -260,6 +286,11 @@ def main(args):
     max_per = args.max_per
     num_beams = args.num_beams
     num_beam_groups = args.num_beam_groups
+    att_method = args.attack_strategy
+    out_dir = args.out_dir
+
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     config = AutoConfig.from_pretrained(model_name_or_path, num_beams=num_beams, num_beam_groups=num_beam_groups)
@@ -274,7 +305,7 @@ def main(args):
         model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)
 
     # WORD_ATT_METHODS = ['word', 'structure', 'pwws']
-    # if args.attack_strategy.lower() not in WORD_ATT_METHODS:
+    # if att_method.lower() not in WORD_ATT_METHODS:
     #     max_per = 1
 
     # Load dataset
@@ -287,7 +318,7 @@ def main(args):
     sampled_test_dataset = test_dataset.select(ids)
 
     # Define attack method
-    if args.attack_strategy.lower() == 'word':
+    if att_method.lower() == 'word':
         attacker = WordAttacker(
             device=device,
             tokenizer=tokenizer,
@@ -296,7 +327,7 @@ def main(args):
             max_per=max_per,
             task=task,
         )
-    elif args.attack_strategy.lower() == 'structure':
+    elif att_method.lower() == 'structure':
         attacker = StructureAttacker(
             device=device,
             tokenizer=tokenizer,
@@ -305,7 +336,7 @@ def main(args):
             max_per=max_per,
             task=task,
         )
-    elif args.attack_strategy.lower() == 'pwws':
+    elif att_method.lower() == 'pwws':
         attacker = PWWSAttacker(
             device=device,
             tokenizer=tokenizer,
@@ -314,7 +345,7 @@ def main(args):
             max_per=max_per,
             task=task,
         )
-    elif args.attack_strategy.lower() == 'scpn':
+    elif att_method.lower() == 'scpn':
         attacker = SCPNAttacker(
             device=device,
             tokenizer=tokenizer,
@@ -323,7 +354,7 @@ def main(args):
             max_per=max_per,
             task=task,
         )
-    elif args.attack_strategy.lower() == 'viper':
+    elif att_method.lower() == 'viper':
         attacker = VIPERAttacker(
             device=device,
             tokenizer=tokenizer,
@@ -352,26 +383,14 @@ def main(args):
         rouge=rouge,
         meteor=meteor,
     )
-    Ori_len, Adv_len, Ori_bleu, Adv_bleu, Ori_rouge, Adv_rouge, \
-        Ori_meteor, Adv_meteor, Ori_t, Adv_t = dg.generation(sampled_test_dataset)
+    dg.generation(sampled_test_dataset)
 
-    # Summarize eval results
-    
-    print("Original output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-        Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor,
-    ))
-    print("Perturbed output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-        Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
-    ))
-    print("Attack success rate: {:.2f}%".format(100*dg.att_success/dg.total_pairs))
-
-    # # Save generation files
-    # with open(f"results/ori_gen_{max_per}.txt", "w") as f:
-    #     for line in ori_lens:
-    #         f.write(str(line) + "\n")
-    # with open(f"results/adv_gen_{max_per}.txt", "w") as f:
-    #     for line in adv_lens:
-    #         f.write(str(line) + "\n")
+    # Save generation files
+    model_n = model_name_or_path.split("/")[-1]
+    with open(f"{out_dir}/{att_method}_{max_per}_{model_n}_{dataset}_{max_num_samples}.txt", "w") as f:
+        for line in dg.record:
+            f.write(str(line) + "\n")
+    f.close()
 
 
 if __name__ == "__main__":
@@ -384,7 +403,7 @@ if __name__ == "__main__":
     ssl._create_default_https_context = ssl._create_unverified_context
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--max_num_samples", type=int, default=5, help="Number of samples to attack")
+    parser.add_argument("--max_num_samples", type=int, default=1, help="Number of samples to attack")
     parser.add_argument("--max_per", type=int, default=5, help="Number of perturbation iterations per sample")
     parser.add_argument("--max_len", type=int, default=1024, help="Maximum length of generated sequence")
     parser.add_argument("--num_beams", type=int, default=4, help="Number of beams")
@@ -405,6 +424,9 @@ if __name__ == "__main__":
                             "conv_ai_2",
                         ], 
                         help="Dataset to attack")
+    parser.add_argument("--out_dir", type=str,
+                        default="results/logging",
+                        help="Output directory")
     parser.add_argument("--seed", type=int, default=2019, help="Random seed")
     parser.add_argument("--attack_strategy", "--a", type=str, 
                         default='structure', 
