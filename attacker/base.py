@@ -240,7 +240,11 @@ class SlowAttacker(BaseAttacker):
         assert len(text) != 1
         torch.autograd.set_detect_anomaly(True)
         ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len) = self.prepare_attack(text)
-        ori_context = cur_adv_text.split(self.eos_token)[0].strip()
+        if self.task == 'seq2seq':
+            sp_tok = self.eos_token
+        else:
+            sp_tok = '<SEP>'
+        ori_context = cur_adv_text.split(sp_tok)[0].strip()
         adv_his = []
         modify_pos = [] # record already modified positions (avoid recovering to the original token)
         pbar = tqdm(range(self.max_per))
@@ -256,12 +260,12 @@ class SlowAttacker(BaseAttacker):
             else:
                 grad = None
 
-            # Only mutate the part after eos_token
-            cur_free_text = cur_adv_text.split(self.eos_token)[1].strip()
+            # Only mutate the part after special token
+            cur_free_text = cur_adv_text.split(sp_tok)[1].strip()
             new_strings = self.mutation(ori_context, cur_free_text, grad, label, modify_pos)
             # Pad the original context
             new_strings = [
-                (pos, ori_context + " " + self.eos_token + " " + adv_text)
+                (pos, ori_context + sp_tok + adv_text)
                 for (pos, adv_text) in new_strings
             ]
             if new_strings:

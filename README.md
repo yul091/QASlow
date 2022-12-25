@@ -27,11 +27,11 @@ bash train.sh
 ```
 python attack.py --attack_strategy structure --model_name_or_path results/bart --dataset blended_skill_talk
 ```
-- Word attack on T5 on BlendedSkillTalk
+- Word attack on DialoGPT on BlendedSkillTalk
 ```
-python attack.py --attack_strategy word --model_name_or_path results/t5 --dataset blended_skill_talk
+python attack.py --attack_strategy word --model_name_or_path microsoft/DialoGPT-small --dataset blended_skill_talk
 ```
-- Baseline attacks (PWWS) on BART on BlendedSkillTalk
+- Baseline attacks (PWWS) on T5 on BlendedSkillTalk
 ```
 python attack.py --attack_strategy pwws --model_name_or_path results/t5 --dataset blended_skill_talk
 ```
