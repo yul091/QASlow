@@ -1,12 +1,13 @@
 import torch
 import numpy as np
 from typing import List, Optional
-from OpenAttack.attack_assist.filter_words import ENGLISH_FILTER_WORDS
+from utils import ENGLISH_FILTER_WORDS
+from .base import SlowAttacker
+from DialogueAPI import dialogue
 from OpenAttack.text_process.tokenizer import Tokenizer, PunctTokenizer
 from OpenAttack.attack_assist.substitute.word import WordNetSubstitute
 from OpenAttack.exceptions import WordNotInDictionaryException
-from .base import SlowAttacker
-from DialogueAPI import dialogue
+
 
 class PWWSAttacker(SlowAttacker):
     def __init__(self, 

@@ -16,10 +16,6 @@ pip install -r requirements.txt
 ```
 python train_seq2seq.py
 ```
-- Or
-```
-bash train.sh
-```
 - Or you can directly download our pre-trained [model](https://drive.google.com/drive/folders/1rWexrwHCgCFYiNVk2yFKSI8iV8baWfFt?usp=sharing) 
 
 ### Attack a pre-trained model
@@ -27,9 +23,9 @@ bash train.sh
 ```
 python attack.py --attack_strategy structure --model_name_or_path results/bart --dataset blended_skill_talk
 ```
-- Word attack on DialoGPT on BlendedSkillTalk dataset 
+- Word attack on DialoGPT on EmpatheticDialogues dataset 
 ```
-python attack.py --attack_strategy word --model_name_or_path microsoft/DialoGPT-small --dataset blended_skill_talk
+python attack.py --attack_strategy word --model_name_or_path microsoft/DialoGPT-small --dataset empathetic_dialogues
 ```
 - Baseline attacks (PWWS) on T5 on ConvAI2 dataset
 ```

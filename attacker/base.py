@@ -6,6 +6,7 @@ from tqdm import tqdm
 from copy import deepcopy
 from argparse import Namespace
 from DialogueAPI import dialogue
+from typing import List, Tuple, Union
 
 
 class BaseAttacker:
@@ -283,3 +284,5 @@ class SlowAttacker(BaseAttacker):
             return True, adv_his
         else:
             return False, [(deepcopy(cur_adv_text), deepcopy(cur_len), 0.0)]
+
+

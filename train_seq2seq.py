@@ -83,22 +83,22 @@ def main(args):
 
     # Add special tokens
     # Define new special tokens: <PS>, <CTX>, <SEP>
-    num_added_toks = tokenizer.add_tokens(['<PS>'], special_tokens=True) ## this line is updated
-    num_added_toks = tokenizer.add_tokens(['<CTX>'], special_tokens=True) ## this line is updated
-    num_added_toks = tokenizer.add_tokens(['<SEP>'], special_tokens=True) ## this line is updated
+    tokenizer.add_tokens(['<PS>'], special_tokens=True) ## this line is updated
+    tokenizer.add_tokens(['<CTX>'], special_tokens=True) ## this line is updated
+    tokenizer.add_tokens(['<SEP>'], special_tokens=True) ## this line is updated
     model.resize_token_embeddings(len(tokenizer))
     
     # Data processing
     def preprocess_bst(examples):
         num_entries = len(examples["free_messages"])
         persona_pieces = [
-            f"<PS> {examples['personas'][0]}",
-            f"<PS> {examples['personas'][1]}",
+            # f"<PS>{examples['personas'][0]}",
+            f"<PS>{examples['personas'][1]}",
         ]
         if examples['context'] == "wizard_of_wikipedia":
-            additional_context_pieces = [f"<CTX> {examples['additional_context']}. <SEP> "]
+            additional_context_pieces = [f"<CTX>{examples['additional_context']}.<SEP>"]
         else:
-            additional_context_pieces = ["<SEP> "]
+            additional_context_pieces = ["<SEP>"]
 
         previous_utterance_pieces = examples["previous_utterance"]
         inputs, labels = [], []
@@ -106,12 +106,12 @@ def main(args):
             free_message = examples['free_messages'][entry_idx]
             guided_message = examples['guided_messages'][entry_idx]
 
-            previous_utterance = ' <SEP> '.join(previous_utterance_pieces)
+            previous_utterance = '<SEP>'.join(previous_utterance_pieces)
             original_context = ' '.join(
                 persona_pieces + additional_context_pieces
             ) + previous_utterance
             # Input & Output
-            text = original_context + ' ' + tokenizer.eos_token + ' ' + free_message
+            text = original_context + tokenizer.eos_token + free_message
             inputs.append(text)
             labels.append(guided_message)
             previous_utterance_pieces += [
@@ -326,7 +326,7 @@ if __name__ == "__main__":
     parser.add_argument('--model_name_or_path', 
                         type=str, 
                         default='t5-small', 
-                        choices=['t5-small', 'facebook/bart-base', 'Helsinki-NLP/opus-mt-en-en'],
+                        choices=['t5-small', 'facebook/bart-base'],
                         help='The model checkpoint for weights initialization.')
     parser.add_argument('--output_dir',
                         type=str,

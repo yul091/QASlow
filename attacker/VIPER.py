@@ -6,7 +6,6 @@ from .base import SlowAttacker
 from OpenAttack.text_process.tokenizer import Tokenizer
 from OpenAttack.attack_assist.substitute.char import DCESSubstitute, ECESSubstitute
 
-
 DEFAULT_CONFIG = {
     "prob": 0.3,
     "topn": 12,

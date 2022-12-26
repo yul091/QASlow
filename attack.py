@@ -2,6 +2,7 @@ import sys
 sys.dont_write_bytecode = True
 import os
 import time
+import argparse
 import random
 import numpy as np
 from tqdm import tqdm
@@ -12,29 +13,49 @@ from transformers import (
     AutoModelForSeq2SeqLM,
     AutoModelForCausalLM,
 )
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
 import evaluate
 from DialogueAPI import dialogue
 from attacker.my_attacker import WordAttacker, StructureAttacker
 from attacker.PWWS import PWWSAttacker
 from attacker.SCPN import SCPNAttacker
 from attacker.VIPER import VIPERAttacker
+from DG_dataset import DGDataset
 
 
-class DGAttack:
-    def __init__(self, args, tokenizer, model, attacker, device, task, bleu, rouge, meteor):
+class DGAttackEval(DGDataset):
+    def __init__(
+        self, 
+        args: argparse.Namespace = None, 
+        tokenizer: AutoTokenizer = None, 
+        model: AutoModelForSeq2SeqLM = None, 
+        attacker: WordAttacker = None, 
+        device: torch.device('cpu') = None, 
+        task: str = 'seq2seq', 
+        bleu: evaluate.load("bleu") = None, 
+        rouge: evaluate.load("rouge") = None,
+        meteor: evaluate.load("meteor") = None,
+    ):
+        super(DGAttackEval, self).__init__(
+            dataset=args.dataset,
+            task=task,
+            tokenizer=tokenizer,
+            max_source_length=args.max_len,
+            max_target_length=args.max_len,
+            padding=None,
+            ignore_pad_token_for_loss=True,
+            preprocessing_num_workers=None,
+            overwrite_cache=True,
+        )
+
         self.args = args
-        self.tokenizer = tokenizer
         self.model = model
         self.attacker = attacker
-        self.dataset = args.dataset
-        self.task = task
         self.device = device
 
-        self.max_source_length = args.max_len
-        self.max_target_length = args.max_len
         self.num_beams = args.num_beams 
         self.num_beam_groups = args.num_beam_groups
+        self.max_num_samples = args.max_num_samples
 
         self.bleu = bleu
         self.rouge = rouge
@@ -48,68 +69,6 @@ class DGAttack:
         self.att_success = 0
         self.total_pairs = 0
         self.record = []
-
-    def prepare_sent(self, text: str):
-        return text.strip().capitalize()
-
-    def prepare_context(self, instance):
-        if self.dataset == 'blended_skill_talk':
-            if self.task == 'seq2seq':
-                num_entries = len(instance["free_messages"])
-                persona_pieces = [
-                    # f"<PS>{prepare_sent(instance['personas'][0])}",
-                    f"<PS>{self.prepare_sent(instance['personas'][1])}",
-                ]
-                if instance['context'] == "wizard_of_wikipedia":
-                    additional_context_pieces = [f"<CTX>{self.prepare_sent(instance['additional_context'])}.<SEP>"]
-                else:
-                    additional_context_pieces = ["<SEP>"]
-                context = ' '.join(persona_pieces + additional_context_pieces)
-                prev_utt_pc = [self.prepare_sent(sent) for sent in instance["previous_utterance"]]
-            else:
-                num_entries = min(len(instance["free_messages"]), 2)
-            total_entries = num_entries
-
-        elif self.dataset == 'conv_ai_2':
-            total_entries = len(instance['dialog'])
-            if self.task == 'seq2seq':
-                user_profile = ' '.join([''.join(x) for x in instance['user_profile']])
-                persona_pieces = f"<PS>{user_profile}"
-                num_entries = len([x for x in instance['dialog'] if x['sender_class'] == 'Human'])
-                prev_utt_pc = [persona_pieces]
-                context = persona_pieces
-            else:
-                num_entries = min(len([x for x in instance['dialog'] if x['sender_class'] == 'Human']), 2)
-        else:
-            raise ValueError("Dataset not supported.")
-
-        return num_entries, total_entries, context, prev_utt_pc
-
-
-    def prepare_entry(self, instance, entry_idx, context, prev_utt_pc, total_entries):
-        if self.dataset == 'blended_skill_talk':
-            free_message = self.prepare_sent(instance['free_messages'][entry_idx])
-            guided_message = self.prepare_sent(instance['guided_messages'][entry_idx])
-            if self.task == 'seq2seq':
-                previous_utterance = '<SEP>'.join(prev_utt_pc)
-                original_context = context + previous_utterance
-            else:
-                previous_utterance = ' '.join(prev_utt_pc)
-                original_context = previous_utterance
-        elif self.dataset == 'conv_ai_2':
-            free_message = instance['dialog'][entry_idx*2]['text']
-            if entry_idx*2+1 >= total_entries:
-                guided_message = None
-            else:
-                guided_message = instance['dialog'][entry_idx*2+1]['text']
-            if self.task == 'seq2seq':
-                original_context = '<SEP>'.join(prev_utt_pc)
-            else:
-                original_context = ' '.join(prev_utt_pc)
-        else:
-            raise ValueError("Dataset not supported.")
-
-        return free_message, guided_message, original_context
 
 
     def get_prediction(self, text: str):
@@ -147,7 +106,7 @@ class DGAttack:
         return output, t2 - t1
 
 
-    def eval_metrics(self, output, guided_message):
+    def eval_metrics(self, output: str, guided_message: str):
         if not output:
             return
 
@@ -241,11 +200,19 @@ class DGAttack:
             self.adv_meteors.append(meteor_res['meteor'])
             self.adv_time.append(time_gap)
             # ASR
-            self.att_success += (adv_pred_len > pred_len)
-            self.total_pairs += num_entries
+            self.att_success += int(adv_pred_len > pred_len)
+            self.total_pairs += 1
 
 
-    def generation(self, test_dataset):
+    def generation(self, test_dataset: Dataset):
+        if self.dataset == "empathetic_dialogues":
+            test_dataset = self.group_ED(test_dataset)
+
+        # Sample test dataset
+        ids = random.sample(range(len(test_dataset)), self.max_num_samples)
+        test_dataset = test_dataset.select(ids)
+
+        print("Test dataset: ", test_dataset)
         for i, instance in tqdm(enumerate(test_dataset)):
             self.generation_step(instance)
 
@@ -314,8 +281,6 @@ def main(args):
         test_dataset = all_datasets['train']
     else:
         test_dataset = all_datasets['test']
-    ids = random.sample(range(len(test_dataset)), max_num_samples)
-    sampled_test_dataset = test_dataset.select(ids)
 
     # Define attack method
     if att_method.lower() == 'word':
@@ -372,7 +337,7 @@ def main(args):
     meteor = evaluate.load("meteor")
 
     # Define DG attack
-    dg = DGAttack(
+    dg = DGAttackEval(
         args=args,
         tokenizer=tokenizer,
         model=model,
@@ -383,7 +348,7 @@ def main(args):
         rouge=rouge,
         meteor=meteor,
     )
-    dg.generation(sampled_test_dataset)
+    dg.generation(test_dataset)
 
     # Save generation files
     model_n = model_name_or_path.split("/")[-1]
@@ -394,8 +359,8 @@ def main(args):
 
 
 if __name__ == "__main__":
-    import argparse
     import ssl
+    import argparse
     # import nltk
     # nltk.download('wordnet')
     # nltk.download('omw-1.4')
@@ -403,12 +368,12 @@ if __name__ == "__main__":
     ssl._create_default_https_context = ssl._create_unverified_context
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--max_num_samples", type=int, default=1, help="Number of samples to attack")
+    parser.add_argument("--max_num_samples", type=int, default=3, help="Number of samples to attack")
     parser.add_argument("--max_per", type=int, default=5, help="Number of perturbation iterations per sample")
     parser.add_argument("--max_len", type=int, default=1024, help="Maximum length of generated sequence")
     parser.add_argument("--num_beams", type=int, default=4, help="Number of beams")
     parser.add_argument("--num_beam_groups", type=int, default=1, help="Number of beam groups")
-    parser.add_argument("--model_name_or_path", type=str, 
+    parser.add_argument("--model_name_or_path", "-m", type=str, 
                         default="results/bart", 
                         choices=[
                             'results/bart', 
@@ -417,20 +382,27 @@ if __name__ == "__main__":
                             'microsoft/DialoGPT-small',
                         ],
                         help="Path to model")
-    parser.add_argument("--dataset", type=str, 
+    parser.add_argument("--dataset", "-d", type=str, 
                         default="blended_skill_talk", 
                         choices=[
                             "blended_skill_talk",
                             "conv_ai_2",
+                            "empathetic_dialogues",
                         ], 
                         help="Dataset to attack")
     parser.add_argument("--out_dir", type=str,
                         default="results/logging",
                         help="Output directory")
     parser.add_argument("--seed", type=int, default=2019, help="Random seed")
-    parser.add_argument("--attack_strategy", "--a", type=str, 
+    parser.add_argument("--attack_strategy", "-a", type=str, 
                         default='structure', 
-                        choices=['structure', 'word', 'pwws', 'scpn', 'viper'], 
+                        choices=[
+                            'structure', 
+                            'word', 
+                            'pwws', 
+                            'scpn', 
+                            'viper',
+                        ], 
                         help="Attack strategy")
     args = parser.parse_args()
     main(args)

@@ -102,12 +102,8 @@ def main(args):
         block_size = min(data_args.block_size, tokenizer.model_max_length)
 
     # Add special tokens
-    # Define new special tokens: <PS>, <CTX>, <SEP>
     tokenizer.add_special_tokens({'pad_token': '<PAD>'})
     tokenizer.add_special_tokens({'mask_token': '<MASK>'})
-    tokenizer.add_tokens(['<PS>'], special_tokens=True) ## this line is updated
-    tokenizer.add_tokens(['<CTX>'], special_tokens=True) ## this line is updated
-    tokenizer.add_tokens(['<SEP>'], special_tokens=True) ## this line is updated
     model.resize_token_embeddings(len(tokenizer))
 
     # since this will be pickled to avoid _LazyModule error in Hasher force logger loading before tokenize_function
@@ -117,24 +113,22 @@ def main(args):
     def preprocess_bst(examples):
         num_entries = len(examples["free_messages"])
         persona_pieces = [
-            f"<PS> {examples['personas'][0]}",
-            f"<PS> {examples['personas'][1]}",
+            # f"<PS>{examples['personas'][0]}",
+            f"{examples['personas'][1]}",
         ]
         if examples['context'] == "wizard_of_wikipedia":
-            additional_context_pieces = [f"<CTX> {examples['additional_context']}. <SEP> "]
+            additional_context_pieces = [examples['additional_context']]
         else:
-            additional_context_pieces = ["<SEP> "]
+            additional_context_pieces = []
 
         previous_utterance_pieces = examples["previous_utterance"]
         for entry_idx in range(num_entries):
             free_message = examples['free_messages'][entry_idx]
             guided_message = examples['guided_messages'][entry_idx]
-
-            previous_utterance = ' <SEP> '.join(previous_utterance_pieces)
             original_context = ' '.join(
-                persona_pieces + additional_context_pieces
-            ) + previous_utterance
-            text = ' <SEP> '.join([original_context, free_message, guided_message])
+                persona_pieces + additional_context_pieces + previous_utterance_pieces
+            )
+            text = ' '.join([original_context, free_message, guided_message])
             previous_utterance_pieces += [
                 free_message,
                 guided_message,
