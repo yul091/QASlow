@@ -1,11 +1,11 @@
+import sys
+sys.dont_write_bytecode = True
 import os
 import math
 import logging
-from itertools import chain
 from argparse import Namespace
 import evaluate
 from datasets import load_dataset
-import transformers
 from transformers import (
     AutoConfig, 
     AutoTokenizer, 
@@ -16,7 +16,7 @@ from transformers import (
     set_seed,
 )
 from transformers.trainer_utils import get_last_checkpoint
-from transformers.testing_utils import CaptureLogger
+from DG_dataset import DGDataset
 logger = logging.getLogger(__name__)
 
 
@@ -73,8 +73,7 @@ def main(args):
     set_seed(training_args.seed)
 
     # Blended Skill Talk
-    bst_dataset = load_dataset("blended_skill_talk")
-    column_names = bst_dataset['train'].column_names
+    all_datasets = load_dataset(args.dataset)
 
     # Tokenizer and model
     config = AutoConfig.from_pretrained(data_args.model_name_or_path)
@@ -106,84 +105,29 @@ def main(args):
     tokenizer.add_special_tokens({'mask_token': '<MASK>'})
     model.resize_token_embeddings(len(tokenizer))
 
-    # since this will be pickled to avoid _LazyModule error in Hasher force logger loading before tokenize_function
-    tok_logger = transformers.utils.logging.get_logger("transformers.tokenization_utils_base")
-
     # Data processing
-    def preprocess_bst(examples):
-        num_entries = len(examples["free_messages"])
-        persona_pieces = [
-            # f"<PS>{examples['personas'][0]}",
-            f"{examples['personas'][1]}",
-        ]
-        if examples['context'] == "wizard_of_wikipedia":
-            additional_context_pieces = [examples['additional_context']]
-        else:
-            additional_context_pieces = []
-
-        previous_utterance_pieces = examples["previous_utterance"]
-        for entry_idx in range(num_entries):
-            free_message = examples['free_messages'][entry_idx]
-            guided_message = examples['guided_messages'][entry_idx]
-            original_context = ' '.join(
-                persona_pieces + additional_context_pieces + previous_utterance_pieces
-            )
-            text = ' '.join([original_context, free_message, guided_message])
-            previous_utterance_pieces += [
-                free_message,
-                guided_message,
-            ]
-
-        with CaptureLogger(tok_logger) as cl:
-            inputs = tokenizer([text], max_length=max_length, padding=padding, truncation=True)
-        # clm input could be much much longer than block_size
-        if "Token indices sequence length is longer than the" in cl.out:
-            tok_logger.warning(
-                "^^^^^^^^^^^^^^^^ Please ignore the warning above - this long input will be chunked into smaller bits"
-                " before being passed to the model."
-            )
-        return inputs
-
-
-    def group_texts(examples):
-        # ['input_ids', 'attention_mask', 'labels']
-        concatenated_examples = {k: list(chain(*examples[k])) for k in examples.keys()}
-        # total_length = len(concatenated_examples[list(examples.keys())[0]])
-        # # We drop the small remainder, we could add padding if the model supported it instead of this drop, you can
-        # # customize this part to your needs.
-        # if total_length >= block_size:
-        #     total_length = (total_length // block_size) * block_size
-        # # Split by chunks of max_len.
-        # result = {
-        #     k: [t[i : i + block_size] for i in range(0, total_length, block_size)]
-        #     for k, t in concatenated_examples.items()
-        # }
-        concatenated_examples["labels"] = concatenated_examples["input_ids"].copy()
-        return concatenated_examples
+    dg = DGDataset(
+        dataset=args.dataset,
+        task='clm',
+        tokenizer=tokenizer,
+        max_source_length=max_length,
+        max_target_length=max_length,
+        padding=padding,
+        ignore_pad_token_for_loss=data_args.ignore_pad_token_for_loss,
+        preprocessing_num_workers=args.preprocessing_num_workers,
+        overwrite_cache=args.overwrite_cache,
+    )
 
     # Tokenize train, eval, test dataset
     if training_args.do_train:
-        train_dataset = bst_dataset['train']
+        train_dataset = all_datasets['train']
         if data_args.max_train_samples is not None:
             train_dataset = train_dataset.select(range(data_args.max_train_samples))
-        train_dataset = train_dataset.map(
-            preprocess_bst,
-            batched=False,
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=column_names,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
-        train_dataset = train_dataset.map(
-            group_texts,
-            batched=True,
-            num_proc=data_args.preprocessing_num_workers,
-            load_from_cache_file=not data_args.overwrite_cache,
-            desc=f"Grouping texts in chunks of {block_size}",
-        )
+        train_dataset = dg.preprocess(train_dataset)
         print("train dataset: ", train_dataset)
     
     if training_args.do_eval:
-        eval_dataset = bst_dataset['validation']
+        eval_dataset = all_datasets['validation']
         if data_args.max_eval_samples is not None:
             max_eval_samples = min(len(eval_dataset), data_args.max_eval_samples)
             eval_dataset = eval_dataset.select(range(max_eval_samples))
@@ -205,40 +149,14 @@ def main(args):
             return metric.compute(predictions=preds, references=labels)
 
 
-        eval_dataset = eval_dataset.map(
-            preprocess_bst,
-            batched=False,
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=column_names,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
-        eval_dataset = eval_dataset.map(
-            group_texts,
-            batched=True,
-            num_proc=data_args.preprocessing_num_workers,
-            load_from_cache_file=not data_args.overwrite_cache,
-            desc=f"Grouping texts in chunks of {block_size}",
-        )
+        eval_dataset = dg.preprocess(eval_dataset)
         print("validation dataset: ", eval_dataset)
 
     if training_args.do_predict:
-        predict_dataset = bst_dataset['test']
+        predict_dataset = all_datasets['test']
         if data_args.max_predict_samples is not None:
             predict_dataset = predict_dataset.select(range(data_args.max_predict_samples))
-        predict_dataset = predict_dataset.map(
-            preprocess_bst,
-            batched=False,
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=column_names,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
-        predict_dataset = predict_dataset.map(
-            group_texts,
-            batched=True,
-            num_proc=data_args.preprocessing_num_workers,
-            load_from_cache_file=not data_args.overwrite_cache,
-            desc=f"Grouping texts in chunks of {block_size}",
-        )
+        predict_dataset = dg.preprocess(predict_dataset)
         print("test dataset: ", predict_dataset)
 
     # Data collator
@@ -274,7 +192,6 @@ def main(args):
             data_args.max_train_samples if data_args.max_train_samples is not None else len(train_dataset)
         )
         metrics["train_samples"] = min(max_train_samples, len(train_dataset))
-
         trainer.log_metrics("train", metrics)
         trainer.save_metrics("train", metrics)
         trainer.save_state()
@@ -306,6 +223,15 @@ if __name__ == "__main__":
                         default='microsoft/DialoGPT-small', 
                         choices=['microsoft/DialoGPT-small', 'gpt2'],
                         help='The model checkpoint for weights initialization.')
+    parser.add_argument("--dataset", "-d", type=str, 
+                        default="blended_skill_talk", 
+                        choices=[
+                            "blended_skill_talk",
+                            "conv_ai_2",
+                            "empathetic_dialogues",
+                            "AlekseyKorshuk/persona-chat",
+                        ], 
+                        help='The dataset to use for training.')
     parser.add_argument('--output_dir',
                         type=str,
                         default='results/dialogpt',

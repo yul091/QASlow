@@ -1,3 +1,5 @@
+import sys
+sys.dont_write_bytecode = True
 import os
 import numpy as np
 import logging
@@ -14,6 +16,7 @@ from transformers import (
     default_data_collator,
 )
 from transformers.trainer_utils import get_last_checkpoint
+from DG_dataset import DGDataset
 
 logger = logging.getLogger(__name__)
 
@@ -52,9 +55,7 @@ def main(args):
         predict_with_generate=True, # generation task
     )
 
-    max_target_length = data_args.max_target_length
     padding = "max_length" if data_args.pad_to_max_length else False
-
 
     # Detecting last checkpoint.
     last_checkpoint = None
@@ -74,7 +75,6 @@ def main(args):
 
     # Blended Skill Talk
     bst_dataset = load_dataset("blended_skill_talk")
-    column_names = bst_dataset['train'].column_names
 
     # Tokenizer and model
     config = AutoConfig.from_pretrained(data_args.model_name_or_path)
@@ -87,76 +87,26 @@ def main(args):
     tokenizer.add_tokens(['<CTX>'], special_tokens=True) ## this line is updated
     tokenizer.add_tokens(['<SEP>'], special_tokens=True) ## this line is updated
     model.resize_token_embeddings(len(tokenizer))
-    
+
     # Data processing
-    def preprocess_bst(examples):
-        num_entries = len(examples["free_messages"])
-        persona_pieces = [
-            # f"<PS>{examples['personas'][0]}",
-            f"<PS>{examples['personas'][1]}",
-        ]
-        if examples['context'] == "wizard_of_wikipedia":
-            additional_context_pieces = [f"<CTX>{examples['additional_context']}.<SEP>"]
-        else:
-            additional_context_pieces = ["<SEP>"]
-
-        previous_utterance_pieces = examples["previous_utterance"]
-        inputs, labels = [], []
-        for entry_idx in range(num_entries):
-            free_message = examples['free_messages'][entry_idx]
-            guided_message = examples['guided_messages'][entry_idx]
-
-            previous_utterance = '<SEP>'.join(previous_utterance_pieces)
-            original_context = ' '.join(
-                persona_pieces + additional_context_pieces
-            ) + previous_utterance
-            # Input & Output
-            text = original_context + tokenizer.eos_token + free_message
-            inputs.append(text)
-            labels.append(guided_message)
-            previous_utterance_pieces += [
-                free_message,
-                guided_message,
-            ]
-
-        inputs = tokenizer(inputs, max_length=data_args.max_source_length, padding=padding, truncation=True)
-        # Setup the tokenizer for targets
-        with tokenizer.as_target_tokenizer():
-            labels = tokenizer(labels, max_length=max_target_length, padding=padding, truncation=True)
-        
-        # If we are padding here, replace all tokenizer.pad_token_id in the labels by -100 
-        # when we want to ignore padding in the loss.
-        if padding == "max_length" and data_args.ignore_pad_token_for_loss:
-            labels["input_ids"] = [
-                [(l if l != tokenizer.pad_token_id else -100) for l in label] for label in labels["input_ids"]
-            ]
-        inputs["labels"] = labels["input_ids"]
-        return inputs
-
-
-    def group_texts(examples):
-        # ['input_ids', 'attention_mask', 'labels']
-        concatenated_examples = {k: list(chain(*examples[k])) for k in examples.keys()}
-        return concatenated_examples
+    dg = DGDataset(
+        dataset=args.dataset,
+        task='seq2seq',
+        tokenizer=tokenizer,
+        max_source_length=args.max_source_length,
+        max_target_length=args.max_target_length,
+        padding=padding,
+        ignore_pad_token_for_loss=data_args.ignore_pad_token_for_loss,
+        preprocessing_num_workers=args.preprocessing_num_workers,
+        overwrite_cache=args.overwrite_cache,
+    )
 
     # Tokenize train, eval, test dataset
     if training_args.do_train:
         train_dataset = bst_dataset['train']
         if data_args.max_train_samples is not None:
             train_dataset = train_dataset.select(range(data_args.max_train_samples))
-        train_dataset = train_dataset.map(
-            preprocess_bst,
-            batched=False,
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=column_names,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
-        train_dataset = train_dataset.map(
-            group_texts,
-            batched=True,
-            num_proc=data_args.preprocessing_num_workers,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
+        train_dataset = dg.preprocess(train_dataset)
         print("train dataset: ", train_dataset)
     
     if training_args.do_eval:
@@ -164,19 +114,7 @@ def main(args):
         max_target_length = data_args.val_max_target_length
         if data_args.max_eval_samples is not None:
             eval_dataset = eval_dataset.select(range(data_args.max_eval_samples))
-        eval_dataset = eval_dataset.map(
-            preprocess_bst,
-            batched=False,
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=column_names,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
-        eval_dataset = eval_dataset.map(
-            group_texts,
-            batched=True,
-            num_proc=data_args.preprocessing_num_workers,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
+        eval_dataset = dg.preprocess(eval_dataset)
         print("validation dataset: ", eval_dataset)
 
     if training_args.do_predict:
@@ -184,19 +122,7 @@ def main(args):
         max_target_length = data_args.val_max_target_length
         if data_args.max_predict_samples is not None:
             predict_dataset = predict_dataset.select(range(data_args.max_predict_samples))
-        predict_dataset = predict_dataset.map(
-            preprocess_bst,
-            batched=False,
-            num_proc=data_args.preprocessing_num_workers,
-            remove_columns=column_names,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
-        predict_dataset = predict_dataset.map(
-            group_texts,
-            batched=True,
-            num_proc=data_args.preprocessing_num_workers,
-            load_from_cache_file=not data_args.overwrite_cache,
-        )
+        predict_dataset = dg.preprocess(predict_dataset)
         print("test dataset: ", predict_dataset)
 
 
@@ -328,6 +254,15 @@ if __name__ == "__main__":
                         default='t5-small', 
                         choices=['t5-small', 'facebook/bart-base'],
                         help='The model checkpoint for weights initialization.')
+    parser.add_argument("--dataset", "-d", type=str, 
+                        default="blended_skill_talk", 
+                        choices=[
+                            "blended_skill_talk",
+                            "conv_ai_2",
+                            "empathetic_dialogues",
+                            "AlekseyKorshuk/persona-chat",
+                        ], 
+                        help='The dataset to use for training.')
     parser.add_argument('--output_dir',
                         type=str,
                         default='results/t5',

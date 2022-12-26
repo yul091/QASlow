@@ -88,7 +88,6 @@ class DGDataset:
 
         else:
             raise ValueError("Dataset not supported.")
-
         return num_entries, total_entries, context, prev_utt_pc
 
 
@@ -125,7 +124,6 @@ class DGDataset:
         else:
             sp_token = '<SEP>' if self.task == 'seq2seq' else ' '
             original_context = context + sp_token + sp_token.join(prev_utt_pc)
-
         return free_message, guided_message, original_context
 
 
@@ -205,7 +203,6 @@ class DGDataset:
 
             response = {'text': instance['utterance'], 'speaker_idx': instance['speaker_idx']}
             results['dialog'][-1].append(response)
-
         return Dataset.from_dict(results)
 
 
