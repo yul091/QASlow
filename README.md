@@ -14,7 +14,11 @@ pip install -r requirements.txt
 
 - BART on BlendedSkillTalk:
 ```
-python train_seq2seq.py
+python train_seq2seq.py --model_name_or_path facebook/bart-base --dataset blended_skill_talk --output_dir results/bart
+```
+- DialoGPT on EmpatheticDialogues:
+```
+python train_clm.py --model_name_or_path microsoft/DialoGPT-small --dataset empathetic_dialogues --output_dir results/dialogpt
 ```
 - Or you can directly download our pre-trained [model](https://drive.google.com/drive/folders/1rWexrwHCgCFYiNVk2yFKSI8iV8baWfFt?usp=sharing) 
 
