@@ -74,6 +74,18 @@ class DGDataset:
                 context = ''
             prev_utt_pc = []
 
+        elif self.dataset == 'AlekseyKorshuk/persona-chat':
+            total_entries = len(instance['utterances'][-1]['history'])
+            num_entries = total_entries//2
+            if self.task == 'seq2seq':
+                user_profile = ' '.join(instance['personality'])
+                persona_pieces = f"<PS>{user_profile}"
+                context = persona_pieces
+            else:
+                num_entries = min(num_entries, 2)
+                context = ''
+            prev_utt_pc = []
+
         else:
             raise ValueError("Dataset not supported.")
 
@@ -99,13 +111,20 @@ class DGDataset:
             else:
                 guided_message = self.prepare_sent(instance['dialog'][entry_idx*2+1]['text'])
 
+        elif self.dataset == 'AlekseyKorshuk/persona-chat':
+            free_message = self.prepare_sent(instance['utterances'][-1]['history'][entry_idx*2])
+            if entry_idx*2+1 >= total_entries:
+                guided_message = None
+            else:
+                guided_message = self.prepare_sent(instance['utterances'][-1]['history'][entry_idx*2+1])
         else:
             raise ValueError("Dataset not supported.")
 
-        if self.task == 'seq2seq':
-            original_context = context + '<SEP>'.join(prev_utt_pc)
+        if not prev_utt_pc:
+            original_context = context
         else:
-            original_context = context + ' '.join(prev_utt_pc)
+            sp_token = '<SEP>' if self.task == 'seq2seq' else ' '
+            original_context = context + sp_token + sp_token.join(prev_utt_pc)
 
         return free_message, guided_message, original_context
 

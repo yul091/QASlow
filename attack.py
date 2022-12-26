@@ -279,6 +279,8 @@ def main(args):
     all_datasets = load_dataset(dataset)
     if dataset == "conv_ai_2":
         test_dataset = all_datasets['train']
+    elif dataset == "AlekseyKorshuk/persona-chat":
+        test_dataset = all_datasets['validation']
     else:
         test_dataset = all_datasets['test']
 
@@ -352,7 +354,8 @@ def main(args):
 
     # Save generation files
     model_n = model_name_or_path.split("/")[-1]
-    with open(f"{out_dir}/{att_method}_{max_per}_{model_n}_{dataset}_{max_num_samples}.txt", "w") as f:
+    dataset_n = dataset.split("/")[-1]
+    with open(f"{out_dir}/{att_method}_{max_per}_{model_n}_{dataset_n}_{max_num_samples}.txt", "w") as f:
         for line in dg.record:
             f.write(str(line) + "\n")
     f.close()
@@ -388,6 +391,7 @@ if __name__ == "__main__":
                             "blended_skill_talk",
                             "conv_ai_2",
                             "empathetic_dialogues",
+                            "AlekseyKorshuk/persona-chat",
                         ], 
                         help="Dataset to attack")
     parser.add_argument("--out_dir", type=str,

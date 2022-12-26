@@ -27,11 +27,14 @@ python attack.py --attack_strategy structure --model_name_or_path results/bart -
 ```
 python attack.py --attack_strategy word --model_name_or_path microsoft/DialoGPT-small --dataset empathetic_dialogues
 ```
-- Baseline attacks (PWWS) on T5 on ConvAI2 dataset
+- PWWS (baseline) on T5 on ConvAI2 dataset
 ```
 python attack.py --attack_strategy pwws --model_name_or_path results/t5 --dataset conv_ai_2
 ```
-
+-VIPER (baseline) on T5 on PersonaChat dataset
+```
+python attack.py --attack_strategy viper --model_name_or_path results/t5 --dataset AlekseyKorshuk/persona-chat
+```
 ### Plan
 - prepare models
 - refactor ```attack.py```
