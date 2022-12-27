@@ -35,7 +35,7 @@ python attack.py --attack_strategy word --model_name_or_path microsoft/DialoGPT-
 ```
 python attack.py --attack_strategy pwws --model_name_or_path results/t5 --dataset conv_ai_2
 ```
--VIPER (baseline) on T5 on PersonaChat dataset
+- VIPER (baseline) on T5 on PersonaChat dataset
 ```
 python attack.py --attack_strategy viper --model_name_or_path results/t5 --dataset AlekseyKorshuk/persona-chat
 ```
