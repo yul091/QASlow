@@ -28,7 +28,7 @@ OUTPUT_DIR=results/dialogpt # results/dialogpt, results/gpt2
 DATASET=blended_skill_talk # blended_skill_talk, conv_ai_2, empathetic_dialogues, AlekseyKorshuk/persona-chat
 EPOCHS=50
 
-CUDA_VISIBLE_DEVICES=0 python train_clm.py \
+CUDA_VISIBLE_DEVICES=2 python train_clm.py \
 --model_name_or_path $MODEL_PATH \
 --dataset $DATASET \
 --output_dir $OUTPUT_DIR \
