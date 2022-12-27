@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import time
+import pdb
 import numpy as np
 from tqdm import tqdm
 from copy import deepcopy
@@ -62,10 +63,7 @@ class BaseAttacker:
     def get_prediction(self, sentence: Union[str, List[str]]):
         # print("sentence: ", sentence)
         def remove_pad(s):
-            for i, tk in enumerate(s):
-                if tk == self.eos_token_id and i != 0:
-                    return s[:i + 1]
-            return s
+            return s[torch.nonzero(s != self.pad_token_id)].squeeze(1)
 
         if self.task == 'seq2seq':
             text = sentence
@@ -102,6 +100,7 @@ class BaseAttacker:
         seqs = [remove_pad(seq) for seq in seqs]
         out_scores = outputs['scores']
         pred_len = [self.compute_seq_len(seq) for seq in seqs]
+        # pdb.set_trace()
         return pred_len, seqs, out_scores
 
     def get_trans_string_len(self, text: Union[str, List[str]]):

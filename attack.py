@@ -22,6 +22,12 @@ from attacker.SCPN import SCPNAttacker
 from attacker.VIPER import VIPERAttacker
 from DG_dataset import DGDataset
 
+DATA2NAME = {
+    "blended_skill_talk": "BST",
+    "conv_ai_2": "ConvAI2",
+    "empathetic_dialogues": "ED",
+    "AlekseyKorshuk/persona-chat": "PersonaChat",
+}
 
 class DGAttackEval(DGDataset):
     def __init__(
@@ -103,7 +109,7 @@ class DGAttackEval(DGDataset):
                 skip_special_tokens=True,
             )[0]
         t2 = time.time()
-        return output, t2 - t1
+        return output.strip(), t2 - t1
 
 
     def eval_metrics(self, output: str, guided_messages: list):
@@ -129,7 +135,6 @@ class DGAttackEval(DGDataset):
     def generation_step(self, instance: dict):
         # Set up
         num_entries, total_entries, context, prev_utt_pc = self.prepare_context(instance)
-
         for entry_idx in range(num_entries):
             free_message, guided_message, original_context, references = self.prepare_entry(
                 instance, 
@@ -140,8 +145,7 @@ class DGAttackEval(DGDataset):
             )
             if guided_message is None:
                 continue
-            print("\nDialogue history: {}".format(original_context))
-            self.record.append("\nDialogue history: {}".format(original_context))
+            
             prev_utt_pc += [
                 free_message,
                 guided_message,
@@ -153,11 +157,15 @@ class DGAttackEval(DGDataset):
                 text = original_context + '<SEP>' + free_message
 
             output, time_gap = self.get_prediction(text)  
+            if not output:
+                continue
+            bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, references)
+            print("\nDialogue history: {}".format(original_context))
+            self.record.append("\nDialogue history: {}".format(original_context))
             print("U--{} \n(Ref: {})".format(free_message, references))
             self.record.append("U--{} \n(Ref: {})".format(free_message, references))
             print("G--{}".format(output))
             self.record.append("G--{}".format(output))
-            bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, references)
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
@@ -177,6 +185,11 @@ class DGAttackEval(DGDataset):
                 new_free_message = new_text.split(self.tokenizer.eos_token)[1].strip()
             else:
                 new_free_message = new_text.split('<SEP>')[1].strip()
+
+            output, time_gap = self.get_prediction(new_text)
+            if not output:
+                continue
+
             if success:
                 print("U'--{}".format(new_free_message))
                 self.record.append("U'--{}".format(new_free_message))
@@ -184,7 +197,6 @@ class DGAttackEval(DGDataset):
                 print("Attack failed!")
                 self.record.append("Attack failed!")
 
-            output, time_gap = self.get_prediction(new_text)
             print("G'--{}".format(output))
             self.record.append("G'--{}".format(output))
             bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
@@ -263,9 +275,7 @@ def main(args: argparse.Namespace):
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     if 'gpt' in model_name_or_path.lower():
         task = 'clm'
-        tokenizer.add_special_tokens({'pad_token': '<PAD>'})
         model = AutoModelForCausalLM.from_pretrained(model_name_or_path, config=config)
-        model.resize_token_embeddings(len(tokenizer))
     else:
         task = 'seq2seq'
         model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)
@@ -353,7 +363,7 @@ def main(args: argparse.Namespace):
 
     # Save generation files
     model_n = model_name_or_path.split("/")[-1]
-    dataset_n = dataset.split("/")[-1]
+    dataset_n = DATA2NAME.get(dataset, dataset.split("/")[-1])
     with open(f"{out_dir}/{att_method}_{max_per}_{model_n}_{dataset_n}_{max_num_samples}.txt", "w") as f:
         for line in dg.record:
             f.write(str(line) + "\n")
@@ -380,8 +390,7 @@ if __name__ == "__main__":
                         choices=[
                             'results/bart', 
                             'results/t5', 
-                            'results/dialogpt', 
-                            'microsoft/DialoGPT-small',
+                            'results/dialogpt',
                         ],
                         help="Path to model")
     parser.add_argument("--dataset", "-d", type=str, 
