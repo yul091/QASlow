@@ -61,7 +61,6 @@ class BaseAttacker:
             return int(len(seq) - sum(seq.eq(self.pad_token_id))) - 1
 
     def get_prediction(self, sentence: Union[str, List[str]]):
-        # print("sentence: ", sentence)
         def remove_pad(s):
             return s[torch.nonzero(s != self.pad_token_id)].squeeze(1)
 
