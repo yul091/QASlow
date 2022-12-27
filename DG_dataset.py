@@ -1,5 +1,6 @@
 from datasets import load_dataset, Dataset
 from itertools import chain
+from typing import List, Optional
 from transformers import AutoTokenizer
 from transformers.testing_utils import CaptureLogger
 from transformers.utils.logging import get_logger
@@ -31,24 +32,21 @@ class DGDataset:
         self.tok_logger = get_logger("transformers.tokenization_utils_base")
 
 
-    def prepare_sent(self, text: str):
-        return text.strip().capitalize()
-
-    def prepare_context(self, instance):
+    def prepare_context(self, instance: dict):
         if self.dataset == 'blended_skill_talk':
             num_entries = len(instance["free_messages"])
             total_entries = num_entries
             if self.task == 'seq2seq':
-                persona_pieces = f"<PS>{self.prepare_sent(instance['personas'][1])}"
+                persona_pieces = f"<PS>{instance['personas'][1]}"
                 if instance['context'] == "wizard_of_wikipedia":
-                    additional_context_pieces = f"<CTX>{self.prepare_sent(instance['additional_context'])}.<SEP>"
+                    additional_context_pieces = f"<CTX>{instance['additional_context']}."
                 else:
-                    additional_context_pieces = "<SEP>"
+                    additional_context_pieces = ""
                 context = persona_pieces + additional_context_pieces
             else:
                 num_entries = min(num_entries, 2)
                 context = ''
-            prev_utt_pc = [self.prepare_sent(sent) for sent in instance["previous_utterance"]]
+            prev_utt_pc = [sent for sent in instance["previous_utterance"] if sent != '']
 
         elif self.dataset == 'conv_ai_2':
             total_entries = len(instance['dialog'])
@@ -67,7 +65,7 @@ class DGDataset:
             num_entries = total_entries//2
             if self.task == 'seq2seq':
                 persona_pieces = f"<PS>{instance['prompt']}"
-                additional_context_pieces = f"<CTX>{self.prepare_sent(instance['context'])}.<SEP>"
+                additional_context_pieces = f"<CTX>{instance['context']}."
                 context = persona_pieces + additional_context_pieces
             else:
                 num_entries = min(num_entries, 2)
@@ -75,7 +73,7 @@ class DGDataset:
             prev_utt_pc = []
 
         elif self.dataset == 'AlekseyKorshuk/persona-chat':
-            total_entries = len(instance['utterances'][-1]['history'])
+            total_entries = len(instance['utterances'])
             num_entries = total_entries//2
             if self.task == 'seq2seq':
                 user_profile = ' '.join(instance['personality'])
@@ -91,31 +89,43 @@ class DGDataset:
         return num_entries, total_entries, context, prev_utt_pc
 
 
-    def prepare_entry(self, instance, entry_idx, context, prev_utt_pc, total_entries):
+    def prepare_entry(
+        self, 
+        instance: dict, 
+        entry_idx: int, 
+        context: str, 
+        prev_utt_pc: List[str], 
+        total_entries: int,
+    ):
         if self.dataset == 'blended_skill_talk':
-            free_message = self.prepare_sent(instance['free_messages'][entry_idx])
-            guided_message = self.prepare_sent(instance['guided_messages'][entry_idx])
+            free_message = instance['free_messages'][entry_idx]
+            guided_message = instance['guided_messages'][entry_idx]
+            references = [values[entry_idx] for key, values in instance['suggestions'].items()]
 
         elif self.dataset == 'conv_ai_2':
-            free_message = self.prepare_sent(instance['dialog'][entry_idx*2]['text'])
+            free_message = instance['dialog'][entry_idx*2]['text']
             if entry_idx*2+1 >= total_entries:
                 guided_message = None
             else:
-                guided_message = self.prepare_sent(instance['dialog'][entry_idx*2+1]['text'])
+                guided_message = instance['dialog'][entry_idx*2+1]['text']
+            references = []
 
         elif self.dataset == 'empathetic_dialogues':
-            free_message = self.prepare_sent(instance['dialog'][entry_idx*2]['text'])
+            free_message = instance['dialog'][entry_idx*2]['text']
             if entry_idx*2+1 >= total_entries:
                 guided_message = None
             else:
-                guided_message = self.prepare_sent(instance['dialog'][entry_idx*2+1]['text'])
+                guided_message = instance['dialog'][entry_idx*2+1]['text']
+            references = []
 
         elif self.dataset == 'AlekseyKorshuk/persona-chat':
-            free_message = self.prepare_sent(instance['utterances'][-1]['history'][entry_idx*2])
+            free_message = instance['utterances'][entry_idx*2]['history'][-1]
             if entry_idx*2+1 >= total_entries:
                 guided_message = None
             else:
-                guided_message = self.prepare_sent(instance['utterances'][-1]['history'][entry_idx*2+1])
+                guided_message = instance['utterances'][entry_idx*2+1]['history'][-1]
+            references = instance['utterances'][entry_idx*2]['candidates']
+            
         else:
             raise ValueError("Dataset not supported.")
 
@@ -124,14 +134,16 @@ class DGDataset:
         else:
             sp_token = '<SEP>' if self.task == 'seq2seq' else ' '
             original_context = context + sp_token + sp_token.join(prev_utt_pc)
-        return free_message, guided_message, original_context
+        
+        references.append(guided_message)
+        return free_message, guided_message, original_context, references
 
 
-    def tokenize_and_align_labels(self, instance):
+    def tokenize_and_align_labels(self, instance: dict):
         num_entries, total_entries, context, prev_utt_pc = self.prepare_context(instance)
         inputs, labels = [], []
         for entry_idx in range(num_entries):
-            free_message, guided_message, original_context = self.prepare_entry(
+            free_message, guided_message, original_context, references = self.prepare_entry(
                 instance, 
                 entry_idx, 
                 context, 

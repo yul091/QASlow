@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional, Union, List
 import torch
 import pickle
 import numpy as np
@@ -39,17 +39,18 @@ def reverse_bpe(sent):
 
 class SCPNAttacker(SlowAttacker):
 
-    def __init__(self,
-                 device: Optional[torch.device] = None,
-                 tokenizer: Optional[Tokenizer] = None,
-                 model: Optional[torch.nn.Module] = None,
-                 max_len: int = 64,
-                 max_per: int = 3,
-                 task: str = "seq2seq"):
+    def __init__(
+        self,
+        device: Optional[torch.device] = None,
+        tokenizer: Optional[Tokenizer] = None,
+        model: Optional[torch.nn.Module] = None,
+        max_len: int = 64,
+        max_per: int = 3,
+        task: str = "seq2seq",
+    ):
         super(SCPNAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
         )
-
         self.templates = DEFAULT_TEMPLATES
         self.default_tokenizer = PunctTokenizer()
         self.parser = StanfordParser()
@@ -84,7 +85,7 @@ class SCPNAttacker(SlowAttacker):
         self.bpe = BPE(bpe_codes, '@@', bpe_vocab, None)
 
 
-    def gen_paraphrase(self, sent, templates):
+    def gen_paraphrase(self, sent: str, templates: List[str]):
         template_lens = [len(x.split()) for x in templates]
         np_templates = np.zeros((len(templates), max(template_lens)), dtype='int32')
         for z, template in enumerate(templates):
@@ -92,7 +93,7 @@ class SCPNAttacker(SlowAttacker):
         tp_templates = torch.from_numpy(np_templates).long().to(self.device)
         tp_template_lens = torch.LongTensor(template_lens).to(self.device)
 
-        ssent =  ' '.join( self.default_tokenizer.tokenize(sent, pos_tagging=False) )
+        ssent =  ' '.join(self.default_tokenizer.tokenize(sent, pos_tagging=False))
         seg_sent = self.bpe.segment(ssent.lower()).split()
         
         # encode sentence using pp_vocab, leave one word for EOS
@@ -142,10 +143,17 @@ class SCPNAttacker(SlowAttacker):
             ret.append(reverse_bpe(gen_sent.split()))
         return ret
 
-    def compute_loss(self, text):
+    def compute_loss(self, text: list):
         return 
     
-    def mutation(self, context, sentence, grad, goal, modify_pos):
+    def mutation(
+        self, 
+        context: str, 
+        sentence: str, 
+        grad: torch.gradient, 
+        goal: str, 
+        modify_pos: List[int],
+    ):
         try:
             pps = self.gen_paraphrase(sentence, self.templates)
         except KeyError as e:

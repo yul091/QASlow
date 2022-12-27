@@ -6,18 +6,23 @@ from tqdm import tqdm
 from copy import deepcopy
 from argparse import Namespace
 from DialogueAPI import dialogue
-from typing import List, Tuple, Union
-
+from typing import Union, List, Tuple
+from transformers import ( 
+    BertTokenizer,
+    BertTokenizerFast,
+    BartForConditionalGeneration, 
+)
 
 class BaseAttacker:
-    def __init__(self, 
-                 device,
-                 tokenizer,
-                 model,
-                 max_len=64,
-                 max_per=3,
-                 task='seq2seq'):
-      
+    def __init__(
+        self,     
+        device: torch.device = None,
+        tokenizer: Union[BertTokenizer, BertTokenizerFast] = None,
+        model: BartForConditionalGeneration = None,
+        max_len: int = 64,
+        max_per: int = 3,
+        task: str = 'seq2seq',
+    ):
         self.device = device
         self.model = model.to(self.device)
         self.tokenizer = tokenizer
@@ -42,19 +47,19 @@ class BaseAttacker:
         print('Using default argument for "{}"'.format(key))
         return default
 
-    def run_attack(self, text):
+    def run_attack(self, text: str):
         pass
 
-    def compute_loss(self, text):
+    def compute_loss(self, text: list):
         pass
 
-    def compute_seq_len(self, seq):
+    def compute_seq_len(self, seq: torch.Tensor):
         if seq[0].eq(self.pad_token_id):
             return int(len(seq) - sum(seq.eq(self.pad_token_id)))
         else:
             return int(len(seq) - sum(seq.eq(self.pad_token_id))) - 1
 
-    def get_prediction(self, sentence):
+    def get_prediction(self, sentence: Union[str, List[str]]):
         # print("sentence: ", sentence)
         def remove_pad(s):
             for i, tk in enumerate(s):
@@ -80,7 +85,6 @@ class BaseAttacker:
             max_length=self.max_len,
         )
         input_ids = inputs['input_ids'].to(self.device)
-        # print("input_ids ({}): {}".format(input_ids.shape, input_ids))
         # ['sequences', 'sequences_scores', 'scores', 'beam_indices']
         outputs = dialogue(
             self.model, 
@@ -100,20 +104,20 @@ class BaseAttacker:
         pred_len = [self.compute_seq_len(seq) for seq in seqs]
         return pred_len, seqs, out_scores
 
-    def get_trans_string_len(self, text):
+    def get_trans_string_len(self, text: Union[str, List[str]]):
         pred_len, seqs, _ = self.get_prediction(text)
         return seqs[0], pred_len[0]
 
-    def get_trans_len(self, text):
+    def get_trans_len(self, text: Union[str, List[str]]):
         pred_len, _, _ = self.get_prediction(text)
         return pred_len
 
-    def get_trans_strings(self, text):
+    def get_trans_strings(self, text: Union[str, List[str]]):
         pred_len, seqs, _ = self.get_prediction(text)
         out_res = [self.tokenizer.decode(seq, skip_special_tokens=True) for seq in seqs]
         return out_res, pred_len
 
-    def compute_batch_score(self, text):
+    def compute_batch_score(self, text: Union[str, List[str]]):
         batch_size = len(text)
         index_list = [i * self.num_beams for i in range(batch_size + 1)]
         pred_len, seqs, out_scores = self.get_prediction(text)
@@ -127,7 +131,7 @@ class BaseAttacker:
         scores = [s[:pred_len[i]] for i, s in enumerate(scores)]
         return scores, seqs, pred_len
     
-    def compute_score(self, text, batch_size=None):
+    def compute_score(self, text: Union[str, List[str]], batch_size: int = None):
         total_size = len(text)
         if batch_size is None:
             batch_size = len(text)
@@ -147,18 +151,20 @@ class BaseAttacker:
 
 
 class SlowAttacker(BaseAttacker):
-    def __init__(self, 
-                 device,
-                 tokenizer,
-                 model,
-                 max_len=64,
-                 max_per=3,
-                 task='seq2seq'):
+    def __init__(
+        self, 
+        device: torch.device = None,
+        tokenizer: Union[BertTokenizer, BertTokenizerFast] = None,
+        model: BartForConditionalGeneration = None,
+        max_len: int = 64,
+        max_per: int = 3,
+        task: str = 'seq2seq',
+    ):
         super(SlowAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
         )
 
-    def leave_eos_loss(self, scores, pred_len):
+    def leave_eos_loss(self, scores: list, pred_len: list):
         loss = []
         for i, s in enumerate(scores):
             s[:, self.pad_token_id] = 1e-12 # T X V
@@ -166,7 +172,7 @@ class SlowAttacker(BaseAttacker):
             loss.append(self.bce_loss(eos_p, torch.zeros_like(eos_p)))
         return loss
 
-    def leave_eos_target_loss(self, scores, seqs, pred_len):
+    def leave_eos_target_loss(self, scores: list, seqs: list, pred_len: list):
         loss = []
         for i, s in enumerate(scores): # s: T X V
             # if self.pad_token_id != self.eos_token_id:
@@ -181,7 +187,7 @@ class SlowAttacker(BaseAttacker):
         return loss
 
     @torch.no_grad()
-    def select_best(self, new_strings, batch_size=10):
+    def select_best(self, new_strings: List[Tuple], batch_size: int = 10):
         """
         Select generated strings which induce longest output sentences.
         """
@@ -220,25 +226,24 @@ class SlowAttacker(BaseAttacker):
         assert len(new_strings) == len(pred_len)
         return new_strings[pred_len.argmax()], max(pred_len)
 
-    def prepare_attack(self, text):
+    def prepare_attack(self, text: Union[str, List[str]]):
         ori_len = self.get_trans_len(text)[0] # original sentence length
         best_adv_text, best_len = deepcopy(text), ori_len
         cur_adv_text, cur_len = deepcopy(text), ori_len  # current_adv_text: List[str]
         return ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len)
 
-    def compute_loss(self, text):
+    def compute_loss(self, text: list):
         raise NotImplementedError
 
-    def mutation(self, cur_adv_text, grad, modified_pos):
+    def mutation(self, cur_adv_text: str, grad: torch.gradient, modified_pos: List[int]):
         raise NotImplementedError
 
-    def run_attack(self, text, label):
+    def run_attack(self, text: str, label: str):
         """
         (1) Using gradient ascent to generate adversarial sentences -- mutation();
         (2) Select the best samples which induce longest output sentences -- select_best();
         (3) Save the adversarial samples -- adv_his.
         """
-        assert len(text) != 1
         torch.autograd.set_detect_anomaly(True)
         ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len) = self.prepare_attack(text)
         if self.task == 'seq2seq':
@@ -247,7 +252,7 @@ class SlowAttacker(BaseAttacker):
             sp_tok = '<SEP>'
         ori_context = cur_adv_text.split(sp_tok)[0].strip()
         adv_his = []
-        modify_pos = [] # record already modified positions (avoid recovering to the original token)
+        modify_pos = [] # record already modified positions (avoid repeated perturbation)
         pbar = tqdm(range(self.max_per))
         t1 = time.time()
 

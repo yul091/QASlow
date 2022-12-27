@@ -106,32 +106,32 @@ class DGAttackEval(DGDataset):
         return output, t2 - t1
 
 
-    def eval_metrics(self, output: str, guided_message: str):
+    def eval_metrics(self, output: str, guided_messages: list):
         if not output:
             return
 
         bleu_res = self.bleu.compute(
             predictions=[output], 
-            references=[[guided_message]],
+            references=[guided_messages],
         )
         rouge_res = self.rouge.compute(
             predictions=[output],
-            references=[guided_message],
+            references=[guided_messages],
         )
         meteor_res = self.meteor.compute(
             predictions=[output],
-            references=[guided_message],
+            references=[guided_messages],
         )
         pred_len = bleu_res['translation_length']
         return bleu_res, rouge_res, meteor_res, pred_len
         
         
-    def generation_step(self, instance):
+    def generation_step(self, instance: dict):
         # Set up
         num_entries, total_entries, context, prev_utt_pc = self.prepare_context(instance)
 
         for entry_idx in range(num_entries):
-            free_message, guided_message, original_context = self.prepare_entry(
+            free_message, guided_message, original_context, references = self.prepare_entry(
                 instance, 
                 entry_idx, 
                 context, 
@@ -153,11 +153,11 @@ class DGAttackEval(DGDataset):
                 text = original_context + '<SEP>' + free_message
 
             output, time_gap = self.get_prediction(text)  
-            print("U--{} (y--{})".format(free_message, guided_message))
-            self.record.append("U--{} (y--{})".format(free_message, guided_message))
+            print("U--{} \n(Ref: {})".format(free_message, references))
+            self.record.append("U--{} \n(Ref: {})".format(free_message, references))
             print("G--{}".format(output))
             self.record.append("G--{}".format(output))
-            bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, guided_message)
+            bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, references)
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
@@ -187,7 +187,7 @@ class DGAttackEval(DGDataset):
             output, time_gap = self.get_prediction(new_text)
             print("G'--{}".format(output))
             self.record.append("G'--{}".format(output))
-            bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, guided_message)
+            bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 adv_pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
@@ -211,7 +211,6 @@ class DGAttackEval(DGDataset):
         # Sample test dataset
         ids = random.sample(range(len(test_dataset)), self.max_num_samples)
         test_dataset = test_dataset.select(ids)
-
         print("Test dataset: ", test_dataset)
         for i, instance in tqdm(enumerate(test_dataset)):
             self.generation_step(instance)
@@ -244,7 +243,7 @@ class DGAttackEval(DGDataset):
         self.record.append("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
 
 
-def main(args):
+def main(args: argparse.Namespace):
     random.seed(args.seed)
     model_name_or_path = args.model_name_or_path
     dataset = args.dataset

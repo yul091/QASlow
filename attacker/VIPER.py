@@ -1,6 +1,6 @@
 import random 
 import numpy as np 
-from typing import List, Optional
+from typing import Optional, Union, List
 import torch
 from .base import SlowAttacker
 from OpenAttack.text_process.tokenizer import Tokenizer
@@ -15,18 +15,19 @@ DEFAULT_CONFIG = {
 
 class VIPERAttacker(SlowAttacker):
 
-    def __init__(self,
-                 device: Optional[torch.device] = None,
-                 tokenizer: Optional[Tokenizer] = None,
-                 model: Optional[torch.nn.Module] = None,
-                 max_len: int = 64,
-                 max_per: int = 3,
-                 prob : float = 0.3,
-                 topn : int = 12,
-                 generations : int = 120,
-                 method: str = "eces",
-                 task: str = "seq2seq"):
-
+    def __init__(
+        self,
+        device: Optional[torch.device] = None,
+        tokenizer: Optional[Tokenizer] = None,
+        model: Optional[torch.nn.Module] = None,
+        max_len: int = 64,
+        max_per: int = 3,
+        prob : float = 0.3,
+        topn : int = 12,
+        generations : int = 120,
+        method: str = "eces",
+        task: str = "seq2seq",
+    ):
         super(VIPERAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
         )
@@ -43,10 +44,17 @@ class VIPERAttacker(SlowAttacker):
         else:
             raise ValueError("Unknown method `%s` expect `%s`" % (method, ["dces", "eces"]))
 
-    def compute_loss(self, text):
+    def compute_loss(self, text: list):
         return
 
-    def mutation(self, context, sentence, grad, goal, modify_pos):
+    def mutation(
+        self, 
+        context: str, 
+        sentence: str, 
+        grad: torch.gradient, 
+        goal: str, 
+        modify_pos: List[int],
+    ):
         new_strings = []
         for _ in range(self.generations):
             out = []

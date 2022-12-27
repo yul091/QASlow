@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from typing import List, Optional
+from typing import Optional, Union, List
 from utils import ENGLISH_FILTER_WORDS
 from .base import SlowAttacker
 from DialogueAPI import dialogue
@@ -10,22 +10,24 @@ from OpenAttack.exceptions import WordNotInDictionaryException
 
 
 class PWWSAttacker(SlowAttacker):
-    def __init__(self, 
-                 device: Optional[torch.device] = None,
-                 tokenizer: Optional[Tokenizer] = None,
-                 model: Optional[torch.nn.Module] = None,
-                 max_len: int = 64,
-                 max_per: int = 3,
-                 task: str = "seq2seq"):
+    def __init__(
+        self, 
+        device: Optional[torch.device] = None,
+        tokenizer: Optional[Tokenizer] = None,
+        model: Optional[torch.nn.Module] = None,
+        max_len: int = 64,
+        max_per: int = 3,
+        task: str = "seq2seq",
+    ):
         super(PWWSAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
         )
         self.unk_token = tokenizer.unk_token
         self.default_tokenizer = PunctTokenizer()
         self.substitute = WordNetSubstitute()
-        self.filter_words = ENGLISH_FILTER_WORDS
+        self.filter_words = set(ENGLISH_FILTER_WORDS)
 
-    def get_target_p(self, scores, pred_len, label):
+    def get_target_p(self, scores: list, pred_len: list, label: list):
         targets = []
         for i, s in enumerate(scores): 
             # if self.pad_token_id != self.eos_token_id:
@@ -36,11 +38,11 @@ class PWWSAttacker(SlowAttacker):
             targets.append(torch.sum(target_p))
         return torch.stack(targets).detach().cpu().numpy()
 
-    def compute_loss(self, text):
+    def compute_loss(self, text: list):
         return 
 
     @torch.no_grad()
-    def get_prediction(self, sentence):
+    def get_prediction(self, sentence: Union[str, list]):
         def remove_pad(s):
             for i, tk in enumerate(s):
                 if tk == self.eos_token_id and i != 0:
@@ -72,7 +74,14 @@ class PWWSAttacker(SlowAttacker):
         return pred_len, seqs, out_scores
 
 
-    def mutation(self, context, sentence, grad, goal, modify_pos):
+    def mutation(
+        self, 
+        context: str, 
+        sentence: str, 
+        grad: torch.gradient, 
+        goal: str, 
+        modify_pos: List[int],
+    ):
         new_strings = []
         x_orig = sentence.lower()
         x_orig = self.default_tokenizer.tokenize(x_orig)
@@ -100,7 +109,7 @@ class PWWSAttacker(SlowAttacker):
         return new_strings
 
 
-    def get_saliency(self, context, sent, goal):
+    def get_saliency(self, context: str, sent: list, goal: str):
         x_hat_raw = []
         for i in range(len(sent)):
             left = sent[:i]
@@ -118,7 +127,14 @@ class PWWSAttacker(SlowAttacker):
         return res[-1] - res[:-1]
         
 
-    def get_wstar(self, context, sent, idx, pos, goal):
+    def get_wstar(
+        self, 
+        context: str, 
+        sent: list, 
+        idx: int, 
+        pos: str, 
+        goal: str,
+    ):
         word = sent[idx]
         try:
             rep_words = list(map(lambda x:x[0], self.substitute(word, pos)))
