@@ -3,10 +3,10 @@ import torch
 import pickle
 import numpy as np
 from .base import SlowAttacker
+from model.scpn import SCPN, ParseNet
 from OpenAttack.text_process.tokenizer import Tokenizer, PunctTokenizer
 from OpenAttack.text_process.constituency_parser import StanfordParser
 from OpenAttack.data_manager import DataManager
-from OpenAttack.attackers.scpn.models import SCPN, ParseNet
 from OpenAttack.attackers.scpn.subword import read_vocabulary, BPE
 
 

@@ -16,7 +16,7 @@ from transformers import (
 from datasets import load_dataset, Dataset
 import evaluate
 from DialogueAPI import dialogue
-from attacker.my_attacker import WordAttacker, StructureAttacker
+from attacker.DGSlow import WordAttacker, StructureAttacker
 from attacker.PWWS import PWWSAttacker
 from attacker.SCPN import SCPNAttacker
 from attacker.VIPER import VIPERAttacker
