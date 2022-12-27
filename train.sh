@@ -23,9 +23,9 @@
 #                            Causal Language Modeling Training
 ##########################################################################################
 
-MODEL_PATH=microsoft/DialoGPT-small # microsoft/DialoGPT-small, gpt2
-OUTPUT_DIR=results/dialogpt # results/dialogpt, results/gpt2
-DATASET=blended_skill_talk # blended_skill_talk, conv_ai_2, empathetic_dialogues, AlekseyKorshuk/persona-chat
+MODEL_PATH=gpt2 # microsoft/DialoGPT-small, gpt2
+OUTPUT_DIR=results/personagpt # results/dialogpt, results/personagpt
+DATASET=AlekseyKorshuk/persona-chat # blended_skill_talk, conv_ai_2, empathetic_dialogues, AlekseyKorshuk/persona-chat
 EPOCHS=50
 
 CUDA_VISIBLE_DEVICES=2 python train_clm.py \

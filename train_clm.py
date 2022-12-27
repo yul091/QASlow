@@ -152,7 +152,7 @@ def main(args):
         eval_dataset = dg.preprocess(eval_dataset)
         print("validation dataset: ", eval_dataset)
 
-    if training_args.do_predict:
+    if training_args.do_predict and 'test' in all_datasets:
         predict_dataset = all_datasets['test']
         if data_args.max_predict_samples is not None:
             predict_dataset = predict_dataset.select(range(data_args.max_predict_samples))
