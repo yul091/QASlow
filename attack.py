@@ -150,21 +150,20 @@ class DGAttackEval(DGDataset):
                 free_message,
                 guided_message,
             ]
+            print("\nDialogue history: {}".format(original_context))
+            print("U--{} \n(Ref: {})".format(free_message, references))
             # Original generation
             if self.task == 'seq2seq':
                 text = original_context + self.tokenizer.eos_token + free_message
             else:
                 text = original_context + '<SEP>' + free_message
-
             output, time_gap = self.get_prediction(text)  
+            print("G--{}".format(output))
             if not output:
                 continue
             bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, references)
-            print("\nDialogue history: {}".format(original_context))
             self.record.append("\nDialogue history: {}".format(original_context))
-            print("U--{} \n(Ref: {})".format(free_message, references))
             self.record.append("U--{} \n(Ref: {})".format(free_message, references))
-            print("G--{}".format(output))
             self.record.append("G--{}".format(output))
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
@@ -276,6 +275,10 @@ def main(args: argparse.Namespace):
     if 'gpt' in model_name_or_path.lower():
         task = 'clm'
         model = AutoModelForCausalLM.from_pretrained(model_name_or_path, config=config)
+        if 'results' not in model_name_or_path.lower():
+            tokenizer.add_special_tokens({'pad_token': '<PAD>'})
+            tokenizer.add_special_tokens({'mask_token': '<MASK>'})
+            model.resize_token_embeddings(len(tokenizer))
     else:
         task = 'seq2seq'
         model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, config=config)
@@ -391,6 +394,8 @@ if __name__ == "__main__":
                             'results/bart', 
                             'results/t5', 
                             'results/dialogpt',
+                            'results/personagpt',
+                            'gpt2',
                         ],
                         help="Path to model")
     parser.add_argument("--dataset", "-d", type=str, 
