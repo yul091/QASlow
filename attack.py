@@ -75,7 +75,7 @@ class DGAttackEval(DGDataset):
         self.ori_rouges, self.adv_rouges = [], []
         self.ori_meteors, self.adv_meteors = [], []
         self.ori_time, self.adv_time = [], []
-        self.use_scores = []
+        self.use_scores, self.cos_sims = [], []
         self.att_success = 0
         self.total_pairs = 0
         self.record = []
@@ -182,13 +182,16 @@ class DGAttackEval(DGDataset):
             success, adv_his = self.attacker.run_attack(text, guided_message)
             new_text = adv_his[-1][0]
             new_free_message = new_text.split(self.sp_token)[1].strip()
-            use_score = self.attacker.encoder.calc_score(new_free_message, free_message)
+            # use_score = self.attacker.encoder.calc_score(new_free_message, free_message)
+            cos_sim = self.attacker.encoder.get_sim(new_free_message, free_message)
             output, time_gap = self.get_prediction(new_text)
             if not output:
                 continue
 
-            print("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
-            self.record.append("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
+            # print("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
+            # self.record.append("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
+            print("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
+            self.record.append("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
             print("G'--{}".format(output))
             self.record.append("G'--{}".format(output))
             bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
@@ -211,7 +214,8 @@ class DGAttackEval(DGDataset):
             self.adv_rouges.append(rouge_res['rougeL'])
             self.adv_meteors.append(meteor_res['meteor'])
             self.adv_time.append(time_gap)
-            self.use_scores.append(use_score)
+            # self.use_scores.append(use_score)
+            self.cos_sims.append(cos_sim)
             self.total_pairs += 1
 
 
@@ -234,7 +238,8 @@ class DGAttackEval(DGDataset):
         Adv_rouge = np.mean(self.adv_rouges)
         Ori_meteor = np.mean(self.ori_meteors)
         Adv_meteor = np.mean(self.adv_meteors)
-        Use_scores = np.mean(self.use_scores)
+        # Use_scores = np.mean(self.use_scores)
+        Cos_sims = np.mean(self.cos_sims)
         Ori_t = np.mean(self.ori_time)
         Adv_t = np.mean(self.adv_time)
 
@@ -245,11 +250,11 @@ class DGAttackEval(DGDataset):
         self.record.append("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
             Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor, 
         ))
-        print("Perturbed [USE: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-            Use_scores, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
+        print("Perturbed [cosine: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Cos_sims, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
         ))
-        self.record.append("Perturbed [USE: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-            Use_scores, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
+        self.record.append("Perturbed [cosine: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Cos_sims, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
         ))
         print("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
         self.record.append("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
@@ -263,6 +268,7 @@ def main(args: argparse.Namespace):
     max_len = args.max_len
     max_per = args.max_per
     num_beams = args.num_beams
+    select_beams = args.select_beams
     num_beam_groups = args.num_beam_groups
     att_method = args.attack_strategy
     out_dir = args.out_dir
@@ -307,6 +313,7 @@ def main(args: argparse.Namespace):
             max_len=max_len,
             max_per=max_per,
             task=task,
+            select_beams=select_beams,
         )
     elif att_method.lower() == 'structure':
         attacker = StructureAttacker(
@@ -316,6 +323,7 @@ def main(args: argparse.Namespace):
             max_len=max_len,
             max_per=max_per,
             task=task,
+            select_beams=select_beams,
         )
     elif att_method.lower() == 'pwws':
         attacker = PWWSAttacker(
@@ -397,7 +405,8 @@ if __name__ == "__main__":
     parser.add_argument("--max_num_samples", type=int, default=3, help="Number of samples to attack")
     parser.add_argument("--max_per", type=int, default=5, help="Number of perturbation iterations per sample")
     parser.add_argument("--max_len", type=int, default=1024, help="Maximum length of generated sequence")
-    parser.add_argument("--num_beams", type=int, default=4, help="Number of beams")
+    parser.add_argument("--num_beams", type=int, default=2, help="Number of beams")
+    parser.add_argument("--select_beams", type=int, default=1, help="Number of sentence beams to keep for each attack iteration")
     parser.add_argument("--num_beam_groups", type=int, default=1, help="Number of beam groups")
     parser.add_argument("--model_name_or_path", "-m", type=str, 
                         default="results/bart", 

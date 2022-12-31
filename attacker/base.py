@@ -13,7 +13,8 @@ from transformers import (
     BertTokenizerFast,
     BartForConditionalGeneration, 
 )
-from OpenAttack.metric import UniversalSentenceEncoder
+from utils import SentenceEncoder
+
 
 class BaseAttacker:
     def __init__(
@@ -40,6 +41,7 @@ class BaseAttacker:
         self.max_per = max_per
         self.task = task
         self.softmax = nn.Softmax(dim=1)
+        self.cos = nn.CosineSimilarity(dim=1, eps=1e-6)
         self.bce_loss = nn.BCELoss()
 
     @classmethod
@@ -158,6 +160,7 @@ class SlowAttacker(BaseAttacker):
         max_len: int = 64,
         max_per: int = 3,
         task: str = 'seq2seq',
+        select_beams: int = 1,
     ):
         super(SlowAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
@@ -166,8 +169,8 @@ class SlowAttacker(BaseAttacker):
             self.sp_token = self.eos_token
         else:
             self.sp_token = '<SEP>'
-        self.encoder = UniversalSentenceEncoder()
-        self.select_beam = 1
+        self.select_beam = select_beams
+        self.encoder = SentenceEncoder(device)
 
     def leave_eos_loss(self, scores: list, pred_len: list):
         loss = []
@@ -203,7 +206,7 @@ class SlowAttacker(BaseAttacker):
         return torch.stack(targets).detach().cpu().numpy()
 
     @torch.no_grad()
-    def select_best(self, new_strings: List[Tuple], batch_size: int = 5):
+    def select_best(self, new_strings: List[Tuple], batch_size: int = 3):
         """
         Select generated strings which induce longest output sentences.
         """
@@ -238,10 +241,10 @@ class SlowAttacker(BaseAttacker):
             lengths = [self.compute_seq_len(seq) for seq in outputs['sequences']]
             pred_len.extend(lengths)
             
-        pred_len = np.array(pred_len)
-        pdb.set_trace()
+        pred_len = torch.tensor(pred_len) # (#new strings, )
         assert len(new_strings) == len(pred_len)
-        return new_strings[pred_len.argmax()], max(pred_len)
+        top_v, top_i = pred_len.topk(min(self.select_beam, len(pred_len)))
+        return [new_strings[i] for i in top_i], top_v
 
     def prepare_attack(self, text: Union[str, List[str]]):
         ori_len = self.get_trans_len(text)[0] # original sentence length
@@ -266,11 +269,10 @@ class SlowAttacker(BaseAttacker):
         ori_context = cur_adv_text.split(self.sp_token)[0].strip()
         adv_his = []
         modify_pos = [] # record already modified positions (avoid repeated perturbation)
-        pbar = tqdm(range(self.max_per))
         t1 = time.time()
 
-        for it in pbar:
-            loss_list = self.compute_loss([cur_adv_text])
+        def get_new_strings(cur_text):
+            loss_list = self.compute_loss([cur_text])
             if loss_list is not None:
                 loss = sum(loss_list)
                 self.model.zero_grad()
@@ -278,26 +280,41 @@ class SlowAttacker(BaseAttacker):
                 grad = self.embedding.grad
             else:
                 grad = None
-
             # Only mutate the part after special token
-            cur_free_text = cur_adv_text.split(self.sp_token)[1].strip()
+            cur_free_text = cur_text.split(self.sp_token)[1].strip()
             new_strings = self.mutation(ori_context, cur_free_text, grad, label, modify_pos)
             # Pad the original context
             new_strings = [
                 (pos, ori_context + self.sp_token + adv_text)
                 for (pos, adv_text) in new_strings
             ]
-            if new_strings:
-                (cur_pos, cur_adv_text), cur_len = self.select_best(new_strings)
-                modify_pos.append(cur_pos)
-                log_str = "%d, %d, %.2f" % (it, len(new_strings), best_len / ori_len)
-                pbar.set_description(log_str)
-                if cur_len > best_len:
-                    best_adv_text = deepcopy(cur_adv_text)
-                    best_len = cur_len
-                t2 = time.time()
-                adv_his.append((best_adv_text, int(best_len), t2 - t1))
+            return new_strings
 
+
+        def get_best_adv(it, cur_sent, start, best_text, best_length, modified_pos, adv_history):
+            if it == self.max_per:
+                return best_text, best_length, adv_history
+            # Get new strings
+            new_strings = get_new_strings(cur_sent)
+            # Select the best strings
+            cur_topk_strings, cur_lens = self.select_best(new_strings, batch_size=3)
+            # print("\n[it {}] \ncur sent: {} \nnew_string: {} \ncur_strings: {}".format(it, cur_sent, new_strings, cur_topk_strings))
+            end = time.time()
+            # Beam search
+            for i in range(len(cur_topk_strings)):
+                cur_pos, cur_text = cur_topk_strings[i]
+                cur_len = cur_lens[i]
+                if cur_pos not in modified_pos:
+                    modified_pos.append(int(cur_pos))
+                if cur_len > best_length:
+                    best_text = str(cur_text)
+                    best_length = int(cur_len)
+                print("[beam it %d][sent %d][len %d] %s" % (it, i, cur_len, cur_text.split(self.sp_token)[1].strip()))
+                adv_history.append((deepcopy(best_text), int(best_length), end - start))
+                best_text, best_length, adv_history = get_best_adv(it + 1, cur_text, end, best_text, best_length, modified_pos, adv_history)
+            return best_text, best_length, adv_history
+
+        get_best_adv(0, cur_adv_text, t1, best_adv_text, best_len, modify_pos, adv_his)
         if adv_his:
             return True, adv_his
         else:

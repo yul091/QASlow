@@ -24,9 +24,10 @@ class WordAttacker(SlowAttacker):
         max_len: int = 64,
         max_per: int = 3,
         task: str = 'seq2seq',
+        select_beams: int = 1,
     ):
         super(WordAttacker, self).__init__(
-            device, tokenizer, model, max_len, max_per, task,
+            device, tokenizer, model, max_len, max_per, task, select_beams,
         )
         self.num_of_perturb = 50
         self.filter_words = set(ENGLISH_FILTER_WORDS)
@@ -92,15 +93,16 @@ class StructureAttacker(SlowAttacker):
         max_len: int = 64,
         max_per: int = 3,
         task: str = 'seq2seq',
+        select_beams: int = 1,
     ):
         super(StructureAttacker, self).__init__(
-            device, tokenizer, model, max_len, max_per, task,
+            device, tokenizer, model, max_len, max_per, task, select_beams,
         )
         self.filter_words = set(ENGLISH_FILTER_WORDS)
         # BERT initialization
-        self.berttokenizer = AutoTokenizer.from_pretrained('bert-large-uncased')
+        self.berttokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
         self.mask_token = self.berttokenizer.mask_token
-        bertmodel = AutoModelForMaskedLM.from_pretrained('bert-large-uncased')
+        bertmodel = AutoModelForMaskedLM.from_pretrained('bert-base-uncased')
         self.bertmodel = bertmodel.eval().to(self.device)
         self.num_of_perturb = 50
         self.grammar = GrammarChecker()

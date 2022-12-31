@@ -11,9 +11,8 @@ from transformers import (
     BartForConditionalGeneration,
 )
 from .base import SlowAttacker
-from utils import ENGLISH_FILTER_WORDS
+from utils import ENGLISH_FILTER_WORDS, USE
 from OpenAttack.data_manager import DataManager
-
 
 
 class Feature(object):
@@ -47,9 +46,9 @@ class BAEAttacker(SlowAttacker):
         )
         mlm_path = "bert-base-uncased"
         self.k = 50 # number of candidates
+        self.use = USE()
         self.filter_words = set(ENGLISH_FILTER_WORDS)
         self.tokenizer_mlm = BertTokenizerFast.from_pretrained(mlm_path, do_lower_case=True)
-        self.device = device
         config_atk = BertConfig.from_pretrained(mlm_path)
         self.mlm_model = BertForMaskedLM.from_pretrained(mlm_path, config=config_atk).to(self.device)
         self.threshold_pred_score = threshold_pred_score # Threshold used in substitute module.
@@ -259,7 +258,8 @@ class BAEAttacker(SlowAttacker):
                    raise NotImplementedError
 
                 temp_text = self.tokenizer_mlm.convert_tokens_to_string(temp_replace)
-                use_score = self.encoder.calc_score(temp_text, x_orig)
+                # use_score = self.encoder.calc_score(temp_text, x_orig)
+                use_score = self.use.count_use(temp_text, x_orig)
                 # From TextAttack's implementation: 
                 # Finally, since the BAE code is based on the TextFooler code, we need to adjust 
                 # the threshold to account for the missing / pi in the cosine similarity comparison. 
