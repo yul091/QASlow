@@ -1,6 +1,7 @@
 import sys
 sys.dont_write_bytecode = True
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # avoid tensorflow warnings
 import time
 import argparse
 import random
@@ -20,6 +21,7 @@ from attacker.DGSlow import WordAttacker, StructureAttacker
 from attacker.PWWS import PWWSAttacker
 from attacker.SCPN import SCPNAttacker
 from attacker.VIPER import VIPERAttacker
+from attacker.BAE import BAEAttacker
 from DG_dataset import DGDataset
 
 DATA2NAME = {
@@ -58,6 +60,7 @@ class DGAttackEval(DGDataset):
         self.model = model
         self.attacker = attacker
         self.device = device
+        self.sp_token = attacker.sp_token
 
         self.num_beams = args.num_beams 
         self.num_beam_groups = args.num_beam_groups
@@ -72,6 +75,7 @@ class DGAttackEval(DGDataset):
         self.ori_rouges, self.adv_rouges = [], []
         self.ori_meteors, self.adv_meteors = [], []
         self.ori_time, self.adv_time = [], []
+        self.use_scores = []
         self.att_success = 0
         self.total_pairs = 0
         self.record = []
@@ -151,13 +155,10 @@ class DGAttackEval(DGDataset):
                 guided_message,
             ]
             print("\nDialogue history: {}".format(original_context))
-            print("U--{} \n(Ref: {})".format(free_message, references))
+            print("U--{} \n(Ref: ['{}', ...])".format(free_message, references[-1]))
             # Original generation
-            if self.task == 'seq2seq':
-                text = original_context + self.tokenizer.eos_token + free_message
-            else:
-                text = original_context + '<SEP>' + free_message
-            output, time_gap = self.get_prediction(text)  
+            text = original_context + self.sp_token + free_message
+            output, time_gap = self.get_prediction(text)
             print("G--{}".format(output))
             if not output:
                 continue
@@ -180,25 +181,25 @@ class DGAttackEval(DGDataset):
             # Attack
             success, adv_his = self.attacker.run_attack(text, guided_message)
             new_text = adv_his[-1][0]
-            if self.task == 'seq2seq':
-                new_free_message = new_text.split(self.tokenizer.eos_token)[1].strip()
-            else:
-                new_free_message = new_text.split('<SEP>')[1].strip()
-
+            new_free_message = new_text.split(self.sp_token)[1].strip()
+            use_score = self.attacker.encoder.calc_score(new_free_message, free_message)
             output, time_gap = self.get_prediction(new_text)
             if not output:
                 continue
 
+            print("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
+            self.record.append("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
+            print("G'--{}".format(output))
+            self.record.append("G'--{}".format(output))
+            bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
+            # ASR
+            success = (new_free_message != free_message and adv_pred_len > pred_len)
             if success:
-                print("U'--{}".format(new_free_message))
-                self.record.append("U'--{}".format(new_free_message))
+                self.att_success += 1
             else:
                 print("Attack failed!")
                 self.record.append("Attack failed!")
 
-            print("G'--{}".format(output))
-            self.record.append("G'--{}".format(output))
-            bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
             print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 adv_pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
@@ -210,8 +211,7 @@ class DGAttackEval(DGDataset):
             self.adv_rouges.append(rouge_res['rougeL'])
             self.adv_meteors.append(meteor_res['meteor'])
             self.adv_time.append(time_gap)
-            # ASR
-            self.att_success += int(adv_pred_len > pred_len)
+            self.use_scores.append(use_score)
             self.total_pairs += 1
 
 
@@ -234,6 +234,7 @@ class DGAttackEval(DGDataset):
         Adv_rouge = np.mean(self.adv_rouges)
         Ori_meteor = np.mean(self.ori_meteors)
         Adv_meteor = np.mean(self.adv_meteors)
+        Use_scores = np.mean(self.use_scores)
         Ori_t = np.mean(self.ori_time)
         Adv_t = np.mean(self.adv_time)
 
@@ -244,11 +245,11 @@ class DGAttackEval(DGDataset):
         self.record.append("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
             Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor, 
         ))
-        print("Perturbed output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-            Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
+        print("Perturbed [USE: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Use_scores, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
         ))
-        self.record.append("Perturbed output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-            Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
+        self.record.append("Perturbed [USE: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+            Use_scores, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
         ))
         print("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
         self.record.append("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
@@ -342,6 +343,15 @@ def main(args: argparse.Namespace):
             max_per=max_per,
             task=task,
         )
+    elif att_method.lower() == 'bae':
+        attacker = BAEAttacker(
+            device=device,
+            tokenizer=tokenizer,
+            model=model,
+            max_len=max_len,
+            max_per=max_per,
+            task=task,
+        )
     else:
         raise ValueError("Invalid attack strategy!")
 
@@ -419,6 +429,7 @@ if __name__ == "__main__":
                             'pwws', 
                             'scpn', 
                             'viper',
+                            'bae',
                         ], 
                         help="Attack strategy")
     args = parser.parse_args()

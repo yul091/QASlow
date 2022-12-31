@@ -10,7 +10,7 @@ from transformers import (
 import stanza
 from typing import Union, List
 from nltk.corpus import wordnet as wn
-from utils import GrammarChecker, ENGLISH_FILTER_WORDS
+from utils import GrammarChecker, ENGLISH_FILTER_WORDS, DEFAULT_TEMPLATES
 from .base import SlowAttacker
 
 
@@ -106,6 +106,7 @@ class StructureAttacker(SlowAttacker):
         self.grammar = GrammarChecker()
         self.pos_dict = {'NOUN': 'n', 'VERB': 'v', 'ADV': 'r', 'ADJ': 'a'}
         self.pos_processor = stanza.Pipeline('en', processors='tokenize, mwt, pos, lemma')
+        self.templates = DEFAULT_TEMPLATES
         # self.skip_pos_tags = ['DT', 'PDT', 'POS', 'PRP', 'PRP$', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'NNP']
 
     def get_pos(self, sentence: str, mask_index: int):
@@ -239,8 +240,9 @@ class StructureAttacker(SlowAttacker):
                 new_sentence = self.tokenizer.convert_tokens_to_string(cur_tokens)
                 # print("new sentence: ", new_sentence)
                 new_error = self.grammar.check(new_sentence)
-                if new_error <= cur_error:
-                    new_sentences.append((masked_index, new_sentence))
+                if new_error > cur_error:
+                    continue
+                new_sentences.append((masked_index, new_sentence))
 
         cur_tokens[masked_index] = cur_tok
         return new_sentences

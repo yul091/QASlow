@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import time
-import pdb
 import numpy as np
 from tqdm import tqdm
 from copy import deepcopy
@@ -13,6 +12,7 @@ from transformers import (
     BertTokenizerFast,
     BartForConditionalGeneration, 
 )
+from OpenAttack.metric import UniversalSentenceEncoder
 
 class BaseAttacker:
     def __init__(
@@ -161,6 +161,11 @@ class SlowAttacker(BaseAttacker):
         super(SlowAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
         )
+        if self.task == 'seq2seq':
+            self.sp_token = self.eos_token
+        else:
+            self.sp_token = '<SEP>'
+        self.encoder = UniversalSentenceEncoder()
 
     def leave_eos_loss(self, scores: list, pred_len: list):
         loss = []
@@ -184,8 +189,19 @@ class SlowAttacker(BaseAttacker):
             loss.append(self.bce_loss(pred, torch.zeros_like(pred)))
         return loss
 
+    def get_target_p(self, scores: list, pred_len: list, label: list):
+        targets = []
+        for i, s in enumerate(scores): 
+            # if self.pad_token_id != self.eos_token_id:
+            s[:, self.pad_token_id] = 1e-12
+            softmax_v = self.softmax(s) # T X V
+            target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(label[:softmax_v.size(0)])])
+            target_p = target_p[:pred_len[i]]
+            targets.append(torch.sum(target_p))
+        return torch.stack(targets).detach().cpu().numpy()
+
     @torch.no_grad()
-    def select_best(self, new_strings: List[Tuple], batch_size: int = 10):
+    def select_best(self, new_strings: List[Tuple], batch_size: int = 5):
         """
         Select generated strings which induce longest output sentences.
         """
@@ -244,11 +260,7 @@ class SlowAttacker(BaseAttacker):
         """
         torch.autograd.set_detect_anomaly(True)
         ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len) = self.prepare_attack(text)
-        if self.task == 'seq2seq':
-            sp_tok = self.eos_token
-        else:
-            sp_tok = '<SEP>'
-        ori_context = cur_adv_text.split(sp_tok)[0].strip()
+        ori_context = cur_adv_text.split(self.sp_token)[0].strip()
         adv_his = []
         modify_pos = [] # record already modified positions (avoid repeated perturbation)
         pbar = tqdm(range(self.max_per))
@@ -265,11 +277,11 @@ class SlowAttacker(BaseAttacker):
                 grad = None
 
             # Only mutate the part after special token
-            cur_free_text = cur_adv_text.split(sp_tok)[1].strip()
+            cur_free_text = cur_adv_text.split(self.sp_token)[1].strip()
             new_strings = self.mutation(ori_context, cur_free_text, grad, label, modify_pos)
             # Pad the original context
             new_strings = [
-                (pos, ori_context + sp_tok + adv_text)
+                (pos, ori_context + self.sp_token + adv_text)
                 for (pos, adv_text) in new_strings
             ]
             if new_strings:

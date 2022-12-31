@@ -27,52 +27,12 @@ class PWWSAttacker(SlowAttacker):
         self.substitute = WordNetSubstitute()
         self.filter_words = set(ENGLISH_FILTER_WORDS)
 
-    def get_target_p(self, scores: list, pred_len: list, label: list):
-        targets = []
-        for i, s in enumerate(scores): 
-            # if self.pad_token_id != self.eos_token_id:
-            s[:, self.pad_token_id] = 1e-12
-            softmax_v = self.softmax(s) # T X V
-            target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(label[:softmax_v.size(0)])])
-            target_p = target_p[:pred_len[i]]
-            targets.append(torch.sum(target_p))
-        return torch.stack(targets).detach().cpu().numpy()
-
     def compute_loss(self, text: list):
         return 
 
-    @torch.no_grad()
-    def get_prediction(self, sentence: Union[str, list]):
-        def remove_pad(s):
-            for i, tk in enumerate(s):
-                if tk == self.eos_token_id and i != 0:
-                    return s[:i + 1]
-            return s
-
-        inputs = self.tokenizer(
-            sentence, 
-            return_tensors="pt", 
-            padding=True, 
-            truncation=True, 
-            max_length=self.max_len,
-        )
-        input_ids = inputs['input_ids'].to(self.device)
-        # ['sequences', 'sequences_scores', 'scores', 'beam_indices']
-        outputs = dialogue(
-            self.model, 
-            input_ids,
-            early_stopping=False, 
-            num_beams=self.num_beams,
-            num_beam_groups=self.num_beam_groups, 
-            use_cache=True,
-            max_length=self.max_len,
-        )
-        seqs = outputs['sequences']
-        seqs = [remove_pad(seq) for seq in seqs]
-        out_scores = outputs['scores']
-        pred_len = [self.compute_seq_len(seq) for seq in seqs]
-        return pred_len, seqs, out_scores
-
+    @ torch.no_grad()
+    def get_prediction(self, sentence: Union[str, List[str]]):
+        return super().get_prediction(sentence)
 
     def mutation(
         self, 
@@ -115,10 +75,10 @@ class PWWSAttacker(SlowAttacker):
             left = sent[:i]
             right = sent[i + 1:]
             x_i_hat = left + [self.unk_token] + right
-            x_i_hat = context + ' ' + self.eos_token + ' ' + self.default_tokenizer.detokenize(x_i_hat)
+            x_i_hat = context + self.sp_token + self.default_tokenizer.detokenize(x_i_hat)
             x_hat_raw.append(x_i_hat)
         
-        x_orig = context + ' ' + self.eos_token + ' ' + self.default_tokenizer.detokenize(sent)
+        x_orig = context + self.sp_token + self.default_tokenizer.detokenize(sent)
         x_hat_raw.append(x_orig)
         scores, seqs, pred_len = self.compute_score(x_hat_raw, batch_size=5) # list N of [T X V], [T], [1]
         label = self.tokenizer(goal, truncation=True, max_length=self.max_len, return_tensors='pt')
@@ -146,9 +106,9 @@ class PWWSAttacker(SlowAttacker):
         sents = []
         for rw in rep_words:
             new_sent = sent[:idx] + [rw] + sent[idx + 1:]
-            new_sent = context + ' ' + self.eos_token + ' ' + self.default_tokenizer.detokenize(new_sent)
+            new_sent = context + self.sp_token + self.default_tokenizer.detokenize(new_sent)
             sents.append(new_sent)
-        orig_sent = context + ' ' + self.eos_token + ' ' + self.default_tokenizer.detokenize(sent)
+        orig_sent = context + self.sp_token + self.default_tokenizer.detokenize(sent)
         sents.append(orig_sent)
         scores, seqs, pred_len = self.compute_score(sents, batch_size=5) # list of [T X V], [T], [1]
         label = self.tokenizer(goal, truncation=True, max_length=self.max_len, return_tensors='pt')

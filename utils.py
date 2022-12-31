@@ -34,6 +34,20 @@ ENGLISH_FILTER_WORDS = [
     'your', 'yours', 'yourself', 'yourselves', 'have', 'be'
 ]
 
+DEFAULT_TEMPLATES = [
+    '( ROOT ( S ( NP ) ( VP ) ( . ) ) ) EOP',
+    '( ROOT ( S ( VP ) ( . ) ) ) EOP',
+    '( ROOT ( NP ( NP ) ( . ) ) ) EOP',
+    '( ROOT ( FRAG ( SBAR ) ( . ) ) ) EOP',
+    '( ROOT ( S ( S ) ( , ) ( CC ) ( S ) ( . ) ) ) EOP',
+    '( ROOT ( S ( LST ) ( VP ) ( . ) ) ) EOP',
+    '( ROOT ( SBARQ ( WHADVP ) ( SQ ) ( . ) ) ) EOP',
+    '( ROOT ( S ( PP ) ( , ) ( NP ) ( VP ) ( . ) ) ) EOP',
+    '( ROOT ( S ( ADVP ) ( NP ) ( VP ) ( . ) ) ) EOP',
+    '( ROOT ( S ( SBAR ) ( , ) ( NP ) ( VP ) ( . ) ) ) EOP'
+]
+
+
 
 
 class Substitute(metaclass=abc.ABCMeta):

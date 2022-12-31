@@ -3,6 +3,7 @@ import torch
 import pickle
 import numpy as np
 from .base import SlowAttacker
+from utils import DEFAULT_TEMPLATES
 from model.scpn import SCPN, ParseNet
 from OpenAttack.text_process.tokenizer import Tokenizer, PunctTokenizer
 from OpenAttack.text_process.constituency_parser import StanfordParser
@@ -10,18 +11,6 @@ from OpenAttack.data_manager import DataManager
 from OpenAttack.attackers.scpn.subword import read_vocabulary, BPE
 
 
-DEFAULT_TEMPLATES = [
-    '( ROOT ( S ( NP ) ( VP ) ( . ) ) ) EOP',
-    '( ROOT ( S ( VP ) ( . ) ) ) EOP',
-    '( ROOT ( NP ( NP ) ( . ) ) ) EOP',
-    '( ROOT ( FRAG ( SBAR ) ( . ) ) ) EOP',
-    '( ROOT ( S ( S ) ( , ) ( CC ) ( S ) ( . ) ) ) EOP',
-    '( ROOT ( S ( LST ) ( VP ) ( . ) ) ) EOP',
-    '( ROOT ( SBARQ ( WHADVP ) ( SQ ) ( . ) ) ) EOP',
-    '( ROOT ( S ( PP ) ( , ) ( NP ) ( VP ) ( . ) ) ) EOP',
-    '( ROOT ( S ( ADVP ) ( NP ) ( VP ) ( . ) ) ) EOP',
-    '( ROOT ( S ( SBAR ) ( , ) ( NP ) ( VP ) ( . ) ) ) EOP'
-]
 
 def reverse_bpe(sent):
     x = []
