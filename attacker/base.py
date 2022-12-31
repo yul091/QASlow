@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import time
+import pdb
 import numpy as np
 from tqdm import tqdm
 from copy import deepcopy
@@ -166,6 +167,7 @@ class SlowAttacker(BaseAttacker):
         else:
             self.sp_token = '<SEP>'
         self.encoder = UniversalSentenceEncoder()
+        self.select_beam = 1
 
     def leave_eos_loss(self, scores: list, pred_len: list):
         loss = []
@@ -237,6 +239,7 @@ class SlowAttacker(BaseAttacker):
             pred_len.extend(lengths)
             
         pred_len = np.array(pred_len)
+        pdb.set_trace()
         assert len(new_strings) == len(pred_len)
         return new_strings[pred_len.argmax()], max(pred_len)
 

@@ -271,6 +271,7 @@ def main(args: argparse.Namespace):
         os.makedirs(out_dir)
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+    # device = torch.device('cpu')
     config = AutoConfig.from_pretrained(model_name_or_path, num_beams=num_beams, num_beam_groups=num_beam_groups)
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     if 'gpt' in model_name_or_path.lower():
