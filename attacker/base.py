@@ -41,8 +41,8 @@ class BaseAttacker:
         self.max_per = max_per
         self.task = task
         self.softmax = nn.Softmax(dim=1)
-        self.cos = nn.CosineSimilarity(dim=1, eps=1e-6)
         self.bce_loss = nn.BCELoss()
+        self.ce_loss = nn.CrossEntropyLoss()
 
     @classmethod
     def _get_hparam(cls, namespace: Namespace, key: str, default=None):
@@ -54,7 +54,7 @@ class BaseAttacker:
     def run_attack(self, text: str):
         pass
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         pass
 
     def compute_seq_len(self, seq: torch.Tensor):
@@ -105,6 +105,25 @@ class BaseAttacker:
         # pdb.set_trace()
         return pred_len, seqs, out_scores
 
+    def get_ce_loss(self, sentence: Union[List[str], str], labels: Union[List[str], str]):
+        inputs = self.tokenizer(
+            sentence,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=self.max_len,
+        ).to(self.device)
+        labels = self.tokenizer(
+            labels,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=self.max_len,
+        ).to(self.device)
+        outputs = self.model(**inputs, labels=labels['input_ids'])
+        return outputs.loss
+
+
     def get_trans_string_len(self, text: Union[str, List[str]]):
         pred_len, seqs, _ = self.get_prediction(text)
         return seqs[0], pred_len[0]
@@ -118,7 +137,7 @@ class BaseAttacker:
         out_res = [self.tokenizer.decode(seq, skip_special_tokens=True) for seq in seqs]
         return out_res, pred_len
 
-    def compute_batch_score(self, text: Union[str, List[str]]):
+    def compute_batch_score(self, text: List[str]):
         batch_size = len(text)
         index_list = [i * self.num_beams for i in range(batch_size + 1)]
         pred_len, seqs, out_scores = self.get_prediction(text)
@@ -161,6 +180,8 @@ class SlowAttacker(BaseAttacker):
         max_per: int = 3,
         task: str = 'seq2seq',
         select_beams: int = 1,
+        eos_weight: float = 0.5,
+        ce_weight: float = 0.5,
     ):
         super(SlowAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
@@ -170,6 +191,8 @@ class SlowAttacker(BaseAttacker):
         else:
             self.sp_token = '<SEP>'
         self.select_beam = select_beams
+        self.eos_weight = eos_weight
+        self.ce_weight = ce_weight
         self.encoder = SentenceEncoder(device)
 
     def leave_eos_loss(self, scores: list, pred_len: list):
@@ -252,11 +275,34 @@ class SlowAttacker(BaseAttacker):
         cur_adv_text, cur_len = deepcopy(text), ori_len  # current_adv_text: List[str]
         return ori_len, (best_adv_text, best_len), (cur_adv_text, cur_len)
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         raise NotImplementedError
 
     def mutation(self, cur_adv_text: str, grad: torch.gradient, modified_pos: List[int]):
         raise NotImplementedError
+
+    def pareto_step(self, weights_list: np.ndarray, out_gradients_list: np.ndarray):
+        model_gradients = out_gradients_list
+        M1 = np.matmul(model_gradients,np.transpose(model_gradients))
+        e = np.mat(np.ones(np.shape(weights_list)))
+        M = np.hstack((M1,np.transpose(e)))
+        mid = np.hstack((e,np.mat(np.zeros((1,1)))))
+        M = np.vstack((M,mid))
+        z = np.mat(np.zeros(np.shape(weights_list)))
+        nid = np.hstack((z,np.mat(np.ones((1,1)))))
+        w = np.matmul(np.matmul(M,np.linalg.inv(np.matmul(M,np.transpose(M)))),np.transpose(nid))
+        if len(w) > 1:
+            w = np.transpose(w)
+            w = w[0,0:np.shape(w)[1]]
+            mid = np.where(w > 0, 1.0, 0)
+            nid = np.multiply(mid, w)
+            uid = sorted(nid[0].tolist()[0], reverse=True)
+            sv = np.cumsum(uid)
+            rho = np.where(uid > (sv - 1.0) / range(1, len(uid)+1), 1.0, 0.0)
+            r = max(np.argwhere(rho))
+            theta = max(0, (sv[r] - 1.0) / (r+1))
+            w = np.where(nid - theta>0.0, nid - theta, 0)
+        return w
 
     def run_attack(self, text: str, label: str):
         """
@@ -272,14 +318,32 @@ class SlowAttacker(BaseAttacker):
         t1 = time.time()
 
         def get_new_strings(cur_text):
-            loss_list = self.compute_loss([cur_text])
+            loss_list, ce_loss = self.compute_loss([cur_text], [label])
             if loss_list is not None:
                 loss = sum(loss_list)
                 self.model.zero_grad()
                 loss.backward()
-                grad = self.embedding.grad
+                grad2 = self.embedding.grad
             else:
-                grad = None
+                grad2 = None
+            if ce_loss is not None:
+                self.model.zero_grad()
+                ce_loss.backward()
+                grad1 = self.embedding.grad
+            else:
+                grad1 = None
+
+            if (grad1 is not None) and (grad2 is not None):
+                weights = np.mat([self.ce_weight, self.eos_weight])
+                grad_paras_tensor = torch.stack((grad1, grad2), dim=0)
+                grad_paras = grad_paras_tensor.detach().cpu().numpy()
+                grad = self.pareto_step(weights, grad_paras)
+                grad = torch.from_numpy(grad).to(self.device)
+            elif grad1 is not None:
+                grad = grad1
+            else:
+                grad = grad2
+            
             # Only mutate the part after special token
             cur_free_text = cur_text.split(self.sp_token)[1].strip()
             new_strings = self.mutation(ori_context, cur_free_text, grad, label, modify_pos)

@@ -33,7 +33,7 @@ class WordAttacker(SlowAttacker):
         self.filter_words = set(ENGLISH_FILTER_WORDS)
 
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         scores, seqs, pred_len = self.compute_score(text) # list of [T X V], [T], [1]
         loss_list = self.leave_eos_target_loss(scores, seqs, pred_len)
         # loss_list = self.leave_eos_loss(scores, pred_len)
@@ -155,11 +155,12 @@ class StructureAttacker(SlowAttacker):
         string = self.berttokenizer.convert_tokens_to_string(tokens)
         return string
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         scores, seqs, pred_len = self.compute_score(text)
         loss_list = self.leave_eos_target_loss(scores, seqs, pred_len)
         # loss_list = self.leave_eos_loss(scores, pred_len)
-        return loss_list
+        ce_loss = self.get_ce_loss(text, labels)
+        return (loss_list, ce_loss)
 
     def get_token_type(self, input_tensor: torch.Tensor):
         # tokens = self.tree_tokenizer.tokenize(sent)

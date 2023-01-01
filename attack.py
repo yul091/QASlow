@@ -28,7 +28,7 @@ DATA2NAME = {
     "blended_skill_talk": "BST",
     "conv_ai_2": "ConvAI2",
     "empathetic_dialogues": "ED",
-    "AlekseyKorshuk/persona-chat": "PersonaChat",
+    "AlekseyKorshuk/persona-chat": "PC",
 }
 
 class DGAttackEval(DGDataset):
@@ -386,7 +386,7 @@ def main(args: argparse.Namespace):
     # Save generation files
     model_n = model_name_or_path.split("/")[-1]
     dataset_n = DATA2NAME.get(dataset, dataset.split("/")[-1])
-    with open(f"{out_dir}/{att_method}_{max_per}_{model_n}_{dataset_n}_{max_num_samples}.txt", "w") as f:
+    with open(f"{out_dir}/{att_method}_{max_per}_{select_beams}_{model_n}_{dataset_n}_{max_num_samples}.txt", "w") as f:
         for line in dg.record:
             f.write(str(line) + "\n")
     f.close()
