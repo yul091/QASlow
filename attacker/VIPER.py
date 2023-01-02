@@ -44,7 +44,7 @@ class VIPERAttacker(SlowAttacker):
         else:
             raise ValueError("Unknown method `%s` expect `%s`" % (method, ["dces", "eces"]))
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         return
 
     def mutation(

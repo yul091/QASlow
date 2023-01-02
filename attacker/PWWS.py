@@ -3,7 +3,11 @@ import numpy as np
 from typing import Optional, Union, List
 from utils import ENGLISH_FILTER_WORDS
 from .base import SlowAttacker
-from DialogueAPI import dialogue
+from transformers import (
+    BertTokenizerFast, 
+    BertForMaskedLM,
+    BartForConditionalGeneration,
+)
 from OpenAttack.text_process.tokenizer import Tokenizer, PunctTokenizer
 from OpenAttack.attack_assist.substitute.word import WordNetSubstitute
 from OpenAttack.exceptions import WordNotInDictionaryException
@@ -13,8 +17,8 @@ class PWWSAttacker(SlowAttacker):
     def __init__(
         self, 
         device: Optional[torch.device] = None,
-        tokenizer: Optional[Tokenizer] = None,
-        model: Optional[torch.nn.Module] = None,
+        tokenizer: Union[Tokenizer, BertTokenizerFast] = None,
+        model: Union[BertForMaskedLM, BartForConditionalGeneration] = None,
         max_len: int = 64,
         max_per: int = 3,
         task: str = "seq2seq",
@@ -27,7 +31,7 @@ class PWWSAttacker(SlowAttacker):
         self.substitute = WordNetSubstitute()
         self.filter_words = set(ENGLISH_FILTER_WORDS)
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         return 
 
     @ torch.no_grad()

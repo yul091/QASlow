@@ -68,7 +68,7 @@ class BAEAttacker(SlowAttacker):
         else:
             raise NotImplementedError()
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         return 
 
     def _tokenize(self, seq: str):

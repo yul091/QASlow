@@ -132,7 +132,7 @@ class SCPNAttacker(SlowAttacker):
             ret.append(reverse_bpe(gen_sent.split()))
         return ret
 
-    def compute_loss(self, text: list):
+    def compute_loss(self, text: list, labels: list):
         return 
     
     def mutation(

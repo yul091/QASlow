@@ -363,8 +363,11 @@ class SlowAttacker(BaseAttacker):
             elif grad1 is not None:
                 grad = grad1
                 new_w1, new_w2 = w1, w2
-            else:
+            elif grad2 is not None:
                 grad = grad2
+                new_w1, new_w2 = w1, w2
+            else:
+                grad = None
                 new_w1, new_w2 = w1, w2
             
             # Only mutate the part after special token
