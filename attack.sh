@@ -1,6 +1,6 @@
-ATT_METHOD=structure # word, structure, pwws, scpn, viper, bae
+ATT_METHOD=fd # word, structure, pwws, scpn, viper, bae, fd
 MAX_PER=3
-MODEL_PATH=/nfs/intern_data/yufli/results/bart # results/bart, results/t5, results/dialogpt, results/personagpt, gpt2
+MODEL_PATH=results/bart # results/bart, results/t5, results/dialogpt, results/personagpt, gpt2
 DATASET=AlekseyKorshuk/persona-chat # blended_skill_talk, conv_ai_2, empathetic_dialogues, AlekseyKorshuk/persona-chat
 FITNESS=length # performance, length
 NUM_SAMPLES=5
@@ -16,6 +16,6 @@ CUDA_VISIBLE_DEVICES=0 python attack.py \
 --max_num_samples $NUM_SAMPLES \
 --max_len $MAX_LENGTH \
 --select_beams $SELECT_BEAMS \
---out_dir logging \
+--out_dir results/logging \
 --fitness $FITNESS \
 --use_combined_loss

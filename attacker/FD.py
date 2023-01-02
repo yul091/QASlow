@@ -1,13 +1,14 @@
-from typing import Optional, List, Union
+
 import numpy as np
+from typing import Optional, List, Union
 import torch
 from transformers import (
     BertTokenizerFast, 
     BertForMaskedLM,
     BartForConditionalGeneration,
 )
-from utils import ENGLISH_FILTER_WORDS
 from .base import SlowAttacker
+from utils import ENGLISH_FILTER_WORDS
 from OpenAttack.text_process.tokenizer import Tokenizer, PunctTokenizer
 from OpenAttack.attack_assist.substitute.word import WordNetSubstitute
 from OpenAttack.exceptions import WordNotInDictionaryException
@@ -33,7 +34,8 @@ class FDAttacker(SlowAttacker):
         
         
     def compute_loss(self, text: list, labels: list):
-        return 
+        cls_loss = self.get_cls_loss(text, labels)
+        return (None, cls_loss)
     
     
     def mutation(
@@ -45,51 +47,47 @@ class FDAttacker(SlowAttacker):
         modify_pos: List[int],
     ):
         new_strings = []
-        x_orig = x_orig.lower()
+        x_orig = sentence.lower()
         sent = self.default_tokenizer.tokenize(x_orig, pos_tagging=False)
-        curr_sent = context + self.sp_token + x_orig
-        scores, seqs, pred_len = self.compute_score([curr_sent]) # list N of [T X V], [T], [1]
         
-        iter_cnt = 0
-        while True:
-            idx = np.random.choice(len(sent)) # randomly choose a word
-            iter_cnt += 1
-            if iter_cnt > 5 * len(sent): # failed to find a substitute word
-                return None
-            if sent[idx] in self.filter_words:
-                continue
-            try: # find a substitute word
-                reps = list(map(lambda x:x[0], self.substitute(sent[idx], None)))
-            except WordNotInDictionaryException:
-                continue
-            reps = list(filter(lambda x: x in victim_embedding.word2id, reps))
-            if len(reps) > 0:
-                break
+        for i in range(50):
+            iter_cnt = 0
+            while True:
+                idx = np.random.choice(len(sent)) # randomly choose a word
+                iter_cnt += 1
+                if iter_cnt > 5 * len(sent): # failed to find a substitute word
+                    return []
+                if sent[idx] in self.filter_words:
+                    continue
+                try: # find a substitute word
+                    reps = list(map(lambda x:x[0], self.substitute(sent[idx], None)))
+                except WordNotInDictionaryException:
+                    continue
+                reps = list(filter(lambda x: self.tokenizer.convert_tokens_to_ids(x) != self.unk_token, reps))
+                if len(reps) > 0:
+                    break
             
-        prob, grad = victim.get_grad([sent], [goal.target])
-        grad = grad[0]
-        prob = prob[0]
-        if grad.shape[0] != len(sent) or grad.shape[1] != victim_embedding.embedding.shape[1]:
-            raise RuntimeError("Sent %d != Gradient %d" % (len(sent), grad.shape[0]))
-        s1 = np.sign(grad[idx])
-        
-        mn = None
-        mnwd = None
-        
-        for word in reps:
-            s0 = np.sign(victim_embedding.transform(word, self.token_unk) - victim_embedding.transform(sent[idx], self.token_unk))
-            v = np.abs(s0 - s1).sum()
-            if goal.targeted:
-                v = -v
+            orig_id = self.tokenizer.convert_tokens_to_ids(sent[idx])
+            gradient = grad.detach().cpu().numpy()
+            # embedding = self.embedding.detach().cpu().numpy()
+            s1 = np.sign(gradient[orig_id]) # (E, )
+            mn = None
+            mnwd = None
             
-            if (mn is None) or v < mn:
-                mn = v
-                mnwd = word
+            for word in reps:
+                word_id = self.tokenizer.convert_tokens_to_ids(word)
+                # s0 = np.sign(embedding[word_id] - embedding[orig_id]) # (E, )
+                s0 = np.sign(gradient[word_id] - gradient[orig_id]) # (E, )
+                v = np.abs(s0 - s1).sum()
+                
+                if (mn is None) or v < mn:
+                    mn = v
+                    mnwd = word
 
-        if mnwd is None:
-            return None
-        sent[idx] = mnwd
-        
+            if mnwd is not None:
+                sent[idx] = mnwd
+                curr_sent = self.default_tokenizer.detokenize(sent)
+                new_strings.append((idx, curr_sent))
         
         return new_strings
     

@@ -164,8 +164,8 @@ class StructureAttacker(SlowAttacker):
         scores, seqs, pred_len = self.compute_score(text)
         loss_list = self.leave_eos_target_loss(scores, seqs, pred_len)
         # loss_list = self.leave_eos_loss(scores, pred_len)
-        ce_loss = self.get_ce_loss(text, labels)
-        return (loss_list, ce_loss)
+        cls_loss = self.get_cls_loss(text, labels)
+        return (loss_list, cls_loss)
 
     def get_token_type(self, input_tensor: torch.Tensor):
         # tokens = self.tree_tokenizer.tokenize(sent)

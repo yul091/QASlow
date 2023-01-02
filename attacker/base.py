@@ -104,7 +104,7 @@ class BaseAttacker:
         # pdb.set_trace()
         return pred_len, seqs, out_scores
 
-    def get_ce_loss(self, sentence: Union[List[str], str], labels: Union[List[str], str]):
+    def get_cls_loss(self, sentence: Union[List[str], str], labels: Union[List[str], str]):
         inputs = self.tokenizer(
             sentence,
             return_tensors="pt",
@@ -255,25 +255,24 @@ class SlowAttacker(BaseAttacker):
             if not batch_strings:
                 continue
             scores, seqs, p_len = self.compute_batch_score(batch_strings)
-            if self.fitness == 'performance' or self.fitness == 'weighted_length':
+            pred_len.extend(p_len)
+            if self.fitness == 'performance':
                 label = self.tokenizer(goal, truncation=True, max_length=self.max_len, return_tensors='pt')
                 label = label['input_ids'][0] # (T, )
                 res = self.get_target_p(scores, p_len, label) # numpy array (N, )
                 pred_acc.extend(res.tolist())
-            elif self.fitness == 'length' or self.fitness == 'weighted_length':
-                pred_len.extend(p_len)
-            else:
-                raise ValueError('Invalid fitness function.')
             
         pred_len = torch.tensor(pred_len) # (#new strings, )
         pred_acc = torch.tensor(pred_acc) # (#new strings, )
+        assert len(new_strings) == len(pred_len)
         if self.fitness == 'length':
-            assert len(new_strings) == len(pred_len)
             top_v, top_i = pred_len.topk(min(self.select_beam, len(pred_len)))
+            return [new_strings[i] for i in top_i], top_v
         else:
             assert len(new_strings) == len(pred_acc)
             top_v, top_i = pred_acc.topk(min(self.select_beam, len(pred_acc)), largest=False)
-        return [new_strings[i] for i in top_i], top_v
+            return [new_strings[i] for i in top_i], [pred_len[i] for i in top_i]
+        
 
     def prepare_attack(self, text: Union[str, List[str]]):
         ori_len = self.get_trans_len(text)[0] # original sentence length
