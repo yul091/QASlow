@@ -93,10 +93,15 @@ class StructureAttacker(SlowAttacker):
         max_len: int = 64,
         max_per: int = 3,
         task: str = 'seq2seq',
+        fitness: str = 'length',
         select_beams: int = 1,
+        eos_weight: float = 0.5,
+        cls_weight: float = 0.5,
+        use_combined_loss: bool = False,
     ):
         super(StructureAttacker, self).__init__(
-            device, tokenizer, model, max_len, max_per, task, select_beams,
+            device, tokenizer, model, max_len, max_per, task, fitness,
+            select_beams, eos_weight, cls_weight, use_combined_loss,
         )
         self.filter_words = set(ENGLISH_FILTER_WORDS)
         # BERT initialization
@@ -217,7 +222,18 @@ class StructureAttacker(SlowAttacker):
         probs = F.softmax(prediction[0, masked_index], dim=-1)
         topk_Idx = torch.topk(probs, self.num_of_perturb, sorted=True)[1].tolist()
         topk_tokens = self.berttokenizer.convert_ids_to_tokens(topk_Idx)
-
+        
+        # Handle subtokens
+        def handle_subtokens(tokens: list):
+            new_tokens = []
+            for tok in tokens:
+                if tok.startswith('##') and new_tokens:
+                    new_tokens[-1] = new_tokens[-1] + tok[2:]
+                else:
+                    new_tokens.append(tok)
+            return new_tokens
+        
+        topk_tokens = handle_subtokens(topk_tokens)
         # Remove the tokens that only contains 0 or 1 char (e.g., i, a, s)
         # This step could be further optimized by filtering more tokens (e.g., non-english tokens)
         topk_tokens = list(filter(lambda x: len(x) > 1, topk_tokens))
@@ -243,8 +259,8 @@ class StructureAttacker(SlowAttacker):
                 new_sentence = self.tokenizer.convert_tokens_to_string(cur_tokens)
                 # print("new sentence: ", new_sentence)
                 new_error = self.grammar.check(new_sentence)
-                if new_error > cur_error:
-                    continue
+                # if new_error > cur_error:
+                #     continue
                 new_sentences.append((masked_index, new_sentence))
 
         cur_tokens[masked_index] = cur_tok

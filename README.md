@@ -4,7 +4,7 @@
 
 ### Setup Environment
 - python 3.10.8
-- pytorch 1.13.0
+- pytorch 1.13.0+
 - Install dependencies
 ```
 pip install -r requirements.txt

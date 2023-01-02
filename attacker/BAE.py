@@ -46,8 +46,8 @@ class BAEAttacker(SlowAttacker):
         )
         mlm_path = "bert-base-uncased"
         self.k = 50 # number of candidates
-        self.use = USE()
         self.filter_words = set(ENGLISH_FILTER_WORDS)
+        self.use_encoder = USE()
         self.tokenizer_mlm = BertTokenizerFast.from_pretrained(mlm_path, do_lower_case=True)
         config_atk = BertConfig.from_pretrained(mlm_path)
         self.mlm_model = BertForMaskedLM.from_pretrained(mlm_path, config=config_atk).to(self.device)
@@ -259,7 +259,7 @@ class BAEAttacker(SlowAttacker):
 
                 temp_text = self.tokenizer_mlm.convert_tokens_to_string(temp_replace)
                 # use_score = self.encoder.calc_score(temp_text, x_orig)
-                use_score = self.use.count_use(temp_text, x_orig)
+                use_score = self.use_encoder.count_use(temp_text, x_orig)
                 # From TextAttack's implementation: 
                 # Finally, since the BAE code is based on the TextFooler code, we need to adjust 
                 # the threshold to account for the missing / pi in the cosine similarity comparison. 

@@ -75,11 +75,28 @@ class DGAttackEval(DGDataset):
         self.ori_rouges, self.adv_rouges = [], []
         self.ori_meteors, self.adv_meteors = [], []
         self.ori_time, self.adv_time = [], []
-        self.use_scores, self.cos_sims = [], []
+        self.cos_sims = []
         self.att_success = 0
         self.total_pairs = 0
-        self.record = []
+        
+        # self.record = []
+        out_dir = args.out_dir
+        model_n = args.model_name_or_path.split("/")[-1]
+        dataset_n = DATA2NAME.get(args.dataset, args.dataset.split("/")[-1])
+        combined = "combined" if args.use_combined_loss else "single"
+        att_method = args.attack_strategy
+        max_per = args.max_per
+        fitness = args.fitness
+        select_beams = args.select_beams
+        max_num_samples = args.max_num_samples
+        file_path = f"{out_dir}/{combined}_{att_method}_{max_per}_{fitness}_{select_beams}_{model_n}_{dataset_n}_{max_num_samples}.txt"
+        self.write_file = open(file_path, "w")
+        
 
+    def log_and_save(self, display: str):
+        print(display)
+        self.write_file.write(display + "\n")
+        
 
     def get_prediction(self, text: str):
         if self.task == 'seq2seq':
@@ -154,22 +171,17 @@ class DGAttackEval(DGDataset):
                 free_message,
                 guided_message,
             ]
-            print("\nDialogue history: {}".format(original_context))
-            print("U--{} \n(Ref: ['{}', ...])".format(free_message, references[-1]))
+            self.log_and_save("\nDialogue history: {}".format(original_context))
+            self.log_and_save("U--{} \n(Ref: ['{}', ...])".format(free_message, references[-1]))
             # Original generation
             text = original_context + self.sp_token + free_message
             output, time_gap = self.get_prediction(text)
-            print("G--{}".format(output))
+            self.log_and_save("G--{}".format(output))
+            
             if not output:
                 continue
             bleu_res, rouge_res, meteor_res, pred_len = self.eval_metrics(output, references)
-            self.record.append("\nDialogue history: {}".format(original_context))
-            self.record.append("U--{} \n(Ref: {})".format(free_message, references))
-            self.record.append("G--{}".format(output))
-            print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
-                pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
-            ))
-            self.record.append("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
+            self.log_and_save("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
                 pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
             ))
             self.ori_lens.append(pred_len)
@@ -182,39 +194,30 @@ class DGAttackEval(DGDataset):
             success, adv_his = self.attacker.run_attack(text, guided_message)
             new_text = adv_his[-1][0]
             new_free_message = new_text.split(self.sp_token)[1].strip()
-            # use_score = self.attacker.encoder.calc_score(new_free_message, free_message)
-            cos_sim = self.attacker.encoder.get_sim(new_free_message, free_message)
+            cos_sim = self.attacker.sent_encoder.get_sim(new_free_message, free_message)
             output, time_gap = self.get_prediction(new_text)
             if not output:
                 continue
 
-            # print("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
-            # self.record.append("U'--{} (USE: {:.3f})".format(new_free_message, use_score))
-            print("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
-            self.record.append("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
-            print("G'--{}".format(output))
-            self.record.append("G'--{}".format(output))
-            bleu_res, rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
+            self.log_and_save("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
+            self.log_and_save("G'--{}".format(output))
+            bleu_res, adv_rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
             # ASR
-            success = (new_free_message != free_message and adv_pred_len > pred_len)
+            # success = (adv_pred_len > pred_len) and cos_sim > 0.01
+            success = (adv_rouge_res['rougeL'] < rouge_res['rougeL'] or adv_pred_len > 1.5 * pred_len) and cos_sim > 0.01
             if success:
                 self.att_success += 1
             else:
-                print("Attack failed!")
-                self.record.append("Attack failed!")
+                self.log_and_save("Attack failed!")
 
-            print("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
-                adv_pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
-            ))
-            self.record.append("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
-                adv_pred_len, time_gap, bleu_res['bleu'], rouge_res['rougeL'], meteor_res['meteor'],
+            self.log_and_save("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
+                adv_pred_len, time_gap, bleu_res['bleu'], adv_rouge_res['rougeL'], meteor_res['meteor'],
             ))
             self.adv_lens.append(adv_pred_len)
             self.adv_bleus.append(bleu_res['bleu'])
-            self.adv_rouges.append(rouge_res['rougeL'])
+            self.adv_rouges.append(adv_rouge_res['rougeL'])
             self.adv_meteors.append(meteor_res['meteor'])
             self.adv_time.append(time_gap)
-            # self.use_scores.append(use_score)
             self.cos_sims.append(cos_sim)
             self.total_pairs += 1
 
@@ -238,39 +241,35 @@ class DGAttackEval(DGDataset):
         Adv_rouge = np.mean(self.adv_rouges)
         Ori_meteor = np.mean(self.ori_meteors)
         Adv_meteor = np.mean(self.adv_meteors)
-        # Use_scores = np.mean(self.use_scores)
         Cos_sims = np.mean(self.cos_sims)
         Ori_t = np.mean(self.ori_time)
         Adv_t = np.mean(self.adv_time)
 
         # Summarize eval results
-        print("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+        self.log_and_save("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
             Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor,
         ))
-        self.record.append("\nOriginal output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-            Ori_len, Ori_t, Ori_bleu, Ori_rouge, Ori_meteor, 
-        ))
-        print("Perturbed [cosine: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
+        self.log_and_save("Perturbed [cosine: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
             Cos_sims, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
         ))
-        self.record.append("Perturbed [cosine: {:.3f}] output length: {:.3f}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f}".format(
-            Cos_sims, Adv_len, Adv_t, Adv_bleu, Adv_rouge, Adv_meteor,
-        ))
-        print("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
-        self.record.append("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
+        self.log_and_save("Attack success rate: {:.2f}%".format(100*self.att_success/self.total_pairs))
+
 
 
 def main(args: argparse.Namespace):
     random.seed(args.seed)
     model_name_or_path = args.model_name_or_path
     dataset = args.dataset
-    max_num_samples = args.max_num_samples
     max_len = args.max_len
     max_per = args.max_per
     num_beams = args.num_beams
     select_beams = args.select_beams
+    fitness = args.fitness
     num_beam_groups = args.num_beam_groups
     att_method = args.attack_strategy
+    cls_weight = args.cls_weight
+    eos_weight = args.eos_weight
+    use_combined_loss = args.use_combined_loss
     out_dir = args.out_dir
 
     if not os.path.exists(out_dir):
@@ -323,7 +322,11 @@ def main(args: argparse.Namespace):
             max_len=max_len,
             max_per=max_per,
             task=task,
+            fitness=fitness,
             select_beams=select_beams,
+            eos_weight=eos_weight,
+            cls_weight=cls_weight,
+            use_combined_loss=use_combined_loss,
         )
     elif att_method.lower() == 'pwws':
         attacker = PWWSAttacker(
@@ -383,13 +386,15 @@ def main(args: argparse.Namespace):
     )
     dg.generation(test_dataset)
 
-    # Save generation files
-    model_n = model_name_or_path.split("/")[-1]
-    dataset_n = DATA2NAME.get(dataset, dataset.split("/")[-1])
-    with open(f"{out_dir}/{att_method}_{max_per}_{select_beams}_{model_n}_{dataset_n}_{max_num_samples}.txt", "w") as f:
-        for line in dg.record:
-            f.write(str(line) + "\n")
-    f.close()
+    # # Save generation files
+    # model_n = model_name_or_path.split("/")[-1]
+    # dataset_n = DATA2NAME.get(dataset, dataset.split("/")[-1])
+    # combined = "combined" if use_combined_loss else "eos"
+    # file_path = f"{out_dir}/{combined}_{att_method}_{max_per}_{fitness}_{select_beams}_{model_n}_{dataset_n}_{max_num_samples}.txt"
+    # with open(file_path, "w") as f:
+    #     for line in dg.record:
+    #         f.write(str(line) + "\n")
+    # f.close()
 
 
 if __name__ == "__main__":
@@ -408,16 +413,8 @@ if __name__ == "__main__":
     parser.add_argument("--num_beams", type=int, default=2, help="Number of beams")
     parser.add_argument("--select_beams", type=int, default=1, help="Number of sentence beams to keep for each attack iteration")
     parser.add_argument("--num_beam_groups", type=int, default=1, help="Number of beam groups")
-    parser.add_argument("--model_name_or_path", "-m", type=str, 
-                        default="results/bart", 
-                        choices=[
-                            'results/bart', 
-                            'results/t5', 
-                            'results/dialogpt',
-                            'results/personagpt',
-                            'gpt2',
-                        ],
-                        help="Path to model")
+    parser.add_argument("--fitness", type=str, default="performance", choices=["performance", "length"], help="Fitness function")
+    parser.add_argument("--model_name_or_path", "-m", type=str, default="results/bart", help="Path to model")
     parser.add_argument("--dataset", "-d", type=str, 
                         default="blended_skill_talk", 
                         choices=[
@@ -431,6 +428,9 @@ if __name__ == "__main__":
                         default="results/logging",
                         help="Output directory")
     parser.add_argument("--seed", type=int, default=2019, help="Random seed")
+    parser.add_argument("--eos_weight", type=float, default=0.8, help="Weight for EOS gradient")
+    parser.add_argument("--cls_weight", type=float, default=0.2, help="Weight for classification gradient")
+    parser.add_argument("--use_combined_loss", action="store_true", help="Use combined loss")
     parser.add_argument("--attack_strategy", "-a", type=str, 
                         default='structure', 
                         choices=[

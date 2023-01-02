@@ -42,7 +42,6 @@ class BaseAttacker:
         self.task = task
         self.softmax = nn.Softmax(dim=1)
         self.bce_loss = nn.BCELoss()
-        self.ce_loss = nn.CrossEntropyLoss()
 
     @classmethod
     def _get_hparam(cls, namespace: Namespace, key: str, default=None):
@@ -63,10 +62,10 @@ class BaseAttacker:
         else:
             return int(len(seq) - sum(seq.eq(self.pad_token_id))) - 1
 
+    def remove_pad(self, s: torch.Tensor):
+        return s[torch.nonzero(s != self.pad_token_id)].squeeze(1)
+    
     def get_prediction(self, sentence: Union[str, List[str]]):
-        def remove_pad(s):
-            return s[torch.nonzero(s != self.pad_token_id)].squeeze(1)
-
         if self.task == 'seq2seq':
             text = sentence
         else:
@@ -99,7 +98,7 @@ class BaseAttacker:
             seqs = outputs['sequences'].detach()
         else:
             seqs = outputs['sequences'][:, input_ids.shape[-1]:].detach()
-        seqs = [remove_pad(seq) for seq in seqs]
+        seqs = [self.remove_pad(seq) for seq in seqs]
         out_scores = outputs['scores']
         pred_len = [self.compute_seq_len(seq) for seq in seqs]
         # pdb.set_trace()
@@ -179,9 +178,11 @@ class SlowAttacker(BaseAttacker):
         max_len: int = 64,
         max_per: int = 3,
         task: str = 'seq2seq',
+        fitness: str = 'performance',
         select_beams: int = 1,
         eos_weight: float = 0.5,
-        ce_weight: float = 0.5,
+        cls_weight: float = 0.5,
+        use_combined_loss: bool = False,
     ):
         super(SlowAttacker, self).__init__(
             device, tokenizer, model, max_len, max_per, task,
@@ -191,9 +192,11 @@ class SlowAttacker(BaseAttacker):
         else:
             self.sp_token = '<SEP>'
         self.select_beam = select_beams
+        self.fitness = fitness
         self.eos_weight = eos_weight
-        self.ce_weight = ce_weight
-        self.encoder = SentenceEncoder(device)
+        self.cls_weight = cls_weight
+        self.use_combined_loss = use_combined_loss
+        self.sent_encoder = SentenceEncoder(device)
 
     def leave_eos_loss(self, scores: list, pred_len: list):
         loss = []
@@ -229,11 +232,16 @@ class SlowAttacker(BaseAttacker):
         return torch.stack(targets).detach().cpu().numpy()
 
     @torch.no_grad()
-    def select_best(self, new_strings: List[Tuple], batch_size: int = 3):
+    def select_best(
+        self, 
+        new_strings: List[Tuple], 
+        goal: str,
+        batch_size: int = 3,
+    ):
         """
         Select generated strings which induce longest output sentences.
         """
-        pred_len = []
+        pred_len, pred_acc = [], []
         batch_num = len(new_strings) // batch_size
         if batch_size * batch_num != len(new_strings):
             batch_num += 1
@@ -244,29 +252,27 @@ class SlowAttacker(BaseAttacker):
                 batch_strings = [x[1] for x in new_strings[st:ed]]
             else:
                 batch_strings = [x[1] + self.eos_token for x in new_strings[st:ed]]
-            inputs = self.tokenizer(
-                batch_strings, 
-                return_tensors="pt",
-                max_length=self.max_len,
-                truncation=True,
-                padding=True,
-            )
-            input_ids = inputs.input_ids.to(self.device)
-            outputs = dialogue(
-                self.model, 
-                input_ids,
-                early_stopping=False, 
-                num_beams=self.num_beams,
-                num_beam_groups=self.num_beam_groups, 
-                use_cache=True,
-                max_length=self.max_len,
-            )
-            lengths = [self.compute_seq_len(seq) for seq in outputs['sequences']]
-            pred_len.extend(lengths)
+            if not batch_strings:
+                continue
+            scores, seqs, p_len = self.compute_batch_score(batch_strings)
+            if self.fitness == 'performance' or self.fitness == 'weighted_length':
+                label = self.tokenizer(goal, truncation=True, max_length=self.max_len, return_tensors='pt')
+                label = label['input_ids'][0] # (T, )
+                res = self.get_target_p(scores, p_len, label) # numpy array (N, )
+                pred_acc.extend(res.tolist())
+            elif self.fitness == 'length' or self.fitness == 'weighted_length':
+                pred_len.extend(p_len)
+            else:
+                raise ValueError('Invalid fitness function.')
             
         pred_len = torch.tensor(pred_len) # (#new strings, )
-        assert len(new_strings) == len(pred_len)
-        top_v, top_i = pred_len.topk(min(self.select_beam, len(pred_len)))
+        pred_acc = torch.tensor(pred_acc) # (#new strings, )
+        if self.fitness == 'length':
+            assert len(new_strings) == len(pred_len)
+            top_v, top_i = pred_len.topk(min(self.select_beam, len(pred_len)))
+        else:
+            assert len(new_strings) == len(pred_acc)
+            top_v, top_i = pred_acc.topk(min(self.select_beam, len(pred_acc)), largest=False)
         return [new_strings[i] for i in top_i], top_v
 
     def prepare_attack(self, text: Union[str, List[str]]):
@@ -281,16 +287,15 @@ class SlowAttacker(BaseAttacker):
     def mutation(self, cur_adv_text: str, grad: torch.gradient, modified_pos: List[int]):
         raise NotImplementedError
 
-    def pareto_step(self, weights_list: np.ndarray, out_gradients_list: np.ndarray):
-        model_gradients = out_gradients_list
-        M1 = np.matmul(model_gradients,np.transpose(model_gradients))
+    def pareto_step(self, weights_list: np.ndarray, model_gradients: np.ndarray):
+        M1 = np.matmul(model_gradients, np.transpose(model_gradients))
         e = np.mat(np.ones(np.shape(weights_list)))
         M = np.hstack((M1,np.transpose(e)))
         mid = np.hstack((e,np.mat(np.zeros((1,1)))))
         M = np.vstack((M,mid))
         z = np.mat(np.zeros(np.shape(weights_list)))
         nid = np.hstack((z,np.mat(np.ones((1,1)))))
-        w = np.matmul(np.matmul(M,np.linalg.inv(np.matmul(M,np.transpose(M)))),np.transpose(nid))
+        w = np.matmul(np.matmul(M, np.linalg.pinv(M @ M.T)), np.transpose(nid))
         if len(w) > 1:
             w = np.transpose(w)
             w = w[0,0:np.shape(w)[1]]
@@ -316,33 +321,51 @@ class SlowAttacker(BaseAttacker):
         adv_his = []
         modify_pos = [] # record already modified positions (avoid repeated perturbation)
         t1 = time.time()
-
-        def get_new_strings(cur_text):
-            loss_list, ce_loss = self.compute_loss([cur_text], [label])
-            if loss_list is not None:
-                loss = sum(loss_list)
+        
+        def calibrate_grads(grad1, grad2, w1, w2):
+            weights = np.mat([w1, w2])
+            grad_paras_tensor = torch.stack((grad1.view(-1), grad2.view(-1)), dim=0) # (2, V * H)
+            grad_paras = grad_paras_tensor.detach().cpu().numpy()
+            mid = self.pareto_step(weights, grad_paras)
+            new_w1, new_w2 = mid[0,0], mid[0,1]
+            return new_w1, new_w2
+            
+            
+        def generate_new_strings(cur_text, w1, w2):
+            loss_list, cls_loss = self.compute_loss([cur_text], [label])
+            if cls_loss is not None:
+                # print('cls loss: ', cls_loss)
                 self.model.zero_grad()
-                loss.backward()
-                grad2 = self.embedding.grad
-            else:
-                grad2 = None
-            if ce_loss is not None:
-                self.model.zero_grad()
-                ce_loss.backward()
+                cls_loss.backward(retain_graph=True)
                 grad1 = self.embedding.grad
             else:
                 grad1 = None
-
+                
+            if loss_list is not None:
+                eos_loss = sum(loss_list)
+                # print('eos loss: ', eos_loss)
+                self.model.zero_grad()
+                eos_loss.backward(retain_graph=True)
+                grad2 = self.embedding.grad
+            else:
+                grad2 = None
+            
             if (grad1 is not None) and (grad2 is not None):
-                weights = np.mat([self.ce_weight, self.eos_weight])
-                grad_paras_tensor = torch.stack((grad1, grad2), dim=0)
-                grad_paras = grad_paras_tensor.detach().cpu().numpy()
-                grad = self.pareto_step(weights, grad_paras)
-                grad = torch.from_numpy(grad).to(self.device)
+                if self.use_combined_loss:
+                    new_w1, new_w2 = calibrate_grads(grad1, grad2, w1, w2)
+                    loss = new_w1 * cls_loss + new_w2 * eos_loss
+                    self.model.zero_grad()
+                    loss.backward()
+                    grad = self.embedding.grad
+                else:
+                    grad = grad2
+                    new_w1, new_w2 = w1, w2
             elif grad1 is not None:
                 grad = grad1
+                new_w1, new_w2 = w1, w2
             else:
                 grad = grad2
+                new_w1, new_w2 = w1, w2
             
             # Only mutate the part after special token
             cur_free_text = cur_text.split(self.sp_token)[1].strip()
@@ -352,16 +375,16 @@ class SlowAttacker(BaseAttacker):
                 (pos, ori_context + self.sp_token + adv_text)
                 for (pos, adv_text) in new_strings
             ]
-            return new_strings
+            return new_strings, new_w1, new_w2
 
 
-        def get_best_adv(it, cur_sent, start, best_text, best_length, modified_pos, adv_history):
+        def get_best_adv(it, cur_sent, w1, w2, start, best_text, best_length, modified_pos, adv_history):
             if it == self.max_per:
                 return best_text, best_length, adv_history
             # Get new strings
-            new_strings = get_new_strings(cur_sent)
+            new_strings, new_w1, new_w2 = generate_new_strings(cur_sent, w1, w2)
             # Select the best strings
-            cur_topk_strings, cur_lens = self.select_best(new_strings, batch_size=3)
+            cur_topk_strings, cur_lens = self.select_best(new_strings, label, batch_size=3)
             # print("\n[it {}] \ncur sent: {} \nnew_string: {} \ncur_strings: {}".format(it, cur_sent, new_strings, cur_topk_strings))
             end = time.time()
             # Beam search
@@ -373,12 +396,14 @@ class SlowAttacker(BaseAttacker):
                 if cur_len > best_length:
                     best_text = str(cur_text)
                     best_length = int(cur_len)
-                print("[beam it %d][sent %d][len %d] %s" % (it, i, cur_len, cur_text.split(self.sp_token)[1].strip()))
+                print("[iteration %d][sent %d][len %d] %s" % (it, i, cur_len, cur_text.split(self.sp_token)[1].strip()))
                 adv_history.append((deepcopy(best_text), int(best_length), end - start))
-                best_text, best_length, adv_history = get_best_adv(it + 1, cur_text, end, best_text, best_length, modified_pos, adv_history)
+                best_text, best_length, adv_history = get_best_adv(
+                    it+1, cur_text, new_w1, new_w2, end, best_text, best_length, modified_pos, adv_history
+                )
             return best_text, best_length, adv_history
 
-        get_best_adv(0, cur_adv_text, t1, best_adv_text, best_len, modify_pos, adv_his)
+        get_best_adv(0, cur_adv_text, self.cls_weight, self.eos_weight, t1, best_adv_text, best_len, modify_pos, adv_his)
         if adv_his:
             return True, adv_his
         else:
