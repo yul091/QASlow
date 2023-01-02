@@ -31,6 +31,8 @@ class HotFlipAttacker(SlowAttacker):
         self.default_tokenizer = PunctTokenizer()
         self.filter_words = set(ENGLISH_FILTER_WORDS)
         
+    def compute_loss(self, text: list, labels: list):
+        return None, None
         
     def do_replace(self, x_cur, word, index):
         ret = x_cur
@@ -39,7 +41,7 @@ class HotFlipAttacker(SlowAttacker):
              
     def get_neighbours(self, word, POS):
         try:
-            return list( map(lambda x: x[0], self.substitute(word, POS)) )
+            return list(map(lambda x: x[0], self.substitute(word, POS)))
         except WordNotInDictionaryException:
             return []
 
@@ -53,21 +55,20 @@ class HotFlipAttacker(SlowAttacker):
     ):
         new_strings = []
         x_orig = sentence.lower()
-        x_orig = self.tokenizer.tokenize(x_orig)
+        x_orig = self.default_tokenizer.tokenize(x_orig)
         x_pos =  list(map(lambda x: x[1], x_orig))
         x_orig = list(map(lambda x: x[0], x_orig))
         
         counter = -1
         for word, pos in zip(x_orig, x_pos):
             counter += 1
-            if word in self.filter_words:
+            if word in self.filter_words or counter in set(modify_pos):
                 continue
             neighbours = self.get_neighbours(word, pos)
             for neighbour in neighbours:
-                x_new = self.tokenizer.detokenize(self.do_replace(x_orig, neighbour, counter))
-                pred_target = victim.get_pred([x_new])[0]
-                if goal.check(x_new, pred_target):
-                    return x_new
+                x_new = self.default_tokenizer.detokenize(self.do_replace(x_orig, neighbour, counter))
+                if x_new != sentence:
+                    new_strings.append((counter, x_new))
                 
         return new_strings
       

@@ -1,4 +1,4 @@
-ATT_METHOD=fd # word, structure, pwws, scpn, viper, bae, fd
+ATT_METHOD=hotflip # word, structure, pwws, scpn, viper, bae, fd, hotflip
 MAX_PER=3
 MODEL_PATH=results/bart # results/bart, results/t5, results/dialogpt, results/personagpt, gpt2
 DATASET=AlekseyKorshuk/persona-chat # blended_skill_talk, conv_ai_2, empathetic_dialogues, AlekseyKorshuk/persona-chat

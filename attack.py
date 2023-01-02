@@ -375,6 +375,15 @@ def main(args: argparse.Namespace):
             max_per=max_per,
             task=task,
         )
+    elif att_method.lower() == 'hotflip':
+        attacker = HotFlipAttacker(
+            device=device,
+            tokenizer=tokenizer,
+            model=model,
+            max_len=max_len,
+            max_per=max_per,
+            task=task,
+        )
     else:
         raise ValueError("Invalid attack strategy!")
 
@@ -452,6 +461,7 @@ if __name__ == "__main__":
                             'viper',
                             'bae',
                             'fd', # white-box attack
+                            'hotflip', # white-box attack 
                         ], 
                         help="Attack strategy")
     args = parser.parse_args()

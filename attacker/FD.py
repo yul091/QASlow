@@ -49,11 +49,13 @@ class FDAttacker(SlowAttacker):
         new_strings = []
         x_orig = sentence.lower()
         sent = self.default_tokenizer.tokenize(x_orig, pos_tagging=False)
+        avail_pos = list(set(range(len(sent))) - set(modify_pos))
         
         for i in range(50):
             iter_cnt = 0
             while True:
-                idx = np.random.choice(len(sent)) # randomly choose a word
+                # idx = np.random.choice(len(sent)) # randomly choose a word
+                idx = np.random.choice(avail_pos)
                 iter_cnt += 1
                 if iter_cnt > 5 * len(sent): # failed to find a substitute word
                     return []
