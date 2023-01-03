@@ -24,6 +24,7 @@ from attacker.VIPER import VIPERAttacker
 from attacker.BAE import BAEAttacker
 from attacker.FD import FDAttacker
 from attacker.HotFlip import HotFlipAttacker
+from attacker.TextBugger import TextBuggerAttacker
 from DG_dataset import DGDataset
 
 DATA2NAME = {
@@ -384,6 +385,15 @@ def main(args: argparse.Namespace):
             max_per=max_per,
             task=task,
         )
+    elif att_method.lower() == 'textbugger':
+        attacker = TextBuggerAttacker(
+            device=device,
+            tokenizer=tokenizer,
+            model=model,
+            max_len=max_len,
+            max_per=max_per,
+            task=task,
+        )
     else:
         raise ValueError("Invalid attack strategy!")
 
@@ -462,6 +472,7 @@ if __name__ == "__main__":
                             'bae',
                             'fd', # white-box attack
                             'hotflip', # white-box attack 
+                            'textbugger', # white-box attack
                         ], 
                         help="Attack strategy")
     args = parser.parse_args()
