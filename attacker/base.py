@@ -286,15 +286,16 @@ class SlowAttacker(BaseAttacker):
     def mutation(self, cur_adv_text: str, grad: torch.gradient, modified_pos: List[int]):
         raise NotImplementedError
 
-    def pareto_step(self, weights_list: np.ndarray, model_gradients: np.ndarray):
-        M1 = np.matmul(model_gradients, np.transpose(model_gradients))
+    def pareto_step(self, weights_list: np.ndarray, out_gradients_list: np.ndarray):
+        model_gradients = out_gradients_list
+        M1 = np.matmul(model_gradients,np.transpose(model_gradients)) # 2 x 2
         e = np.mat(np.ones(np.shape(weights_list)))
         M = np.hstack((M1,np.transpose(e)))
         mid = np.hstack((e,np.mat(np.zeros((1,1)))))
-        M = np.vstack((M,mid))
+        M = np.vstack((M,mid)) # 3 x 3
         z = np.mat(np.zeros(np.shape(weights_list)))
-        nid = np.hstack((z,np.mat(np.ones((1,1)))))
-        w = np.matmul(np.matmul(M, np.linalg.pinv(M @ M.T)), np.transpose(nid))
+        nid = np.hstack((z,np.mat(np.ones((1,1))))) # 1 x 3
+        w = np.matmul(np.matmul(M,np.linalg.inv(np.matmul(M,np.transpose(M)))),np.transpose(nid))
         if len(w) > 1:
             w = np.transpose(w)
             w = w[0,0:np.shape(w)[1]]
@@ -333,19 +334,17 @@ class SlowAttacker(BaseAttacker):
         def generate_new_strings(cur_text, w1, w2):
             loss_list, cls_loss = self.compute_loss([cur_text], [label])
             if cls_loss is not None:
-                # print('cls loss: ', cls_loss)
                 self.model.zero_grad()
                 cls_loss.backward(retain_graph=True)
-                grad1 = self.embedding.grad
+                grad1 = self.embedding.grad.clone()
             else:
                 grad1 = None
                 
             if loss_list is not None:
                 eos_loss = sum(loss_list)
-                # print('eos loss: ', eos_loss)
                 self.model.zero_grad()
                 eos_loss.backward(retain_graph=True)
-                grad2 = self.embedding.grad
+                grad2 = self.embedding.grad.clone()
             else:
                 grad2 = None
             
@@ -353,6 +352,7 @@ class SlowAttacker(BaseAttacker):
                 if self.use_combined_loss:
                     new_w1, new_w2 = calibrate_grads(grad1, grad2, w1, w2)
                     loss = new_w1 * cls_loss + new_w2 * eos_loss
+                    # loss = new_w1 * loss1 + new_w2 * loss2
                     self.model.zero_grad()
                     loss.backward()
                     grad = self.embedding.grad
@@ -398,7 +398,9 @@ class SlowAttacker(BaseAttacker):
                 if cur_len > best_length:
                     best_text = str(cur_text)
                     best_length = int(cur_len)
-                print("[iteration %d][sent %d][len %d] %s" % (it, i, cur_len, cur_text.split(self.sp_token)[1].strip()))
+                print("[iteration %d][sent %d][len %d (%.2f)] %s" % (
+                    it, i, cur_len, cur_len/ori_len, cur_text.split(self.sp_token)[1].strip()
+                ))
                 adv_history.append((deepcopy(best_text), int(best_length), end - start))
                 best_text, best_length, adv_history = get_best_adv(
                     it+1, cur_text, new_w1, new_w2, end, best_text, best_length, modified_pos, adv_history

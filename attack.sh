@@ -1,4 +1,4 @@
-ATT_METHOD=textbugger # word, structure, pwws, scpn, viper, bae, fd, hotflip, textbugger
+ATT_METHOD=structure # word, structure, pwws, scpn, viper, bae, fd, hotflip, textbugger
 MAX_PER=3
 MODEL_PATH=/nfs/intern_data/yufli/results/bart # bart, t5, dialogpt, personagpt, gpt2 (/nfs/intern_data/yufli/)
 DATASET=AlekseyKorshuk/persona-chat # blended_skill_talk, conv_ai_2, empathetic_dialogues, AlekseyKorshuk/persona-chat
