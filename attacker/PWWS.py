@@ -32,7 +32,7 @@ class PWWSAttacker(SlowAttacker):
         self.filter_words = set(ENGLISH_FILTER_WORDS)
 
     def compute_loss(self, text: list, labels: list):
-        return 
+        return None, None
 
     @ torch.no_grad()
     def get_prediction(self, sentence: Union[str, List[str]]):

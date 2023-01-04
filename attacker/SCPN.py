@@ -133,7 +133,7 @@ class SCPNAttacker(SlowAttacker):
         return ret
 
     def compute_loss(self, text: list, labels: list):
-        return 
+        return None, None
     
     def mutation(
         self, 

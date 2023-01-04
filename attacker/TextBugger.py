@@ -140,34 +140,7 @@ class TextBuggerAttacker(SlowAttacker):
     
     def replaceWithBug(self, x_prime: List[str], word_idx: int, bug: str):
         return x_prime[:word_idx] + [bug] + x_prime[word_idx + 1:]
-    
-    # def getScore(self, context: str, candidate: List[str], goal: str):
-    #     x_orig = context + self.sp_token + self.default_tokenizer.detokenize(candidate)
-    #     scores, seqs, pred_len = self.compute_score([x_orig]) # list N of [T X V], [T], [1]
-    #     label = self.tokenizer(goal, truncation=True, max_length=self.max_len, return_tensors='pt')
-    #     label = label['input_ids'][0] # (T, )
-    #     res = self.get_target_p(scores, pred_len, label) # numpy array (N, )
-    #     return -res[0]
-    
-    # def selectBug(
-    #     self, 
-    #     context: str, 
-    #     orig_word: str, 
-    #     word_idx: int,
-    #     x_prime: List[str], 
-    #     goal: str,
-    # ):
-    #     bugs = self.generateBugs(orig_word) # dict {bug type: bug word}
-    #     max_score = float('-inf')
-    #     best_bug = orig_word
-    #     for bug_type, b_k in bugs.items():
-    #         candidate_k = self.replaceWithBug(x_prime, word_idx, b_k) # list of words in a sentence
-    #         score_k = self.getScore(context, candidate_k, goal)
-    #         if score_k > max_score:
-    #             best_bug = b_k
-    #             max_score = score_k
-    #     return best_bug
-    
+        
     
     def mutation(
         self, 

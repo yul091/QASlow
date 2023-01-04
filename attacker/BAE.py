@@ -69,7 +69,7 @@ class BAEAttacker(SlowAttacker):
             raise NotImplementedError()
 
     def compute_loss(self, text: list, labels: list):
-        return 
+        return None, None
 
     def _tokenize(self, seq: str):
         seq = seq.replace('\n', '').lower()

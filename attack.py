@@ -7,6 +7,7 @@ import argparse
 import random
 import numpy as np
 from tqdm import tqdm
+from typing import List
 import torch
 from transformers import (
     AutoConfig, 
@@ -14,7 +15,7 @@ from transformers import (
     AutoModelForSeq2SeqLM,
     AutoModelForCausalLM,
 )
-from datasets import load_dataset, Dataset
+from datasets import load_dataset, Dataset, load_metric
 import evaluate
 from DialogueAPI import dialogue
 from attacker.DGSlow import WordAttacker, StructureAttacker
@@ -83,14 +84,14 @@ class DGAttackEval(DGDataset):
         self.total_pairs = 0
         
         # self.record = []
+        att_method = args.attack_strategy
         out_dir = args.out_dir
         model_n = args.model_name_or_path.split("/")[-1]
         dataset_n = DATA2NAME.get(args.dataset, args.dataset.split("/")[-1])
-        combined = "combined" if args.use_combined_loss else "single"
-        att_method = args.attack_strategy
+        combined = "combined" if args.use_combined_loss and att_method == 'structure' else "single"
         max_per = args.max_per
-        fitness = args.fitness
-        select_beams = args.select_beams
+        fitness = args.fitness if att_method == 'structure' else 'performance'
+        select_beams = args.select_beams if att_method == 'structure' else 1
         max_num_samples = args.max_num_samples
         file_path = f"{out_dir}/{combined}_{att_method}_{max_per}_{fitness}_{select_beams}_{model_n}_{dataset_n}_{max_num_samples}.txt"
         self.write_file = open(file_path, "w")
@@ -136,13 +137,14 @@ class DGAttackEval(DGDataset):
         return output.strip(), t2 - t1
 
 
-    def eval_metrics(self, output: str, guided_messages: list):
+    def eval_metrics(self, output: str, guided_messages: List[str]):
         if not output:
             return
 
         bleu_res = self.bleu.compute(
             predictions=[output], 
             references=[guided_messages],
+            smooth=True,
         )
         rouge_res = self.rouge.compute(
             predictions=[output],
