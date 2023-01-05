@@ -15,7 +15,7 @@ from transformers import (
     AutoModelForSeq2SeqLM,
     AutoModelForCausalLM,
 )
-from datasets import load_dataset, Dataset, load_metric
+from datasets import load_dataset, Dataset
 import evaluate
 from DialogueAPI import dialogue
 from attacker.DGSlow import WordAttacker, StructureAttacker
@@ -206,22 +206,23 @@ class DGAttackEval(DGDataset):
 
             self.log_and_save("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
             self.log_and_save("G'--{}".format(output))
-            bleu_res, adv_rouge_res, meteor_res, adv_pred_len = self.eval_metrics(output, references)
+            adv_bleu_res, adv_rouge_res, adv_meteor_res, adv_pred_len = self.eval_metrics(output, references)
             # ASR
-            # success = (adv_pred_len > pred_len) and cos_sim > 0.01
-            success = (adv_rouge_res['rougeL'] < rouge_res['rougeL'] or adv_pred_len > 1.5 * pred_len) and cos_sim > 0.01
+            overall_score = bleu_res['bleu'] + rouge_res['rougeL'] + meteor_res['meteor']
+            overall_adv_score = adv_bleu_res['bleu'] + adv_rouge_res['rougeL'] + adv_meteor_res['meteor']
+            success = (overall_score > overall_adv_score or adv_pred_len > 1.5 * pred_len) and cos_sim > 0.01
             if success:
                 self.att_success += 1
             else:
                 self.log_and_save("Attack failed!")
 
             self.log_and_save("(length: {}, latency: {:.3f}, BLEU: {:.3f}, ROUGE: {:.3f}, METEOR: {:.3f})".format(
-                adv_pred_len, time_gap, bleu_res['bleu'], adv_rouge_res['rougeL'], meteor_res['meteor'],
+                adv_pred_len, time_gap, adv_bleu_res['bleu'], adv_rouge_res['rougeL'], adv_meteor_res['meteor'],
             ))
             self.adv_lens.append(adv_pred_len)
-            self.adv_bleus.append(bleu_res['bleu'])
+            self.adv_bleus.append(adv_bleu_res['bleu'])
             self.adv_rouges.append(adv_rouge_res['rougeL'])
-            self.adv_meteors.append(meteor_res['meteor'])
+            self.adv_meteors.append(adv_meteor_res['meteor'])
             self.adv_time.append(time_gap)
             self.cos_sims.append(cos_sim)
             self.total_pairs += 1
