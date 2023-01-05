@@ -109,10 +109,10 @@ class DGAttackEval(DGDataset):
             effective_text = text + self.tokenizer.eos_token
 
         inputs = self.tokenizer(
-            effective_text, 
-            max_length=self.max_source_length, 
+            effective_text,  
             return_tensors="pt",
             truncation=True,
+            max_length=self.max_source_length,
         )
         input_ids = inputs.input_ids.to(self.device)
         t1 = time.time()

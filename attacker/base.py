@@ -57,6 +57,8 @@ class BaseAttacker:
         pass
 
     def compute_seq_len(self, seq: torch.Tensor):
+        if seq.shape[0] == 0: # empty sequence
+            return 0
         if seq[0].eq(self.pad_token_id):
             return int(len(seq) - sum(seq.eq(self.pad_token_id)))
         else:
@@ -98,13 +100,14 @@ class BaseAttacker:
             seqs = outputs['sequences'].detach()
         else:
             seqs = outputs['sequences'][:, input_ids.shape[-1]:].detach()
+
         seqs = [self.remove_pad(seq) for seq in seqs]
         out_scores = outputs['scores']
         pred_len = [self.compute_seq_len(seq) for seq in seqs]
         # pdb.set_trace()
         return pred_len, seqs, out_scores
 
-    def get_cls_loss(self, sentence: Union[List[str], str], labels: Union[List[str], str]):
+    def get_cls_loss(self, sentence: List[str], labels: List[str]):
         inputs = self.tokenizer(
             sentence,
             return_tensors="pt",
@@ -119,7 +122,16 @@ class BaseAttacker:
             truncation=True,
             max_length=self.max_len,
         ).to(self.device)
-        outputs = self.model(**inputs, labels=labels['input_ids'])
+        if self.task == 'seq2seq':
+            outputs = self.model(**inputs, labels=labels['input_ids'])
+        else:
+            # For clm, we need to mask the sentence (-100) and add to the labels
+            new_inputs = inputs.copy()
+            for k, v1 in inputs.items():
+                new_inputs[k] = torch.cat((v1, labels[k]), dim=1)
+            new_labels = torch.cat((-100*torch.ones_like(inputs["input_ids"]), labels["input_ids"]), dim=1)
+            outputs = self.model(**new_inputs, labels=new_labels)
+        
         return outputs.loss
 
 
@@ -209,15 +221,17 @@ class SlowAttacker(BaseAttacker):
     def leave_eos_target_loss(self, scores: list, seqs: list, pred_len: list):
         loss = []
         for i, s in enumerate(scores): # s: T X V
-            # if self.pad_token_id != self.eos_token_id:
-            s[:, self.pad_token_id] = 1e-12
-            softmax_v = self.softmax(s)
-            eos_p = softmax_v[:pred_len[i], self.eos_token_id]
-            target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(seqs[i][1:])])
-            target_p = target_p[:pred_len[i]]
-            pred = eos_p + target_p
-            pred[-1] = pred[-1] / 2
-            loss.append(self.bce_loss(pred, torch.zeros_like(pred)))
+            if pred_len[i] == 0:
+                loss.append(torch.tensor(0.0, requires_grad=True).to(self.device))
+            else:
+                s[:, self.pad_token_id] = 1e-12
+                softmax_v = self.softmax(s)
+                eos_p = softmax_v[:pred_len[i], self.eos_token_id]
+                target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(seqs[i][1:])])
+                target_p = target_p[:pred_len[i]]
+                pred = eos_p + target_p
+                pred[-1] = pred[-1] / 2
+                loss.append(self.bce_loss(pred, torch.zeros_like(pred)))
         return loss
 
     def get_target_p(self, scores: list, pred_len: list, label: list):
@@ -308,9 +322,25 @@ class SlowAttacker(BaseAttacker):
             theta = max(0, (sv[r] - 1.0) / (r+1))
             w = np.where(nid - theta>0.0, nid - theta, 0)
         return w
+    
+    def calibrate_grads(self, grad1: torch.gradient, grad2: torch.gradient, w1: float, w2: float):
+        weights = np.mat([w1, w2])
+        grad_paras_tensor = torch.stack((grad1.view(-1), grad2.view(-1)), dim=0) # (2, V * H)
+        grad_paras = grad_paras_tensor.detach().cpu().numpy()
+        mid = self.pareto_step(weights, grad_paras)
+        new_w1, new_w2 = mid[0,0], mid[0,1]
+        return new_w1, new_w2
+    
 
     def run_attack(self, text: str, label: str):
         """
+        Inputs:
+            text: original sentence (context + sp_token + free message)
+            label: guided message
+        Outputs:
+            success: whether the attack is successful
+            adv_his: list of tuples (adv sentence, adv length, decoding time)
+            
         (1) Using gradient ascent to generate adversarial sentences -- mutation();
         (2) Select the best samples which induce longest output sentences -- select_best();
         (3) Save the adversarial samples -- adv_his.
@@ -321,17 +351,18 @@ class SlowAttacker(BaseAttacker):
         adv_his = []
         modify_pos = [] # record already modified positions (avoid repeated perturbation)
         t1 = time.time()
-        
-        def calibrate_grads(grad1, grad2, w1, w2):
-            weights = np.mat([w1, w2])
-            grad_paras_tensor = torch.stack((grad1.view(-1), grad2.view(-1)), dim=0) # (2, V * H)
-            grad_paras = grad_paras_tensor.detach().cpu().numpy()
-            mid = self.pareto_step(weights, grad_paras)
-            new_w1, new_w2 = mid[0,0], mid[0,1]
-            return new_w1, new_w2
-            
             
         def generate_new_strings(cur_text, w1, w2):
+            """
+            Args:
+                cur_text (str): context + sp_token + current adversarial free message
+                w1 (float): weight for cls_loss
+                w2 (float): weight for eos_loss
+            Returns:
+                new_strings (list): list of (pos, new adversarial sentence)
+                new_w1 (float): calibrated weight for cls_loss
+                new_w2 (float): calibrated weight for eos_loss
+            """
             loss_list, cls_loss = self.compute_loss([cur_text], [label])
             if cls_loss is not None:
                 self.model.zero_grad()
@@ -350,9 +381,8 @@ class SlowAttacker(BaseAttacker):
             
             if (grad1 is not None) and (grad2 is not None):
                 if self.use_combined_loss:
-                    new_w1, new_w2 = calibrate_grads(grad1, grad2, w1, w2)
+                    new_w1, new_w2 = self.calibrate_grads(grad1, grad2, w1, w2)
                     loss = new_w1 * cls_loss + new_w2 * eos_loss
-                    # loss = new_w1 * loss1 + new_w2 * loss2
                     self.model.zero_grad()
                     loss.backward()
                     grad = self.embedding.grad
