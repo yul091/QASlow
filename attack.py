@@ -207,10 +207,14 @@ class DGAttackEval(DGDataset):
             self.log_and_save("U'--{} (cosine: {:.3f})".format(new_free_message, cos_sim))
             self.log_and_save("G'--{}".format(output))
             adv_bleu_res, adv_rouge_res, adv_meteor_res, adv_pred_len = self.eval_metrics(output, references)
+            
             # ASR
-            overall_score = bleu_res['bleu'] + rouge_res['rougeL'] + meteor_res['meteor']
-            overall_adv_score = adv_bleu_res['bleu'] + adv_rouge_res['rougeL'] + adv_meteor_res['meteor']
-            success = (overall_score > overall_adv_score or adv_pred_len > 1.5 * pred_len) and cos_sim > 0.01
+            success = (
+                bleu_res['bleu'] > adv_bleu_res['bleu'] or 
+                rouge_res['rougeL'] > adv_rouge_res['rougeL'] or 
+                meteor_res['meteor'] > adv_meteor_res['meteor'] or
+                adv_pred_len > 1.2 * pred_len
+                ) and cos_sim > 0.01
             if success:
                 self.att_success += 1
             else:
