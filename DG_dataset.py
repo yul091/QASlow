@@ -1,3 +1,4 @@
+import torch
 from datasets import load_dataset, Dataset
 from itertools import chain
 from typing import List, Optional
@@ -182,20 +183,28 @@ class DGDataset:
         else:
             with CaptureLogger(self.tok_logger) as cl:
                 inputs = self.tokenizer(inputs, max_length=self.max_source_length, padding=self.padding, truncation=True)
+                labels = self.tokenizer(labels, max_length=self.max_target_length, padding=self.padding, truncation=True)
+                
+            new_inputs = inputs.copy()
+            for k, v1 in inputs.items():
+                v2 = labels[k]
+                new_inputs[k] = torch.cat((v1, v2), dim=1)
+                
+            new_labels = torch.cat((-100*torch.ones_like(inputs["input_ids"]), labels["input_ids"]), dim=1)
+            new_inputs["labels"] = new_labels
+
             # clm input could be much much longer than block_size
             if "Token indices sequence length is longer than the" in cl.out:
                 self.tok_logger.warning(
                     "^^^^^^^^^^^^^^^^ Please ignore the warning above - this long input will be chunked into smaller bits"
                     " before being passed to the model."
                 )
-            return inputs
+            return new_inputs
 
 
     def group_texts(self, examples):
         # ['input_ids', 'attention_mask', 'labels']
         concatenated_examples = {k: list(chain(*examples[k])) for k in examples.keys()}
-        if self.task == 'clm':
-            concatenated_examples["labels"] = concatenated_examples["input_ids"].copy()
         return concatenated_examples
 
 

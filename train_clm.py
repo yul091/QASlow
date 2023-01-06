@@ -160,7 +160,6 @@ def main(args):
         print("test dataset: ", predict_dataset)
 
     # Data collator
-    # data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer)
     data_collator = default_data_collator
 
     # Initialize our Trainer

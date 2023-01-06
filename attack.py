@@ -210,10 +210,10 @@ class DGAttackEval(DGDataset):
             
             # ASR
             success = (
-                bleu_res['bleu'] > adv_bleu_res['bleu'] or 
-                rouge_res['rougeL'] > adv_rouge_res['rougeL'] or 
-                meteor_res['meteor'] > adv_meteor_res['meteor'] or
-                adv_pred_len > 1.2 * pred_len
+                (bleu_res['bleu'] > adv_bleu_res['bleu']) or 
+                (rouge_res['rougeL'] > adv_rouge_res['rougeL']) or 
+                (meteor_res['meteor'] > adv_meteor_res['meteor']) or
+                (adv_pred_len > 1.2 * pred_len)
                 ) and cos_sim > 0.01
             if success:
                 self.att_success += 1
