@@ -156,11 +156,11 @@ class DGDataset:
             # Input & Output
             if self.task == 'seq2seq':
                 text = original_context + self.tokenizer.eos_token + free_message
-                labels.append(guided_message)
             else:
                 text = original_context + free_message + guided_message
 
             inputs.append(text)
+            labels.append(guided_message)
             prev_utt_pc += [
                 free_message,
                 guided_message,
@@ -182,8 +182,20 @@ class DGDataset:
             return inputs
         else:
             with CaptureLogger(self.tok_logger) as cl:
-                inputs = self.tokenizer(inputs, max_length=self.max_source_length, padding=self.padding, truncation=True)
-                labels = self.tokenizer(labels, max_length=self.max_target_length, padding=self.padding, truncation=True)
+                inputs = self.tokenizer(
+                    inputs, 
+                    return_tensors="pt",
+                    max_length=self.max_source_length, 
+                    padding=self.padding, 
+                    truncation=True,
+                )
+                labels = self.tokenizer(
+                    labels, 
+                    return_tensors="pt",
+                    max_length=self.max_target_length, 
+                    padding=self.padding, 
+                    truncation=True,
+                )
                 
             new_inputs = inputs.copy()
             for k, v1 in inputs.items():
