@@ -8,7 +8,7 @@ MAX_LENGTH=128
 SELECT_BEAMS=1
 
 # for ATT_METHOD in structure pwws scpn viper bae fd hotflip textbugger
-for ATT_METHOD in maya
+for ATT_METHOD in scpn viper bae fd hotflip textbugger
 do
     CUDA_VISIBLE_DEVICES=0 python attack.py \
         --attack_strategy $ATT_METHOD \

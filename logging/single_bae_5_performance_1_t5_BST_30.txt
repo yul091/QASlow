@@ -1,0 +1,206 @@
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids
+U--I have two daughters. Do you have any children? 
+(Ref: ['Yes I have a son and just recently i became a grandpa', ...])
+G--I have two daughters. I have a grandparent at 44 and a grandparent at 44.
+(length: 17, latency: 0.541, BLEU: 0.177, ROUGE: 0.370, METEOR: 0.341)
+U'--I have two daughters. Do you have any children? (cosine: 1.000)
+G'--I have two daughters. I have a grandparent at 44 and a grandparent at 44.
+Attack failed!
+(length: 17, latency: 0.129, BLEU: 0.177, ROUGE: 0.370, METEOR: 0.341)
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids<SEP>I have two daughters. Do you have any children?<SEP>Yes I have a son and just recently i became a grandpa
+U--Congratulations! That's great. Do you have any hobbies? 
+(Ref: ['Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. ', ...])
+G--I like to cook and play sports.
+(length: 8, latency: 0.059, BLEU: 0.122, ROUGE: 0.211, METEOR: 0.220)
+U'--Congratulations! That's great. Do you have any hobbies? (cosine: 1.000)
+G'--I like to cook and play sports.
+Attack failed!
+(length: 8, latency: 0.061, BLEU: 0.122, ROUGE: 0.211, METEOR: 0.220)
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids<SEP>I have two daughters. Do you have any children?<SEP>Yes I have a son and just recently i became a grandpa<SEP>Congratulations! That's great. Do you have any hobbies?<SEP>Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. 
+U--Keeping active will make you feel younger and healthy too. Will you teach your grandchild soccer? 
+(Ref: ['That is so right. It feels so much better than just becoming passive when getting older. Of course I will, keeping the heritage :)', ...])
+G--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+(length: 19, latency: 0.181, BLEU: 0.105, ROUGE: 0.267, METEOR: 0.429)
+U'--Keeping active will make you feel younger and healthy too. Will you teach your grandchild soccer? (cosine: 1.000)
+G'--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+Attack failed!
+(length: 19, latency: 0.182, BLEU: 0.105, ROUGE: 0.267, METEOR: 0.429)
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids<SEP>I have two daughters. Do you have any children?<SEP>Yes I have a son and just recently i became a grandpa<SEP>Congratulations! That's great. Do you have any hobbies?<SEP>Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. <SEP>Keeping active will make you feel younger and healthy too. Will you teach your grandchild soccer?<SEP>That is so right. It feels so much better than just becoming passive when getting older. Of course I will, keeping the heritage :)
+U--Wonderful. I am sure they will appreciate that! I like to photograph nature in my free time. 
+(Ref: ['Sorry I talked so much about myself! Thats amazing, nature is so calming. Do you just photograph nature?', ...])
+G--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+(length: 19, latency: 0.182, BLEU: 0.133, ROUGE: 0.216, METEOR: 0.282)
+U'--Wonderful. I am sure they will appreciate that! I like to photograph nature in my free time. (cosine: 1.000)
+G'--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+Attack failed!
+(length: 19, latency: 0.182, BLEU: 0.133, ROUGE: 0.216, METEOR: 0.282)
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids<SEP>I have two daughters. Do you have any children?<SEP>Yes I have a son and just recently i became a grandpa<SEP>Congratulations! That's great. Do you have any hobbies?<SEP>Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. <SEP>Keeping active will make you feel younger and healthy too. Will you teach your grandchild soccer?<SEP>That is so right. It feels so much better than just becoming passive when getting older. Of course I will, keeping the heritage :)<SEP>Wonderful. I am sure they will appreciate that! I like to photograph nature in my free time.<SEP>Sorry I talked so much about myself! Thats amazing, nature is so calming. Do you just photograph nature?
+U--That's okay! Yes, I mostly photograph nature, but I like to photograph other things as well, like people and landmarks. 
+(Ref: ['Do you do it professionally or is it just a hobby? I just take pictures occasionally with my wife.', ...])
+G--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+(length: 19, latency: 0.181, BLEU: 0.105, ROUGE: 0.267, METEOR: 0.282)
+U'--That's okay! Yes, I mostly photograph nature, but I like to photograph other things as well, like people and landmarks. (cosine: 1.000)
+G'--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+Attack failed!
+(length: 19, latency: 0.173, BLEU: 0.105, ROUGE: 0.267, METEOR: 0.282)
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids<SEP>I have two daughters. Do you have any children?<SEP>Yes I have a son and just recently i became a grandpa<SEP>Congratulations! That's great. Do you have any hobbies?<SEP>Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. <SEP>Keeping active will make you feel younger and healthy too. Will you teach your grandchild soccer?<SEP>That is so right. It feels so much better than just becoming passive when getting older. Of course I will, keeping the heritage :)<SEP>Wonderful. I am sure they will appreciate that! I like to photograph nature in my free time.<SEP>Sorry I talked so much about myself! Thats amazing, nature is so calming. Do you just photograph nature?<SEP>That's okay! Yes, I mostly photograph nature, but I like to photograph other things as well, like people and landmarks.<SEP>Do you do it professionally or is it just a hobby? I just take pictures occasionally with my wife.
+U--People have paid me to photograph them before, but it is mostly a hobby. I work as a lawyer. 
+(Ref: ['Oh nice! My brother in law is a lawyer and I remember him trying to get certain jobs he wanted and it not being easy sometimes', ...])
+G--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+(length: 19, latency: 0.176, BLEU: 0.091, ROUGE: 0.222, METEOR: 0.223)
+U'--People have paid me to photograph them before, but it is mostly a hobby. I work as a lawyer. (cosine: 1.000)
+G'--That's great. I'm a grandparent at 44 so I'm a grandparent. Do you have any hobbies?
+Attack failed!
+(length: 19, latency: 0.181, BLEU: 0.091, ROUGE: 0.222, METEOR: 0.223)
+
+Dialogue history: <PS>i talk a lot in irc.<CTX>Internet Relay Chat.<SEP>You seem to know a lot about it. I chose the topic because I don't know anything about it. <SEP>Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?
+U--Not really. Let's talk about food. What do you like to eat? I LOVE fish  
+(Ref: ['I like fish too.  But really I am not picky.  Do you eat a lot of fish?', ...])
+G--I like to eat fish. I like to eat a lot in irc. What about you?
+(length: 19, latency: 0.159, BLEU: 0.228, ROUGE: 0.424, METEOR: 0.534)
+U'--Not really. Let's talk about food. What do you like to eat? I LOVE fish (cosine: 1.000)
+G'--I like to eat fish. I like to eat a lot in irc. What about you?
+Attack failed!
+(length: 19, latency: 0.151, BLEU: 0.228, ROUGE: 0.424, METEOR: 0.534)
+
+Dialogue history: <PS>i talk a lot in irc.<CTX>Internet Relay Chat.<SEP>You seem to know a lot about it. I chose the topic because I don't know anything about it. <SEP>Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?<SEP>Not really. Let's talk about food. What do you like to eat? I LOVE fish <SEP>I like fish too.  But really I am not picky.  Do you eat a lot of fish?
+U--I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL  
+(Ref: ['Possibly.  How do you like to prepare your fish?', ...])
+G--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+(length: 19, latency: 0.159, BLEU: 0.115, ROUGE: 0.222, METEOR: 0.273)
+U'--I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL (cosine: 1.000)
+G'--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+Attack failed!
+(length: 19, latency: 0.165, BLEU: 0.115, ROUGE: 0.222, METEOR: 0.273)
+
+Dialogue history: <PS>i talk a lot in irc.<CTX>Internet Relay Chat.<SEP>You seem to know a lot about it. I chose the topic because I don't know anything about it. <SEP>Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?<SEP>Not really. Let's talk about food. What do you like to eat? I LOVE fish <SEP>I like fish too.  But really I am not picky.  Do you eat a lot of fish?<SEP>I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL <SEP>Possibly.  How do you like to prepare your fish?
+U--I LOVE salmon. Sear it with some rosemary, lots of butter, and some lemon. to DIE FOR.  
+(Ref: ['That sounds wonderful - what do you like for side dishes?  I eat lots of veggies', ...])
+G--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+(length: 19, latency: 0.167, BLEU: 0.117, ROUGE: 0.370, METEOR: 0.310)
+U'--I LOVE salmon. Sear it with some rosemary, lots of butter, and some lemon. to DIE FOR. (cosine: 1.000)
+G'--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+Attack failed!
+(length: 19, latency: 0.168, BLEU: 0.117, ROUGE: 0.370, METEOR: 0.310)
+
+Dialogue history: <PS>i talk a lot in irc.<CTX>Internet Relay Chat.<SEP>You seem to know a lot about it. I chose the topic because I don't know anything about it. <SEP>Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?<SEP>Not really. Let's talk about food. What do you like to eat? I LOVE fish <SEP>I like fish too.  But really I am not picky.  Do you eat a lot of fish?<SEP>I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL <SEP>Possibly.  How do you like to prepare your fish?<SEP>I LOVE salmon. Sear it with some rosemary, lots of butter, and some lemon. to DIE FOR. <SEP>That sounds wonderful - what do you like for side dishes?  I eat lots of veggies
+U--Some shittake mushrooms and asparagus stirfried with olive oil - I'm a big keto fan so it suits fish  
+(Ref: ['I like the way you think - and EAT!  Sounds very healthy', ...])
+G--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+(length: 19, latency: 0.170, BLEU: 0.166, ROUGE: 0.333, METEOR: 0.389)
+U'--Some shittake mushrooms and asparagus stirfried with olive oil - I'm a big keto fan so it suits fish (cosine: 1.000)
+G'--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+Attack failed!
+(length: 19, latency: 0.164, BLEU: 0.166, ROUGE: 0.333, METEOR: 0.389)
+
+Dialogue history: <PS>i talk a lot in irc.<CTX>Internet Relay Chat.<SEP>You seem to know a lot about it. I chose the topic because I don't know anything about it. <SEP>Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?<SEP>Not really. Let's talk about food. What do you like to eat? I LOVE fish <SEP>I like fish too.  But really I am not picky.  Do you eat a lot of fish?<SEP>I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL <SEP>Possibly.  How do you like to prepare your fish?<SEP>I LOVE salmon. Sear it with some rosemary, lots of butter, and some lemon. to DIE FOR. <SEP>That sounds wonderful - what do you like for side dishes?  I eat lots of veggies<SEP>Some shittake mushrooms and asparagus stirfried with olive oil - I'm a big keto fan so it suits fish <SEP>I like the way you think - and EAT!  Sounds very healthy
+U--I'm just worried about where I get my fish - sometime i get scared about mercury and other toxins  
+(Ref: ['Yes, I have that worry too - you can never be sure, can you?', ...])
+G--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+(length: 19, latency: 0.165, BLEU: 0.085, ROUGE: 0.171, METEOR: 0.177)
+U'--I'm just worried about where I get my fish - sometime i get scared about mercury and other toxins (cosine: 1.000)
+G'--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+Attack failed!
+(length: 19, latency: 0.166, BLEU: 0.085, ROUGE: 0.171, METEOR: 0.177)
+
+Dialogue history: <PS>i talk a lot in irc.<CTX>Internet Relay Chat.<SEP>You seem to know a lot about it. I chose the topic because I don't know anything about it. <SEP>Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?<SEP>Not really. Let's talk about food. What do you like to eat? I LOVE fish <SEP>I like fish too.  But really I am not picky.  Do you eat a lot of fish?<SEP>I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL <SEP>Possibly.  How do you like to prepare your fish?<SEP>I LOVE salmon. Sear it with some rosemary, lots of butter, and some lemon. to DIE FOR. <SEP>That sounds wonderful - what do you like for side dishes?  I eat lots of veggies<SEP>Some shittake mushrooms and asparagus stirfried with olive oil - I'm a big keto fan so it suits fish <SEP>I like the way you think - and EAT!  Sounds very healthy<SEP>I'm just worried about where I get my fish - sometime i get scared about mercury and other toxins <SEP>Yes, I have that worry too - you can never be sure, can you?
+U--It's why I pay extra for wild salmon and organic stuff - call me a health nut but when I'm 95 who's laughing? LOL  
+(Ref: ['95? That's amazing.  Maybe you should write a book', ...])
+G--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+(length: 19, latency: 0.167, BLEU: 0.112, ROUGE: 0.214, METEOR: 0.245)
+U'--It's why I pay extra for wild salmon and organic stuff - call me a health nut but when I'm 95 who's laughing? LOL (cosine: 1.000)
+G'--That's cool. I'm not a big fish fan. I like to eat a lot of fish.
+Attack failed!
+(length: 19, latency: 0.164, BLEU: 0.112, ROUGE: 0.214, METEOR: 0.245)
+
+Dialogue history: <PS>i'm allergic to shellfish and cats.<CTX>Hoarding.<SEP>My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff<SEP>That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.
+U--Maybe one day I will move to London.  
+(Ref: ['Wouldn't that be great. Think of all the changes we could make.', ...])
+G--I hope so. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+(length: 18, latency: 0.153, BLEU: 0.090, ROUGE: 0.207, METEOR: 0.146)
+U'--Maybe one day I will move to London. (cosine: 1.000)
+G'--I hope so. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+Attack failed!
+(length: 18, latency: 0.146, BLEU: 0.090, ROUGE: 0.207, METEOR: 0.146)
+
+Dialogue history: <PS>i'm allergic to shellfish and cats.<CTX>Hoarding.<SEP>My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff<SEP>That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.<SEP>Maybe one day I will move to London. <SEP>Wouldn't that be great. Think of all the changes we could make.
+U--Yep. And the soccor! 
+(Ref: ['I guess you'll have to get a storage unit.  The question then is what goes in the storage unit?  Furniture or the kids crafts.  Haha.', ...])
+G--I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+(length: 14, latency: 0.125, BLEU: 0.111, ROUGE: 0.231, METEOR: 0.150)
+U'--Yep. And the soccor! (cosine: 1.000)
+G'--I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+Attack failed!
+(length: 14, latency: 0.135, BLEU: 0.111, ROUGE: 0.231, METEOR: 0.150)
+
+Dialogue history: <PS>i'm allergic to shellfish and cats.<CTX>Hoarding.<SEP>My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff<SEP>That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.<SEP>Maybe one day I will move to London. <SEP>Wouldn't that be great. Think of all the changes we could make.<SEP>Yep. And the soccor!<SEP>I guess you'll have to get a storage unit.  The question then is what goes in the storage unit?  Furniture or the kids crafts.  Haha.
+U--Just furniture probably.  
+(Ref: ['I live with my mom. If we moved, I would have to deal with her 500 pairs of shoes. She's a hoarder for sure.', ...])
+G--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+(length: 19, latency: 0.184, BLEU: 0.088, ROUGE: 0.200, METEOR: 0.188)
+U'--Just furniture probably. (cosine: 1.000)
+G'--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+Attack failed!
+(length: 19, latency: 0.181, BLEU: 0.088, ROUGE: 0.200, METEOR: 0.188)
+
+Dialogue history: <PS>i'm allergic to shellfish and cats.<CTX>Hoarding.<SEP>My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff<SEP>That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.<SEP>Maybe one day I will move to London. <SEP>Wouldn't that be great. Think of all the changes we could make.<SEP>Yep. And the soccor!<SEP>I guess you'll have to get a storage unit.  The question then is what goes in the storage unit?  Furniture or the kids crafts.  Haha.<SEP>Just furniture probably. <SEP>I live with my mom. If we moved, I would have to deal with her 500 pairs of shoes. She's a hoarder for sure.
+U--OH wow that's a lot of shoes.  
+(Ref: ['500 pairs of shoes is definitely way too many.  If she was unwilling to discard the items and the shoes were covering up living areas, I would hate it.', ...])
+G--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+(length: 19, latency: 0.181, BLEU: 0.081, ROUGE: 0.125, METEOR: 0.115)
+U'--OH wow that's a lot of shoes. (cosine: 1.000)
+G'--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+Attack failed!
+(length: 19, latency: 0.175, BLEU: 0.081, ROUGE: 0.125, METEOR: 0.115)
+
+Dialogue history: <PS>i'm allergic to shellfish and cats.<CTX>Hoarding.<SEP>My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff<SEP>That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.<SEP>Maybe one day I will move to London. <SEP>Wouldn't that be great. Think of all the changes we could make.<SEP>Yep. And the soccor!<SEP>I guess you'll have to get a storage unit.  The question then is what goes in the storage unit?  Furniture or the kids crafts.  Haha.<SEP>Just furniture probably. <SEP>I live with my mom. If we moved, I would have to deal with her 500 pairs of shoes. She's a hoarder for sure.<SEP>OH wow that's a lot of shoes. <SEP>500 pairs of shoes is definitely way too many.  If she was unwilling to discard the items and the shoes were covering up living areas, I would hate it.
+U--I agree. 
+(Ref: ['I have to be careful travelling to new countries though. I am allergic to shellfish and cats.', ...])
+G--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+(length: 19, latency: 0.175, BLEU: 0.319, ROUGE: 0.444, METEOR: 0.502)
+U'--I agree. (cosine: 1.000)
+G'--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+Attack failed!
+(length: 19, latency: 0.176, BLEU: 0.319, ROUGE: 0.444, METEOR: 0.502)
+
+Dialogue history: <PS>i'm allergic to shellfish and cats.<CTX>Hoarding.<SEP>My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff<SEP>That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.<SEP>Maybe one day I will move to London. <SEP>Wouldn't that be great. Think of all the changes we could make.<SEP>Yep. And the soccor!<SEP>I guess you'll have to get a storage unit.  The question then is what goes in the storage unit?  Furniture or the kids crafts.  Haha.<SEP>Just furniture probably. <SEP>I live with my mom. If we moved, I would have to deal with her 500 pairs of shoes. She's a hoarder for sure.<SEP>OH wow that's a lot of shoes. <SEP>500 pairs of shoes is definitely way too many.  If she was unwilling to discard the items and the shoes were covering up living areas, I would hate it.<SEP>I agree.<SEP>I have to be careful travelling to new countries though. I am allergic to shellfish and cats.
+U--There are cats everywhere.  
+(Ref: ['Oh wow. I would have to avoid them. Do you have pets?', ...])
+G--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+(length: 19, latency: 0.175, BLEU: 0.081, ROUGE: 0.231, METEOR: 0.223)
+U'--There are cats everywhere. (cosine: 1.000)
+G'--That's a good idea. I'm allergic to shellfish and cats. I'm allergic to shellfish and cats.
+Attack failed!
+(length: 19, latency: 0.172, BLEU: 0.081, ROUGE: 0.231, METEOR: 0.223)
+
+Dialogue history: <PS>i changed my hair color to blue.<SEP>great ! are you a fan ? me and mr . pickles are fine here .<SEP>yeah , wish i could have met him . . . is that a cat or dog ?
+U--It's a cat! I named him pickles because once he ate a whole jar of pickles when I was away! Haha 
+(Ref: ['What!! The cat ate the entire jar of pickles! I can't even get my cat to eat notmal cat food', ...])
+G--That's great! I'm sure he's a dog. I'm sure he's a dog.
+(length: 15, latency: 0.174, BLEU: 0.103, ROUGE: 0.188, METEOR: 0.251)
+U'--It's a cat! I named him pickles because once he ate a whole jar of pickles when I was away! Haha (cosine: 1.000)
+G'--That's great! I'm sure he's a dog. I'm sure he's a dog.
+Attack failed!
+(length: 15, latency: 0.182, BLEU: 0.103, ROUGE: 0.188, METEOR: 0.251)
+
+Dialogue history: <PS>i changed my hair color to blue.<SEP>great ! are you a fan ? me and mr . pickles are fine here .<SEP>yeah , wish i could have met him . . . is that a cat or dog ?<SEP>It's a cat! I named him pickles because once he ate a whole jar of pickles when I was away! Haha<SEP>What!! The cat ate the entire jar of pickles! I can't even get my cat to eat notmal cat food
+U--Haha, Mr.Pickles is not a typical cat, I was given him by a gypsy fortune teller! It's a crazy story 
+(Ref: ['How old is he? It sounds like he's possessed.  Do you have a car? maybe take him for a drive.', ...])
+G--That's a good idea! I'm sure he'll be able to eat notmal cat food!
+(length: 16, latency: 0.170, BLEU: 0.097, ROUGE: 0.188, METEOR: 0.184)
+U'--Haha, Mr.Pickles is not a typical cat, I was given him by a gypsy fortune teller! It's a crazy story (cosine: 1.000)
+G'--That's a good idea! I'm sure he'll be able to eat notmal cat food!
+Attack failed!
+(length: 16, latency: 0.169, BLEU: 0.097, ROUGE: 0.188, METEOR: 0.184)
+
+Dialogue history: <PS>i changed my hair color to blue.<SEP>great ! are you a fan ? me and mr . pickles are fine here .<SEP>yeah , wish i could have met him . . . is that a cat or dog ?<SEP>It's a cat! I named him pickles because once he ate a whole jar of pickles when I was away! Haha<SEP>What!! The cat ate the entire jar of pickles! I can't even get my cat to eat notmal cat food<SEP>Haha, Mr.Pickles is not a typical cat, I was given him by a gypsy fortune teller! It's a crazy story<SEP>How old is he? It sounds like he's possessed.  Do you have a car? maybe take him for a drive.
+U--I think he might be the oldest cat in the UK! He's already 35... he's older than my brother!  
+(Ref: ['Wait? Your cat is 35...how is that possible?', ...])
+G--Hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+(length: 1, latency: 0.671, BLEU: 0.000, ROUGE: 0.000, METEOR: 0.000)
