@@ -400,7 +400,7 @@ def main(args: argparse.Namespace):
             max_len=max_len,
             max_per=max_per,
             task=task,
-        )
+        ) 
     else:
         raise ValueError("Invalid attack strategy!")
 
@@ -480,7 +480,7 @@ if __name__ == "__main__":
                             'fd', # white-box attack
                             'hotflip', # white-box attack 
                             'textbugger', # white-box attack
-                        ], 
+                            ], 
                         help="Attack strategy")
     args = parser.parse_args()
     main(args)
