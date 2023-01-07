@@ -1,18 +1,19 @@
 import pandas as pd
-import os
+import abc
+import copy
 import torch
-import stanza
 from supar import Parser
 from nltk.tree import Tree
 from utils import SentenceEncoder, GrammarChecker
 from .base import SlowAttacker
-from typing import Optional, Union
+from typing import Optional, Union, List
 from transformers import (
     BertTokenizer,
     BertForMaskedLM,
     BartForConditionalGeneration,
+    PegasusForConditionalGeneration,
+    PegasusTokenizer
 )
-from OpenAttack.attack_assist.substitute.word import WordNetSubstitute
 
 
 
@@ -22,62 +23,58 @@ class MAYAAttacker(SlowAttacker):
     def __init__(
         self,
         device: Optional[torch.device] = None,
+        tokenizer: BertTokenizer = None,
         model: Union[BertForMaskedLM, BartForConditionalGeneration] = None,
         max_len: int = 64,
         max_per: int = 3,
         task: str = "seq2seq",
-        paraphrasers=None,
-        fine_tune_path=None,
-        save_paraphrase_label=None,
+        # fine_tune_path=None, #不知道是什么
+        # save_paraphrase_label=None, #不知道是什么
     ):
         super(MAYAAttacker, self).__init__(
-            device, model, max_len, max_per, task,
+            device, model, tokenizer, max_len, max_per, task,
         )
-        self.substitute = WordNetSubstitute()
         self.parser = ConstituencyParser()
-        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         self.sim = SentenceEncoder()
         self.grammar = GrammarChecker()
-        self.fine_tune_path = fine_tune_path
-        self.save_paraphrase_label = save_paraphrase_label
+        self.paraphraser = T5()
+        # self.fine_tune_path = fine_tune_path
+        # self.save_paraphrase_label = save_paraphrase_label
 
         # collect supervisory singals for pretrained-agent Bert to fine-tune
-        if fine_tune_path:
-            if os.path.exists(fine_tune_path):
-                self.samples = pd.read_csv(fine_tune_path, sep='\t')
-                self.sample_num = self.samples['index'].values[-1] + 1
-            else:
-                self.samples = pd.DataFrame(columns=['index', 'sentence', 'sentences', 'label'])
-                self.sample_num = 0
+        # 这是什么鬼？
+        # if fine_tune_path:
+        #     if os.path.exists(fine_tune_path):
+        #         self.samples = pd.read_csv(fine_tune_path, sep='\t')
+        #         self.sample_num = self.samples['index'].values[-1] + 1
+        #     else:
+        #         self.samples = pd.DataFrame(columns=['index', 'sentence', 'sentences', 'label'])
+        #         self.sample_num = 0
 
-        if save_paraphrase_label:
-            if os.path.exists(save_paraphrase_label):
-                self.label_info = pd.read_csv(save_paraphrase_label, sep='\t')
-            else:
-                self.label_info = pd.DataFrame(columns=['sentence', 'phrase', 'label', 'length'])
+        # if save_paraphrase_label:
+        #     if os.path.exists(save_paraphrase_label):
+        #         self.label_info = pd.read_csv(save_paraphrase_label, sep='\t')
+        #     else:
+        #         self.label_info = pd.DataFrame(columns=['sentence', 'phrase', 'label', 'length'])
 
-            self.nlp = stanza.Pipeline('en', processors='tokenize,pos')
+        #     self.nlp = stanza.Pipeline('en', processors='tokenize,pos')
 
-        # self.paraphrase_count = pd.DataFrame(columns=['back', 'gpt2', 'T5'])
-        # self.back_count = 0
-        # self.gpt2_count = 0
-        # self.T5_count = 0
-
-        self.substitution = substitution
-        self.paraphrasers = paraphrasers
+    def compute_loss(self, text: list, labels: list):
+        return None, None
 
     # 将每个单词分别mask
-    def get_masked_sentence(self, sentence):
+    def get_masked_sentence(self, sentence:str):
         pos_info = None
-        if self.save_paraphrase_label:
-            doc = self.nlp(sentence)
-            pos_info = []
-            for stc in doc.sentences:
-                for word in stc.words:
-                    pos_info.append(word.pos)
+        # if self.save_paraphrase_label:
+        #     doc = self.nlp(sentence)
+        #     pos_info = []
+        #     for stc in doc.sentences:
+        #         for word in stc.words:
+        #             pos_info.append(word.pos)
 
         words = sentence.split(' ')
         masked_sentences = []
+        indices = []
 
         for i in range(len(words)):
             word = words[i]
@@ -85,8 +82,9 @@ class MAYAAttacker(SlowAttacker):
             tgt = ' '.join(x for x in words)
             masked_sentences.append(tgt)
             words[i] = word
+            indices.append(i)
 
-        return masked_sentences, pos_info
+        return masked_sentences, pos_info, indices
 
     # 将句子统一用BertTokenizer格式化
     def formalize(self, sentences):
@@ -97,8 +95,8 @@ class MAYAAttacker(SlowAttacker):
             else:
                 tokens = self.tokenizer.tokenize(ori)
 
-                if len(tokens) > 510:
-                    tokens = tokens[0:510]
+                if len(tokens) > 64:
+                    tokens = tokens[0:64]
 
                 string = self.tokenizer.convert_tokens_to_string(tokens)
                 formalized_sentences.append(string)
@@ -129,12 +127,6 @@ class MAYAAttacker(SlowAttacker):
                 best_advs.append(advs[0])
 
             else:
-                # if max_index == 0:
-                #     self.back_count += 1
-                # elif max_index == 1:
-                #     self.gpt2_count += 1
-                # else:
-                #     self.T5_count += 1
                 best_adv = self.sim.find_best_sim(sentence, advs)[0]
                 best_advs.append(best_adv)
 
@@ -143,14 +135,22 @@ class MAYAAttacker(SlowAttacker):
         return best_advs, new_info
 
     # 对一个句子的预处理，获得所有可能的变形形式
-    def sentence_process(self, sentence):
+    def mutation(
+        self, 
+        context: str, 
+        sentence: str, 
+        grad: torch.gradient, 
+        goal: str, 
+        modify_pos: List[int],
+    ):
         sentence = sentence.lower()
-        if self.substitution is None:
-            masked_sentences, word_info = [], None
-        else:
-            masked_sentences, word_info = self.get_masked_sentence(sentence)
+        masked_sentences, word_info, masked_indices = self.get_masked_sentence(sentence)
 
         masked_sentences = self.formalize(masked_sentences)
+        masked_new_strings = []
+        for i in range(len(masked_indices)):
+            masked_new_strings.append(masked_indices[i])
+            masked_new_strings.append(masked_sentences[i])
 
         root, nodes = self.parser(sentence)
         if len(nodes) == 0:
@@ -158,15 +158,16 @@ class MAYAAttacker(SlowAttacker):
 
         phrases = [node[1] for node in nodes if node[3]]
         indices = [node[2] for node in nodes if node[3]]
+        print(phrases)
+        print(indices)
         info = [[node[1], node[3], node[4]] for node in nodes]
 
         paraphrases = []
         with torch.no_grad():
             if phrases:
-                for paraphraser in self.paraphrasers:
-                    one_batch = paraphraser.paraphrase(phrases)
-                    if one_batch is not None:
-                        paraphrases.append(one_batch)
+                one_batch = self.paraphraser.paraphrase(phrases)
+                if one_batch is not None:
+                    paraphrases.append(one_batch)
 
         translated_sentence_list = []
         if len(paraphrases) > 0:
@@ -199,14 +200,14 @@ class MAYAAttacker(SlowAttacker):
                 print('error in getting best paraphrases!')
                 best = []
 
-        return list(set(masked_sentences+best))
+        return list(set(masked_new_strings+best))
 
 class ConstituencyParser:
     def __init__(self):
         self.parser = Parser.load('crf-con-en')
 
     @staticmethod
-    def __sentence_to_list(sentence):
+    def __sentence_to_list(sentence:str):
         word_list = sentence.strip().replace('(', '[').replace(')', ']').split(' ')
 
         while '' in word_list:
@@ -249,3 +250,39 @@ class ConstituencyParser:
         node_list = node_list.drop_duplicates('phrase', keep='last')
 
         return root, node_list.values
+
+class Paraphraser(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def paraphrase(self, sentences):
+        raise Exception("Abstract method 'substitute' method not be implemented!")
+
+class T5(Paraphraser):
+    def __init__(self, device='cuda'):
+        super().__init__()
+        model_name = 'tuner007/pegasus_paraphrase'
+        self.max_length = 512
+        self.device = device
+        self.tokenizer = PegasusTokenizer.from_pretrained(model_name)
+        self.model = PegasusForConditionalGeneration.from_pretrained(model_name,
+                                                                     max_length=self.max_length,
+                                                                     max_position_embeddings=self.max_length).to(self.device)
+
+    def paraphrase(self, sentences):
+        with torch.no_grad():
+            tgt_text = []
+            for sentence in sentences:
+                batch = self.tokenizer.prepare_seq2seq_batch([sentence],
+                                                             truncation=True,
+                                                             padding='longest',
+                                                             max_length=int(len(sentence.split(' '))*1.2),
+                                                             return_tensors="pt").to(self.device)
+
+                translated = self.model.generate(**batch,
+                                                 max_length=self.max_length,
+                                                 min_length=int(len(sentence.split(' '))*0.8),
+                                                 num_beams=1,
+                                                 num_return_sequences=1,
+                                                 temperature=1.5)
+
+                tgt_text += self.tokenizer.batch_decode(translated, skip_special_tokens=True)
+            return tgt_text
