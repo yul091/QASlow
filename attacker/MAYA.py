@@ -2,7 +2,7 @@ import pandas as pd
 import abc
 import copy
 import torch
-from supar import Parser
+# from supar import Parser
 from nltk.tree import Tree
 from utils import SentenceEncoder, GrammarChecker
 from .base import SlowAttacker
@@ -32,7 +32,7 @@ class MAYAAttacker(SlowAttacker):
         # save_paraphrase_label=None, #不知道是什么
     ):
         super(MAYAAttacker, self).__init__(
-            device, model, tokenizer, max_len, max_per, task,
+            device, tokenizer, model, max_len, max_per, task,
         )
         self.parser = ConstituencyParser()
         self.sim = SentenceEncoder()

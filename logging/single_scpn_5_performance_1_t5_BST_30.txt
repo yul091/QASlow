@@ -1,0 +1,16 @@
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids
+U--I have two daughters. Do you have any children? 
+(Ref: ['Yes I have a son and just recently i became a grandpa', ...])
+G--I have two daughters. I have a grandparent at 44 and a grandparent at 44.
+(length: 17, latency: 0.144, BLEU: 0.177, ROUGE: 0.370, METEOR: 0.341)
+U'--I have two daughters. Do you have any children? (cosine: 1.000)
+G'--I have two daughters. I have a grandparent at 44 and a grandparent at 44.
+Attack failed!
+(length: 17, latency: 0.140, BLEU: 0.177, ROUGE: 0.370, METEOR: 0.341)
+
+Dialogue history: <PS>i am a grandparent at 44.<SEP>what do you make there ? cars , boats , planes or goods and sprockets ?<SEP>i build commercial planes i work the night shift . do you have any kids<SEP>I have two daughters. Do you have any children?<SEP>Yes I have a son and just recently i became a grandpa
+U--Congratulations! That's great. Do you have any hobbies? 
+(Ref: ['Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. ', ...])
+G--I like to cook and play sports.
+(length: 8, latency: 0.067, BLEU: 0.122, ROUGE: 0.211, METEOR: 0.220)

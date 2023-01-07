@@ -7,8 +7,8 @@ NUM_SAMPLES=30
 MAX_LENGTH=128
 SELECT_BEAMS=1
 
-for ATT_METHOD in structure pwws scpn viper bae fd hotflip textbugger
-# for ATT_METHOD in structure
+# for ATT_METHOD in structure pwws scpn viper bae fd hotflip textbugger
+for ATT_METHOD in maya
 do
     CUDA_VISIBLE_DEVICES=0 python attack.py \
         --attack_strategy $ATT_METHOD \
