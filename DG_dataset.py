@@ -15,7 +15,7 @@ class DGDataset:
         tokenizer: AutoTokenizer = None,
         max_source_length: int = 512,
         max_target_length: int = 512,
-        padding: str = None,
+        padding: str = "max_length",
         ignore_pad_token_for_loss: bool = True,
         preprocessing_num_workers: int = None,
         overwrite_cache: bool = True,
@@ -51,7 +51,7 @@ class DGDataset:
 
         elif self.dataset == 'conv_ai_2':
             total_entries = len(instance['dialog'])
-            num_entries = len([x for x in instance['dialog'] if x['sender_class'] == 'Human'])
+            num_entries = total_entries//2
             if self.task == 'seq2seq':
                 user_profile = ' '.join([''.join(x) for x in instance['user_profile']])
                 persona_pieces = f"<PS>{user_profile}"
@@ -165,6 +165,9 @@ class DGDataset:
                 free_message,
                 guided_message,
             ]
+        
+        if not inputs:
+            return {"input_ids": [], "labels": [], "attention_mask": []}
 
         if self.task == 'seq2seq':
             inputs = self.tokenizer(inputs, max_length=self.max_source_length, padding=self.padding, truncation=True)
@@ -261,9 +264,35 @@ class DGDataset:
     
 
 
+if __name__ == "__main__":
+    from transformers import AutoTokenizer
+    from datasets import load_dataset
     
-
-
-
+    tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
+    tokenizer.pad_token = tokenizer.eos_token
+    data_names = [
+        "conv_ai_2",
+        "empathetic_dialogues",
+        "AlekseyKorshuk/persona-chat",
+        "blended_skill_talk",
+    ]
+    task = "seq2seq"
+    max_length = 256
     
+    for data_name in data_names:
+        train_dataset = load_dataset(data_name)["train"]
+        dg = DGDataset(
+            dataset=data_name,
+            task=task,
+            tokenizer=tokenizer,
+            max_source_length=max_length,
+            max_target_length=max_length,
+        )
+        print('{}: {}'.format(data_name, train_dataset))
+        train_dataset = dg.preprocess(train_dataset)
+        print("processed dataset: ", train_dataset)
+        print("processed dataset[0]: ", train_dataset[0])
+        
+
+
         

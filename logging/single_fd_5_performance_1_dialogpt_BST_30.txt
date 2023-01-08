@@ -1,0 +1,557 @@
+
+Dialogue history:  what do you make there ? cars , boats , planes or goods and sprockets ? i build commercial planes i work the night shift . do you have any kids
+U--I have two daughters. Do you have any children? 
+(Ref: ['Yes I have a son and just recently i became a grandpa', ...])
+G--No, I don't. But I wish someday after getting married I will have my own.  are you married?  I am not.  I have a girlfriend.
+(length: 31, latency: 1.277, BLEU: 0.105, ROUGE: 0.244, METEOR: 0.288)
+U'--i have two little . do you have any kid ? (cosine: 0.775)
+G'--I have two kids. One boy and a girl. Do you have any kids?  are you a boy or a girl?               I have a little girl.
+Attack failed!
+(length: 31, latency: 0.810, BLEU: 0.120, ROUGE: 0.364, METEOR: 0.396)
+
+Dialogue history:  what do you make there ? cars , boats , planes or goods and sprockets ? i build commercial planes i work the night shift . do you have any kids I have two daughters. Do you have any children? Yes I have a son and just recently i became a grandpa
+U--Congratulations! That's great. Do you have any hobbies? 
+(Ref: ['Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. ', ...])
+G--I love to read and play soccer
+(length: 7, latency: 0.610, BLEU: 0.136, ROUGE: 0.211, METEOR: 0.222)
+U'--Congratulations! That's great. Do you have any hobbies? (cosine: 1.000)
+G'--I love to read and play soccer
+Attack failed!
+(length: 7, latency: 0.615, BLEU: 0.136, ROUGE: 0.211, METEOR: 0.222)
+
+Dialogue history:  You seem to know a lot about it. I chose the topic because I don't know anything about it.  Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more?
+U--Not really. Let's talk about food. What do you like to eat? I LOVE fish  
+(Ref: ['I like fish too.  But really I am not picky.  Do you eat a lot of fish?', ...])
+G--What is your favorite food?I love steak. I love to eat it with a fried egg on top.
+(length: 22, latency: 0.557, BLEU: 0.098, ROUGE: 0.222, METEOR: 0.237)
+U'--not in . lashkar-e-taiba ' s talking about alimental . what do you same to have ? i do fish (cosine: 0.405)
+G'--I love it.  I love it.   I have a really good job.
+(length: 15, latency: 0.480, BLEU: 0.116, ROUGE: 0.207, METEOR: 0.154)
+
+Dialogue history:  You seem to know a lot about it. I chose the topic because I don't know anything about it.  Yeah it's the chat process that works on a client/server model. It's a network chat. It's very interesting. Do you want to now more? Not really. Let's talk about food. What do you like to eat? I LOVE fish  I like fish too.  But really I am not picky.  Do you eat a lot of fish?
+U--I eat pretty much only fish. My parents do too, and they're both over 6 feet. Probably cause of the fish LOL  
+(Ref: ['Possibly.  How do you like to prepare your fish?', ...])
+G--
+
+Dialogue history:  My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate.
+U--Maybe one day I will move to London.  
+(Ref: ['Wouldn't that be great. Think of all the changes we could make.', ...])
+G--I would love to move to London.  I love the city and the people.
+(length: 16, latency: 0.596, BLEU: 0.133, ROUGE: 0.308, METEOR: 0.226)
+U'--perhaps one 24 i will travel to london . (cosine: 0.709)
+G'--Where would you like to go? I would like to go to London. I have never been but I want to go.
+(length: 25, latency: 0.618, BLEU: 0.111, ROUGE: 0.235, METEOR: 0.360)
+
+Dialogue history:  My sister and her husband are both hoarders of things.  they love to buy in bulk and just continue to keep everything they buy therefore their house is full of stuff That kind of behavior has been associated with health risks , economic burdens, and adverse affects on loved ones. It's unfortunate. Maybe one day I will move to London.  Wouldn't that be great. Think of all the changes we could make.
+U--Yep. And the soccor! 
+(Ref: ['I guess you'll have to get a storage unit.  The question then is what goes in the storage unit?  Furniture or the kids crafts.  Haha.', ...])
+G--I think London would be a great place to live. I think I would love to move there. have you been to London?  I have!  I have been to the U.S. Virginian
+(length: 39, latency: 0.446, BLEU: 0.077, ROUGE: 0.222, METEOR: 0.279)
+U'--Yep. And the soccor! (cosine: 1.000)
+G'--I think London would be a great place to live. I think I would love to move there. have you been to London?  I have!  I have been to the U.S. Virginian
+Attack failed!
+(length: 39, latency: 0.447, BLEU: 0.077, ROUGE: 0.222, METEOR: 0.279)
+
+Dialogue history:  great ! are you a fan ? me and mr . pickles are fine here . yeah , wish i could have met him . . . is that a cat or dog ?
+U--It's a cat! I named him pickles because once he ate a whole jar of pickles when I was away! Haha 
+(Ref: ['What!! The cat ate the entire jar of pickles! I can't even get my cat to eat notmal cat food', ...])
+G--I love pickles! I named mine pickles as well!  I love them too!
+(length: 16, latency: 0.662, BLEU: 0.209, ROUGE: 0.214, METEOR: 0.187)
+U'--it ' s a with ! i fundamental him clutter because once he provisions a whole look of jumble when i was aside ! haha (cosine: 0.387)
+G'--what is your cat's name?   area is full of cats, but I have a dog too.
+(length: 19, latency: 0.672, BLEU: 0.091, ROUGE: 0.211, METEOR: 0.215)
+
+Dialogue history:  great ! are you a fan ? me and mr . pickles are fine here . yeah , wish i could have met him . . . is that a cat or dog ? It's a cat! I named him pickles because once he ate a whole jar of pickles when I was away! Haha What!! The cat ate the entire jar of pickles! I can't even get my cat to eat notmal cat food
+U--Haha, Mr.Pickles is not a typical cat, I was given him by a gypsy fortune teller! It's a crazy story 
+(Ref: ['How old is he? It sounds like he's possessed.  Do you have a car? maybe take him for a drive.', ...])
+G--Oh wow, I didn't know that! I'm so sorry to hear that! What was the story?
+(length: 20, latency: 0.228, BLEU: 0.106, ROUGE: 0.242, METEOR: 0.276)
+U'--Haha, Mr.Pickles is not a typical cat, I was given him by a gypsy fortune teller! It's a crazy story (cosine: 1.000)
+G'--Oh wow, I didn't know that! I'm so sorry to hear that! What was the story?
+Attack failed!
+(length: 20, latency: 0.223, BLEU: 0.106, ROUGE: 0.242, METEOR: 0.276)
+
+Dialogue history:  Me too, I am interested to know more about it Dating considerably from country to country and over time.
+U--How is that working for you? 
+(Ref: ['It's going okay. I have a few dates a month. trying to take it slow to be honest. Trying to focus on finding a good woman lol. how about you?', ...])
+G--I'm doing pretty well. I've been dating for about two years now.WHERE!!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!
+(length: 169, latency: 0.946, BLEU: 0.009, ROUGE: 0.111, METEOR: 0.076)
+U'--How is that working for you? (cosine: 1.000)
+G'--I'm doing pretty well. I've been dating for about two years now.WHERE!!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!
+Attack failed!
+(length: 169, latency: 0.948, BLEU: 0.009, ROUGE: 0.111, METEOR: 0.076)
+
+Dialogue history:  Me too, I am interested to know more about it Dating considerably from country to country and over time. How is that working for you? It's going okay. I have a few dates a month. trying to take it slow to be honest. Trying to focus on finding a good woman lol. how about you?
+U--I haven't dated in a long time. Found the man of my dreams and stuck with him. Are you looking to marry? 
+(Ref: ['I'm not even looking for anything serious like marriage, just a friend that I can relate to romantically.', ...])
+G--I am looking for a job. I am a teacher. I have a lot of experience.
+(length: 19, latency: 0.448, BLEU: 0.108, ROUGE: 0.286, METEOR: 0.205)
+U'--I haven't dated in a long time. Found the man of my dreams and stuck with him. Are you looking to marry? (cosine: 1.000)
+G'--I am looking for a job. I am a teacher. I have a lot of experience.
+Attack failed!
+(length: 19, latency: 0.446, BLEU: 0.108, ROUGE: 0.286, METEOR: 0.205)
+
+Dialogue history:  i cant wait to go on my trip next week Oh yea? when is the trip?
+U--Next week.  I like summer better but I got vacation in fall so there it is. 
+(Ref: ['I enjoy going into the mountains and looking at the leaves in the fall', ...])
+G--Where are you going?I'm going to Italy in a couple of months. I've never been before.  I am going to Italy in a couple of months.  I have never been before either.  I have always wanted to go to the Middle East.
+(length: 49, latency: 0.866, BLEU: 0.035, ROUGE: 0.136, METEOR: 0.156)
+U'--next week . i same summer good but i have vacation in infer and there it is . (cosine: 0.782)
+G'--Where are you going?AVEL IT'S YOUR TIME TO SHOW YOUR LOVE! I WILL SHOW YOUR LOVE TO YOU  is there any particular reason you are so shy?  I just like to be around people.   is there any
+(length: 42, latency: 0.875, BLEU: 0.042, ROUGE: 0.093, METEOR: 0.174)
+
+Dialogue history:  i cant wait to go on my trip next week Oh yea? when is the trip? Next week.  I like summer better but I got vacation in fall so there it is. I enjoy going into the mountains and looking at the leaves in the fall
+U--Yes, that is the best thing about autumn.  When the leaves change. 
+(Ref: ['I also enjoy camping in the mountains its so cool', ...])
+G--I love the fall, it's so relaxing to me.  I love the fall as well.  Do you have any pets?I have a dog and a cat.  I have two dogs.  I have a cat too.
+(length: 43, latency: 0.629, BLEU: 0.040, ROUGE: 0.128, METEOR: 0.224)
+U'--yes , that is the well affair about infer . when the take alteration . (cosine: 0.226)
+G'--I love to read books, but I am not good at reading. What kind of books do you like?  is good to go!  I like to read when I can.       is good to
+(length: 38, latency: 0.642, BLEU: 0.042, ROUGE: 0.095, METEOR: 0.146)
+
+Dialogue history:  When did the profession actually become officially one? They have been around for along time. I think Welders are extremely important. They have to have good dexterity and very good attention to detail. And be very knowledge on the material they are welding.
+U--all workers are talented in their specific field 
+(Ref: ['They are. It takes a lot of time to learn new skills, but not all are rewarded equally.', ...])
+G--What field are you in?  I am in the army.  I have never been deployed.  I am a student.
+(length: 23, latency: 0.715, BLEU: 0.067, ROUGE: 0.108, METEOR: 0.144)
+U'--all workers are talented in their specific field (cosine: 1.000)
+G'--What field are you in?  I am in the army.  I have never been deployed.  I am a student.
+Attack failed!
+(length: 23, latency: 0.717, BLEU: 0.067, ROUGE: 0.108, METEOR: 0.144)
+
+Dialogue history:  When did the profession actually become officially one? They have been around for along time. I think Welders are extremely important. They have to have good dexterity and very good attention to detail. And be very knowledge on the material they are welding. all workers are talented in their specific field They are. It takes a lot of time to learn new skills, but not all are rewarded equally.
+U--yes. obviously everyone are gain knowledge through experience 
+(Ref: ['exactly! That is why I'm learning how to be a welder through gaining experience in practical training.', ...])
+G--I love them too!  I like them too!
+(length: 10, latency: 0.479, BLEU: 0.126, ROUGE: 0.111, METEOR: 0.053)
+U'--yes. obviously everyone are gain knowledge through experience (cosine: 1.000)
+G'--I love them too!  I like them too!
+Attack failed!
+(length: 10, latency: 0.478, BLEU: 0.126, ROUGE: 0.111, METEOR: 0.053)
+
+Dialogue history:  i am good excited for halloween i love halloween . can't get out like i used to i am 77
+U--Sometimes the best part of Halloween is staying in and watching some horror flicks, that's what I like to do! 
+(Ref: ['Horror flicks? Don't you ever get too scared? Haha! I'm not a fan of horrors, much prefer old British comedy tv shows', ...])
+G--I love horror movies too! I like to watch them with my kids as well.I love watching horror movies with my kids as well.
+(length: 28, latency: 0.773, BLEU: 0.057, ROUGE: 0.158, METEOR: 0.245)
+U'--Sometimes the best part of Halloween is staying in and watching some horror flicks, that's what I like to do! (cosine: 1.000)
+G'--I love horror movies too! I like to watch them with my kids as well.I love watching horror movies with my kids as well.
+Attack failed!
+(length: 28, latency: 0.773, BLEU: 0.057, ROUGE: 0.158, METEOR: 0.245)
+
+Dialogue history:  i am good excited for halloween i love halloween . can't get out like i used to i am 77 Sometimes the best part of Halloween is staying in and watching some horror flicks, that's what I like to do! Horror flicks? Don't you ever get too scared? Haha! I'm not a fan of horrors, much prefer old British comedy tv shows
+U--I do, but that's the fun of it! Have you ever seen Only Fools and Horses? 
+(Ref: ['But when the movies finish, are you not scared that some of the horror things may happen to you?? Haha! But yes, I love only fools and horses!', ...])
+G--I haven't but I have heard of it. I'll have to check it out!
+(length: 16, latency: 0.368, BLEU: 0.202, ROUGE: 0.348, METEOR: 0.253)
+U'--i do , but that ' s the fun of it ! have you ever seen only fool and horses ? (cosine: 0.745)
+G'--I haven't but I have seen a lot of horror movies. I like the classics, like the classics like The Saw series.
+(length: 25, latency: 0.352, BLEU: 0.133, ROUGE: 0.200, METEOR: 0.196)
+
+Dialogue history:  I have never heard of that. What does it consist of? Well it's based on Gabrielle Roth’s "5Rhythms" guide. Are you familiar with her as an author?
+U--I am not.  Tell me more about her 
+(Ref: ['She founded an experimental theatre company, wrote several books and is even in a band!', ...])
+G--She is an English-born Australian fashion designer and creator.   is she an English-born Australian fashion designer?  Or is she an immigrant?I am not sure.  She was born in Israel.   was born in Israel.  She was born
+(length: 43, latency: 0.757, BLEU: 0.044, ROUGE: 0.226, METEOR: 0.144)
+U'--I am not.  Tell me more about her (cosine: 1.000)
+G'--She is an English-born Australian fashion designer and creator.   is she an English-born Australian fashion designer?  Or is she an immigrant?I am not sure.  She was born in Israel.   was born in Israel.  She was born
+Attack failed!
+(length: 43, latency: 0.750, BLEU: 0.044, ROUGE: 0.226, METEOR: 0.144)
+
+Dialogue history:  I have never heard of that. What does it consist of? Well it's based on Gabrielle Roth’s "5Rhythms" guide. Are you familiar with her as an author? I am not.  Tell me more about her She founded an experimental theatre company, wrote several books and is even in a band!
+U--Wow, sounds like an interesting woman!  What kind of music do you do it to? 
+(Ref: ['I like all sorts of music. I love jazz and classical music. How about you?', ...])
+G--I play the guitar.  I also play the piano.
+(length: 11, latency: 0.470, BLEU: 0.185, ROUGE: 0.222, METEOR: 0.182)
+U'--venter , auditory likewise an fear light ! what kind of euphony do you do it to ? (cosine: 0.442)
+G'--I like to sing in the church choir.  I am not very good at it though.  is a good singer!  I like to sing in the church choir.
+(length: 32, latency: 0.454, BLEU: 0.074, ROUGE: 0.154, METEOR: 0.179)
+
+Dialogue history:  My sister graduated with an MBA. that is awesome, what is she doing now?
+U--my sister also doing that 
+(Ref: ['I sadly don't have an MBA like your sister. I'm a teacher. What's your job?', ...])
+G--My sister applied for a job last week! I'm so happy for her!IE!!!!
+(length: 20, latency: 0.985, BLEU: 0.086, ROUGE: 0.182, METEOR: 0.177)
+U'--my sister also do that (cosine: 0.939)
+G'--My sister also does that! She's a teacher.That's awesome! I wish my sister did that. Elaborality! I hear that. I wish my sister did that.
+(length: 33, latency: 0.989, BLEU: 0.094, ROUGE: 0.174, METEOR: 0.282)
+
+Dialogue history:  My sister graduated with an MBA. that is awesome, what is she doing now? my sister also doing that I sadly don't have an MBA like your sister. I'm a teacher. What's your job?
+U--sales executive officer 
+(Ref: ['That's a great job! How did you get that job?', ...])
+G--What do you do for a living?  I am a teacher.
+(length: 13, latency: 0.791, BLEU: 0.126, ROUGE: 0.100, METEOR: 0.144)
+U'--shortened - rate conclusion officer (cosine: 0.257)
+G'--That's awesome. What do you do?I am a teacher. I teach high school math.  I am a teacher.
+(length: 24, latency: 0.771, BLEU: 0.069, ROUGE: 0.194, METEOR: 0.176)
+
+Dialogue history:  I like pizza with meat  The term "pizz" started in the 10th century in a Italian town of Gaeta in Lazio.
+U--Wow, that's interesting.  Are you a big fan of trivia? 
+(Ref: ['Sure, especially if it includes sports. I play football and baseball. It would be my forte.', ...])
+G--No, I'm not a big fan of trivia.  I like to keep up with new information.  is there a particular restaurant you like to go to?  is there a certain restaurant you want to go to?
+(length: 41, latency: 0.821, BLEU: 0.049, ROUGE: 0.120, METEOR: 0.248)
+U'--wow , that ' s concern . are you a big fan of trivia ? (cosine: 0.761)
+G'--Yes, I love trivia. I like to play the piano.  is there any other way you can tell me about me?  is there any way you can tell me about me?
+(length: 36, latency: 0.822, BLEU: 0.056, ROUGE: 0.091, METEOR: 0.219)
+
+Dialogue history:  I like pizza with meat  The term "pizz" started in the 10th century in a Italian town of Gaeta in Lazio. Wow, that's interesting.  Are you a big fan of trivia? Sure, especially if it includes sports. I play football and baseball. It would be my forte.
+U--I love sports trivia!  My dad and I used to do it together before he started working so much 
+(Ref: ['Awh, I'm sorry to hear that. Life has a way of getting in the way, huh?', ...])
+G--What do you do for fun?I like to go to the beach.  It's a lot of fun.
+(length: 21, latency: 0.487, BLEU: 0.082, ROUGE: 0.222, METEOR: 0.288)
+U'--i love sports trivia ! my dad and i used to do it in before he started on then much (cosine: 0.891)
+G'--What is your favorite sport?I love soccer, but I also like basketball. What about you?
+(length: 20, latency: 0.495, BLEU: 0.077, ROUGE: 0.143, METEOR: 0.137)
+
+Dialogue history:  honestly i am not too into that ! i prefer listening to my fave justin bieber aw kids , 1 day i will have some . not ready .
+U--You should definitely wait till you are.  My two boys are a handfull.  But they are also the greatest reward. 
+(Ref: ['I'm so lonely here with my computer.', ...])
+G--I agree. My kids are the best.  I wish I had kids when I was younger.  is your children a part of you?
+(length: 27, latency: 0.694, BLEU: 0.070, ROUGE: 0.146, METEOR: 0.185)
+U'--you should in postponement boulder you are . my 2 logos are a handfull . but they are also the great wages . (cosine: 0.482)
+G'--I am a teacher and I have a lot of free time.  are you a teacher?  is free time is always nice.   is free time is nice.
+(length: 31, latency: 0.686, BLEU: 0.063, ROUGE: 0.105, METEOR: 0.213)
+
+Dialogue history:  honestly i am not too into that ! i prefer listening to my fave justin bieber aw kids , 1 day i will have some . not ready . You should definitely wait till you are.  My two boys are a handfull.  But they are also the greatest reward. I'm so lonely here with my computer.
+U--Well I guess that is why you are chatting.  Hopefully that makes it a little less lonely. 
+(Ref: ['yeah, i did my degree in math though so i'm used to being lonely', ...])
+G--Yeah, it does.  I'm a bit of a loner though.  I'm a bit of a nomad myself.
+(length: 21, latency: 0.470, BLEU: 0.079, ROUGE: 0.294, METEOR: 0.306)
+U'--Well I guess that is why you are chatting.  Hopefully that makes it a little less lonely. (cosine: 1.000)
+G'--Yeah, it does.  I'm a bit of a loner though.  I'm a bit of a nomad myself.
+Attack failed!
+(length: 21, latency: 0.471, BLEU: 0.079, ROUGE: 0.294, METEOR: 0.306)
+
+Dialogue history:  mmm . . . i'm kind of a lone wolf i get that . i enjoy long writing sessions by myself
+U--even i like story writting 
+(Ref: ['I used to like it, now that's all I do.', ...])
+G--I love to write and play video games business are two very important skills to have.  Do you have any hobbies?IE business are also very important to have.  Do you have any hobbies?
+(length: 38, latency: 0.931, BLEU: 0.043, ROUGE: 0.136, METEOR: 0.219)
+U'--even i same narration writting (cosine: 0.518)
+G'--I do the same, I love to write and play video games, but I also like to read.IE are two very good bands.  I like them too!  I like the Decemberists too.  I like the Decemberists too.  I like the Decemberists too.  I like the Decemberists too.  I like the Decemberists too.  I like the Decemberists too.
+(length: 69, latency: 0.936, BLEU: 0.034, ROUGE: 0.116, METEOR: 0.190)
+
+Dialogue history:  mmm . . . i'm kind of a lone wolf i get that . i enjoy long writing sessions by myself even i like story writting I used to like it, now that's all I do.
+U--would you like to spent time on social network? 
+(Ref: ['I try to but I can't seem to put my pens down. I enjoy writing more than typing.', ...])
+G--social media is my favorite thing to doYea, I like that too. I like to make new friends.
+(length: 21, latency: 0.757, BLEU: 0.120, ROUGE: 0.176, METEOR: 0.262)
+U'--would you like to spent time on social network? (cosine: 1.000)
+G'--social media is my favorite thing to doYea, I like that too. I like to make new friends.
+Attack failed!
+(length: 21, latency: 0.728, BLEU: 0.120, ROUGE: 0.176, METEOR: 0.262)
+
+Dialogue history:  I was at the store last week and slipped on some water on the floor I didn't see. I broke my leg! I was mortified!  Oh, no! That's awful! Are you still in pain?
+U--Unfortunately.  I'm not able to work at this point. 
+(Ref: ['That's terrible. Do you have anyone to help you at home? ', ...])
+G--I'm sorry to hear that. I hope you're able to work through it. DRY job?  I work at a coffee shop.  I love it.
+(length: 29, latency: 0.685, BLEU: 0.291, ROUGE: 0.429, METEOR: 0.410)
+U'--unfortunately . i ' m not up to do at this have . (cosine: 0.544)
+G'--I'm sorry to hear that. What happened? IED to be able to go to the doctor, but now I have to wait a bit longer to get my wisdom teeth removed. Haha! I hear that. I have to wait a bit longer to get my wisdom teeth removed too.
+(length: 56, latency: 0.695, BLEU: 0.137, ROUGE: 0.212, METEOR: 0.374)
+
+Dialogue history:  I was at the store last week and slipped on some water on the floor I didn't see. I broke my leg! I was mortified!  Oh, no! That's awful! Are you still in pain? Unfortunately.  I'm not able to work at this point. That's terrible. Do you have anyone to help you at home? 
+U-- My wife is at home. But work is hurting since I'm not there. 
+(Ref: ['Did you file charges against the store? Maybe you can get them to at least cover medical bills, if not your lost wages.', ...])
+G--I'm sorry to hear that. What kind of work are you doing?I work in the medical field.  I work at a hospital as a nurse.  to the hospital.
+(length: 34, latency: 0.463, BLEU: 0.169, ROUGE: 0.296, METEOR: 0.270)
+U'--My wife is at home. But work is hurting since I'm not there. (cosine: 1.000)
+G'--I'm sorry to hear that. What kind of work are you doing?I work in the medical field.  I work at a hospital as a nurse.  to the hospital.
+Attack failed!
+(length: 34, latency: 0.463, BLEU: 0.169, ROUGE: 0.296, METEOR: 0.270)
+
+Dialogue history:  yes , i can make you a meal with my fresh vegetables ! i love to cook . . . i lately discovered costco to shop at . . . love it
+U--How long have you been cooking? 
+(Ref: ['It's been about 5 years now. I've learned so much since I first started.', ...])
+G--I've been cooking for about 5 years now. I love it.  I’t know, but I’m not too sure.  I’m not too sure.   I’m sure you’t know what I’m talking about.    I’m sure you’t’t’ know what I’m talking about.
+(length: 45, latency: 0.845, BLEU: 0.116, ROUGE: 0.215, METEOR: 0.388)
+U'--How long have you been cooking? (cosine: 1.000)
+G'--I've been cooking for about 5 years now. I love it.  I’t know, but I’m not too sure.  I’m not too sure.   I’m sure you’t know what I’m talking about.    I’m sure you’t’t’ know what I’m talking about.
+Attack failed!
+(length: 45, latency: 0.844, BLEU: 0.116, ROUGE: 0.215, METEOR: 0.388)
+
+Dialogue history:  yes , i can make you a meal with my fresh vegetables ! i love to cook . . . i lately discovered costco to shop at . . . love it How long have you been cooking? It's been about 5 years now. I've learned so much since I first started.
+U--Interesting...what inspired you to start cooking 
+(Ref: ['I started as a way to keep in shape, especially since it requires a lot of strength, endurance, and flexibility.', ...])
+G--I love to cook, but I'm not very good at it. What's your favorite kind? I love it too much to much, but I love it.
+(length: 31, latency: 0.638, BLEU: 0.058, ROUGE: 0.178, METEOR: 0.209)
+U'--Interesting...what inspired you to start cooking (cosine: 1.000)
+G'--I love to cook, but I'm not very good at it. What's your favorite kind? I love it too much to much, but I love it.
+Attack failed!
+(length: 31, latency: 0.625, BLEU: 0.058, ROUGE: 0.178, METEOR: 0.209)
+
+Dialogue history:  Took the trash out yesterday and it burst all over the ground. I was pretty peeved. I am so sorry to hear that.  It will get better.
+U--Yeah, I hope so. This week has gone on too long already. 
+(Ref: ['i understand that feeling well . i usually try to distract myself with some other activity , like recycling .', ...])
+G--It has been going on for a while.  I am glad to see it go away.y?  I'm not much of a gamer.  I like to play video games.
+(length: 34, latency: 0.779, BLEU: 0.050, ROUGE: 0.128, METEOR: 0.225)
+U'--Yeah, I hope so. This week has gone on too long already. (cosine: 1.000)
+G'--It has been going on for a while.  I am glad to see it go away.y?  I'm not much of a gamer.  I like to play video games.
+Attack failed!
+(length: 34, latency: 0.774, BLEU: 0.050, ROUGE: 0.128, METEOR: 0.225)
+
+Dialogue history:  Took the trash out yesterday and it burst all over the ground. I was pretty peeved. I am so sorry to hear that.  It will get better. Yeah, I hope so. This week has gone on too long already. i understand that feeling well . i usually try to distract myself with some other activity , like recycling .
+U--Yeah. I crochet from time to time, but it's hard to find the time anymore sadly.  
+(Ref: ['Crocheting is fun.  The name derives from French.  My sister enjoys doing it, what else takes up your time or just that', ...])
+G--I used to crochet as a kid but I don't anymore. I wish I had more time to do it.  was able to crochet when I was younger.
+(length: 31, latency: 0.447, BLEU: 0.063, ROUGE: 0.146, METEOR: 0.242)
+U'--Yeah. I crochet from time to time, but it's hard to find the time anymore sadly. (cosine: 1.000)
+G'--I used to crochet as a kid but I don't anymore. I wish I had more time to do it.  was able to crochet when I was younger.
+Attack failed!
+(length: 31, latency: 0.447, BLEU: 0.063, ROUGE: 0.146, METEOR: 0.242)
+
+Dialogue history:  my favorite actress is rita hayworth . i don't know who that is . what has she been in ?
+U--She was in a lot of older movies, like trouble in texas. 
+(Ref: ['well you would think i would have heard of her since i live in Houston!', ...])
+G--She's a great actress, I wish she would make more movies.  What is your favorite movie?  I love her too!  What is your favorite movie?  I love the new terminator movie.
+(length: 37, latency: 0.862, BLEU: 0.049, ROUGE: 0.195, METEOR: 0.287)
+U'--she was in a great of elderly moving-picture , alike fuss in texas . (cosine: 0.594)
+G'--She's an actress. She was in a movie called "All That"  was she in a movie?No, she was in a sketch.  She was in a sketch on the Tonight Show.  She was hilarious.  She was also in a sketch on the Tonight Show.   She was in a sketch on the Tonight Show.  She was hilarious.  She was
+(length: 69, latency: 0.844, BLEU: 0.025, ROUGE: 0.118, METEOR: 0.284)
+
+Dialogue history:  my favorite actress is rita hayworth . i don't know who that is . what has she been in ? She was in a lot of older movies, like trouble in texas. well you would think i would have heard of her since i live in Houston!
+U--Ha, speaking of old movies, have you seen Singing in the Rain? 
+(Ref: ['No.Im either working as a waitress,or jogging in my free time.I gotta stay fir for the club i work at.', ...])
+G--I haven't but I have heard of her. What else do you like to do in your spare time?I like to go to the beach. I love the sound of the ocean have you ever been to the beach?
+(length: 44, latency: 0.607, BLEU: 0.056, ROUGE: 0.235, METEOR: 0.294)
+U'--Ha, speaking of old movies, have you seen Singing in the Rain? (cosine: 1.000)
+G'--I haven't but I have heard of her. What else do you like to do in your spare time?I like to go to the beach. I love the sound of the ocean have you ever been to the beach?
+Attack failed!
+(length: 44, latency: 0.619, BLEU: 0.056, ROUGE: 0.235, METEOR: 0.294)
+
+Dialogue history:  i love calisthenics , recently i moved up my push ups to a total of 1000 and astonished at what the body is capable   Wow, that is awesome! How long does that take?
+U--it feels like it takes forever, lol. But it really helps me to stay flexible :) 
+(Ref: ['I can only imagine, It takes a lot of determination. ', ...])
+G--That's awesome! I love to exercise too. I do it all the time.  Do you have any hobbies?  I have a little bit of a crush on me.  I have a crush on me.
+(length: 40, latency: 0.705, BLEU: 0.046, ROUGE: 0.189, METEOR: 0.337)
+U'--it look alike it have eternally , lol . but it really assist me to have flexible :) (cosine: 0.574)
+G'--That's awesome! I love exercise too. I do it all the time.  I'm not very good at it though.  Do you exercise?  I love it too!  I have been working out a lot since I was a kid.  I love
+(length: 47, latency: 0.686, BLEU: 0.049, ROUGE: 0.189, METEOR: 0.271)
+
+Dialogue history:  i love calisthenics , recently i moved up my push ups to a total of 1000 and astonished at what the body is capable   Wow, that is awesome! How long does that take? it feels like it takes forever, lol. But it really helps me to stay flexible :) I can only imagine, It takes a lot of determination. 
+U--A lot of determination and plenty of bottles of water :) Always makes me thirsty.  
+(Ref: ['Water is great for the soul.', ...])
+G--I drink a lot of water when I go to the beach.  I love the beach.  I love the smell of the water.
+(length: 26, latency: 0.463, BLEU: 0.064, ROUGE: 0.162, METEOR: 0.169)
+U'--A lot of determination and plenty of bottles of water :) Always makes me thirsty. (cosine: 1.000)
+G'--I drink a lot of water when I go to the beach.  I love the beach.  I love the smell of the water.
+Attack failed!
+(length: 26, latency: 0.462, BLEU: 0.064, ROUGE: 0.162, METEOR: 0.169)
+
+Dialogue history:  It feels great having a girlfriend who puts her trust in you that you wouldn't do anything to hurt her. My current girlfriend, unlike my ex, has no problems with me going out with my friends occasionally. That must be so nice having that freedom.
+U--In my current relationship, there is more trust she's not insecure about me going out with friends 
+(Ref: ['That is great!! It sounds like it is a good relationship.', ...])
+G--what do you do for a living?  is there any way you can hook up with her?  is there any way you can hook up with her??
+(length: 31, latency: 0.612, BLEU: 0.051, ROUGE: 0.109, METEOR: 0.101)
+U'--in my provisions affinity , there is more curse she ' s not unsafe about me going out with acquaintance (cosine: 0.552)
+G'--I'm not sure I understand. What is your reason for not wanting to go out with her?      I’ll be going out with my boyfriend soon.  I’ll be
+Attack failed!
+(length: 30, latency: 0.607, BLEU: 0.053, ROUGE: 0.146, METEOR: 0.140)
+
+Dialogue history:  i'm doing good and u i'm doing well . playing a game of pool with my friends
+U--oooo you winning? how many  
+(Ref: ['Yes, I am winning. Four of us playing, two teams', ...])
+G--Just got home from the pool. I love to swim. How about you?I love swimming. I have never been to a pool.well, I've never been to a pool, but I've been to a few.  I've never been to a pool either.  I've never been to a pool either.
+(length: 60, latency: 0.956, BLEU: 0.025, ROUGE: 0.031, METEOR: 0.112)
+U'--oooo you winning? how many (cosine: 1.000)
+G'--Just got home from the pool. I love to swim. How about you?I love swimming. I have never been to a pool.well, I've never been to a pool, but I've been to a few.  I've never been to a pool either.  I've never been to a pool either.
+Attack failed!
+(length: 60, latency: 0.969, BLEU: 0.025, ROUGE: 0.031, METEOR: 0.112)
+
+Dialogue history:  i'm doing good and u i'm doing well . playing a game of pool with my friends oooo you winning? how many  Yes, I am winning. Four of us playing, two teams
+U--nicee i never could get the hang of pool my hands sweat like crazy lol but i do love to cook with freinds  
+(Ref: ['That sounds fun. What do you like to cook most', ...])
+G--I love to cook with my friends too. What kind of food do you like to cook?
+(length: 19, latency: 0.633, BLEU: 0.340, ROUGE: 0.444, METEOR: 0.586)
+U'--nicee i never could get the hang of pool my hands sweat like crazy lol but i do love to cook with freinds (cosine: 1.000)
+G'--I love to cook with my friends too. What kind of food do you like to cook?
+Attack failed!
+(length: 19, latency: 0.692, BLEU: 0.340, ROUGE: 0.444, METEOR: 0.586)
+
+Dialogue history:  That's excellent! What exactly interests you about financial planning? I used to teach, so the idea of teaching individual money management skills is very appealing.
+U--As someone who works in finance,  I can tell you we need those skilled employees!  
+(Ref: ['Yeah, well, like they say - those who can't do - teach.  I wanted to work in Finance - I may try again.', ...])
+G--I agree. I think it's important to have a positive impact on the world through positive means.
+(length: 19, latency: 0.883, BLEU: 0.108, ROUGE: 0.125, METEOR: 0.148)
+U'--as deadly who do in finance , i can william you we need those skilled employee ! (cosine: 0.768)
+G'--I am a teacher and I have taught a few others.  is there a certain type of teacher you want to teach?I think so, but I am not sure.
+(length: 34, latency: 0.793, BLEU: 0.054, ROUGE: 0.118, METEOR: 0.186)
+
+Dialogue history:  That's excellent! What exactly interests you about financial planning? I used to teach, so the idea of teaching individual money management skills is very appealing. As someone who works in finance,  I can tell you we need those skilled employees!  Yeah, well, like they say - those who can't do - teach.  I wanted to work in Finance - I may try again.
+U--Working in Finance has it's benefits, I'm sure you'd be a great asset !  
+(Ref: ['Yeah, I appreciate it - I think I'll test the waters again - I'm feeling more confident.', ...])
+G--Finance is one of the most undervalued fields in the world.  I think it's a good idea to work in finance.
+(length: 23, latency: 0.404, BLEU: 0.104, ROUGE: 0.158, METEOR: 0.281)
+U'--Working in Finance has it's benefits, I'm sure you'd be a great asset ! (cosine: 1.000)
+G'--Finance is one of the most undervalued fields in the world.  I think it's a good idea to work in finance.
+Attack failed!
+(length: 23, latency: 0.402, BLEU: 0.104, ROUGE: 0.158, METEOR: 0.281)
+
+Dialogue history:  I have a big presentation tomorrow, and I'm not sure if I'm prepared enough What kind of problems?
+U--I am operating on a few hours of sleep. 
+(Ref: ['try to get some rest beforehand if you can.', ...])
+G--I'm sorry to hear that.  What is it about?y is right on par with "Casualty 2" for me.  I love that movie.  is right on par with "Casualty 2" for me.  I can't wait for the new "Star Wars" movie to come out.
+(length: 56, latency: 0.912, BLEU: 0.025, ROUGE: 0.073, METEOR: 0.261)
+U'--I am operating on a few hours of sleep. (cosine: 1.000)
+G'--I'm sorry to hear that.  What is it about?y is right on par with "Casualty 2" for me.  I love that movie.  is right on par with "Casualty 2" for me.  I can't wait for the new "Star Wars" movie to come out.
+Attack failed!
+(length: 56, latency: 0.910, BLEU: 0.025, ROUGE: 0.073, METEOR: 0.261)
+
+Dialogue history:  I have a big presentation tomorrow, and I'm not sure if I'm prepared enough What kind of problems? I am operating on a few hours of sleep. try to get some rest beforehand if you can.
+U--After this presentation, I will have an opportunity to catch up on rest.  I have put in many hours in the office. 
+(Ref: ['Sleep is very important but sometimes you have to do what you have to do.', ...])
+G--Have you been able to catch up?  is there a particular reason you are not able to catch up?       was able to catch up with her when she started
+(length: 31, latency: 0.634, BLEU: 0.055, ROUGE: 0.182, METEOR: 0.171)
+U'--after this notification , i unforced have an have to have up on take . i have redactor in many sixty in the federal . (cosine: 0.188)
+G'--IED IT TO YOU TO HOPE IT Was it an accident?  I hope so, too.  I hope you have a good rest of your day.
+Attack failed!
+(length: 29, latency: 0.636, BLEU: 0.068, ROUGE: 0.200, METEOR: 0.277)
+
+Dialogue history:  Last weekend I was dragged to a live piano performance at a local concert hall.  I came away thinking it might have been one of the best live shows I have ever seen! That's great, from the sound of it, your probably thought it was going to be boring, huh?
+U--I find them quite long, but once I got a bit of coffee into me it was easier to pay attention and get into it. Very talented musician. 
+(Ref: ['Well, I love live music! It's best with bacon and jello. maybe.', ...])
+G--What kind of music do you like?  I love all of them!  I love all of them!  I wish I had more time to
+(length: 27, latency: 0.457, BLEU: 0.078, ROUGE: 0.167, METEOR: 0.126)
+U'--I find them quite long, but once I got a bit of coffee into me it was easier to pay attention and get into it. Very talented musician. (cosine: 1.000)
+G'--What kind of music do you like?  I love all of them!  I love all of them!  I wish I had more time to
+Attack failed!
+(length: 27, latency: 0.457, BLEU: 0.078, ROUGE: 0.167, METEOR: 0.126)
+
+Dialogue history:  Last weekend I was dragged to a live piano performance at a local concert hall.  I came away thinking it might have been one of the best live shows I have ever seen! That's great, from the sound of it, your probably thought it was going to be boring, huh? I find them quite long, but once I got a bit of coffee into me it was easier to pay attention and get into it. Very talented musician. Well, I love live music! It's best with bacon and jello. maybe.
+U--Bacon is always a good way to start things!  I can't wait for the weekend and make some bacon and eggs for breakfast.   
+(Ref: ['Right! I love eggs too!', ...])
+G--
+
+Dialogue history:  yes my studies are going great how many years do you have remaining in your studies
+U--Two. Do you study? 
+(Ref: ['I study law since my father went to prison. I want to help him. What are you studying?', ...])
+G--I am a student right now, but I plan to study something else.AVL laws in the US make it very difficult to immigrate.   is it hard to immigrate to the US?  It is very difficult to do so.  I am sure you will do fine.   is very difficult to do so
+(length: 58, latency: 0.991, BLEU: 0.049, ROUGE: 0.143, METEOR: 0.350)
+U'--2 . do you do ? (cosine: 0.495)
+G'--I am a teacher, what do you do for a living?I am a student currently, but I plan to work in a different field soon.  I am a student as well.  I am a senior in high school.
+(length: 45, latency: 0.986, BLEU: 0.061, ROUGE: 0.213, METEOR: 0.338)
+
+Dialogue history:  yes my studies are going great how many years do you have remaining in your studies Two. Do you study? I study law since my father went to prison. I want to help him. What are you studying?
+U--I'm studying law too! Though my reason was fuelled by my love of mystery novels. What you're doing is great. 
+(Ref: ['I love mystery novels. Thank You. What do you do to relax when not studying?', ...])
+G--I’d like to be a teacher someday.
+(length: 8, latency: 0.622, BLEU: 0.227, ROUGE: 0.174, METEOR: 0.113)
+U'--I'm studying law too! Though my reason was fuelled by my love of mystery novels. What you're doing is great. (cosine: 1.000)
+G'--I’d like to be a teacher someday.
+Attack failed!
+(length: 8, latency: 0.640, BLEU: 0.227, ROUGE: 0.174, METEOR: 0.113)
+
+Dialogue history:  yeah i feel you . i love staying home too and enjoying my family . where do you live ? i'm in ny .
+U--New Orleans, absolutely love the Jazz scene 
+(Ref: ['It is very nice. It's a nice place for jazz admirers.', ...])
+G--New Orleans is great, I love the food there. What kind of food do you like?I love all kinds of food. I'm a big fan of Indian food. What about you?  is Indian food? I love Indian food too! I'm a vegetarian. I eat a lot of veggies and a lot of fruits.  is vegan is right?
+(length: 69, latency: 0.869, BLEU: 0.039, ROUGE: 0.062, METEOR: 0.321)
+U'--new orleans , all love the jazz setting (cosine: 0.583)
+G'--New Orleans is great, what do you like to do in New Orleans?I like to go to the beach. I've never been to New Orleans. I love the water.  I've never been to New Orleans.  I've been to Laguna beach.  I've never been to Laguna beach.   is nice.  I've never been to
+Attack failed!
+(length: 62, latency: 0.874, BLEU: 0.060, ROUGE: 0.129, METEOR: 0.332)
+
+Dialogue history:  yeah i feel you . i love staying home too and enjoying my family . where do you live ? i'm in ny . New Orleans, absolutely love the Jazz scene It is very nice. It's a nice place for jazz admirers.
+U--Do you have any pets at home? 
+(Ref: ['Nope, I plan on getting one after finishing my studies.', ...])
+G--I have a dog and a cat  are you a jazz fan?   is there any good jazz places around here?   is there any good jazz places around here?
+(length: 31, latency: 0.720, BLEU: 0.055, ROUGE: 0.120, METEOR: 0.199)
+U'--do you have any have at interior ? (cosine: 0.546)
+G'--I do. I like to take my family to the beach. I love going to the beach.   is the beach safe?   is the beach safe?  is the beach safe?
+Attack failed!
+(length: 35, latency: 0.703, BLEU: 0.068, ROUGE: 0.157, METEOR: 0.277)
+
+Dialogue history:  me too ! i work very hard and too much where do you work at ? i work at mcdonalds . it is always busy .
+U--I just have an office job. I work hard though. I think I need a vacation.  
+(Ref: ['Same here, I need a vacation desperately. ', ...])
+G--I am a teacher.  I love teaching.  I am a senior in high school. IT crowd is out there.  I hope to get a good job soon.
+(length: 32, latency: 0.779, BLEU: 0.065, ROUGE: 0.188, METEOR: 0.259)
+U'--i just have an federal occupancy . i do firm though . i have i motor a vacation . (cosine: 0.509)
+G'--I work at the bankYOW!
+(length: 6, latency: 0.790, BLEU: 0.244, ROUGE: 0.200, METEOR: 0.167)
+
+Dialogue history:  me too ! i work very hard and too much where do you work at ? i work at mcdonalds . it is always busy . I just have an office job. I work hard though. I think I need a vacation.  Same here, I need a vacation desperately. 
+U--Where would you like to go? 
+(Ref: ['I would love to go Egypt. ', ...])
+G--I would like to go to Japan. I have never been but I want to go to Japan one day. I would like to go to Japan too. I have never been but I want to go.  is nice.  I would like to go to Japan as well.  I have
+(length: 56, latency: 0.639, BLEU: 0.049, ROUGE: 0.206, METEOR: 0.255)
+U'--Where would you like to go? (cosine: 1.000)
+G'--I would like to go to Japan. I have never been but I want to go to Japan one day. I would like to go to Japan too. I have never been but I want to go.  is nice.  I would like to go to Japan as well.  I have
+Attack failed!
+(length: 56, latency: 0.692, BLEU: 0.049, ROUGE: 0.206, METEOR: 0.255)
+
+Dialogue history:  yeah it can believe that . when i am a museum curator i'll have my paintings in a museum .
+U--That would be awesome. I love reading books on the beach! 
+(Ref: ['I love to read, I use books as inspiration for my paintings.', ...])
+G--I love the beach as well. I love going to the beach as well. I love going to the beach as well.           I’ll be moving to the beach soon.
+(length: 33, latency: 0.931, BLEU: 0.081, ROUGE: 0.270, METEOR: 0.380)
+U'--That would be awesome. I love reading books on the beach! (cosine: 1.000)
+G'--I love the beach as well. I love going to the beach as well. I love going to the beach as well.           I’ll be moving to the beach soon.
+Attack failed!
+(length: 33, latency: 0.895, BLEU: 0.081, ROUGE: 0.270, METEOR: 0.380)
+
+Dialogue history:  yeah it can believe that . when i am a museum curator i'll have my paintings in a museum . That would be awesome. I love reading books on the beach! I love to read, I use books as inspiration for my paintings.
+U--Have you ever painted a picture of a panda? Panda bears are my favorite animal. 
+(Ref: ['I love panda bears as well, but I prefer to paint pictures of landscapes, or places such as cities or forests.', ...])
+G--I love pandas! I have a panda named Callie.
+(length: 11, latency: 0.648, BLEU: 0.185, ROUGE: 0.400, METEOR: 0.338)
+U'--Have you ever painted a picture of a panda? Panda bears are my favorite animal. (cosine: 1.000)
+G'--I love pandas! I have a panda named Callie.
+Attack failed!
+(length: 11, latency: 0.646, BLEU: 0.185, ROUGE: 0.400, METEOR: 0.338)
+
+Dialogue history:  I don't drink soda. I think it has too much sugar in it. It does have a lot sugar. The original formula was invented in 1940 by Barney and Ally Hartman.
+U--I love cokes! 
+(Ref: ['Me too! I love them.', ...])
+G--I love soda too. I drink a lot of it. I like sprite a lot too.  I love Coke as well.  I can't believe it!  I can't believe it!
+(length: 35, latency: 0.835, BLEU: 0.062, ROUGE: 0.167, METEOR: 0.250)
+U'--i do c ! (cosine: 0.451)
+G'--I drink soda all the time, it's my favorite drink. I can't believe I'm saying this, but I actually really like Dr. Pepper. I drink it all the time.
+(length: 35, latency: 0.847, BLEU: 0.045, ROUGE: 0.085, METEOR: 0.132)
+
+Dialogue history:  I don't drink soda. I think it has too much sugar in it. It does have a lot sugar. The original formula was invented in 1940 by Barney and Ally Hartman. I love cokes! Me too! I love them.
+U--i start my day with one 
+(Ref: ['That's cool. I buy the box of six and don't share with anyone', ...])
+G--What do you do for a living?  are you a student?No, I just graduated from high school.  I am a senior citizen.
+(length: 28, latency: 0.734, BLEU: 0.065, ROUGE: 0.100, METEOR: 0.151)
+U'--i start my day with one (cosine: 1.000)
+G'--What do you do for a living?  are you a student?No, I just graduated from high school.  I am a senior citizen.
+Attack failed!
+(length: 28, latency: 0.735, BLEU: 0.065, ROUGE: 0.100, METEOR: 0.151)
+
+Dialogue history:  Darn straight!  And there's a reason I said "American."  Though it may be inspired by Italian dishes, it was Italian-American immigrants that came up with the dish. Really? That's pretty funny. I knew that Italian writers will mock the dish and say it's not really Italian. In Italy it's made only with an egg based pasta. Have you ever had the real stuff?
+U--Nah, we never could afford the fancy things. Best I had was out of a can! 
+(Ref: ['Well, you get experience points on that. Hopefully, the next dish is better.', ...])
+G--Have you ever had the real thing?  have you been to Italy? I haven't been but I've been to the US.  I've been
+(length: 26, latency: 0.352, BLEU: 0.073, ROUGE: 0.114, METEOR: 0.110)
+U'--Nah, we never could afford the fancy things. Best I had was out of a can! (cosine: 1.000)
+G'--Have you ever had the real thing?  have you been to Italy? I haven't been but I've been to the US.  I've been
+Attack failed!
+(length: 26, latency: 0.369, BLEU: 0.073, ROUGE: 0.114, METEOR: 0.110)
+
+Dialogue history:  Darn straight!  And there's a reason I said "American."  Though it may be inspired by Italian dishes, it was Italian-American immigrants that came up with the dish. Really? That's pretty funny. I knew that Italian writers will mock the dish and say it's not really Italian. In Italy it's made only with an egg based pasta. Have you ever had the real stuff? Nah, we never could afford the fancy things. Best I had was out of a can! Well, you get experience points on that. Hopefully, the next dish is better.
+U--I'm sure it would be if I could find a way to heat it up! Usually that makes it better. 
+(Ref: ['You ate the dish cold?! That sounds vile, it really needs to be hot.', ...])
+G--
+
+Dialogue history:  My birthday is tomorrow How old will you be?
+U--I will be 32. 
+(Ref: ['Happy early birthday.  Will you be celebrating?', ...])
+G--happy early birthday! what are you plans for the rest of the day?  are you going to be traveling?  are you going to be traveling?  are you going to be traveling?  are you going to be traveling?  are you going to be traveling?
+(length: 50, latency: 1.050, BLEU: 0.063, ROUGE: 0.345, METEOR: 0.466)
+U'--i will be thirty - two . (cosine: 0.604)
+G'--happy early birthday! what are you plans for the rest of the day?I can't wait to get my new car.  What kind of car do you have?  I have a Honda Civic.  I love it.
+(length: 42, latency: 1.087, BLEU: 0.052, ROUGE: 0.231, METEOR: 0.462)
+
+Dialogue history:  My birthday is tomorrow How old will you be? I will be 32. Happy early birthday.  Will you be celebrating?
+U--Thank you! I will be having dinner with my husband, but I mostly want to relax and take the day off work. 
+(Ref: ['That sounds like a great time.  I used to not be able to do much for my birthdays because I was a truck driver.', ...])
+G--That sounds like a good plan. What are you going to eat for dinner? T is for dinner!  is for dessert!  is for dessert!   is for dessert!
+(length: 33, latency: 0.850, BLEU: 0.154, ROUGE: 0.235, METEOR: 0.302)
+U'--spring you ! i willing be lashkar - vitamin - taiba dinner with my conjoin , but i mostly motor to do and take the day off do . (cosine: 0.546)
+G'--I love to ride my motorcycle. What kind of motorcycle do you have?  I have a motorcycle too.
+(length: 21, latency: 0.721, BLEU: 0.089, ROUGE: 0.238, METEOR: 0.157)
+
+Original output length: 33.054, latency: 0.692, BLEU: 0.095, ROUGE: 0.194, METEOR: 0.238
+Perturbed [cosine: 0.791] output length: 34.696, latency: 0.681, BLEU: 0.087, ROUGE: 0.183, METEOR: 0.235
+Attack success rate: 39.29%

@@ -83,7 +83,7 @@ class BaseAttacker:
             return_tensors="pt", 
             padding=True, 
             truncation=True, 
-            max_length=self.max_len,
+            max_length=self.max_len-1,
         )
         input_ids = inputs['input_ids'].to(self.device)
         # ['sequences', 'sequences_scores', 'scores', 'beam_indices']
@@ -208,7 +208,7 @@ class SlowAttacker(BaseAttacker):
         self.eos_weight = eos_weight
         self.cls_weight = cls_weight
         self.use_combined_loss = use_combined_loss
-        self.sent_encoder = SentenceEncoder(device)
+        self.sent_encoder = SentenceEncoder(device='cpu')
 
     def leave_eos_loss(self, scores: list, pred_len: list):
         loss = []
@@ -236,13 +236,16 @@ class SlowAttacker(BaseAttacker):
 
     def get_target_p(self, scores: list, pred_len: list, label: list):
         targets = []
-        for i, s in enumerate(scores): 
-            # if self.pad_token_id != self.eos_token_id:
-            s[:, self.pad_token_id] = 1e-12
-            softmax_v = self.softmax(s) # T X V
-            target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(label[:softmax_v.size(0)])])
-            target_p = target_p[:pred_len[i]]
-            targets.append(torch.sum(target_p))
+        for i, s in enumerate(scores): # s: T X V
+            if pred_len[i] == 0:
+                targets.append(torch.tensor(0.0).to(self.device))
+            else:
+                # if self.pad_token_id != self.eos_token_id:
+                s[:, self.pad_token_id] = 1e-12
+                softmax_v = self.softmax(s) # T X V
+                target_p = torch.stack([softmax_v[idx, v] for idx, v in enumerate(label[:softmax_v.size(0)])])
+                target_p = target_p[:pred_len[i]]
+                targets.append(torch.sum(target_p))
         return torch.stack(targets).detach().cpu().numpy()
 
     @torch.no_grad()
@@ -423,7 +426,9 @@ class SlowAttacker(BaseAttacker):
             for i in range(len(cur_topk_strings)):
                 cur_pos, cur_text = cur_topk_strings[i]
                 cur_len = cur_lens[i]
-                if cur_pos not in modified_pos:
+                if isinstance(cur_pos, list):
+                    modified_pos.extend(cur_pos)
+                else:
                     modified_pos.append(int(cur_pos))
                 if cur_len > best_length:
                     best_text = str(cur_text)

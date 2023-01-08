@@ -54,6 +54,7 @@ class HotFlipAttacker(SlowAttacker):
         modify_pos: List[int],
     ):
         new_strings = []
+        modified_pos = set(modify_pos)
         x_orig = sentence.lower()
         x_orig = self.default_tokenizer.tokenize(x_orig)
         x_pos =  list(map(lambda x: x[1], x_orig))
@@ -62,7 +63,7 @@ class HotFlipAttacker(SlowAttacker):
         counter = -1
         for word, pos in zip(x_orig, x_pos):
             counter += 1
-            if word in self.filter_words or counter in set(modify_pos):
+            if word in self.filter_words or counter in modified_pos:
                 continue
             neighbours = self.get_neighbours(word, pos)
             for neighbour in neighbours:

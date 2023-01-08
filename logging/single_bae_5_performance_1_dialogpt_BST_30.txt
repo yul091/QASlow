@@ -1,0 +1,15 @@
+
+Dialogue history:  what do you make there ? cars , boats , planes or goods and sprockets ? i build commercial planes i work the night shift . do you have any kids
+U--I have two daughters. Do you have any children? 
+(Ref: ['Yes I have a son and just recently i became a grandpa', ...])
+G--No, I don't. But I wish someday after getting married I will have my own.  are you married?  I am not.  I have a girlfriend.
+(length: 31, latency: 1.285, BLEU: 0.105, ROUGE: 0.244, METEOR: 0.288)
+U'--i have two daughters do you have any children? (cosine: 0.963)
+G'--I have two daughters and a son  are you a boy or a girl?   are you a boy or a girl?
+(length: 23, latency: 0.857, BLEU: 0.107, ROUGE: 0.303, METEOR: 0.229)
+
+Dialogue history:  what do you make there ? cars , boats , planes or goods and sprockets ? i build commercial planes i work the night shift . do you have any kids I have two daughters. Do you have any children? Yes I have a son and just recently i became a grandpa
+U--Congratulations! That's great. Do you have any hobbies? 
+(Ref: ['Thank you! I try to not feel old haha. Yes I love playing soccers with my friends quite often. ', ...])
+G--I love to read and play soccer
+(length: 7, latency: 0.648, BLEU: 0.136, ROUGE: 0.211, METEOR: 0.222)

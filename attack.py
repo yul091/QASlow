@@ -113,7 +113,7 @@ class DGAttackEval(DGDataset):
             effective_text,  
             return_tensors="pt",
             truncation=True,
-            max_length=self.max_source_length,
+            max_length=self.max_source_length-1,
         )
         input_ids = inputs.input_ids.to(self.device)
         t1 = time.time()

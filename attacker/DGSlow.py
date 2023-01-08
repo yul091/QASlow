@@ -271,13 +271,14 @@ class StructureAttacker(SlowAttacker):
         self, 
         cur_adv_text: str, 
         grad: torch.gradient, 
-        modified_pos: List[int],
+        modify_pos: List[int],
     ):
         """
         cur_adv_text (string): the current adversarial text;
         grad (tensor[V X E]): the gradient of the current adversarial text.
         """
         all_new_strings = []
+        modified_pos = set(modify_pos)
         important_tensor = (-grad.sum(1)).argsort() # sort token ids w.r.t. gradient
         important_tokens = self.tokenizer.convert_ids_to_tokens(important_tensor.tolist())
         cur_input = self.tokenizer(cur_adv_text, return_tensors="pt", add_special_tokens=False)

@@ -47,6 +47,7 @@ class PWWSAttacker(SlowAttacker):
         modify_pos: List[int],
     ):
         new_strings = []
+        modified_pos = set(modify_pos)
         x_orig = sentence.lower()
         x_orig = self.default_tokenizer.tokenize(x_orig)
         pos_tags =  list(map(lambda x: x[1], x_orig)) 
@@ -64,7 +65,7 @@ class PWWSAttacker(SlowAttacker):
         # Greedy perturbation
         for i in range(len(H)):
             idx, wd, _ = H[i]
-            if ret_sent[idx] in self.filter_words or idx in modify_pos:
+            if ret_sent[idx] in self.filter_words or idx in modified_pos:
                 continue
             ret_sent[idx] = wd # replace the word
             curr_sent = self.default_tokenizer.detokenize(ret_sent)

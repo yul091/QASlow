@@ -151,11 +151,12 @@ class TextBuggerAttacker(SlowAttacker):
         modify_pos: List[int],
     ):
         new_strings = []
+        modified_pos = set(modify_pos)
         x = self.default_tokenizer.tokenize(sentence, pos_tagging=False)
         ranked_words = self.get_w_word_importances(x, grad) # list of word index
         for word_idx in ranked_words:
             word = x[word_idx]
-            if word in self.filter_words or word_idx in set(modify_pos):
+            if word in self.filter_words or word_idx in modified_pos:
                 continue
             # bug = self.selectBug(context, word, word_idx, x, goal) # bug word
             # x = self.replaceWithBug(x, word_idx, bug) # replace orig sentence
