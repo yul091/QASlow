@@ -1,12 +1,20 @@
 import abc
 import torch
 import stanza
+import pandas as pd
 import language_tool_python
+from supar import Parser
+from nltk.tree import Tree
 from nltk.corpus import wordnet as wn
 import tensorflow as tf
 import tensorflow_hub as hub
 from sentence_transformers import SentenceTransformer, util
-from transformers import AutoTokenizer, AutoModelForMaskedLM
+from transformers import (
+    AutoTokenizer, 
+    AutoModelForMaskedLM,
+    PegasusForConditionalGeneration,
+    PegasusTokenizer
+)
 
 
 ENGLISH_FILTER_WORDS = [
@@ -337,3 +345,99 @@ class USE:
         vector2 = tf.reshape(embeddings[1], [512, 1])
 
         return tf.matmul(vector1, vector2, transpose_a=True).numpy()[0][0]
+    
+    
+    
+class ConstituencyParser:
+    def __init__(self):
+        self.parser = Parser.load('crf-con-en')
+
+    @staticmethod
+    def __sentence_to_list(sentence:str):
+        word_list = sentence.strip().replace('(', '[').replace(')', ']').split(' ')
+        while '' in word_list:
+            word_list.remove('')
+        return word_list
+
+    def get_tree(self, sentence):
+        word_list = self.__sentence_to_list(sentence)
+        if len(word_list) == 0:
+            return None
+        try:
+            prediction = self.parser.predict(word_list, verbose=False)
+            return prediction.trees[0]
+
+        except Exception as e:
+            print('error: cannot get tree!')
+            return None
+
+    def __call__(self, sentence):
+        root = self.get_tree(sentence)
+        if root is None:
+            return None, []
+
+        node_list = pd.DataFrame(
+            columns=['sub_tree', 'phrase', 'index', 'label', 'length'],
+        )
+        rows_to_concat = []
+        for index in root.treepositions():
+            sub_tree = root[index]
+            if isinstance(sub_tree, Tree):
+                if len(sub_tree.leaves()) > 1:
+                    phrase = ' '.join(word for word in sub_tree.leaves())
+                    rows_to_concat.append({
+                        'sub_tree': sub_tree,
+                        'phrase': phrase,
+                        'index': index,
+                        'label': sub_tree.label(),
+                        'length': len(sub_tree.leaves()),
+                    })
+
+        node_list = pd.concat([node_list, pd.DataFrame(rows_to_concat)])
+        node_list = node_list.drop_duplicates('phrase', keep='last')
+        return root, node_list.values
+
+
+class Paraphraser(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def paraphrase(self, sentences):
+        raise Exception("Abstract method 'substitute' method not be implemented!")
+
+class T5(Paraphraser):
+    def __init__(self, device='cuda'):
+        super().__init__()
+        model_name = 'tuner007/pegasus_paraphrase'
+        self.max_length = 512
+        self.device = device
+        self.tokenizer = PegasusTokenizer.from_pretrained(model_name)
+        self.model = PegasusForConditionalGeneration.from_pretrained(
+            model_name,
+            max_length=self.max_length,
+            max_position_embeddings=self.max_length,
+        ).to(self.device)
+
+    def paraphrase(self, sentences):
+        with torch.no_grad():
+            tgt_text = []
+            for sentence in sentences:
+                batch = self.tokenizer(
+                    [sentence],
+                    truncation=True,
+                    padding='longest',
+                    max_length=int(len(sentence.split(' '))*1.2),
+                    return_tensors="pt",
+                ).to(self.device)
+
+                translated = self.model.generate(
+                    **batch,
+                    max_length=self.max_length,
+                    min_length=int(len(sentence.split(' '))*0.8),
+                    num_beams=1,
+                    num_return_sequences=1,
+                    temperature=1.5,
+                )
+                tgt_text += self.tokenizer.batch_decode(
+                    translated, 
+                    skip_special_tokens=True,
+                )
+            return tgt_text

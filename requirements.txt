@@ -7,6 +7,7 @@ sacrebleu
 tqdm==4.64.1
 matplotlib
 stanza
+supar==1.1.4
 scikit-learn==0.24
 OpenAttack
 tensorflow_hub==0.12.0
