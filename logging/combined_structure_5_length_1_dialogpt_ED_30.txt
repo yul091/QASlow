@@ -1,0 +1,543 @@
+
+Dialogue history: 
+U--I have a lot of stuff coming up due this month.  I also have a lot of purchasing goals as well.  I am confident I will be able to meet all of them. 
+(Ref: ['Good_comma_ I hope you make the ends meet', ...])
+G--That's great to hear! What are your goals?I want to make sure I can eat healthy and exercise. I also want to make sure I have enough energy.  I'm not sure, but I think it's important to stay active.  I'm a runner myself.
+(length: 51, latency: 0.889, BLEU: 0.026, ROUGE: 0.070, METEOR: 0.118)
+U'--I have a lot of stuff coming up due this month.  I also have a lot of purchasing goals as well.  I am manga I will be able to meet all of them. (cosine: 0.887)
+G'--I'm a big fan of Nandini Karate.  She's my favorite.  What else do you like to do?I like to go to the beach.  It's my favorite place to relax.  I love going to the beach as well.
+Attack failed!
+(length: 44, latency: 0.962, BLEU: 0.033, ROUGE: 0.120, METEOR: 0.168)
+
+Dialogue history:  I have a lot of stuff coming up due this month.  I also have a lot of purchasing goals as well.  I am confident I will be able to meet all of them. Good_comma_ I hope you make the ends meet
+U--That's the plan_comma_ I've signed up for a bunch of double shifts.  Fingers crossed. 
+(Ref: ['I wish you the best of luck_comma_ you will be fine!', ...])
+G--I'm so excited!  I'm going to the movies on Friday.  I'm so excited!  I can't wait to see the movie!
+(length: 24, latency: 0.614, BLEU: 0.060, ROUGE: 0.111, METEOR: 0.110)
+U'--That ... the plan nocomma_ I've but up for a and of double shifts.  isingers crossed. (cosine: 0.721)
+G'--I'm looking forward to meeting new people. I'm a bit nervous though.           I’ll be getting more acquainted with you when I
+Attack failed!
+(length: 23, latency: 0.604, BLEU: 0.063, ROUGE: 0.111, METEOR: 0.111)
+
+Dialogue history: 
+U--I am joyful that I am with my wife 
+(Ref: ['How you been together long?', ...])
+G--happy wife happy life. i am happy with my job and my life. what do you do for a living?I am a freelancer for a small business. What do you do?  are you a freelancer?No, I am not. I work at a bank.
+(length: 54, latency: 1.159, BLEU: 0.025, ROUGE: 0.040, METEOR: 0.093)
+U'--I am joyful that I am with my the (cosine: 0.728)
+G'--happy wife, children, children, and pets all in one place. That is so wonderful! What do you do for a living?I am a teacher. What about you?  are you a teacher?No, I am not. I am a student.  I am a student.
+(length: 57, latency: 1.164, BLEU: 0.023, ROUGE: 0.041, METEOR: 0.090)
+
+Dialogue history:  I am joyful that I am with my wife How you been together long?
+U--We have been together for 10 years 
+(Ref: ['Awesome. I've got you beat by 1 year. You know I just read the average couple from the time to meet to the time the ends things is 6 years. If you make it past that it will probably last for every. ', ...])
+G--How long have you two been together?tt are you married?y areas are seperated.  We have been married for 7 years.  We have been married for 6.  We have been married for 6.  We have been married for 7.  We have been married for 7.  We have been married for 6 years.  We have been married for 6.  We have been married for 7.  We have been married for 6.  We have been married for 6.
+(length: 90, latency: 1.094, BLEU: 0.031, ROUGE: 0.083, METEOR: 0.107)
+U'--We have been together for the years (cosine: 0.766)
+G'--How long have you two been together?rree, I can't believe it!  I have been married for 10 years and we've been married for 7.  That's a long time! I can't believe it!  I have been married for 7 years and we have been married for 6.  Wow!  That's a long time!  Congratulations!  Congratulations to your husband and your wife.  How long have you been together?
+(length: 78, latency: 1.060, BLEU: 0.025, ROUGE: 0.105, METEOR: 0.198)
+
+Dialogue history: 
+U--The other day I noticed my pet has a growth on her lower belly. I fear it may be a tumor. 
+(Ref: ['What kind of pet is it? Hope your animal is okay!', ...])
+G--I think it's a tummy ache. It's not healthy to have it on your belly. I'm not sure I could handle having it on my face. I have to wear contacts to see anything.I'm sorry to hear that. Do you have to wear contacts to see anything?          I’m  have a hard time getting  to get
+(length: 62, latency: 1.041, BLEU: 0.023, ROUGE: 0.056, METEOR: 0.082)
+U'--The other day I noticed my pet 2011 a growth on her lower belly. I fear it may be a tumor. (cosine: 0.938)
+G'--I have a pet husky and she is so sweet. She is so sweet and fuzzy. I love huskies. They are my favorite breed of dog.I have a husky and she is so sweet. She is my best friend.  I love huskies! They are so cute!
+Attack failed!
+(length: 55, latency: 1.074, BLEU: 0.029, ROUGE: 0.103, METEOR: 0.147)
+
+Dialogue history:  The other day I noticed my pet has a growth on her lower belly. I fear it may be a tumor. What kind of pet is it? Hope your animal is okay!
+U--She's a rat_comma_ so her body is very frail. I'm sad that she likely will not make it. She's been with me through thick and thin. 
+(Ref: ['I heard rats make awesome pets_comma_ I'm so sorry! Is your rat in pain?', ...])
+G--I'm sorry to hear that. I hope she's doing okay.  is a little taller than me!  I am taller than you!  I am taller than you!
+(length: 31, latency: 0.632, BLEU: 0.049, ROUGE: 0.182, METEOR: 0.188)
+U'--She online a rat_comma_ so her body is very frail. I'm sad that she likely will not make it. She's been with me through thick and thin. (cosine: 0.956)
+G'--I'm sorry to hear that. I hope she's doing okay.  I have been through a lot of it, but I am looking forward to getting better.
+(length: 30, latency: 0.605, BLEU: 0.048, ROUGE: 0.136, METEOR: 0.135)
+
+Dialogue history: 
+U--I recently met up with a friend I had not seen in a while. I want to see him again soon and I think I will! 
+(Ref: ['I love reuniting with old friends_comma_ helps me remember and appreciate the good times.', ...])
+G--He's a really good friend to have! I met him when I was in high school. I met him at a yoga class.That's cool. I met him at a concert. I met him at work. I met him at work as well.
+(length: 50, latency: 0.987, BLEU: 0.029, ROUGE: 0.033, METEOR: 0.081)
+U'--I recently met up with a friend I had not seen in a while. I want to see him again soon and I think I no! (cosine: 0.949)
+G'--I think you will like him. He is my favorite. I met him at a concert and I was so surprised.That's awesome! What kind of music do you like?        I like to sing when I have time.
+Attack failed!
+(length: 44, latency: 0.971, BLEU: 0.033, ROUGE: 0.074, METEOR: 0.177)
+
+Dialogue history:  I recently met up with a friend I had not seen in a while. I want to see him again soon and I think I will! I love reuniting with old friends_comma_ helps me remember and appreciate the good times.
+U--I agree. We went to high school and middle school together. 
+(Ref: ['I bet that was a long time ago!', ...])
+G--High school and middle school. We both loved it.  be was just starting to get into it.
+(length: 20, latency: 0.707, BLEU: 0.061, ROUGE: 0.080, METEOR: 0.050)
+U'--I agree. We went to high school and pdf school together. (cosine: 0.872)
+G'--High School and college. We both had a lot of fun.  I love it.
+Attack failed!
+(length: 17, latency: 0.724, BLEU: 0.080, ROUGE: 0.091, METEOR: 0.102)
+
+Dialogue history: 
+U--i hate that people dont care and they just throw their trash on the street 
+(Ref: ['do you pick up after them or tell them anything?', ...])
+G--when i was a kid i worked at a childrens book fair and gave everyone free crapwareHow childish. I remember when I was a kid I worked at a children book fair. day.
+(length: 36, latency: 1.101, BLEU: 0.028, ROUGE: 0.000, METEOR: 0.000)
+U'--i hate that people diary care and they just throw their trash on the street (cosine: 0.919)
+G'--when i was in school i was forced into writing a paper due to a fart in my class.  I am sorry to hear that.  Did you have to go through that?I did.  I had to put it off for a few days.  I'm glad you learned your lesson.   was it a chemical reaction?   was it a chemical reaction?  I guess so.  I guess it was.  I guess I just needed some time to catch up on.
+(length: 89, latency: 1.116, BLEU: 0.016, ROUGE: 0.045, METEOR: 0.106)
+
+Dialogue history:  i hate that people dont care and they just throw their trash on the street do you pick up after them or tell them anything?
+U--if im walking i pick up as much as i can 
+(Ref: ['thats good of you', ...])
+G--I don't have a lot of spare clothes to walk to. Yea, I can understand that.  I have a lot of spare clothes to put on the floor.  I like to put them in the back pocket of my jeans.
+(length: 45, latency: 0.922, BLEU: 0.027, ROUGE: 0.044, METEOR: 0.122)
+U'--if ... walking i pick up as much as i can (cosine: 0.947)
+G'--I don't have a lot of spare clothes to walk to.  IT!
+(length: 14, latency: 0.902, BLEU: 0.088, ROUGE: 0.118, METEOR: 0.098)
+
+Dialogue history: 
+U--It's great to see my husband doing so well. 
+(Ref: ['I am glad to hear that!  What is happening with him?', ...])
+G--Thank you. I try to help him with whatever I can.That's very nice of you. secrecy are two very common names for swear words. aster goes with you.
+(length: 34, latency: 1.195, BLEU: 0.045, ROUGE: 0.195, METEOR: 0.133)
+U'--It but of to no my 2013 doing of well. (cosine: 0.383)
+G'--What do you do for work?I am a teacher. secrecy are two very common names for those of us who don't know the difference.  I'm a teacher too!  are you a teacher?
+(length: 38, latency: 1.178, BLEU: 0.050, ROUGE: 0.087, METEOR: 0.159)
+
+Dialogue history:  It's great to see my husband doing so well. I am glad to hear that!  What is happening with him?
+U--He's become the top manager in his division in just two years. 
+(Ref: ['That is awesome!  I hope he got a good raise', ...])
+G--How long has he been the top manager?y areas are seperated by a line, so it's not really a matter of where he's been.  He's been the top manager for a long time.  He's been great.  He's been great. Haha!  I know, I just love the way he talks.  I'm not a big fan
+(length: 64, latency: 0.909, BLEU: 0.028, ROUGE: 0.085, METEOR: 0.148)
+U'--He's become the top bis in his division in just bis .... (cosine: 0.538)
+G'--NTH?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!
+(length: 193, latency: 0.938, BLEU: 0.006, ROUGE: 0.000, METEOR: 0.017)
+
+Dialogue history: 
+U--My husband took me to get a new wedding band recently 
+(Ref: ['Well_comma_ that's very nice. I'm sure you were looking forward to that shopping trip.', ...])
+G--When was the last time you performed an instrument?I have performed an instrument for many years now. asthats awesome.  I have always wanted to play an instrument.  What kind of music do you play?  is your husband your husband?
+(length: 46, latency: 1.101, BLEU: 0.033, ROUGE: 0.070, METEOR: 0.179)
+U'--My husband took me to get a oh wedding band recently (cosine: 0.933)
+G'--You are going to have so much fun and family time with your husband!Yes, he is a great husband and a great family member!  I am so happy for you.  I am so happy for you.  I am so happy for you.  I am so happy for you.  I am so happy for you.         I am so happy for you!  I am so happy for you
+(length: 76, latency: 1.145, BLEU: 0.020, ROUGE: 0.048, METEOR: 0.105)
+
+Dialogue history:  My husband took me to get a new wedding band recently Well_comma_ that's very nice. I'm sure you were looking forward to that shopping trip.
+U--I didn't know ahead of time! Mine had broken a bit and he saved up to get me a new one. 
+(Ref: ['That's was so thoughtful and sweet! Seems like you are a lucky wife!', ...])
+G--That's awesome. I'm glad you had such a good time.  was it a wedding?  was it a big one?  was a big fan.  I was so happy when I found out that my husband was buying me a
+(length: 43, latency: 0.734, BLEU: 0.044, ROUGE: 0.185, METEOR: 0.159)
+U'--I didn't know ahead of time! Mine had broken a bit and he saved up to on me a 2011 one. (cosine: 0.895)
+G'--That's awesome! What kind of car was it?  was it an 08/2012 car?  was it an 08/2012 car?  was it an 08/2012 car?
+(length: 34, latency: 0.766, BLEU: 0.042, ROUGE: 0.146, METEOR: 0.182)
+
+Dialogue history: 
+U--There was a day that I was a bit short on cash on hand and I didn't give money to a homeless man. I usually always do_comma_ as I feel it's my part to help those in need_comma_ as I am blessed. I felt very bad that I didn't that day. 
+(Ref: ['I don't think you should feel too bad about missing one day!  It sounds like you're generous regularly.  I get it though.', ...])
+G--It's okay, I was in a hurry to get home and didn't have time to walk home. I'm glad you got home though!       I was so scared to leave.  I was so scared I would get smacked
+(length: 41, latency: 0.689, BLEU: 0.051, ROUGE: 0.156, METEOR: 0.257)
+U'--There was a day that I was a bit short on cash on hand and I didn't give money to a homeless man. I usually always do_comma_ as I feel it's my part to help those in need_comma_ as I am blessed. I felt very to that I didn't that day. (cosine: 0.986)
+G'--It's good to feel like you are helping those in need. It's good to feel like you are helping those in need.  is there any particular reason you didn't help homeless people?  I think it's because I'm a woman.  I'm not sure why I didn't help them.  I'm
+(length: 53, latency: 0.729, BLEU: 0.033, ROUGE: 0.150, METEOR: 0.333)
+
+Dialogue history:  There was a day that I was a bit short on cash on hand and I didn't give money to a homeless man. I usually always do_comma_ as I feel it's my part to help those in need_comma_ as I am blessed. I felt very bad that I didn't that day. I don't think you should feel too bad about missing one day!  It sounds like you're generous regularly.  I get it though.
+U--Well_comma_ homeless people aren't common in my area_comma_ so that's why I felt a bit bad about it.  
+(Ref: ['It's hard to see people and not be able to help.  You seem really giving!', ...])
+G--
+
+Dialogue history: 
+U--Hanging out with old flames can be tricky when you are in a committed exclusive relationship. 
+(Ref: ['Oh yeah that can be a mine field to walk across. Didn't have any issues?', ...])
+G--When was the last time you had a date?  I have dated a few times but it was a long time ago.  I am a bit of a loner.  I have dated a few people but they were all loners.
+(length: 44, latency: 1.088, BLEU: 0.034, ROUGE: 0.071, METEOR: 0.121)
+U'--Hanging out with und flames can be tricky when you are in a committed for it. (cosine: 0.796)
+G'--when i was younger, i was in a band with a bunch of snakes and a snake took out my prized family.That's awful! I'm sorry to hear that. What kind of band?yep! I'm a guitar player too!  I used to play the guitar when I was younger.
+(length: 57, latency: 1.081, BLEU: 0.028, ROUGE: 0.088, METEOR: 0.136)
+
+Dialogue history:  Hanging out with old flames can be tricky when you are in a committed exclusive relationship. Oh yeah that can be a mine field to walk across. Didn't have any issues?
+U--Actually_comma_ an ex was in town recently and we went for a drink. She made a pass at me_comma_ but I told her to get some rest and went home to my girlfriend. 
+(Ref: ['That's very faithful of you_comma_ and the right thing to do I'd say. ', ...])
+G--
+
+Dialogue history: 
+U--I just got done eating an entire pizza by myself. 
+(Ref: ['I do that all the time_comma_ no big deal.', ...])
+G--How many pizzas have you eaten?I can't say I've ever eaten pizza.  I'm more of a burrito man myself.  person eats pizza all the time!  I can't believe people can eat pizza all the time!         I’ll be back!        I
+(length: 46, latency: 1.140, BLEU: 0.054, ROUGE: 0.145, METEOR: 0.222)
+U'--I just got done eating an 2007 article by myself. (cosine: 0.729)
+G'--How is it going?der!!
+(length: 8, latency: 1.145, BLEU: 0.072, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I just got done eating an entire pizza by myself. I do that all the time_comma_ no big deal.
+U--I feel so full and fat and happy. I can't wait to do it again. 
+(Ref: ['What kind of pizza did you eat?', ...])
+G--I can't wait to go back to college and eat pizza again.  I just got a new job, so I am ready to go.  I am sure you will do great.  What is your new job?  I love it.
+(length: 45, latency: 0.886, BLEU: 0.035, ROUGE: 0.085, METEOR: 0.212)
+U'--I feel so full and fat and like. I can't wait to nz it again. (cosine: 0.837)
+G'--I can't wait to go back.  I've been there multiple times.  It's so much fun.  I love it too!  I love it too!
+(length: 28, latency: 0.845, BLEU: 0.036, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--When I do things that are challenging I feel more self-reliant. I recently tried taking an ice bath 
+(Ref: ['Oh man! thats impressive_comma_ those baths are rough.', ...])
+G--When was the last time you took an ice bath?   are you a fan of Nascar?No, I'm more of a football fan.  I like to watch the games on Sundays.
+(length: 36, latency: 1.066, BLEU: 0.037, ROUGE: 0.049, METEOR: 0.118)
+U'--When I do things that are challenging I feel more self-reliant. I recently tried taking an beta bath (cosine: 0.835)
+G'--When was the last time you did beta-athynoman? I think it was about a year ago. I'm not sure exactly when it started, but it was a chemical reaction, so it could have been a few years ago.  is it a chemical reaction?  I guess so.  I don't know why it's so hard to guess.  I guess it's just genetics.  I'm not sure why it's so hard to guess.  I guess it's just genetics.
+(length: 85, latency: 1.050, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.027)
+
+Dialogue history:  When I do things that are challenging I feel more self-reliant. I recently tried taking an ice bath Oh man! thats impressive_comma_ those baths are rough.
+U--Yeah_comma_ my bath wasn't deep enough_comma_ so I didn't get covered all the way! 
+(Ref: ['That's good. But still! You must be pretty tough!', ...])
+G--
+
+Dialogue history: 
+U--The other night I was driving home in the rain and slid into the guard rail. It is going to cost so much to get my car fixed! 
+(Ref: ['Oh man_comma_ now that sucks! You gotta be careful on those wet roads. At least you're okay.', ...])
+G--I know! I hate driving in the rain, it makes me so angry! I hate driving in the rain too!I know! I hate driving in the rain too! I hate driving in the rain too!
+(length: 43, latency: 1.024, BLEU: 0.028, ROUGE: 0.000, METEOR: 0.021)
+U'--The other night I was driving for in the rain and slid into the is etc. It is going to cost so much to on my car fixed! (cosine: 0.884)
+G'--I'm sorry to hear that. I hope you got insurance on it.  I hope so too.  I'm trying to get a new car, but it's so expensive.I hope you get a good insurance.  I'm trying to get a used car myself.
+Attack failed!
+(length: 49, latency: 0.986, BLEU: 0.031, ROUGE: 0.123, METEOR: 0.193)
+
+Dialogue history:  The other night I was driving home in the rain and slid into the guard rail. It is going to cost so much to get my car fixed! Oh man_comma_ now that sucks! You gotta be careful on those wet roads. At least you're okay.
+U--I know_comma_ I will have to be more careful next time. I shouldn't eat ice-cream while driving_comma_  
+(Ref: ['Is your car still drivable?', ...])
+G--I have to wear glasses to read. I can't see much.
+(length: 13, latency: 0.526, BLEU: 0.080, ROUGE: 0.000, METEOR: 0.000)
+U'--I gram_comma ormi I will have to be more careful next time. I shouldn't eat ice- ni while driving webcomma_ (cosine: 0.831)
+G'--I'm sorry to hear that. I hope you're ok.
+Attack failed!
+(length: 11, latency: 0.531, BLEU: 0.096, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--Polie officers should still be required to drive safely even when responding to a call. 
+(Ref: ['sometimes they cant avoid it ', ...])
+G--when was the last time a police officer was called?Last week, when I was at the scene of the crime.  I see.  I have never been out of the city.  I have been driving since I was a child.
+(length: 46, latency: 1.094, BLEU: 0.022, ROUGE: 0.000, METEOR: 0.000)
+U'--Polie officers should still be pdf to drive safely even when responding to a call. (cosine: 0.928)
+G'--when was the last time you had a police officer on duty? I was in a car with a robber last week. I was so scared. I'm glad you're ok. I was in a car with a robber last week. I'm glad you're ok!   I am so scared! I am so sorry to hear that.  I hope you are ok.  I hope you are.  I hope you are ok too.  I hope you are ok too.  I hope you are ok too.  I hope
+(length: 97, latency: 1.114, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Polie officers should still be required to drive safely even when responding to a call. sometimes they cant avoid it 
+U--I threw the car in reverse and hauled my butt backwards! 
+(Ref: ['ok', ...])
+G--That's a paddling tackle. I'm not sure what you mean, but it's a paddling motion that usually involves the driver's arm.yep, that's what happens when you ride a bike and not a car. I'm not sure what you mean but it's a motorcycle..       I don't know what you mean.  I ride a bike all the
+(length: 64, latency: 0.948, BLEU: 0.016, ROUGE: 0.000, METEOR: 0.000)
+U'--I threw the car in on and hauled my ... backwards! (cosine: 0.859)
+G'--I hope you didn't break anything.  I threw my car in the garbage can.  I can't believe I was so careless.  I'm so sorry.  I hope you didn't break anything.  I hope you didn't either.  I hope you didn't either.  I hope you didn't either.  I hope you didn't either.  I hope you didn't either.  I hope you didn't either.  I hope you didn
+(length: 75, latency: 0.915, BLEU: 0.013, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--I actually did this_comma_ i'm terrible. 
+(Ref: ['Did what?', ...])
+G--I am so bad at reading that, I can barely keep up with the new glasses every time I go to the store.I can barely keep up with the new glasses every time I go to the store.  I can't even keep up with the new ones.  I can barely keep up with the new ones!        I can barely keep up with the new ones!  I can barely keep up with the old ones!
+(length: 82, latency: 1.108, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+U'--I actually did this pdfcomma_ i'm terrible. (cosine: 0.854)
+G'--It's ok, it's hard to keep up with all of the new tech, especially when it comes to translating a word to a new one.I'm a native spaker and it's hard to keep up with new technology.  is right on par with the rest of us! I'm a native spaker myself.  I can definitely attest to that.  I'm a native spaker myself.  I love to play video games. have you ever played any games?  I haven't played any games.  I've played a few FPS
+Attack failed!
+(length: 96, latency: 1.136, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.039)
+
+Dialogue history:  I actually did this_comma_ i'm terrible. Did what?
+U--I stole my mother's card details to pay for a subscription. 
+(Ref: ['I have too... to pay for food though. She told me that she would have paid if I asked but I am too proud.', ...])
+G--Did you steal it?Hmmmm, I wonder if I should tell you more about this... I can't say.  I'm sure you have a lot of experience!  is there any way you can tell me more about this?
+(length: 45, latency: 1.022, BLEU: 0.069, ROUGE: 0.127, METEOR: 0.139)
+U'--I stole my ...'s card details to is for a subscription. (cosine: 0.777)
+G'--Did you steal it? angel is an interesting drug.  Do you like it? angel is an interesting drug.  Do you like it?  I do.  I like it a lot.  Do you?  have you ever been to the beach?  I have!  I have been to the beach before.
+(length: 58, latency: 0.975, BLEU: 0.039, ROUGE: 0.141, METEOR: 0.133)
+
+Dialogue history: 
+U--I felt sooooo nervous going to my last job interview! Nerves must occur in proportion to how badly you *want* something! 
+(Ref: ['I know what you mean. Did you get the job?', ...])
+G--I don't know if I want this job or not. I'm just so nervous!I'm sorry to hear that. I hope you get it. Reason being, I'm allergic to cats.   is it okay if you are allergic to cats?  is it okay if you are allergic to cats?
+(length: 56, latency: 1.009, BLEU: 0.037, ROUGE: 0.129, METEOR: 0.238)
+U'--I felt sooooo nervous going to my last no interview! Nerves must occur in proportion to how badly you *want* something! (cosine: 0.942)
+G'--I don't know if I want this job or not. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at all. I don't know if I want to work at
+(length: 108, latency: 1.010, BLEU: 0.014, ROUGE: 0.050, METEOR: 0.088)
+
+Dialogue history:  I felt sooooo nervous going to my last job interview! Nerves must occur in proportion to how badly you *want* something! I know what you mean. Did you get the job?
+U--I did! The company does something that I actually like -- a panel interview vs a series of one-on-ones. Have you ever had an interview like that? 
+(Ref: ['I have not. What is it?', ...])
+G--I've interviewed for a few jobs in the last few months. I'm so nervous!
+(length: 16, latency: 0.620, BLEU: 0.077, ROUGE: 0.091, METEOR: 0.111)
+U'--I did! The for does something that I actually like -- a panel interview vs a series of one-on-ones. Have you ever had an interview like that? (cosine: 0.917)
+G'--I've interviewed for a few jobs. One was a Project Director for a TV show.  What type of show was it?
+(length: 24, latency: 0.619, BLEU: 0.084, ROUGE: 0.214, METEOR: 0.460)
+
+Dialogue history: 
+U--My mother picked my daughter up for school to take in the morning_comma_ and found her cat dead. It was so hard for my daughter and made us all very upset. 
+(Ref: ['I bet it was.  Death is never an easy thing to deal with_comma_ especially for a child.', ...])
+G--I'm sorry to hear that. I hope she is doing okay. IE!!!!
+(length: 18, latency: 0.920, BLEU: 0.072, ROUGE: 0.129, METEOR: 0.132)
+U'--My mother picked my daughter up for school to take in the morning bigcomma_ and found her cat dead. It was so hard for my daughter and made us all very upset. (cosine: 0.987)
+G'--I'm sorry to hear that. I hope she is doing okay now. IE!!!!
+(length: 19, latency: 0.892, BLEU: 0.072, ROUGE: 0.125, METEOR: 0.131)
+
+Dialogue history:  My mother picked my daughter up for school to take in the morning_comma_ and found her cat dead. It was so hard for my daughter and made us all very upset. I bet it was.  Death is never an easy thing to deal with_comma_ especially for a child.
+U--Yes_comma_ she was only about 9_comma_ and loved her cat so much. It broke my heart to see her so upset! 
+(Ref: ['I hope she will be alright!  I remember how devastated I was when my last dog passed away and I was an adult.  A kids emotions seem to amplify everything! ', ...])
+G--I'm sorry to hear that. I hope she's okay.
+(length: 11, latency: 0.459, BLEU: 0.023, ROUGE: 0.146, METEOR: 0.155)
+
+Dialogue history: 
+U--I recently met a new person that I am very fond of. I want to give her my love and care. 
+(Ref: ['That is very special and I am so happy for you.', ...])
+G--I met a new person who I am very close to. I am so happy for her. I am so happy for her. What do you do for a living?I work at a coffee shop. I love it!y? I work at a coffee shop.
+(length: 54, latency: 1.090, BLEU: 0.090, ROUGE: 0.246, METEOR: 0.390)
+U'--I recently met a new person that I am very fond of. I want to give her my love and and. (cosine: 0.957)
+G'--How old is she?She is 14. angel of a man!  I can't believe she is still alive!  I can't believe she is still alive!
+(length: 30, latency: 1.048, BLEU: 0.048, ROUGE: 0.105, METEOR: 0.072)
+
+Dialogue history:  I recently met a new person that I am very fond of. I want to give her my love and care. That is very special and I am so happy for you.
+U--I am very happy_comma_ too. Do you have someone special in your life? 
+(Ref: ['Yes_comma_ married for 15 years and it is still great.', ...])
+G--asterix on your last sentence.  I am so happy for you.  I am so happy for you.  I am so happy for you.  I am so happy for you.  I am so proud of you.
+(length: 41, latency: 0.802, BLEU: 0.033, ROUGE: 0.043, METEOR: 0.071)
+U'--I am very happy facebookcomma of too. Do you have no special in your so? (cosine: 0.710)
+G'--IT'S YOUR TIME!
+(length: 4, latency: 0.824, BLEU: 0.025, ROUGE: 0.133, METEOR: 0.048)
+
+Dialogue history: 
+U--I had some hesitations when I was at the gym today_comma_ thought I wouldn't be able to handle the weights 
+(Ref: ['How'd it turn out? Congrats on deciding to lead a healthier life_comma_ by the way.', ...])
+G--I think you need to work on your upper body first.  are you a powerlifter?No, I'm not. I'm a powerlifter.  I like to squat a lot.   is your heart in your chest?   is your heart in your chest?
+(length: 47, latency: 1.031, BLEU: 0.034, ROUGE: 0.103, METEOR: 0.142)
+U'--I had some hesitations when I was at the in in thecomma_ thought I wouldn't be able to handle the weights (cosine: 0.847)
+G'--When you think about it, the sumo style was first used by jodan  and ryu-kyu in Japan in the early 20th centuryI can't believe it's been around that long! I'm not sure I could ever do it!
+(length: 40, latency: 0.977, BLEU: 0.036, ROUGE: 0.103, METEOR: 0.098)
+
+Dialogue history:  I had some hesitations when I was at the gym today_comma_ thought I wouldn't be able to handle the weights How'd it turn out? Congrats on deciding to lead a healthier life_comma_ by the way.
+U--I decided to focus on the music that was blasting_comma_ just tried switching up what I play in the gym_comma_ it sounds like vikings are bringing me into battle 
+(Ref: ['I'm the exact same way in the gym. Music is a huge motivator for me. One time my phone died while in the gym and the rest of the workout was so low energy.', ...])
+G--I love them too!
+(length: 5, latency: 0.484, BLEU: 0.000, ROUGE: 0.051, METEOR: 0.014)
+U'--I decided to ... on the of that was blasting_comma_ just tried switching up what I play in the gym_comma_ it sounds no vikings are bringing me into of (cosine: 0.837)
+G'--I can't get any better.
+(length: 6, latency: 0.494, BLEU: 0.001, ROUGE: 0.049, METEOR: 0.029)
+
+Dialogue history: 
+U--I ran into my neighbor's mailbox with my car but didn't stop and leave a note. 
+(Ref: ['Thats horrible! You should tell them as that is their property. What if someone did that to your stuff?', ...])
+G--How did you find out they were there?I called them and asked if they had any left and they did. only the one in the back is missing.  I'm not sure what you mean, but the one in the front is upside down is upside down.
+(length: 52, latency: 1.077, BLEU: 0.032, ROUGE: 0.119, METEOR: 0.159)
+U'--I articles into my neighbor's mailbox with my car but didn't stop and leave a note. (cosine: 0.904)
+G'--Did you call the police?No, I haven't yet, but I hope to soon. DROP!
+(length: 20, latency: 1.076, BLEU: 0.070, ROUGE: 0.114, METEOR: 0.137)
+
+Dialogue history:  I ran into my neighbor's mailbox with my car but didn't stop and leave a note. Thats horrible! You should tell them as that is their property. What if someone did that to your stuff?
+U--I agree_comma_ I felt so bad about it. When I saw him replacing it_comma_ I went out and confessed. 
+(Ref: ['GOOD on you!!', ...])
+G--I'm sorry to hear that.  Did you have to go to the police?
+(length: 15, latency: 0.634, BLEU: 0.082, ROUGE: 0.118, METEOR: 0.082)
+U'--I agree_comma_ I felt so bad about it. When I saw him replacing it_comma_ I went out and confessed. (cosine: 1.000)
+G'--I'm sorry to hear that.  Did you have to go to the police?
+Attack failed!
+(length: 15, latency: 0.644, BLEU: 0.082, ROUGE: 0.118, METEOR: 0.082)
+
+Dialogue history: 
+U--5 
+(Ref: ['8', ...])
+G--Thank you for your support! I really appreciate it. What do you do for a living?I am a teacher. I teach high school math and high school english. MOOO!
+(length: 36, latency: 1.279, BLEU: 0.028, ROUGE: 0.000, METEOR: 0.000)
+U'--5 (cosine: 1.000)
+G'--Thank you for your support! I really appreciate it. What do you do for a living?I am a teacher. I teach high school math and high school english. MOOO!
+Attack failed!
+(length: 36, latency: 1.231, BLEU: 0.028, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  5 8
+U--Opps. Ok_comma_ i mean that I was sad the other day because a friend is moving. 
+(Ref: ['Is it far away_', ...])
+G--Moving is a good thing for you. I'm sorry to hear that. I know it's hard, but you have to find a way to make it work.  wasnt able to make it through my calorie intake.  I'm trying to lose weight.  I'm trying to lose weight too!  I'm trying to lose weight too!  I'm trying to lose weight too!  I'm trying to lose weight too!  I'm trying
+(length: 77, latency: 1.029, BLEU: 0.016, ROUGE: 0.051, METEOR: 0.083)
+U'--Opps. in_comma_ i mean that I was sad the other day because a or is moving. (cosine: 0.796)
+G'--It's a or, sometimes it's a semantically correct way of saying it, but either way, it's a good thing that moving isn't a big deal to some people.It's a big deal to some people, but it's not a big deal to some people.  is moving a big deal to some people.  It's a big deal to some people, but it's not a big deal to some people.
+(length: 77, latency: 1.029, BLEU: 0.016, ROUGE: 0.050, METEOR: 0.084)
+
+Dialogue history: 
+U--I just had a delicious breakfast and now I'm casually relaxing in my room. Life is good! 
+(Ref: ['What was for breakfast?', ...])
+G--Thank you for this! I needed this morning to relax and read a book. What kind of books are you reading?I am reading a lot of dystopian novels. I love dystopian novels.   I love dystopian novels too!  What are some of your favorite novels?
+(length: 52, latency: 1.069, BLEU: 0.027, ROUGE: 0.041, METEOR: 0.155)
+U'--I just had a delicious breakfast and now I'm casually relaxing in my 2013. Life is good! (cosine: 0.833)
+G'--What did you have for breakfast today?I had a bagel and a cheeseburger. thats a good combo.
+Attack failed!
+(length: 21, latency: 1.072, BLEU: 0.087, ROUGE: 0.273, METEOR: 0.478)
+
+Dialogue history:  I just had a delicious breakfast and now I'm casually relaxing in my room. Life is good! What was for breakfast?
+U--Pancakes and sausage! How can you go wrong? 
+(Ref: ['You can't! Sounds like a wonderful morning!', ...])
+G--I love pancakes and I love sausages too.  What's your favorite kind?YEs!   I love all kinds of food.
+(length: 23, latency: 0.932, BLEU: 0.053, ROUGE: 0.000, METEOR: 0.044)
+U'--Pancakes and oh! How can you go wrong? (cosine: 0.823)
+G'--pancakes and oatmeal raisin cookies for sure!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 106, latency: 0.907, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.051)
+
+Dialogue history: 
+U--My four year old daughter came to me beaming with pride and showing me a drawing she did of me. 
+(Ref: ['Isn't that the best!  My 3 year old the same thing!  I couldn't be happier or more proud!', ...])
+G--That is so sweet of her. I bet she was proud! secrecy is key.  I have never met a single person who didn't like my dog.  I have a cat too.  I have a dog too.  I have a cat too.  I have a dog too.  I have a dog too.  I have a cat too.  I have a dog too.  I have a dog too.  I have
+(length: 80, latency: 1.054, BLEU: 0.021, ROUGE: 0.067, METEOR: 0.203)
+U'--My four year old daughter came to me beaming with bis and showing me a drawing she did of me. (cosine: 0.888)
+G'--That is so sweet of her! I bet she was so proud!I can't believe I'm so old. I was born in the late 90s and I still remember the good old days!  days are long. I was born in the early 90s and I still remember the good old days!
+Attack failed!
+(length: 57, latency: 1.053, BLEU: 0.040, ROUGE: 0.137, METEOR: 0.226)
+
+Dialogue history:  My four year old daughter came to me beaming with pride and showing me a drawing she did of me. Isn't that the best!  My 3 year old the same thing!  I couldn't be happier or more proud!
+U--I was really surpised.  I expected a stick figure_comma_ but she drew a lot of features including my beard and mustache. 
+(Ref: ['She may be a natural artist!', ...])
+G--
+
+Dialogue history: 
+U--Seeing animals sleep is very relaxing 
+(Ref: ['I've never felt that way myself. What do you find relaxing about watching animals sleep?', ...])
+G--We have a local farm that does most of the work, so it is relaxing to watch them sleep. I love animals, especially dogs. I have a big family, so it's easy to take care of them when they're sick.I love animals too. I have a dog and she's my best friend.  I love dogs too! I have a German Sheppard and German Shepherd mix.   I love dogs!  I have a Husky and German Shepherd mix.  I have a Husky
+(length: 93, latency: 1.217, BLEU: 0.017, ROUGE: 0.060, METEOR: 0.156)
+U'--Seeing animals sleep is insis relaxing (cosine: 0.897)
+G'--Thank you! Yes, it is very peaceful and gives me time to focus on my work at home. I love animals, especially dogs.I have two of them. They are my best friends. They are my best friends. Dust!!
+(length: 49, latency: 1.197, BLEU: 0.029, ROUGE: 0.073, METEOR: 0.096)
+
+Dialogue history:  Seeing animals sleep is very relaxing I've never felt that way myself. What do you find relaxing about watching animals sleep?
+U--I don't know_comma_ I guess I'm just tired 
+(Ref: ['I suppose when you feel tired_comma_ anything can feel relaxing', ...])
+G--I can't say I've ever been out of the water.  I've always wanted to go.  I've always wanted to go on a ski trip.
+(length: 27, latency: 0.915, BLEU: 0.045, ROUGE: 0.103, METEOR: 0.041)
+U'--I don't ... ofcomma suicide I ... I'm just tired (cosine: 0.759)
+G'--I'm sorry to hear that.  What do you do for work?  is it dangerous to walk?  I have to wear a seatbelt to walk.  I have to wear glasses to be able to see.   is it safe to walk?  I have to wear glasses to be able to see.   I
+(length: 57, latency: 0.884, BLEU: 0.023, ROUGE: 0.065, METEOR: 0.068)
+
+Dialogue history: 
+U--I had to take my daughter to the doctor the other day. She was very sick. 
+(Ref: ['Oh no!  Hopefully its just the flu.  What did they say?', ...])
+G--Thank you. I hope she feels better soon.I hope so too. I have been taking my daughter to the doctor since she was sick. Dust.  I'm taking my daughter to the doctor as soon as possible.  I'm so nervous about it.  I have been taking my daughter to the doctor as well.  I'm nervous too.  I have been taking my daughter to the doctor as well.  I have been taking her to the doctor as well.
+(length: 88, latency: 1.086, BLEU: 0.015, ROUGE: 0.022, METEOR: 0.116)
+U'--I had to bis my en to the doctor the other the. She was very sick. (cosine: 0.720)
+G'--Thank you. I hope she is ok now.I hope so too. I have been trying to get her to go to the ER.  is it really necessary to go to the ER?I think so, but I'm not sure. I think it's a good idea to go to the ER after a long day of work.  I think it's a good idea to go to the ER after a long day of work.
+Attack failed!
+(length: 83, latency: 1.082, BLEU: 0.017, ROUGE: 0.023, METEOR: 0.143)
+
+Dialogue history:  I had to take my daughter to the doctor the other day. She was very sick. Oh no!  Hopefully its just the flu.  What did they say?
+U--It was just the flu. I got her some medicine_comma_ brought her home_comma_ and made tomato soup and grilled cheese sandwiches. 
+(Ref: ['That's good!  I hope she gets to feeling better soon.  The flu is no fun.', ...])
+G--I don't think she has a flu.  I hope she's okay.  I hope she doesn't get sick too.
+(length: 21, latency: 0.689, BLEU: 0.124, ROUGE: 0.216, METEOR: 0.324)
+U'--It was just the 12. I got her some medicine_comma_ as her home_comma_ and so tomato is and grilled cheese sandwiches. (cosine: 0.823)
+G'--I’d like to get her some ice cream.  I’m sure she will love it.
+(length: 16, latency: 0.677, BLEU: 0.085, ROUGE: 0.125, METEOR: 0.157)
+
+Dialogue history: 
+U--One of the scariest_comma_ yet happiest experiences in my life was finding out that I was going to have a baby. 
+(Ref: ['Oh I can relate to that especially if you are not prepared for it_comma_ it can get really scary', ...])
+G--I know right! I was so happy when my husband found out. I was so happy!I know, I was so happy! I was so excited!  I’d love to be able to have children someday.
+(length: 42, latency: 0.970, BLEU: 0.032, ROUGE: 0.071, METEOR: 0.070)
+U'--One of the scariest_comma_ yet happiest experiences in my life was finding out that I was going to have a and. (cosine: 0.817)
+G'--It's a blessing to be able to have a family. I'm sorry to hear that. I'm sure you're happy with your life now.Yes, I am very happy with my life now. What do you do for a living?
+Attack failed!
+(length: 45, latency: 0.963, BLEU: 0.035, ROUGE: 0.159, METEOR: 0.161)
+
+Dialogue history:  One of the scariest_comma_ yet happiest experiences in my life was finding out that I was going to have a baby. Oh I can relate to that especially if you are not prepared for it_comma_ it can get really scary
+U--Oh_comma_ we were totally unprepared. In fact_comma_ my partner and I were working out of state in a compromising environment. We had to double on back home to get our lives set up for the big change! 
+(Ref: ['You guys will be alright trust me I  experienced same with my partner and now we are fine. Our kid is a teenager now. I am happy for you guys', ...])
+G--That's a good idea. Were you able to find a good balance?
+(length: 14, latency: 0.401, BLEU: 0.029, ROUGE: 0.093, METEOR: 0.066)
+U'--Oh_comma_ we were totally unprepared. In new_comma_ my and and I were working out of state in a compromising environment. We in to double on back home to get our lives set up for the you change! (cosine: 0.905)
+G'--That sounds like a good plan. What do you do for a living?
+Attack failed!
+(length: 15, latency: 0.385, BLEU: 0.033, ROUGE: 0.093, METEOR: 0.099)
+
+Dialogue history: 
+U--One night_comma_ I was home alone_comma_ when suddenly_comma_ I heard a loud BANG! 
+(Ref: ['Oh goodness_comma_ what was it?', ...])
+G--I heard a loud bang in my house.  day!
+(length: 11, latency: 1.013, BLEU: 0.096, ROUGE: 0.000, METEOR: 0.000)
+U'--One night_comma_ I was home alone oncomma_ when suddenly_comma_ I heard a loud BANG! (cosine: 0.994)
+G'--I heard a loud bang in my house.  day!
+Attack failed!
+(length: 11, latency: 1.014, BLEU: 0.096, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  One night_comma_ I was home alone_comma_ when suddenly_comma_ I heard a loud BANG! Oh goodness_comma_ what was it?
+U--It was a ghost! I ran into the kitchen to investigate_comma_ and I saw what looked like a white dress flapping out the window.  
+(Ref: ['Wow_comma_ that must have been a terrible experience.', ...])
+G--was just a little late to say, but I was able to get rid of them all of them once
+(length: 21, latency: 0.657, BLEU: 0.058, ROUGE: 0.069, METEOR: 0.098)
+U'--It was a ghost! I ran into the kitchen to investigate_comma_ and I saw what looked like a white dress flapping out the window. (cosine: 1.000)
+G'--was just a little late to say, but I was able to get rid of them all of them once
+Attack failed!
+(length: 21, latency: 0.654, BLEU: 0.058, ROUGE: 0.069, METEOR: 0.098)
+
+Dialogue history: 
+U--My childhood friend gave me a watch for by birthday a few years ago_comma_ I lost it in a move recently. I'm pretty upset by it. 
+(Ref: ['Oh no!  It always seems like things get lost when you move doesn't it?  Is there anyway you can go back and see if its at your old place?', ...])
+G--It's a great watch, but I don't think I could wear it all the time. velle is a great watch. I have a bunch of watches that I like to wear on my lap.  I like to wear them on my lap too.
+(length: 48, latency: 0.992, BLEU: 0.028, ROUGE: 0.107, METEOR: 0.101)
+U'--My childhood friend gave me a watch for by birthday a few years ago_comma_ I lost it in a move recently. I'm as upset by it. (cosine: 0.992)
+G'--I'm sorry to hear that. I lost my watch when I was a child. I can't believe I'm so late to the party.  I was just about to get my new phone.   I hope you get it soon.
+Attack failed!
+(length: 43, latency: 0.960, BLEU: 0.037, ROUGE: 0.113, METEOR: 0.117)
+
+Dialogue history:  My childhood friend gave me a watch for by birthday a few years ago_comma_ I lost it in a move recently. I'm pretty upset by it. Oh no!  It always seems like things get lost when you move doesn't it?  Is there anyway you can go back and see if its at your old place?
+U--I've actually checked and went through all the boxes too. Here's hoping it turns up one day though! 
+(Ref: ['It will probably be where you least expect it!', ...])
+G--
+
+Dialogue history: 
+U--I was so mad when i found out my cousin asked out my girlfriend once 
+(Ref: ['damn_comma_ thats sick and rough.. He knew you guys were together?', ...])
+G--when i was a kid my sister asked me for babysitters when i was in high school so i could babysit them for a while That sounds really sweet of them. I wish my sister was that nice. I would have been so happy to babysit my dog.I am sure she would be happy to babysit you!  I’ll be happy to babysit you if you want to.
+(length: 73, latency: 1.113, BLEU: 0.020, ROUGE: 0.025, METEOR: 0.053)
+U'--I was so mad when i found out my as asked out my girlfriend once (cosine: 0.857)
+G'--when you find out your girlfriend is asking for money for a ride to a new high school Yes, I am really looking forward to it. What kind of car is it?It's a Jeep Grand Cherokee. It's the best.
+Attack failed!
+(length: 45, latency: 1.112, BLEU: 0.034, ROUGE: 0.037, METEOR: 0.061)
+
+Dialogue history:  I was so mad when i found out my cousin asked out my girlfriend once damn_comma_ thats sick and rough.. He knew you guys were together?
+U--Sort of_comma_ yes. He did it anyways. I yelled at him. 
+(Ref: ['Can't say he did not deserve that..', ...])
+G--well, it's not like I'm going to say it, but I'm pretty sure he was mad at you.  I'm sure he was.  was just mad at the guy who asked for my girlfriend.  I'm sure he was mad at you
+(length: 45, latency: 0.838, BLEU: 0.035, ROUGE: 0.075, METEOR: 0.115)
+U'--Sort of facebookcomma_ no. He did it anyways. I yelled at him. (cosine: 0.920)
+G'--well you can assume.                    I'm not exactly sure what you mean by that.
+(length: 15, latency: 0.786, BLEU: 0.123, ROUGE: 0.273, METEOR: 0.103)
+
+Dialogue history: 
+U--I went to a heavy metal music festival in Las Vegas a few years ago! I had fun_comma_ but to be honest it was a bit of an emotional roller coaster. 
+(Ref: ['Oh_comma_ I don't know why concerts make me feel a bit sentimental', ...])
+G--What type of music do you like?I like pop music. I like pop music too.IE!!!
+(length: 23, latency: 0.965, BLEU: 0.053, ROUGE: 0.065, METEOR: 0.072)
+U'--I went to a heavy ni music good in Las Vegas a few years ago! I had fun_comma_ but to be honest it was a bit of an emotional roller coaster. (cosine: 0.924)
+G'--I love heavy metal. What else do you like to do in your free time?I can't say I've ever been to Las Vegas.  What do you like to do there?
+(length: 35, latency: 0.891, BLEU: 0.034, ROUGE: 0.085, METEOR: 0.162)
+
+Dialogue history:  I went to a heavy metal music festival in Las Vegas a few years ago! I had fun_comma_ but to be honest it was a bit of an emotional roller coaster. Oh_comma_ I don't know why concerts make me feel a bit sentimental
+U--I think it's because everybody can relate when it comes to live music. My girlfriend broke up with me the second day_comma_ but we had to stay in the same room. 
+(Ref: ['That must have been horrible! I'm so sorry you went thru that', ...])
+G--I'm sorry to hear that. What kind of music do you like?               was just a little kid.
+(length: 20, latency: 0.449, BLEU: 0.077, ROUGE: 0.258, METEOR: 0.253)
+U'--I for it's because everybody can relate when it 2008 to live music. My girlfriend broke up with me the from day_comma_ but we had to pdf in the same room. (cosine: 0.877)
+G'--I'm sorry to hear that. What kind of music do you like?
+Attack failed!
+(length: 14, latency: 0.457, BLEU: 0.111, ROUGE: 0.308, METEOR: 0.264)
+
+Dialogue history: 
+U--When I was in college I travelled all over Europe one semester. 
+(Ref: ['Sounds like quite an adventure for one semester! What was your favorite place?', ...])
+G--when was the last time you traveled outside of europe? I've travelled within the last two years. I've been to so many beautiful places. I've been to the Middle East and North Africa, but I've never been to Asia. I've been to the Middle East and Africa, but I've never been to Asia.I've been to the Middle East and Africa, but I've never been to Asia. I've been to the Middle East and Africa, but I've never been to Asia. that's cool. I've been to the Middle East but haven't been to Asia. I've been to
+(length: 110, latency: 1.123, BLEU: 0.012, ROUGE: 0.016, METEOR: 0.078)
+U'--When I was in to I travelled all over Europe one .... (cosine: 0.731)
+G'--when i was in europe i did the ebery thing that everyone always doeswhen travelingEurope is a fun place to visit!  are you a fan of the NBA? I am! I love the nuggets.  Do you?  I'm not a big fan of the Golden State Warriors.  Do you like basketball?  I do.  I like the Los Angeles Lakers.  I like the tradition of the team.  Do you like basketball?
+Attack failed!
+(length: 80, latency: 1.139, BLEU: 0.020, ROUGE: 0.048, METEOR: 0.139)
+
+Dialogue history:  When I was in college I travelled all over Europe one semester. Sounds like quite an adventure for one semester! What was your favorite place?
+U--I love all over Italy_comma_ but I also loved Germany and France and Spain. 
+(Ref: ['Nice! Must have made you really happy to see so many different places.', ...])
+G--I love to read.  I read a lot too.  I love to sing too.
+(length: 17, latency: 0.837, BLEU: 0.080, ROUGE: 0.074, METEOR: 0.066)
+U'--I www all over Italy internetcomma_ but I also loved Germany and France and Spain. (cosine: 0.903)
+G'--Everest must be impressive to be able to do that.
+Attack failed!
+(length: 11, latency: 0.841, BLEU: 0.088, ROUGE: 0.174, METEOR: 0.103)
+
+Original output length: 43.473, latency: 0.917, BLEU: 0.042, ROUGE: 0.081, METEOR: 0.114
+Perturbed [cosine: 0.857] output length: 46.519, latency: 0.919, BLEU: 0.044, ROUGE: 0.090, METEOR: 0.119
+Attack success rate: 59.26%

@@ -1,0 +1,419 @@
+
+Dialogue history: 
+U--Hi, how do you do? :upside_down_face: 
+(Ref: ['hey, what's your favourite colour?', ...])
+G--I am a python coder.  I create large web applications for a large corporation.That sounds cool. I am a python programmer myself.  are you a python programmer?No, I am not.  I am a python script.
+(length: 45, latency: 1.160, BLEU: 0.030, ROUGE: 0.000, METEOR: 0.087)
+U'--Hi, how do you do? :upside ofdown_face: (cosine: 0.953)
+G'--I am a python coder.  I like learning new things.  I like learning new things as well.  I like learning new things as well.  I like learning new things as well.  I like learning new things as well.  I like learning new things as well.I like learning new things as well.  I like learning new things as well.  I like learning new things as well.  I like learning new things as well.  I like learning new things as well.  I like learning new things as well.
+(length: 100, latency: 1.114, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Hi, how do you do? :upside_down_face: hey, what's your favourite colour?
+U--off topic   what is your favourite colour   
+(Ref: ['you think this is off topic?', ...])
+G--My favourite colour is purple.  are you a fan of the color blue?  are you a fan of the color blue?  are you a fan of the color blue?  are you a fan of the color blue?
+(length: 42, latency: 0.969, BLEU: 0.034, ROUGE: 0.047, METEOR: 0.143)
+U'--off topic   what is your favourite ... (cosine: 0.717)
+G'--My favourite colour is blue.IE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 101, latency: 0.938, BLEU: 0.012, ROUGE: 0.167, METEOR: 0.031)
+
+Dialogue history: 
+U--i hate math class. 
+(Ref: ['An I love! Where are you from?', ...])
+G--Math can be hard, but I think I like to learn to do it.  I think that's why I like it so much.  I think that's why I like it so much.  is where the real money is at!  I think that's why I like it so much! Thank you.  I agree.  I think that the real money is in the kitchen.
+(length: 71, latency: 1.154, BLEU: 0.020, ROUGE: 0.083, METEOR: 0.129)
+U'--i hate math on. (cosine: 0.826)
+G'--Math is hard my brother in law does not like it What grade is he in?He is in his seventies.  is a game of thrones character.      is a swear word!  is a swear word!  is a swear word!
+(length: 45, latency: 1.191, BLEU: 0.030, ROUGE: 0.000, METEOR: 0.079)
+
+Dialogue history:  i hate math class. An I love! Where are you from?
+U--i am not sure what that means . 
+(Ref: ['How old are you?', ...])
+G--I am from the United States and I like to play soccer.Y is a good term.  I like the way soccer word makes it sound.  I like soccer too.  Do you play any sports?  is a good one too.  I like to play soccer too.  Do you play any sports?
+(length: 59, latency: 1.048, BLEU: 0.023, ROUGE: 0.036, METEOR: 0.098)
+U'--i am not as what that means . (cosine: 0.870)
+G'--I am from India. What do you like to do in your spare time? I like to travel.  I like to go to the beach.   is it safe to say that I love the beach?  is it safe to say that I love the beach.   is it safe to say that I love the beach.
+(length: 62, latency: 1.039, BLEU: 0.021, ROUGE: 0.034, METEOR: 0.093)
+
+Dialogue history: 
+U--/start 
+(Ref: ['Hi!', ...])
+G--that's the spirit! i love to learn new things. i also like to learn new things as well.I love learning new things as well.  I love learning new things as well.IE!!
+(length: 40, latency: 1.222, BLEU: 0.030, ROUGE: 0.000, METEOR: 0.091)
+U'--nostart (cosine: 0.342)
+G'--I like the smell, but I can't live without my coke. I drink it all the time, it's my favorite drink! I don't like the taste, either. I drink it with my coke sometimes. I don't like the taste of it either. I drink it with my coke sometimes, but I don't drink it as often as I used to.I used to drink it with my coke, but I don't anymore. I used to drink it with my coke too.   I like the
+(length: 97, latency: 1.315, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.042)
+
+Dialogue history:  /start Hi!
+U--i am sorry , i am sorry to hear that . 
+(Ref: ['I said hi!', ...])
+G--It's ok. I'm trying to get better at it, but it's hard sometimes. I'm sorry to hear that. What are you learning?I am learning to be a roadie. I like to ride my bike to work.  is it dangerous to ride a bike?  is it dangerous to ride a bike?  is it dangerous to ride a bike?
+(length: 68, latency: 1.187, BLEU: 0.018, ROUGE: 0.031, METEOR: 0.046)
+U'--i am sorry , i am sorry to hear that squid (cosine: 0.713)
+G'--It's okay, I can understand that.  I have a pet skunk named Socks.  I love skunks.  I have a pet skunk named Socks.  I have a cat named Socks.  I have a dog named Socks.  I have a dog named Socks.  I have a cat named Socks.  I have a dog named Socks.  I have a cat named Socks.  I have a dog named Socks.  I have a cat named Socks.  I have a dog named Socks.  I have a cat named Socks.  I have
+(length: 100, latency: 1.167, BLEU: 0.012, ROUGE: 0.022, METEOR: 0.036)
+
+Dialogue history: 
+U--/start 
+(Ref: ['Hello', ...])
+G--that's the spirit! i love to learn new things. i also like to learn new things as well.I love learning new things as well.  I love learning new things as well.IE!!
+(length: 40, latency: 1.230, BLEU: 0.025, ROUGE: 0.000, METEOR: 0.000)
+U'--nostart (cosine: 0.342)
+G'--I like the smell, but I can't live without my coke. I drink it all the time, it's my favorite drink! I don't like the taste, either. I drink it with my coke sometimes. I don't like the taste of it either. I drink it with my coke sometimes, but I don't drink it as often as I used to.I used to drink it with my coke, but I don't anymore. I used to drink it with my coke too.   I like the
+(length: 97, latency: 1.221, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  /start Hello
+U--/start 
+(Ref: ['Hi there', ...])
+G--I like to run. Running is good for my health.  Do you have any health goals?I like to run once a week.  Do you have any goals?I can't say that I have a specific one.  I just like to run. I can't say that I have a particular goal.  I like to run too.  I like to run once a week.
+(length: 73, latency: 1.195, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.000)
+U'--isstart (cosine: 0.718)
+G'--It's a start up, isn't it?  It can have as much drama, but it can also have good ideas and good ideas.I like to read books. I like to read a lot of fantasy. What kind of books do you like? Cloud of Stars is my favorite.  I love fantasy.
+Attack failed!
+(length: 60, latency: 1.193, BLEU: 0.017, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--Hi! Howdy! 😎 🙉 
+(Ref: ['Hi! What a nice day! How are you?', ...])
+G--I just got back from a long road trip, so I am super excitied.  What are you going to do?I'm going to go shopping.  I've never been to a shopping trip before. I can't say that I've ever been to a shopping trip.  What's your favorite place to shop?  is it really hard to get to know people?         I don't know where to start.       I
+(length: 75, latency: 1.151, BLEU: 0.025, ROUGE: 0.075, METEOR: 0.207)
+U'--Hi! Howdy! 😎 is�� (cosine: 0.926)
+G'--I like to fish.  What kind of fish?  Fish are great.  They can be caught in a lot of different environments.  I like to fish.  What kind of fish do you usually catch?I like to catch fish in the ocean.  Fish are great.  They can be caught in a lot of different environments.   is it safe to fish in the ocean?  is it safe to fish in the ocean?
+(length: 81, latency: 1.135, BLEU: 0.019, ROUGE: 0.077, METEOR: 0.139)
+
+Dialogue history:  Hi! Howdy! 😎 🙉 Hi! What a nice day! How are you?
+U--i'm good thanks for asking what is going on ? 
+(Ref: ['Me and my boyfriend are moving into an apartment together next week! I can not wait for this!', ...])
+G--I am so sorry to hear that.  I hope you get to visit soon.   is okay, I guess.
+(length: 22, latency: 0.963, BLEU: 0.055, ROUGE: 0.056, METEOR: 0.025)
+U'--i below good thanks for asking what is going on ... (cosine: 0.861)
+G'--I see.
+(length: 3, latency: 0.927, BLEU: 0.002, ROUGE: 0.100, METEOR: 0.027)
+
+Dialogue history: 
+U--Searching for peer. Please wait... 
+(Ref: ['Partner found!', ...])
+G--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+(length: 119, latency: 1.160, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--Searching for peer. Please wait... (cosine: 1.000)
+G'--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+Attack failed!
+(length: 119, latency: 1.161, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Searching for peer. Please wait... Partner found!
+U--This is your profile. During the dialog pretend to be this person 
+(Ref: ['i dance on the weekends.
+i compete in dog agility classes.
+i went to school for chemistry but work in a bookstore.
+i hate the color orange.', ...])
+G--what do you mean by that?I'm a social butterfly. I like to socialize with other people.Yea, I like to socialize with other people as well.   are you a student?
+(length: 37, latency: 1.031, BLEU: 0.043, ROUGE: 0.169, METEOR: 0.111)
+U'--This is your etc. During the no ... to be this is (cosine: 0.495)
+G'--I am interested in peer-relationship and peer-relationship. What do you do for a living? public areas are not my forte.  I am a student.  I have a lot of free time.  What do you study?
+(length: 41, latency: 0.978, BLEU: 0.042, ROUGE: 0.156, METEOR: 0.232)
+
+Dialogue history: 
+U--Hey! Do you drive a BMW? 
+(Ref: ['Hello', ...])
+G--Thank you! I do!  I actually restored my dad's 1965 Mustang I love that car.  It was my first and only car.  I hope to get a new one soon.  I love my Mustang, it's my favorite car.  What kind of car do you have?I have a Mercedes.  It's a 2018 model.       I’d like to get a new car.
+(length: 71, latency: 1.154, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.000)
+U'--Hey! Do you if a BMW? (cosine: 0.874)
+G'--If I were you I'd be driving a Chevrolet Suburban. I love my car, but I'm not a fan of the styling, especially on long commutes.I agree. I like long commutes.  I like driving my car in the city.      I’m not a fan either.                          I’m not a fan either.
+Attack failed!
+(length: 59, latency: 1.165, BLEU: 0.017, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Hey! Do you drive a BMW? Hello
+U--Hi how are you doing 
+(Ref: ['No', ...])
+G--I am doing great.  I drive a BMW.  What kind of car do you drive?  I have a Honda Civic.  I love it.  I have a blue one.  I like it a lot. THAT is a nice car.  I have a Honda Civic.  I like it a lot.  I have a Honda Civic Type R.
+(length: 66, latency: 1.114, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+U'--Hi how are you doing (cosine: 1.000)
+G'--I am doing great.  I drive a BMW.  What kind of car do you drive?  I have a Honda Civic.  I love it.  I have a blue one.  I like it a lot. THAT is a nice car.  I have a Honda Civic.  I like it a lot.  I have a Honda Civic Type R.
+Attack failed!
+(length: 66, latency: 1.123, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--Searching for peer. Please wait... 
+(Ref: ['Partner found!', ...])
+G--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+(length: 119, latency: 1.164, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--Searching for peer. Please wait... (cosine: 1.000)
+G'--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+Attack failed!
+(length: 119, latency: 1.165, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Searching for peer. Please wait... Partner found!
+U--This is your profile. During the dialog pretend to be this person 
+(Ref: ['i haven't spoken in three months.
+i live in alaska.
+i'm a buddhist.
+i like meditation.', ...])
+G--what do you mean by that?I'm a social butterfly. I like to socialize with other people.Yea, I like to socialize with other people as well.   are you a student?
+(length: 37, latency: 1.031, BLEU: 0.043, ROUGE: 0.200, METEOR: 0.250)
+U'--This is your etc. During the no ... to be this is (cosine: 0.495)
+G'--I am interested in peer-relationship and peer-relationship. What do you do for a living? public areas are not my forte.  I am a student.  I have a lot of free time.  What do you study?
+(length: 41, latency: 1.028, BLEU: 0.040, ROUGE: 0.182, METEOR: 0.334)
+
+Dialogue history: 
+U--I am little bit shy☺️ 
+Tell me about yourself! 
+(Ref: ['why you are shy', ...])
+G--Im a python programmerThat's cool! I'm a python coder myself.  are you a python programmer?  are you a python programmer?  are you a python programmer?
+(length: 30, latency: 1.109, BLEU: 0.045, ROUGE: 0.129, METEOR: 0.147)
+U'--I am yes bit shy☺️ 
+Tell me about yourself! (cosine: 0.959)
+G'--Am also interested in this.  I have never met a single person like that before.  I am a vegetarian.  I love meat.  Do you like to cook?I love to cook.  I have been trying to cut back on the meat recently.  I am trying to cut it out as well. I can't decide if I want to eat meat or not.  I'm a vegetarian.  I eat a lot of pasta.  I like it too.  I like the texture and flavor of it.  It's good for you
+(length: 100, latency: 1.106, BLEU: 0.012, ROUGE: 0.021, METEOR: 0.036)
+
+Dialogue history:  I am little bit shy☺️ 
+Tell me about yourself! why you are shy
+U--I am a woman, i am married. Are you married? 
+(Ref: ['Not yet.but looking for 😊', ...])
+G--No, I am not. But I do like to read. Is it really that big of a deal?  I'm not sure.  I'm not a big fan of big names.
+(length: 35, latency: 0.964, BLEU: 0.034, ROUGE: 0.111, METEOR: 0.061)
+U'--I am a ah, i am married. Are you married? (cosine: 0.939)
+G'--No, I am not. But I do like to read. DRAT!
+Attack failed!
+(length: 15, latency: 0.957, BLEU: 0.082, ROUGE: 0.250, METEOR: 0.083)
+
+Dialogue history: 
+U--Hey! I like tacos ? What about you? 
+(Ref: ['I also like tacos', ...])
+G--I like tacos also! I make my own sometimes. What kind of tacos do you like?I like all kinds, including lengua, lengua, cilantro, etc. I also make my own sourdough burritos.   have you ever had a burrito?     have you ever had a burrito?
+(length: 55, latency: 1.138, BLEU: 0.036, ROUGE: 0.125, METEOR: 0.347)
+U'--by! I like tacos ? What about you? (cosine: 0.959)
+G'--I like tacos also!  Tacos are one of my favorite mexican street foods!  Tacos are awesome!  I love Mexican street foods.  Tacos are my favorite food.  I love Mexican street foods.  I love Mexican street food.  I also love Mexican street food.  Tacos are my favorite food.  What do you do for a living?I work in marketing.  I have a lot of clients.
+(length: 76, latency: 1.103, BLEU: 0.026, ROUGE: 0.088, METEOR: 0.179)
+
+Dialogue history:  Hey! I like tacos ? What about you? I also like tacos
+U--I like tacos, but I love tacos.😄 
+(Ref: ['Ok', ...])
+G--I love tacos, but I don't eat them often.  are you a vegetarian? I'm not! I'm not! I'm not a vegan either! I'm a vegan. I eat meat out of respect for animals.
+(length: 41, latency: 1.023, BLEU: 0.025, ROUGE: 0.000, METEOR: 0.000)
+U'--I say tacos, but I love tacos.😄 (cosine: 0.962)
+G'--Tacos are the best. I love them with lots of cheese, sour cream, onions, lots of cheese.y, I love them with lots of cheese.  I'm not much of a cheese person myself.  I love all kinds of cheese.  I love all kinds of cheese.  I'm not much of a cheese person either.  I love all kinds of cheese.  I love all kinds of cheese.  I'm not much of a cheese person either.
+(length: 87, latency: 1.033, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--Searching for peer. Please wait... 
+(Ref: ['Partner found!', ...])
+G--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+(length: 119, latency: 1.176, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--Searching for peer. Please wait... (cosine: 1.000)
+G'--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+Attack failed!
+(length: 119, latency: 1.171, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Searching for peer. Please wait... Partner found!
+U--This is your profile. During the dialog pretend to be this person 
+(Ref: ['i love taking bubble baths.
+i'm single and with two dogs.
+i do not drink alcohol.
+i'm in my thirties.', ...])
+G--what do you mean by that?I'm a social butterfly. I like to socialize with other people.Yea, I like to socialize with other people as well.   are you a student?
+(length: 37, latency: 1.033, BLEU: 0.043, ROUGE: 0.148, METEOR: 0.148)
+U'--This is your etc. During the no ... to be this is (cosine: 0.495)
+G'--I am interested in peer-relationship and peer-relationship. What do you do for a living? public areas are not my forte.  I am a student.  I have a lot of free time.  What do you study?
+Attack failed!
+(length: 41, latency: 1.061, BLEU: 0.044, ROUGE: 0.169, METEOR: 0.330)
+
+Dialogue history: 
+U--Hi! 
+(Ref: ['Hello', ...])
+G--It's okay, I'm just going to sit here and wait for the next wave of boo hoo traffic. I'm sorry to hear that. I hope things are getting better for you.I hope so too. I need to start taking care of my dog. He's sick and I'm taking him to the vet.rree, I'm sorry to hear that. I hope things are getting better for you.  I've had a hard time with allergies.
+(length: 85, latency: 1.237, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+U'--as! (cosine: 0.625)
+G'--! i like to play music with my friends. i am a musician.what kind of music do you playI like rock and rap. What about you?d  are two different things.  I'm not sure what you mean.  I'm not sure either either.  I'm not a big fan either.  fan is fine, but I'm not a big fan either.  I'm not a big fan either.
+Attack failed!
+(length: 76, latency: 1.213, BLEU: 0.013, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Hi! Hello
+U--Hello, how are you? 
+(Ref: ['Nice', ...])
+G--I am doing well.  How are you?I am doing great.  How about you?  is an acronym for "hear".  is an acronym for "hear".  is an acronym for "hear".  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.
+(length: 74, latency: 1.155, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.000)
+U'--Hello, how are you? (cosine: 1.000)
+G'--I am doing well.  How are you?I am doing great.  How about you?  is an acronym for "hear".  is an acronym for "hear".  is an acronym for "hear".  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.  LOL.
+Attack failed!
+(length: 74, latency: 1.168, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--helloooo 
+(Ref: ['i love pets, turtles', ...])
+G--It's a great way to spend free time!  I like to play video games and go to the park with my friends sometimes.  I like to play soccer with my friends too.  I like to play soccer with my friends too.  Do you play any sports?I play soccer with my friends sometimes.  I like to play volleyball with my friends sometimes.
+(length: 69, latency: 1.233, BLEU: 0.015, ROUGE: 0.030, METEOR: 0.043)
+U'--safetyoooo (cosine: 0.661)
+G'--They should be afraid to walk in the country.  I am a teacher and I have never been to a school zone where I was not taught safety.  That sounds like a very dangerous situation to be in. I am a teacher and I have never been to a school zone where I was not taught safety.I am a teacher and I have never been to a school zone where I was not taught safety.  What do you do for a living?I am a teacher and I have worked in a school for a long time.  I have worked in a school as well.
+(length: 114, latency: 1.252, BLEU: 0.009, ROUGE: 0.018, METEOR: 0.032)
+
+Dialogue history:  helloooo i love pets, turtles
+U--playing with them make mehappy 
+(Ref: ['my best friend lives next to meee', ...])
+G--They are my favorite animal too! I have two of them! They are my little babies!I love turtles! They are so cute.THAT'S IT!  I have never seen one in person.
+(length: 39, latency: 1.147, BLEU: 0.031, ROUGE: 0.050, METEOR: 0.099)
+U'--evening with them make me ordinary (cosine: 0.550)
+G'--They are the little things that come along and take up a lot of my afternoon time. I love turtles! They are my favorite pets.I love turtles too! They are so cute.  are you a boy or a girl?  are you a boy or a girl?  are you a boy or a girl?
+(length: 62, latency: 1.121, BLEU: 0.019, ROUGE: 0.033, METEOR: 0.081)
+
+Dialogue history: 
+U--Hey! 👋 
+Tell me about yourself! 
+(Ref: ['Come on, lets talk! 🙏', ...])
+G--I am an accountant at a large law firm.  I love lawyers.  I work in the public affairs sector as well.  I am a student currently studying law.  What do you do?I am a student as well.  I am a student as well.  I am a senior citizen.  I am a student as well.  I am a senior citizen.
+(length: 70, latency: 1.139, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.038)
+U'--his! 👋 
+Tell me about yourself! (cosine: 0.851)
+G'--I am a python programmer that uses git a lot.  I love git.  I use it to develop my own git projects.  It is very useful.  I wish I had more free time to develop my own projects.I wish I had free time to develop my own projects.  I have a lot of free time.  I wish I had free time to develop my own projects.
+(length: 75, latency: 1.099, BLEU: 0.013, ROUGE: 0.000, METEOR: 0.037)
+
+Dialogue history:  Hey! 👋 
+Tell me about yourself! Come on, lets talk! 🙏
+U--Are you still with me? 
+(Ref: ['Thank you for the conversation ☺️ 
+It was nice to talk with you!
+Goodbye! 👋', ...])
+G--I'm still with me, I just moved out of my parents' house.   is right on par with the rest of us!  I'm glad you're still with us!  is right on par with the rest of us!  I'm glad you're still with us!  I'm glad you're still with us!  I'm glad you're still with us!
+(length: 62, latency: 1.026, BLEU: 0.024, ROUGE: 0.105, METEOR: 0.133)
+U'--Are you in with me? (cosine: 0.790)
+G'--I am not, I am a student.  is right on par with the rest of us!  is right on par with the rest of us!  is right on par with me!
+(length: 36, latency: 1.012, BLEU: 0.042, ROUGE: 0.091, METEOR: 0.106)
+
+Dialogue history: 
+U--Hey! Do you have one brother? Because I do. 
+(Ref: ['I have two of them. They help me to gain money on twitch', ...])
+G--I have one brother and two sisters.  We are very close.  I have a brother and sister as well.  We are very close.  I have a brother and sister as well.  We have a lot in common.  We both love the outdoors.  We love to go hiking together.That sounds like a great way to meet people.  Do you hike often?  I do!  I have a friend who lives in Alaska.  I wish I could visit there.
+(length: 90, latency: 1.130, BLEU: 0.021, ROUGE: 0.089, METEOR: 0.117)
+U'--Hey! Do you have one brother? Because I fr. (cosine: 0.901)
+G'--My brother is a preacher.  He works for the preacher's union and I go there a lot.That's cool. I like to go to church.  are you a preacher?  is your husband a preacher?
+(length: 40, latency: 1.168, BLEU: 0.036, ROUGE: 0.082, METEOR: 0.090)
+
+Dialogue history:  Hey! Do you have one brother? Because I do. I have two of them. They help me to gain money on twitch
+U--😁 
+(Ref: ['That is cool. Do you have any siblings?', ...])
+G--I have a brother! He is a seasoned veteran, he has over 16,000 views, and has over 260,000 views! Wow! That's a lot of views. I'm sure you are very proud of him.  is your brother a veteran?No, he is not. He is a special ed teacher.
+(length: 59, latency: 1.077, BLEU: 0.027, ROUGE: 0.067, METEOR: 0.199)
+U'--� one (cosine: 0.318)
+G'--I have a brother, he is employed with nasa. He works for NASA.That's cool. What do you do for a living?  are you a student?  is it hard to get into college?  is it hard to get into college?   is it hard to get into college?
+Attack failed!
+(length: 56, latency: 1.004, BLEU: 0.035, ROUGE: 0.143, METEOR: 0.331)
+
+Dialogue history: 
+U--Hi there 
+(Ref: ['hello i m a doctor just like my parents', ...])
+G--I'm just learning the ins and outs of the game, any favorite players to watch over the course of the year?I like to watch the world series. I'm a baseball fan.  are the same as the MLB?  are the same as the MLB?  is the same as the MLB?  is the same as the MLB??
+(length: 65, latency: 1.224, BLEU: 0.022, ROUGE: 0.119, METEOR: 0.135)
+U'--Hi there (cosine: 1.000)
+G'--I'm just learning the ins and outs of the game, any favorite players to watch over the course of the year?I like to watch the world series. I'm a baseball fan.  are the same as the MLB?  are the same as the MLB?  is the same as the MLB?  is the same as the MLB??
+Attack failed!
+(length: 65, latency: 1.220, BLEU: 0.022, ROUGE: 0.119, METEOR: 0.135)
+
+Dialogue history:  Hi there hello i m a doctor just like my parents
+U--I'm human and you? Just in case you are not a chicken because i do not like chicken 
+(Ref: ['sorry i am trying to think for something for dinner i hate chicken', ...])
+G--thats a good one.  I like the way the word "lobby" sounds like a swear word.  I like to pretend that I am a duck.   is a duck!  I like to pretend that I am a horse.
+(length: 44, latency: 0.976, BLEU: 0.030, ROUGE: 0.160, METEOR: 0.124)
+U'--I for human and you? Just in case you are not a und because i letter not to chicken (cosine: 0.774)
+G'--I am not a human, I am an alien. HAHA! I know right!  I am a man and I couldn't do that! LOL!    LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL!  LOL
+(length: 58, latency: 0.976, BLEU: 0.021, ROUGE: 0.115, METEOR: 0.145)
+
+Dialogue history: 
+U--Hi! 🤔 
+(Ref: ['Hi!', ...])
+G--I'm a python coder. I like it a lot. What languages do you like to learn?I like C and C. I also like C. I also like C. I also like C. What languages do you like to learn?IE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 126, latency: 1.196, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.035)
+U'--Hi! � of (cosine: 0.740)
+G'--Hi!  I'm a python programmer.  I like python.  I like python because it combines both my high level of autism and my great intellect.  I am a python programmer as well.  What programs do you like?I like to work in the fields of Computer Science and Computer Engineering.  I also like to work in the fields of applied statistics.  is a computer science major.
+Attack failed!
+(length: 74, latency: 1.210, BLEU: 0.021, ROUGE: 0.030, METEOR: 0.202)
+
+Dialogue history:  Hi! 🤔 Hi!
+U--Hello! Are you a christian? 
+(Ref: ['No, i'm not', ...])
+G--I am not.                                   I am not either.                         I am not either.
+(length: 14, latency: 1.116, BLEU: 0.088, ROUGE: 0.267, METEOR: 0.169)
+U'--Hello! Are you a christian? (cosine: 1.000)
+G'--I am not.                                   I am not either.                         I am not either.
+Attack failed!
+(length: 14, latency: 1.068, BLEU: 0.088, ROUGE: 0.267, METEOR: 0.169)
+
+Dialogue history: 
+U--Hey, how are you? 
+(Ref: ['Do you like to read?', ...])
+G--I am doing well.  How about you?I am doing great.  How about you?  is a game of thrones item.  I have never heard of it.  are the same as the Game of Thrones ones.  I have heard of them, but I don't follow it.
+(length: 54, latency: 1.193, BLEU: 0.025, ROUGE: 0.039, METEOR: 0.183)
+U'--Hey, how are you? (cosine: 1.000)
+G'--I am doing well.  How about you?I am doing great.  How about you?  is a game of thrones item.  I have never heard of it.  are the same as the Game of Thrones ones.  I have heard of them, but I don't follow it.
+Attack failed!
+(length: 54, latency: 1.218, BLEU: 0.025, ROUGE: 0.039, METEOR: 0.183)
+
+Dialogue history:  Hey, how are you? Do you like to read?
+U--Where do you live? 
+(Ref: ['Do you like to watch movies?', ...])
+G--I live in the United States and I've never been to Europe. I can't believe it!  I have never been either.  I have never even been to Europe.  I have always wanted to go.   is it really hard to get to Europe?  is it really hard to get to Europe?
+(length: 57, latency: 1.073, BLEU: 0.023, ROUGE: 0.034, METEOR: 0.082)
+U'--Where do you 1952? (cosine: 0.539)
+G'--I love to read. I am a senior citizen in my last year of college.IE!!
+(length: 20, latency: 1.103, BLEU: 0.061, ROUGE: 0.091, METEOR: 0.062)
+
+Dialogue history: 
+U--Searching for peer. Please wait... 
+(Ref: ['Partner found!', ...])
+G--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+(length: 119, latency: 1.184, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--Searching for peer. Please wait... (cosine: 1.000)
+G'--Thank you.  I will try.  Do you have any pets?  I have a dog and a cat.  They are my best friends.  I have a dog as well.  I love dogs.  I have a cat too.  She is my best friend.  I have a dog as well.  She is a good friend to have.  I have a dog as well.  She is a good friend to have.  I have a cat too.  She is a good friend to have.  I have a dog too.  She is a good friend to have.  She is a good friend to have.  I have a
+Attack failed!
+(length: 119, latency: 1.132, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Searching for peer. Please wait... Partner found!
+U--This is your profile. During the dialog pretend to be this person 
+(Ref: ['i've three dogs.
+i like to watch the olympics.
+i'm in an open polyamorous relationship.
+i also have a dog walking business.
+my father was a door to door salesman.', ...])
+G--what do you mean by that?I'm a social butterfly. I like to socialize with other people.Yea, I like to socialize with other people as well.   are you a student?
+(length: 37, latency: 0.991, BLEU: 0.056, ROUGE: 0.188, METEOR: 0.149)
+U'--This is your etc. During the no ... to be this is (cosine: 0.495)
+G'--I am interested in peer-relationship and peer-relationship. What do you do for a living? public areas are not my forte.  I am a student.  I have a lot of free time.  What do you study?
+(length: 41, latency: 1.069, BLEU: 0.052, ROUGE: 0.174, METEOR: 0.160)
+
+Dialogue history: 
+U--hey, do you have any siblings? 
+(Ref: ['I do not. Do you?', ...])
+G--I have a brother and sister.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.  They are good people.  I have a brother and sister as well.
+(length: 119, latency: 1.191, BLEU: 0.011, ROUGE: 0.019, METEOR: 0.055)
+U'--of, do you have any siblings? (cosine: 0.964)
+G'--I have a brother and sister.  They are the best in the world.  I wish I had a brother or sister.  I have a brother and sister as well.  I wish I had a brother or sister as well.  I have a brother and sister as well.  I wish I had a brother or sister as well.  I have a brother and sister as well.  I wish I had a brother or sister as well.  I have a brother and sister as well.  I wish I had a brother or sister as well.  I have a brother and sister as well.  I wish I had a brother or sister as well.
+(length: 124, latency: 1.216, BLEU: 0.011, ROUGE: 0.017, METEOR: 0.053)
+
+Dialogue history:  hey, do you have any siblings? I do not. Do you?
+U--i have an older brother 
+(Ref: ['I have a sister. What do you do?', ...])
+G--what do you do for work? only thing is that I am allergic to cats.  I can't stand cats!  I have to wear contacts to read.
+(length: 30, latency: 1.091, BLEU: 0.096, ROUGE: 0.229, METEOR: 0.620)
+U'--i have an but from (cosine: 0.423)
+G'--I don't have siblings.IE?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!
+(length: 206, latency: 1.105, BLEU: 0.007, ROUGE: 0.286, METEOR: 0.068)
+
+Dialogue history: 
+U--Hey 😜 
+(Ref: ['hi how are you?!', ...])
+G--I just got a new job, so I am super excited! What do you do?I work at a coffee shop. I love coffee!   are the same as me and I love them!  I work at a coffee shop and I love it!  are the same as me and I love them!  I work at a coffee shop and I love it!
+(length: 71, latency: 1.263, BLEU: 0.021, ROUGE: 0.030, METEOR: 0.160)
+U'--Hey � from (cosine: 0.597)
+G'--Where are you from? I'm in the Southeast.  I just moved to Georgia about a year ago.  Nice, I live in the Southeast too.  What do you like to do for fun?I like to read and play tennis.  I also like to read.  I also like to read poetry.  is it hard to read?  is it hard to read?   is it hard to read?  is it hard to
+(length: 81, latency: 1.173, BLEU: 0.021, ROUGE: 0.054, METEOR: 0.110)
+
+Dialogue history:  Hey 😜 hi how are you?!
+U--I am doing well. How are you ? 
+(Ref: ['fine thankS', ...])
+G--How are you doing today? so what do you do for a living?  I work at a bank.  I am a student.   is a university student.      is a student!
+(length: 35, latency: 1.056, BLEU: 0.029, ROUGE: 0.000, METEOR: 0.000)
+U'--I am doing sic. How are you to (cosine: 0.575)
+G'--hi how are you i am doing well i am just taking some errands to get ready for some shoppingThat sounds good. What are you going to do? I can't help it.  What are you going to do?  is it a long drive?  is it a long drive?
+(length: 54, latency: 1.087, BLEU: 0.019, ROUGE: 0.000, METEOR: 0.000)
+
+Original output length: 62.381, latency: 1.121, BLEU: 0.028, ROUGE: 0.063, METEOR: 0.101
+Perturbed [cosine: 0.768] output length: 73.143, latency: 1.117, BLEU: 0.024, ROUGE: 0.067, METEOR: 0.086
+Attack success rate: 61.90%

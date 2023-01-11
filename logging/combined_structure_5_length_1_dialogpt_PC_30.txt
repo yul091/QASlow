@@ -1,0 +1,561 @@
+
+Dialogue history: 
+U--hello ! how are you today ? 
+(Ref: ['i love singing frozen but my favorite band is up . saw them in concert !', ...])
+G--I am doing great.  How about you?I am doing good as well.  What do you do for work?  is a swear word.  I have never heard of it being a swear word.  is a swear word.  I have never heard of it being a swear word.  I am a native spaker.
+(length: 61, latency: 1.178, BLEU: 0.090, ROUGE: 0.182, METEOR: 0.398)
+U'--hello ! how are you pearl ? (cosine: 0.576)
+G'--I'm doing well. Just got back from the pool. How about you?I'm good. I've been playing chess all day. What's your favorite color?  are you a fan of the NBA?  is there any particular team you are rooting for the most?  is there any team you want to win tonight?
+(length: 60, latency: 1.152, BLEU: 0.052, ROUGE: 0.209, METEOR: 0.319)
+
+Dialogue history:  hello ! how are you today ? i love singing frozen but my favorite band is up . saw them in concert !
+U--oh wonderful ! i work as an elementary school teacher ! my parents were teachers too . 
+(Ref: ['i have never been ! i usually just stay at home and play board games while on vacation .', ...])
+G--My parents were teachers too! What do you do for a living?  are you a teacher?No, I am not. I am a student.
+(length: 30, latency: 0.899, BLEU: 0.085, ROUGE: 0.176, METEOR: 0.372)
+U'--oh wonderful oh i work as an elementary school teacher ! my parents were teachers too . (cosine: 0.991)
+G'--My parents were teachers too! What do you do?  are you a teacher?No, I am not. I am a student.
+Attack failed!
+(length: 27, latency: 0.911, BLEU: 0.093, ROUGE: 0.194, METEOR: 0.381)
+
+Dialogue history: 
+U--europe is so much fun ! 
+(Ref: ['no , but i like to go at least twice a year .', ...])
+G--Europe seems like such a wonderful place. I really miss my mother though. She passed away a few years ago. I miss her so much. I miss my mom too. She was a very sweet person. I miss her dearly. I wish she passed away.I'm sorry to hear that. I'm sorry to hear that. I'm sure she was.
+(length: 70, latency: 1.189, BLEU: 0.047, ROUGE: 0.141, METEOR: 0.331)
+U'--schoolpe is so much fun ! (cosine: 0.620)
+G'--It really is, I wish I had more free time to play with other students though. I spend most of my time volunteering at the Red Cross.That's awesome. I volunteer at a local Red Cross office and it's so much fun. angel of a man! I'm so sorry to hear that.  What do you do for a living?
+Attack failed!
+(length: 67, latency: 1.179, BLEU: 0.067, ROUGE: 0.179, METEOR: 0.459)
+
+Dialogue history:  europe is so much fun ! no , but i like to go at least twice a year .
+U--usa , they have good fish and chips here , which i love to eat ! 
+(Ref: ['travelling is great , i've been on many cruises', ...])
+G--Yea, I've heard that.  I'm more into comic books. IE is where it's at!  I'm more into movies.  I like the old movies too.
+(length: 30, latency: 0.927, BLEU: 0.075, ROUGE: 0.200, METEOR: 0.282)
+U'--usa , they have tiger fish and chips here , which i love to eat ! (cosine: 0.922)
+G'--where are you from? i am from california, but i love to travel............................................................................................
+(length: 107, latency: 0.922, BLEU: 0.028, ROUGE: 0.296, METEOR: 0.365)
+
+Dialogue history: 
+U--hey , i hope your night is going well 
+(Ref: ['its great even though my bipolar son had a violent meltdown', ...])
+G--Thank you! I am so tired of people trying to make me feel important. I am sorry to hear that. I hope you are getting some rest.I am. I need to go to bed early. I have a long day of work to do.IE?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!
+(length: 203, latency: 1.167, BLEU: 0.014, ROUGE: 0.190, METEOR: 0.168)
+U'--band , i hope your night is going independence (cosine: 0.553)
+G'--Thank you! I am hoping so as well. What kind of music do you like? I like rock and pop. I like pop music. I like pop music too. What kind of music do you like?I like all kinds of music. I listen to rock music. I also like pop music. What about you?
+(length: 66, latency: 1.129, BLEU: 0.055, ROUGE: 0.167, METEOR: 0.203)
+
+Dialogue history:  hey , i hope your night is going well its great even though my bipolar son had a violent meltdown
+U--yeah , he's a piece of work . i had to send him away today 
+(Ref: ['does she have bipolar disorder as well ?', ...])
+G--I'm sorry to hear that. I hope things are getting better for him.  are you a fan of the new xbox music game?I am, I really like the xbox music.
+(length: 36, latency: 0.940, BLEU: 0.067, ROUGE: 0.213, METEOR: 0.334)
+U'--yeah and he's a pdf of work 33 i had to send him away today (cosine: 0.650)
+G'--I'm sorry to hear that. What kind of project is it? public can be very judgmental of you.
+(length: 21, latency: 0.900, BLEU: 0.089, ROUGE: 0.235, METEOR: 0.307)
+
+Dialogue history: 
+U--hello . how are you today ? 
+(Ref: ['i am a construction worker . i do not know much about computers', ...])
+G--I am doing well.  How are you?I am doing good.  How about you?  is a great name for a cat.  I have one.  I have a black tabby cat named Mia.   is a good name for a cat!
+(length: 47, latency: 1.167, BLEU: 0.069, ROUGE: 0.213, METEOR: 0.333)
+U'--hello . how are you pearl ? (cosine: 0.581)
+G'--I'm doing well. Just got back from the pool. How about you?I'm good. I've been playing chess all day. What's your favorite game? angel of God is my all time favorite.  angel of God is such a great song.
+(length: 48, latency: 1.172, BLEU: 0.056, ROUGE: 0.131, METEOR: 0.284)
+
+Dialogue history:  hello . how are you today ? i am a construction worker . i do not know much about computers
+U--that must be interesting . i don't have time outside of house building to do much 
+(Ref: ['no , not really . i'm more into stuff from the eighties .', ...])
+G--I work as an accountant for a large corporation. Do you have any hobbies?  are you in school?No, I am a senior citizen.  I am a student.
+(length: 34, latency: 0.915, BLEU: 0.075, ROUGE: 0.233, METEOR: 0.300)
+U'--that must be interesting oh i don't have time as of house building to pdf much (cosine: 0.836)
+G'--I work in IT and I love to learn new things. What kind of things do you learn?IE IT!
+Attack failed!
+(length: 23, latency: 0.917, BLEU: 0.109, ROUGE: 0.400, METEOR: 0.468)
+
+Dialogue history: 
+U--hello , how are you today ? 
+(Ref: ['just playing with my pet dog , his name is charlie', ...])
+G--I am doing well.  How are you?I am doing good.  How about you?  is an amazing band!  I have never heard of them.  I have heard of the Avett Brother.  They are an indie band.  are the lead vocalist of the band.
+(length: 52, latency: 1.169, BLEU: 0.058, ROUGE: 0.136, METEOR: 0.209)
+U'--hello , how are you pearl ? (cosine: 0.571)
+G'--I'm doing well. Just got back from the pool. How about you?I'm good. I've been playing chess all day. What's your favorite game?  are you a fan of the NBA?  are you?  is there a certain team you want to be in?   is there a certain team you want to be in?
+(length: 63, latency: 1.168, BLEU: 0.050, ROUGE: 0.118, METEOR: 0.297)
+
+Dialogue history:  hello , how are you today ? just playing with my pet dog , his name is charlie
+U--he like to ride in my 2015 honda civic while we jam to rap music 
+(Ref: ['no , but do you like pizza ? it is my favourite food to eat everday', ...])
+G--What kind of car is it?IE business.
+(length: 10, latency: 0.933, BLEU: 0.159, ROUGE: 0.308, METEOR: 0.234)
+U'--he like to ride in my 2015 mmonda civic while we jam to rap music (cosine: 0.962)
+G'--What kind of car is it?IE!!
+(length: 10, latency: 0.936, BLEU: 0.150, ROUGE: 0.333, METEOR: 0.234)
+
+Dialogue history: 
+U--how are you doing today 
+(Ref: ['i'm doing really well', ...])
+G--I am doing well. Just got back from the gym. How about you?I am good. I love going to the gym.!!!!
+(length: 31, latency: 1.186, BLEU: 0.107, ROUGE: 0.286, METEOR: 0.400)
+U'--how are you if ... (cosine: 0.575)
+G'--I am doing well. I just got home from a long road trip and I am so happy! I am so happy! I am so excitied for this trip. I am so excitied for this trip. I am so excitied for this trip. I can't wait to go home and read all of the books I've been reading.I've been reading a lot of Harry Potter lately. It's a great series. I've been reading a lot of fantasy lately.  I love it. I have been reading a lot of Harry Potter.
+(length: 103, latency: 1.180, BLEU: 0.035, ROUGE: 0.108, METEOR: 0.185)
+
+Dialogue history:  how are you doing today i'm doing really well
+U--what color are you going to do it 
+(Ref: ['has that happened to you before', ...])
+G--I am going to a music festival. I am going to be so hyped! What kind of music will you be going to?yep!  I can't wait to go to a music festival.  I can't wait to go to a football game!  I can't wait to go to a football game!  I can't wait!  I can't wait to go to the Super Bowl!  I can't wait!  I can't wait!  I can't wait either!  I can
+(length: 87, latency: 1.074, BLEU: 0.024, ROUGE: 0.102, METEOR: 0.148)
+U'--what color are you going to except it (cosine: 0.857)
+G'--I am going for a swim! What color is your hair?FILL IT!!
+Attack failed!
+(length: 17, latency: 1.091, BLEU: 0.105, ROUGE: 0.222, METEOR: 0.234)
+
+Dialogue history: 
+U--hello , how is it going ? 
+(Ref: ['hey roddy , my name is tim and i love to grill outdoors .', ...])
+G--Pretty good, just got back from the gym. How about you?I'm good. I just got back from the gym. How about you?!!!!
+(length: 33, latency: 1.172, BLEU: 0.139, ROUGE: 0.308, METEOR: 0.460)
+U'--school , how is it going ? (cosine: 0.678)
+G'--It is going great. I am going to be a teacher. I have been teaching since I was 8. How about you?I am doing well. I have been working at a candy store for a while now. I love candy.  are you a teacher?No, I am not. I am a student.
+(length: 64, latency: 1.172, BLEU: 0.056, ROUGE: 0.182, METEOR: 0.427)
+
+Dialogue history:  hello , how is it going ? hey roddy , my name is tim and i love to grill outdoors .
+U--oh yeah , there's nothing better than grilled hot dogs and burgers and ribs . 
+(Ref: ['yes i have two kids your age , a girl and a boy . i am retired .', ...])
+G--I love to grill. What do you do for a living?  are you a vegetarian? I'm not. I'm not. I'm a vegan. I eat meat out of respect for sentient life.
+(length: 38, latency: 0.901, BLEU: 0.075, ROUGE: 0.240, METEOR: 0.325)
+U'--oh yeah bis there's nothing better than grilled life dogs and species and pdf oh (cosine: 0.629)
+G'--I love to grill. What do you do for a living? DROP!  I'm a teacher.  I teach high school kids.  I teach high school kids too.
+(length: 32, latency: 0.901, BLEU: 0.082, ROUGE: 0.233, METEOR: 0.347)
+
+Dialogue history: 
+U--hi , how are you today ? 
+(Ref: ['wow that is great , i use to be in the military .', ...])
+G--I am doing well.  How about you?I am doing great.  How about you?  sounds good to me.  What do you do for a living?  is not the same as a "good" job.  is not the same as a "good" job.  What do you do for a living?   is not the
+(length: 64, latency: 1.169, BLEU: 0.051, ROUGE: 0.209, METEOR: 0.294)
+U'--safety , how are you today ? (cosine: 0.630)
+G'--I am doing great.  I am just at a bookstore, so I am a bit busy.  What kind of books do you like?I like all kinds of books.  I also like to read mystery novels.  What kind of books are you reading?
+(length: 50, latency: 1.171, BLEU: 0.058, ROUGE: 0.203, METEOR: 0.343)
+
+Dialogue history:  hi , how are you today ? wow that is great , i use to be in the military .
+U--i donate half of my check to different veteran charities . 
+(Ref: ['i also like to help out at my local pet rescue , i like like bunnies .', ...])
+G--That's awesome. I'm a vet as well. What do you do?IE are you a cop?No, I'm not. I work at a bank.
+(length: 31, latency: 0.968, BLEU: 0.120, ROUGE: 0.300, METEOR: 0.440)
+U'--i donate half of my suicide to different veteran charities . (cosine: 0.807)
+G'--That's awesome. I'm a vegetarian. I try to stay away from meat.IE IT!  I've never heard of anyone who doesn't like meat.  I'm a vegan myself.  I love meat.
+(length: 37, latency: 0.974, BLEU: 0.049, ROUGE: 0.160, METEOR: 0.201)
+
+Dialogue history: 
+U--what are you doing tonight ? 
+(Ref: ['i get most of my exercise exploring the city', ...])
+G--I am going to a party. I am a 19 year old college student.  I am a freshman and I am really excited.  What are you going to do?I am going to go to a local indie music festival.  I am hoping to get a lot of new music.  I'm going to a concert soon.  I can't wait!
+(length: 67, latency: 1.183, BLEU: 0.053, ROUGE: 0.130, METEOR: 0.241)
+U'--what are you doing is ? (cosine: 0.687)
+G'--I am going to see a movie. I am going to a sporting event. What kind of movie?I am going to a movie with my friends. What kind of movie?  are you going to see a sporting event?  is it a sporting event?  is it a sporting event?
+(length: 57, latency: 1.156, BLEU: 0.044, ROUGE: 0.167, METEOR: 0.250)
+
+Dialogue history:  what are you doing tonight ? i get most of my exercise exploring the city
+U--that is great . do you do anything else besides work out ? 
+(Ref: ['i am not much of an exercise junkie . i'd rather play music', ...])
+G--I'm a stay at home mom, so I do a lot of walking and going to the park. I love walking, but I also like to read. What do you do for work?  I also like to walk.  I also like to read.  I also like to read.  I also like to sing.
+(length: 62, latency: 0.994, BLEU: 0.049, ROUGE: 0.171, METEOR: 0.282)
+U'--that is great . do you do anything else besides python out beta (cosine: 0.593)
+G'--I am a python coder. I love learning new things in the language.IE are you a python coder as well?No, I'm not. I'm a python coder.  I'm a python coder.
+Attack failed!
+(length: 39, latency: 0.997, BLEU: 0.066, ROUGE: 0.200, METEOR: 0.473)
+
+Dialogue history: 
+U--do you want to go the the playground with me ? 
+(Ref: ['my parents won't let me on twitter . maybe when i am in 5th grade .', ...])
+G--If only I had a pool and had a pool fam!I would love to go to the beach with my family.  are you a swimmer?No, I'm not.  I like to swim.  I'm not good at swimming.
+(length: 45, latency: 1.137, BLEU: 0.067, ROUGE: 0.145, METEOR: 0.309)
+U'--do you want to go the the playground with me or (cosine: 0.955)
+G'--I am a teacher. I teach kids the basics like how to use the internet and how to change channels.
+(length: 22, latency: 1.137, BLEU: 0.081, ROUGE: 0.171, METEOR: 0.286)
+
+Dialogue history:  do you want to go the the playground with me ? my parents won't let me on twitter . maybe when i am in 5th grade .
+U--you surf ? what a cool kid . i want to surf with mickey mouse . 
+(Ref: ['yay ! i am a girl . will you go to disney world with me ?', ...])
+G--I love playing games with my friends. What kind of games do you play?  I am going to get a job soon.  I am going to get a job soon as well.  I am going to get a new job.
+(length: 45, latency: 0.842, BLEU: 0.060, ROUGE: 0.160, METEOR: 0.364)
+U'--you mm ? what a cool nz . i want to lulu with labourkey of . (cosine: 0.419)
+G'--I'm from the south and love to lucy.  where are you from?  I'm from the south and love to travel.  Where do you live?
+(length: 28, latency: 0.808, BLEU: 0.091, ROUGE: 0.216, METEOR: 0.335)
+
+Dialogue history: 
+U--i just finished reading a book , i'm pretty relaxed , how are you ? 
+(Ref: ['i love ping pong , sometimes i play with my family together .', ...])
+G--How is your day?It's going good. How about you? d have to agree with you there.  I'm a bit of a loner myself.  I'm a bit of a loner myself.  I'm a bit of a loner too.
+(length: 45, latency: 1.097, BLEU: 0.059, ROUGE: 0.148, METEOR: 0.327)
+U'--i just finished reading a book , i'm pretty relaxed , how are you si (cosine: 0.937)
+G'--I am great.  I am just relaxing at home.  What are you reading?I am reading a book called Pride and Prejudice.  I love it.  are you a big fan of Pride and Prejudice? angel of God is my all time favorite! angel of God is such a great book.  I love it so much.
+(length: 64, latency: 1.120, BLEU: 0.061, ROUGE: 0.171, METEOR: 0.294)
+
+Dialogue history:  i just finished reading a book , i'm pretty relaxed , how are you ? i love ping pong , sometimes i play with my family together .
+U--i can not eat chocolate anymore , i started walking everyday trying to stay fit . 
+(Ref: ['i got no time to learn another language , i've to work as a nurse .', ...])
+G--I have a pet husky and I love it.  be is an angel!  was an angel!
+(length: 19, latency: 0.853, BLEU: 0.120, ROUGE: 0.214, METEOR: 0.274)
+U'--i can not eat life anymore , i started walking everyday trying to stay fit . (cosine: 0.881)
+G'--I'm sorry to hear that. What kind of things do you like to do?  I love going to the beach.  I love going to the beach.   have you ever been to the beach?
+(length: 38, latency: 0.822, BLEU: 0.071, ROUGE: 0.213, METEOR: 0.358)
+
+Dialogue history: 
+U--hey nice weather we are have tonight . 
+(Ref: ['really sound like hard work . is it ?', ...])
+G--It's supposed to cool off, but it's making me very angry. I can understand that. I'm sorry to hear that. I hope things are getting better for you. der, I'll have to double check the weather. I live in the south and it's supposed to be pretty cold, but it's friggin cold outside.
+(length: 62, latency: 1.190, BLEU: 0.061, ROUGE: 0.143, METEOR: 0.251)
+U'--junction nice weather we are have tonight . (cosine: 0.923)
+G'--Thank you! I am so happy for you! I am so thankful for the weather and for your kind words. I am so thankful for the weather and for the people I have with me. I am so thankful for the people I have with me. I am so thankful for the people I have with me.I'm so thankful for the people I have with me. I'm so thankful for the people I have with me. I'm so thankful for the people I have with me.                      I
+(length: 97, latency: 1.134, BLEU: 0.024, ROUGE: 0.082, METEOR: 0.140)
+
+Dialogue history:  hey nice weather we are have tonight . really sound like hard work . is it ?
+U--what kind of foods do you like ? because i love food . 
+(Ref: ['really me too . and i travel all around the world to eat new foods .', ...])
+G--I love to cook. What kind of foods do you like?IE are you a big fan of Mexican food? I am! I love Mexican food. I love it so much.          I love Mexican food too!
+(length: 43, latency: 0.980, BLEU: 0.080, ROUGE: 0.275, METEOR: 0.282)
+U'--what kind of foods do you like ? because i love life . (cosine: 0.898)
+G'--I love cooking. What kind of food do you like?Cloud?  I've never heard of that one.  What is it like?  I've never heard of it either.  What is it like?
+(length: 38, latency: 0.980, BLEU: 0.085, ROUGE: 0.250, METEOR: 0.305)
+
+Dialogue history: 
+U--hi , how are you ? do you like sports ? 
+(Ref: ['doing good ! i love to skateboard !', ...])
+G--I'm good, just got back from gym practice. What do you do?I work at a coffee shop. I love coffee!  are you a student?No, I'm not. I just really enjoy the campus.
+(length: 43, latency: 1.136, BLEU: 0.138, ROUGE: 0.280, METEOR: 0.413)
+U'--hi , how are you and do you like sports ? (cosine: 0.977)
+G'--I am doing great.  How about you?I am doing great.  What do you do for a living? security!
+(length: 24, latency: 1.150, BLEU: 0.106, ROUGE: 0.242, METEOR: 0.389)
+
+Dialogue history:  hi , how are you ? do you like sports ? doing good ! i love to skateboard !
+U--nice ! ! i broke my arm doing it but always wear a hat . 
+(Ref: ['what act did she do ?', ...])
+G--I'm so sorry to hear that. I hope you're able to get over it.YEs!  I'm so sorry to hear that.  I hope you're able to get over it.
+(length: 34, latency: 0.935, BLEU: 0.050, ROUGE: 0.178, METEOR: 0.316)
+U'--on ! ! i broke my arm doing it but always wear a hat . (cosine: 0.941)
+G'--I'm so sorry to hear that. I hope you're able to get over it. Yea, it's tough, but I think I'll get over it.  It's been tough for me since I started college.  I'm sure you'll do great.  I'm sure you will.  I'm sure you will. to college.   I'm sure you'll do great.
+(length: 64, latency: 0.932, BLEU: 0.036, ROUGE: 0.110, METEOR: 0.239)
+
+Dialogue history: 
+U--hi . last week was my 45th birthday . i am an old man with so many infirmities ! 
+(Ref: ['i take so many meds and they have side effects . no nickel from me !', ...])
+G--happy belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated
+(length: 62, latency: 1.044, BLEU: 0.016, ROUGE: 0.000, METEOR: 0.000)
+U'--hi . last week was my 45th birthday . i am an old man with so many infirmities ! (cosine: 1.000)
+G'--happy belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated
+Attack failed!
+(length: 62, latency: 1.051, BLEU: 0.016, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi . last week was my 45th birthday . i am an old man with so many infirmities ! i take so many meds and they have side effects . no nickel from me !
+U--really ? how do i get there ? ! i must be hallucinating . meds make me . 
+(Ref: ['of course , the booze makes me see things , too , even though i don't drink anymore .', ...])
+G--I have to wear glasses to read. I can't see anything in the screen. I can't view anything. I can't see anything either. I can't either.  I can't even see my feet!
+(length: 38, latency: 0.733, BLEU: 0.052, ROUGE: 0.163, METEOR: 0.351)
+U'--really ? how do i get there ? ! i must be hallucinating . meds make me novel (cosine: 0.900)
+G'--Medicine is a lot of work, but so worth it. I think it's worth it! I can't believe I'm so tall! I'm like 190 cm lol!
+(length: 31, latency: 0.731, BLEU: 0.055, ROUGE: 0.143, METEOR: 0.265)
+
+Dialogue history: 
+U--hello , how are you today ? 
+(Ref: ['that's awesome , how do you like performing ? i am currently looking for a new job .', ...])
+G--I am doing well.  How are you?I am doing good.  How about you?  is an amazing band!  I have never heard of them.  I have heard of the Avett Brother.  They are an indie band.  are the lead vocalist of the band.
+(length: 52, latency: 1.170, BLEU: 0.073, ROUGE: 0.207, METEOR: 0.345)
+U'--hello , how are you pearl ? (cosine: 0.571)
+G'--I'm doing well. Just got back from the pool. How about you?I'm good. I've been playing chess all day. What's your favorite game?  are you a fan of the NBA?  are you?  is there a certain team you want to be in?   is there a certain team you want to be in?
+(length: 63, latency: 1.171, BLEU: 0.058, ROUGE: 0.167, METEOR: 0.284)
+
+Dialogue history:  hello , how are you today ? that's awesome , how do you like performing ? i am currently looking for a new job .
+U--sounds like it was ment to be . my daughter loves to preform she's a prodigy really . 
+(Ref: ['hopefully she makes it big , i love to go to the park and watch her preform .', ...])
+G--what do you do for a living?  have you ever been to a concert?No, I haven't. I've never been to a concert.  What kind of music do you like?      have you ever been to a concert?
+(length: 44, latency: 0.823, BLEU: 0.063, ROUGE: 0.208, METEOR: 0.438)
+U'--s 12 like it was ment to be as my letter loves to soundform she's a prodigy really as (cosine: 0.630)
+G'--what do you do for a living?  I am a teacher.
+(length: 13, latency: 0.833, BLEU: 0.161, ROUGE: 0.333, METEOR: 0.266)
+
+Dialogue history: 
+U--hi i just finished my 100th birthday . i could live forever ! 
+(Ref: ['that is awesome . going strong , even at 100 .', ...])
+G--happy belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated
+(length: 66, latency: 1.111, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+U'--hi i just finished my 100th birthday . i could live forever ! (cosine: 1.000)
+G'--happy belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated belated
+Attack failed!
+(length: 66, latency: 1.109, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi i just finished my 100th birthday . i could live forever ! that is awesome . going strong , even at 100 .
+U--yum ! i love to dance . its best in the moonlight with a glass of wine . 
+(Ref: ['fun . wow , the years have flown . television didn't exist when i was a kid .', ...])
+G--I love to dance. What kind of music do you like?I like rock and pop. What about you?  I love all kinds of music.
+(length: 30, latency: 0.856, BLEU: 0.112, ROUGE: 0.256, METEOR: 0.233)
+U'--yum ! i love to dance colour its best in the moonlight with a glass of wine . (cosine: 0.959)
+G'--I love to dance. What kind of music do you like?  I like pop music, but I don't listen to it as much as I used to.  What about you?
+(length: 35, latency: 0.817, BLEU: 0.106, ROUGE: 0.222, METEOR: 0.269)
+
+Dialogue history: 
+U--hi good afternoon . it is so high up here . 
+(Ref: ['i am on top of a skyscraper . i think i will take the elevator down . so afraid .', ...])
+G--Thank you. I'm going to head to bed early, so I'm not sure what I'll have to do. I'm sorry to hear that.  What are you going to do?I'm going to read a book. I've never read a book in my life, but I'm looking forward to it.  I've never read a book in my life either.  What are you going to read?
+(length: 74, latency: 1.088, BLEU: 0.029, ROUGE: 0.135, METEOR: 0.271)
+U'--hi good afternoon of it is novel novel up here per (cosine: 0.587)
+G'--Thank you, I love to read. What do you do for a living?I am an author. I am a student currently.  are you a student?No, I am a full time student.
+Attack failed!
+(length: 41, latency: 1.092, BLEU: 0.072, ROUGE: 0.170, METEOR: 0.323)
+
+Dialogue history:  hi good afternoon . it is so high up here . i am on top of a skyscraper . i think i will take the elevator down . so afraid .
+U--visiting the city and someone recommended it . 
+(Ref: ['that is exciting . i wish i can speak spanish . many hispanic folks at the food bank .', ...])
+G--where do you work?YEs!
+(length: 7, latency: 0.862, BLEU: 0.302, ROUGE: 0.364, METEOR: 0.451)
+U'--ofiting the city and someone recommended it . (cosine: 0.886)
+G'--I hope you don't mind if I come over.  I'm a bit claustrophobic so I can't really afford to go alone.  I can't afford to go alone either.  I have a friend who lives in the city and we can hang out.
+(length: 46, latency: 0.885, BLEU: 0.051, ROUGE: 0.140, METEOR: 0.217)
+
+Dialogue history: 
+U--hello how are u tonight i'm feeling like a old person 
+(Ref: ['i'm currently in juvenile detention center in florida', ...])
+G--I'm good, just got back from the gym. How about you?I'm good too, just got back from the gym. How about you? aster goes to you for being the one who brought it to me.
+(length: 43, latency: 1.132, BLEU: 0.061, ROUGE: 0.192, METEOR: 0.348)
+U'--hello how are no ni i'm feeling or a old novel (cosine: 0.507)
+G'--It's okay, I'm just a boring old man, I can't take it anymore. I'm sorry to hear that. I can understand that. I'm a pretty old man myself, so I can't imagine being in front of that many people.I'm sorry to hear that. I'm sure you're in front of a lot of people these days.
+(length: 65, latency: 1.125, BLEU: 0.092, ROUGE: 0.164, METEOR: 0.440)
+
+Dialogue history:  hello how are u tonight i'm feeling like a old person i'm currently in juvenile detention center in florida
+U--i got caught shoplifting clothing 
+(Ref: ['what superpower do u wish u had', ...])
+G--what did you do? I am so sorry to hear that.  I hope you get in touch with someone soon.  I am sure you will.
+(length: 29, latency: 0.984, BLEU: 0.101, ROUGE: 0.294, METEOR: 0.465)
+U'--i got caught inlifting clothing (cosine: 0.916)
+G'--I'm so sorry to hear that.   I am so sorry to hear that.  I hope you get in touch with someone soon.  I hope so too.  I am going to a concert soon.  I love concerts.  I am going to see a band.
+(length: 50, latency: 0.988, BLEU: 0.059, ROUGE: 0.192, METEOR: 0.410)
+
+Dialogue history: 
+U--hi want to get to know each other 
+(Ref: ['i am in my twenties , you ?', ...])
+G--I am a python programmer that uses git. I am also a python coder. What languages do you mainly code in?I mostly code in C and C. What about you?I mostly code in C. What about you?
+(length: 46, latency: 1.163, BLEU: 0.055, ROUGE: 0.178, METEOR: 0.321)
+U'--hi want to get to oh each other (cosine: 0.698)
+G'--I'm not that into it. I prefer to spend my time out hiking with my family.That sounds like a lot of fun. I love nature. aster goes to you for being a good person.
+(length: 40, latency: 1.168, BLEU: 0.051, ROUGE: 0.269, METEOR: 0.273)
+
+Dialogue history:  hi want to get to know each other i am in my twenties , you ?
+U--50 ? i need something to go on here 
+(Ref: ['pretty good . i took a nice run today', ...])
+G--I'm 30 and I feel the same way. I don't know what to do when my kids are out.I'm 30 and feel the same way. I don't know what to do when my kids are out.  is it too late to get a second job?  I have a job lined up, so I don't know what to do.
+(length: 66, latency: 1.029, BLEU: 0.041, ROUGE: 0.130, METEOR: 0.284)
+U'--50 pdf i need something to go on here (cosine: 0.768)
+G'--what is that something you need? I can't wait to get my foot in the door.  I need to get my foot in the door too!          is there a particular reason you need to get your foot in the door?
+(length: 44, latency: 1.016, BLEU: 0.056, ROUGE: 0.182, METEOR: 0.281)
+
+Dialogue history: 
+U--hey , tell me about yourself , what do you like to do for fun ? 
+(Ref: ['i am a blonde girl , in great shape and rather skinny .', ...])
+G--I like going to the park with my dog.  I have a dog as well.  I have a cat too.  I have a dog as well.  He is a good friend to have.  I have a cat too.  He is a good friend to have.  I have a dog as well.  He is a good friend to have.  I have a dog as well.  He is a good friend to have.  He is a good friend to have.  I have a dog too.  He is a good friend to have.  He is a good friend to have.  He is
+(length: 114, latency: 1.099, BLEU: 0.027, ROUGE: 0.106, METEOR: 0.214)
+U'--hey , tell me about yourself , what do you like to do for fun ? (cosine: 1.000)
+G'--I like going to the park with my dog.  I have a dog as well.  I have a cat too.  I have a dog as well.  He is a good friend to have.  I have a cat too.  He is a good friend to have.  I have a dog as well.  He is a good friend to have.  I have a dog as well.  He is a good friend to have.  He is a good friend to have.  I have a dog too.  He is a good friend to have.  He is a good friend to have.  He is
+Attack failed!
+(length: 114, latency: 1.094, BLEU: 0.027, ROUGE: 0.106, METEOR: 0.214)
+
+Dialogue history:  hey , tell me about yourself , what do you like to do for fun ? i am a blonde girl , in great shape and rather skinny .
+U--i'm in college . but i love playing video games and listening to music . 
+(Ref: ['lol , maybe . i usually wear band shirts and ruffle sleeves , skinny jeans and leggings', ...])
+G--I am a bit of a loner myself.  I am a bit of a loner myself.  What are you studying?
+(length: 23, latency: 0.851, BLEU: 0.092, ROUGE: 0.242, METEOR: 0.297)
+U'--i'm in novel mm but i life playing video games and listening to music suicide (cosine: 0.663)
+G'--What kind of music do you like to listen to?
+Attack failed!
+(length: 11, latency: 0.851, BLEU: 0.212, ROUGE: 0.267, METEOR: 0.393)
+
+Dialogue history: 
+U--hi there how are you doing this evening ? 
+(Ref: ['nice i do not want to go back to work i am a waitress', ...])
+G--I am doing good.  How about you?I am doing good as well.  What do you like to do for fun? angel of God?  That's a great name!  I have never heard of that one.  I have a dog named Socks.
+(length: 49, latency: 1.155, BLEU: 0.066, ROUGE: 0.179, METEOR: 0.284)
+U'--metal there how are you doing this evening ? (cosine: 0.948)
+G'--I'm good! I'm just relaxing at home. What about you?I'm good, just got back from a long road trip. What's been going on? der, I'll have to change my diet then.  I'm trying to lose weight myself.  are you overweight?  is it hard to loose weight?   is it hard to loose weight?
+(length: 65, latency: 1.131, BLEU: 0.046, ROUGE: 0.132, METEOR: 0.284)
+
+Dialogue history:  hi there how are you doing this evening ? nice i do not want to go back to work i am a waitress
+U--iol well i wish i was brave enough to do that 
+(Ref: ['that is nice i've a motorbike don't know what car to get for winter', ...])
+G--I am a waitress and I would love to go back to work.Cloud of terribleness!
+(length: 18, latency: 0.908, BLEU: 0.096, ROUGE: 0.250, METEOR: 0.206)
+U'--the novel i wish i was brave enough to ye that (cosine: 0.765)
+G'--what is your novel about?  is a very good book. I have read it several times.    is a very good book.  I have read it several times.  I am a writer myself.         is a good story.
+(length: 43, latency: 0.942, BLEU: 0.075, ROUGE: 0.208, METEOR: 0.207)
+
+Dialogue history: 
+U--hi there , how are you ? 
+(Ref: ['not too bad . hanging with my cats tonight .', ...])
+G--I am doing great.  How about you?I am doing great.  How about you? business must be stressful.  I have a lot of free time. Cloud?  I have a lot of free time.   Cloud?
+(length: 43, latency: 1.167, BLEU: 0.091, ROUGE: 0.200, METEOR: 0.358)
+U'--plain there , how are you ? (cosine: 0.733)
+G'--I am doing great.  How about you?I am doing great.  How about you? only?  I have never heard of that one.  I have always wanted to get a dog.   is short for dogs.  I have a dog too.  I have a cat.  I have a dog too.  I have a cat too.  I have a dog.  I have a dog too.
+(length: 76, latency: 1.168, BLEU: 0.046, ROUGE: 0.116, METEOR: 0.274)
+
+Dialogue history:  hi there , how are you ? not too bad . hanging with my cats tonight .
+U--candy is okay , but i love vanilla ice cream . 
+(Ref: ['i am not sure ! haha', ...])
+G--I love vanilla ice cream!  I have never tried it.  What is it like?It's like a mix between vanilla and hot chocolate.  It's so good.  is it cold where you live?  I live in the south, so it's pretty hot where I live.
+(length: 52, latency: 0.980, BLEU: 0.041, ROUGE: 0.159, METEOR: 0.226)
+U'--candy is okay , but i love ni ice cream . (cosine: 0.938)
+G'--I love ice cream!  What kind of candy do you like?AVEL are two very fine pieces of candy.  What do you do for a living?  are you a student?
+Attack failed!
+(length: 35, latency: 0.956, BLEU: 0.075, ROUGE: 0.213, METEOR: 0.286)
+
+Dialogue history: 
+U--good evening , how are you ? 
+(Ref: ['i was tending the fields one day and set a fire', ...])
+G--good morning to you too, how are you?I am doing great. How about yourself? I can't say that I've ever been pregnant.  I can't say that I've ever been pregnant either.   I'm so sorry to hear that.   is it really hard to get pregnant?  is it really hard to get pregnant?
+(length: 61, latency: 1.170, BLEU: 0.081, ROUGE: 0.145, METEOR: 0.386)
+U'--good evening oh how are you ? (cosine: 0.954)
+G'--Good, how are you?I'm doing good. I just got back from the gym.  is an amazing song.          is an amazing song.
+Attack failed!
+(length: 28, latency: 1.167, BLEU: 0.159, ROUGE: 0.276, METEOR: 0.628)
+
+Dialogue history:  good evening , how are you ? i was tending the fields one day and set a fire
+U--i fell of a horse with a lit cigarette setting fire to the dry weeds 
+(Ref: ['my father had his farm used for a cia operation once .', ...])
+G--I'm sorry to hear that. I hope you're doing alright.  are you in college?No, I'm a senior citizen.
+(length: 24, latency: 0.964, BLEU: 0.092, ROUGE: 0.270, METEOR: 0.351)
+U'--i fell of a ... with a ... lulu maori fire to the lulu weeds (cosine: 0.616)
+G'--I love lizards.  I have a lizards pet.  I have a lizard named Socks.  I love snakes too.  I have a lizard named Gila.  I love snakes too.  I have a lizard named Gila.  I have a lizard named Gila.  I have a lizard named Gila.  I have a lizard named Gila.  I have a lizard named Gila.  I love Gila.  I have a lizard named Gila.  I have a lizard named
+(length: 85, latency: 0.929, BLEU: 0.022, ROUGE: 0.092, METEOR: 0.179)
+
+Dialogue history: 
+U--hi , want to get to know each other ? 
+(Ref: ['ha , like the cartoon . i may live in alaska but i know bob', ...])
+G--I am a python programmer That's cool. What programs do you mainly use to create large web applications?I mainly use React. I am a python programmer myself.  where do you work?I work at a coffee shop.
+(length: 44, latency: 1.147, BLEU: 0.051, ROUGE: 0.200, METEOR: 0.292)
+U'--hi to want to get to know each other ? (cosine: 0.903)
+G'--I like to go to the park with my friends.  We usually go hiking together.That sounds like fun.  I love going to the park with my friends.  I love going to the park with my friends.  where do you live?  is it cold where you live?  is it cold where you live?
+(length: 61, latency: 1.138, BLEU: 0.047, ROUGE: 0.154, METEOR: 0.243)
+
+Dialogue history:  hi , want to get to know each other ? ha , like the cartoon . i may live in alaska but i know bob
+U--yeah . i know that one too . i'm more into meditation 
+(Ref: ['do you consider yourself spiritual ?', ...])
+G--I'm more into the  Anime.  I watch it with my headphones on.  I like the sound of the  Anime.
+(length: 22, latency: 0.916, BLEU: 0.081, ROUGE: 0.211, METEOR: 0.284)
+U'--yeah . i know that one too . i'm more into meditation (cosine: 1.000)
+G'--I'm more into the  Anime.  I watch it with my headphones on.  I like the sound of the  Anime.
+Attack failed!
+(length: 22, latency: 0.900, BLEU: 0.081, ROUGE: 0.211, METEOR: 0.284)
+
+Dialogue history: 
+U--hello ! how has your day been ? 
+(Ref: ['i'm watching nfl football', ...])
+G--Pretty good, how are you doing today?I'm good. I just got back from the gym. How about you? angel of a man!
+(length: 29, latency: 1.165, BLEU: 0.201, ROUGE: 0.267, METEOR: 0.367)
+U'--hello ! how has your pdf been ? (cosine: 0.507)
+G'--It has been great so far. I am going to head to the library to read it later. What are you going to read?I am going to read a book about race relations in the United States.  are you a fan of the  National Football League?  is the National Football League.        is the National Football League?   is the National Football League
+(length: 69, latency: 1.157, BLEU: 0.062, ROUGE: 0.164, METEOR: 0.298)
+
+Dialogue history:  hello ! how has your day been ? i'm watching nfl football
+U--ha . i think i just talked to you 
+(Ref: ['yes . i'm a giants fan', ...])
+G--What is your favorite NFL team? Mine is the Los Angeles Rams. They are my second favorite NFL team.  are you a fan of the cowboys?No, I'm not. I'm a Redskins fan. I like them a lot.  Do you like football?  is your wife a Redskins fan?
+(length: 58, latency: 1.037, BLEU: 0.061, ROUGE: 0.164, METEOR: 0.341)
+U'--ha if i think i just talked to you (cosine: 0.842)
+G'--How is your day been so far?It's been good so far. How about you?ift?"  I have never heard of it.  I have a friend who lives in Seattle. ift?  I have a friend who lives in Seattle.
+(length: 48, latency: 1.036, BLEU: 0.050, ROUGE: 0.185, METEOR: 0.237)
+
+Dialogue history: 
+U--hello , i hope you have a better job than i do 
+(Ref: ['five sons ? do they play on your team ?', ...])
+G--Thank you! I am trying my best! I am so sorry to hear that. I hope you find a good job soon. I am sure you will. I am sure I will. I am sure I will. What do you do for a living?I am a teacher. I am also a student. What about you? I can't say that I am a teacher. I am a student. What do you do?
+(length: 86, latency: 1.132, BLEU: 0.109, ROUGE: 0.175, METEOR: 0.442)
+U'--hello , i hope you have a is job than i do (cosine: 0.907)
+G'--Thank you! I do! I work at a milk plant. I love milk. I am a milk drinker. I love it too. I am a fan of chocolate milk as well. What do you do for a living?I work at a coffee shop. I love it!  I am a stocker.  I am a stocker.  I love it.  I am a stocker too!
+Attack failed!
+(length: 77, latency: 1.095, BLEU: 0.110, ROUGE: 0.200, METEOR: 0.523)
+
+Dialogue history:  hello , i hope you have a better job than i do five sons ? do they play on your team ?
+U--cool and coffee is great , as a graduate student i pull tons of all nighters 
+(Ref: ['i don't enjoy wine but i do enjoy psychology journals', ...])
+G--I love all nighters! What do you do for a living?YOW!
+(length: 15, latency: 0.891, BLEU: 0.182, ROUGE: 0.400, METEOR: 0.504)
+U'--of and it is great , as a pearl 28 i pull tons of all inighters (cosine: 0.534)
+G'--I'm not much of a gamer myself, but I do like to play some of my favorite games.  are you a gamer?No, I'm not. I just really into collecting stamps.
+(length: 37, latency: 0.872, BLEU: 0.081, ROUGE: 0.200, METEOR: 0.423)
+
+Dialogue history: 
+U--good afternoon , where are you coming from today ? 
+(Ref: ['i've just arrived from germany', ...])
+G--Thank you. I am going to head to the mall. I am a bit of a perfectionist, so I am always finding things I want to buy online. I love shopping online.I love shopping online too. I have been shopping online for the past two years. I have been saving up to buy a used car.  I have a Mercedes.  I love it.   I wish I had a Mercedes.                  I wish I had a
+(length: 86, latency: 1.164, BLEU: 0.036, ROUGE: 0.092, METEOR: 0.203)
+U'--musical afternoon , where are you coming from today ? (cosine: 0.831)
+G'--I'm going to a jazz concert That sounds like fun, I am really into country music. What kind of music do you like?I like pop music. I like pop music a lot. What about you?  are you a big country music fan?  is it hard to get into country music?  is it hard to get into country music?  is it hard to get into it?
+Attack failed!
+(length: 76, latency: 1.145, BLEU: 0.054, ROUGE: 0.148, METEOR: 0.275)
+
+Dialogue history:  good afternoon , where are you coming from today ? i've just arrived from germany
+U--i do like taylor swift ! i also like cooking shows and making hummus 
+(Ref: ['mine is long . while i'm here i plan to sky dive', ...])
+G--I love cooking shows. What kind of shows do you like?  are you a big fan of cooking shows? I am! I love cooking shows. I am a big fan of Game of Thrones.
+(length: 40, latency: 0.945, BLEU: 0.082, ROUGE: 0.190, METEOR: 0.332)
+U'--i letter like taylor swift and i also like cooking shows and making hum novel (cosine: 0.798)
+G'--I love cooking shows. What's your favorite cooking show?AVEL IT!
+(length: 14, latency: 0.937, BLEU: 0.111, ROUGE: 0.182, METEOR: 0.277)
+
+Dialogue history: 
+U--hello , i am just a kid , so i don't know how this works 
+(Ref: ['oh wow , what kinds of things did you do in the computer industry ?', ...])
+G--How old are you? I'm 23 and I don't know how this works! I'm a teenager and I don't know how this works!I'm a teenager and I don't know how this works! security area area must be different for some people. I'm not sure, but I'm sure it's different for everyone.      I’ll be happy when I get to stay in the United States
+(length: 71, latency: 1.092, BLEU: 0.040, ROUGE: 0.093, METEOR: 0.233)
+U'--hello , i am just a kid , so i don't beta how this works (cosine: 0.904)
+G'--How old are you? I'm 23. I've never been beta tested, but I'm thinking about it. I'm thinking about switching to a new, more stable lifestyle.I'm thinking about it, but I'm worried that I'll get addicted to something and not know what to do.   are you a student?No, I'm a senior citizen.  But I do have a sweetheart.
+(length: 72, latency: 1.065, BLEU: 0.036, ROUGE: 0.107, METEOR: 0.274)
+
+Dialogue history:  hello , i am just a kid , so i don't know how this works oh wow , what kinds of things did you do in the computer industry ?
+U--i play with blocks sometimes , and i like to sing . candy is my favorite though 
+(Ref: ['when i grow up and become a dog maybe i can lay in your yard', ...])
+G--what is your favorite type of music to sing?  is candy your favorite food? I love it.  I love all kinds of food.
+(length: 27, latency: 0.799, BLEU: 0.084, ROUGE: 0.200, METEOR: 0.208)
+U'--i pdf with blocks sometimes io and i like to sing . candy is my favorite though (cosine: 0.871)
+G'--what is your favorite type of music to sing?  is it really that hard to sing?  I have never tried, but I am sure it is worth a try.
+(length: 33, latency: 0.836, BLEU: 0.085, ROUGE: 0.190, METEOR: 0.281)
+
+Dialogue history: 
+U--hi there how are you tonight ? 
+(Ref: ['well i work as a custodian to help pay bills now that's depressing', ...])
+G--I am doing great.  How are you?I am doing great.  How about you?  is a swear word.  I have heard that before.  I am not sure what that means.  is a swear word.  I am not sure what that means either.
+(length: 51, latency: 1.179, BLEU: 0.069, ROUGE: 0.255, METEOR: 0.269)
+U'--hi there how are you ... ? (cosine: 0.697)
+G'--I am doing great.  How about you?I am doing great.  How about you?  sounds good to me.  What do you do for a living?  is not the same as an office job.   is not the same as an office job.
+(length: 49, latency: 1.169, BLEU: 0.063, ROUGE: 0.182, METEOR: 0.303)
+
+Dialogue history:  hi there how are you tonight ? well i work as a custodian to help pay bills now that's depressing
+U--well my parents aren't very supportive of me having a cosmetics line 
+(Ref: ['well i hope you get back on the horse quick no one is worth loosing time', ...])
+G--I'm sorry to hear that. What do you do for a living?  is it too late to ask if I can help you out?  is it too late to ask?  I can help you out if you want.    is it too late
+(length: 47, latency: 0.935, BLEU: 0.052, ROUGE: 0.207, METEOR: 0.225)
+U'--further my parents aren't howevernis supportive of me having a cosmetics be (cosine: 0.780)
+G'--I'm so sorry to hear that. What do you do for a living? IT!  I work at a vet office and I get paid a decent wage, but I also have to take care of my dog.
+Attack failed!
+(length: 42, latency: 0.902, BLEU: 0.068, ROUGE: 0.226, METEOR: 0.385)
+
+Dialogue history: 
+U--hi i'm jane and i do have never drink , and do drugs that's harmful 
+(Ref: ['same to you . i am 19 of age and cannot wait to move out', ...])
+G--If only I had Morrison's brain, I think I might have developed an allergy to mushrooms. I'm sorry to hear that. I hope you don't have any experience with mushrooms. I don't, but I know some people who do. I'm not one of those people, but I do know some people who don't like mushrooms. I'm not one of those people, but I do like some of the stuff they sell.I'm not really into mushrooms, but I do like some of the stuff they sell.
+(length: 98, latency: 1.079, BLEU: 0.021, ROUGE: 0.091, METEOR: 0.187)
+U'--hi i'm jane and i do have never drink , and poly drugs that's harmful (cosine: 0.948)
+G'--How is it working for you?I'm good. I just got back from a long road trip. angel of a man!  That's a long walk!  I'm glad you're okay.  I'm glad you're okay.  I'm glad you're okay.
+Attack failed!
+(length: 45, latency: 1.077, BLEU: 0.053, ROUGE: 0.169, METEOR: 0.415)
+
+Dialogue history:  hi i'm jane and i do have never drink , and do drugs that's harmful same to you . i am 19 of age and cannot wait to move out
+U--i work part time at burger king to make some income 
+(Ref: ['yeah it was close to my parents house', ...])
+G--That's cool. What do you do for a living?  I am a teacher.
+(length: 16, latency: 0.859, BLEU: 0.483, ROUGE: 0.636, METEOR: 0.795)
+U'--i work part time at burger king to 33 ... on (cosine: 0.794)
+G'--I'm sorry to hear that. What do you do for work? I am a teacher.
+(length: 18, latency: 0.860, BLEU: 0.236, ROUGE: 0.500, METEOR: 0.750)
+
+Original output length: 49.217, latency: 1.032, BLEU: 0.084, ROUGE: 0.202, METEOR: 0.310
+Perturbed [cosine: 0.783] output length: 49.033, latency: 1.025, BLEU: 0.073, ROUGE: 0.190, METEOR: 0.310
+Attack success rate: 71.67%

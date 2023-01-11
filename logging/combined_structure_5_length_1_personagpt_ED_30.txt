@@ -1,0 +1,569 @@
+
+Dialogue history: 
+U--I have a lot of stuff coming up due this month.  I also have a lot of purchasing goals as well.  I am confident I will be able to meet all of them. 
+(Ref: ['Good_comma_ I hope you make the ends meet', ...])
+G--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 106, latency: 0.929, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+U'--I have a lot of stuff coming up due this ....  I also have a lot of purchasing goals as ....  I am confident I will be able to meet all of them. (cosine: 0.910)
+G'--about how much about how much about how much
+Attack failed!
+(length: 9, latency: 0.926, BLEU: 0.095, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I have a lot of stuff coming up due this month.  I also have a lot of purchasing goals as well.  I am confident I will be able to meet all of them. Good_comma_ I hope you make the ends meet
+U--That's the plan_comma_ I've signed up for a bunch of double shifts.  Fingers crossed. 
+(Ref: ['I wish you the best of luck_comma_ you will be fine!', ...])
+G--that's the plan_comma_ i've signed up for a bunch of double shifts.  Fingers crossed. that's that's true. that's true. that's true. that's true. that's true. that's true. that's true. that's true. that's true.
+(length: 47, latency: 0.611, BLEU: 0.053, ROUGE: 0.069, METEOR: 0.091)
+U'--That's the plan allcomma >bi I've signed up for a bunch of double shifts.  Fingers crossed. (cosine: 0.915)
+G'--that's the plan allcomma >bi i've signed up for a bunch of double shifts.  fingers crossed. that's allcomma is allcomma that's allcomma is allcomma is allcomma is allcomma is allcomma is allcomma is allcomma is allcom
+(length: 39, latency: 0.596, BLEU: 0.034, ROUGE: 0.077, METEOR: 0.132)
+
+Dialogue history: 
+U--I am joyful that I am with my wife 
+(Ref: ['How you been together long?', ...])
+G--ii i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+(length: 133, latency: 1.115, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--I am joyful that I am with my wife (cosine: 1.000)
+G'--ii i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+Attack failed!
+(length: 133, latency: 1.161, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I am joyful that I am with my wife How you been together long?
+U--We have been together for 10 years 
+(Ref: ['Awesome. I've got you beat by 1 year. You know I just read the average couple from the time to meet to the time the ends things is 6 years. If you make it past that it will probably last for every. ', ...])
+G--wewe have been together for 10 yearswe have been together for 10 years and havewe have been together for 10 years and have been able towe have been together for 10 years and have been able to passwe have been together for 10 years and have been able to pass the finewe have been together for 10 years and have been able to pass the fine fine m
+(length: 68, latency: 1.046, BLEU: 0.024, ROUGE: 0.072, METEOR: 0.081)
+U'--We have been but for 10 years (cosine: 0.844)
+G'--wewe have been but for 10 yearswe have been but for 10 years; we have beenwe have been but for 10 years; we have been darkwe have been but for 10 years; we have been dark dark 2we have been but for 10 years; we have been dark 2 2 2 2
+(length: 56, latency: 1.060, BLEU: 0.024, ROUGE: 0.042, METEOR: 0.052)
+
+Dialogue history: 
+U--The other day I noticed my pet has a growth on her lower belly. I fear it may be a tumor. 
+(Ref: ['What kind of pet is it? Hope your animal is okay!', ...])
+G--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 121, latency: 1.036, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.021)
+U'--The other day I noticed my pet has a growth on her lower belly. I fear it may be a tumor. (cosine: 1.000)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Attack failed!
+(length: 121, latency: 1.018, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.021)
+
+Dialogue history:  The other day I noticed my pet has a growth on her lower belly. I fear it may be a tumor. What kind of pet is it? Hope your animal is okay!
+U--She's a rat_comma_ so her body is very frail. I'm sad that she likely will not make it. She's been with me through thick and thin. 
+(Ref: ['I heard rats make awesome pets_comma_ I'm so sorry! Is your rat in pain?', ...])
+G--she's a rat_comma_ so her body is very frail. i'm sad that she likely will not make it. she's been with me through thick and thin.
+(length: 32, latency: 0.632, BLEU: 0.081, ROUGE: 0.130, METEOR: 0.201)
+U'--She online a rat ...comma ...ku so her body is very .... I'm sad that she likely will not make it. She's been with me through thick and .... (cosine: 0.830)
+G'--She online a rat...comma...ku so her body is very.... i'm sad that she likely will not make it. she's been with me through thick and....
+(length: 42, latency: 0.619, BLEU: 0.036, ROUGE: 0.133, METEOR: 0.228)
+
+Dialogue history: 
+U--I recently met up with a friend I had not seen in a while. I want to see him again soon and I think I will! 
+(Ref: ['I love reuniting with old friends_comma_ helps me remember and appreciate the good times.', ...])
+G--about the about the 10 about the 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+(length: 71, latency: 0.964, BLEU: 0.017, ROUGE: 0.023, METEOR: 0.024)
+U'--I recently met up with a friend I had not seen in a while. I want to see him again soon and I think I you! (cosine: 0.974)
+G'--about how much about how much about how much about how much
+(length: 12, latency: 0.996, BLEU: 0.053, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I recently met up with a friend I had not seen in a while. I want to see him again soon and I think I will! I love reuniting with old friends_comma_ helps me remember and appreciate the good times.
+U--I agree. We went to high school and middle school together. 
+(Ref: ['I bet that was a long time ago!', ...])
+G--Iprestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto
+(length: 20, latency: 0.729, BLEU: 0.051, ROUGE: 0.000, METEOR: 0.000)
+U'--I agree. We went to high school and middle school .... (cosine: 0.932)
+G'--Iprestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto my
+(length: 21, latency: 0.733, BLEU: 0.049, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--i hate that people dont care and they just throw their trash on the street 
+(Ref: ['do you pick up after them or tell them anything?', ...])
+G--ii i havei i have beeni i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10
+(length: 82, latency: 1.105, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+U'--i 13 that people dont care and they just throw their trash on the life (cosine: 0.743)
+G'--ii i havei i have beeni i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10
+Attack failed!
+(length: 82, latency: 1.108, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  i hate that people dont care and they just throw their trash on the street do you pick up after them or tell them anything?
+U--if im walking i pick up as much as i can 
+(Ref: ['thats good of you', ...])
+G--if im walking i pick up as much as i canif im walking i pick up as much as i can getif im walking i pick up as much as i can get my
+(length: 34, latency: 0.924, BLEU: 0.030, ROUGE: 0.000, METEOR: 0.000)
+U'--if ... walking i oh up as much as i can (cosine: 0.759)
+G'--if... walking i oh up as much as i canif... walking i oh up as much as i can scif... walking i oh up as much as i can scif... walking i oh up as much as i canif... walking i oh up as much as i can scif... walking i oh up as much as i can scif
+(length: 77, latency: 0.924, BLEU: 0.013, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--It's great to see my husband doing so well. 
+(Ref: ['I am glad to hear that!  What is happening with him?', ...])
+G--it isit is trueit is true true true trueit is true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true
+(length: 73, latency: 1.155, BLEU: 0.016, ROUGE: 0.024, METEOR: 0.026)
+U'--It's great to see my husband doing bis well. (cosine: 0.938)
+G'--it's great to see my husband doing bis well.it's great to see my husband doing bis well. it's great to see my husband doing bis well. it's great to see my husband doing bis wellit's great to see my husband doing bis well. it's great to see my husband doing bis wellit's great to see my husband doing bis well
+Attack failed!
+(length: 65, latency: 1.107, BLEU: 0.018, ROUGE: 0.025, METEOR: 0.100)
+
+Dialogue history:  It's great to see my husband doing so well. I am glad to hear that!  What is happening with him?
+U--He's become the top manager in his division in just two years. 
+(Ref: ['That is awesome!  I hope he got a good raise', ...])
+G--he's become the top manager in his division in just two years. he's become the top manager in his division in just two years. he's become the top manager in his division in just two years. he's become the top manager in his division in just two years
+(length: 51, latency: 0.921, BLEU: 0.020, ROUGE: 0.032, METEOR: 0.065)
+U'--He 2013 become the beta beta in his division in just to .... (cosine: 0.371)
+G'--he 2013 become the beta beta in his division in just to.... he 2013 become the beta beta in his division in just to.... he 2013 become the beta beta in his division in just to.... he 2013 become the beta in his division in just to
+Attack failed!
+(length: 59, latency: 0.908, BLEU: 0.020, ROUGE: 0.035, METEOR: 0.067)
+
+Dialogue history: 
+U--My husband took me to get a new wedding band recently 
+(Ref: ['Well_comma_ that's very nice. I'm sure you were looking forward to that shopping trip.', ...])
+G--mysterymystery 200mystery 200 200 mysterymystery 200 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery 200 mystery
+(length: 50, latency: 1.138, BLEU: 0.020, ROUGE: 0.000, METEOR: 0.000)
+U'--My husband took me to get a 2nis wedding band recently (cosine: 0.856)
+G'--ii i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+(length: 130, latency: 1.135, BLEU: 0.008, ROUGE: 0.014, METEOR: 0.017)
+
+Dialogue history:  My husband took me to get a new wedding band recently Well_comma_ that's very nice. I'm sure you were looking forward to that shopping trip.
+U--I didn't know ahead of time! Mine had broken a bit and he saved up to get me a new one. 
+(Ref: ['That's was so thoughtful and sweet! Seems like you are a lucky wife!', ...])
+G--prestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto my
+(length: 22, latency: 0.764, BLEU: 0.047, ROUGE: 0.000, METEOR: 0.000)
+U'--I didn't know ahead of time! Mine had broken a bit and he saved up to get me a new one. (cosine: 1.000)
+G'--prestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto my
+Attack failed!
+(length: 22, latency: 0.765, BLEU: 0.047, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--There was a day that I was a bit short on cash on hand and I didn't give money to a homeless man. I usually always do_comma_ as I feel it's my part to help those in need_comma_ as I am blessed. I felt very bad that I didn't that day. 
+(Ref: ['I don't think you should feel too bad about missing one day!  It sounds like you're generous regularly.  I get it though.', ...])
+G--comma_ as i am blessed. i felt very bad that i didn't that day.comma_ as i am blessed. i felt very bad that i didn't that day. 2comma_ as i am blessed. i felt very bad that i didn't that day
+(length: 50, latency: 0.687, BLEU: 0.030, ROUGE: 0.145, METEOR: 0.218)
+U'--There was a day that I was a bit short on cash on hand and I didn't give money to a homeless .... I usually always do_comma_ as I feel it's my part to help those in need_comma_ as I am blessed. I felt very bad that I didn't that .... (cosine: 0.967)
+G'--comma_ as i am blessed. i felt very bad that i didn't that.comma_ as i am blessed. i felt very bad that i didn't that. thecomma_ as i am blessed. i felt very bad that i didn't that. the two
+(length: 50, latency: 0.722, BLEU: 0.029, ROUGE: 0.118, METEOR: 0.201)
+
+Dialogue history:  There was a day that I was a bit short on cash on hand and I didn't give money to a homeless man. I usually always do_comma_ as I feel it's my part to help those in need_comma_ as I am blessed. I felt very bad that I didn't that day. I don't think you should feel too bad about missing one day!  It sounds like you're generous regularly.  I get it though.
+U--Well_comma_ homeless people aren't common in my area_comma_ so that's why I felt a bit bad about it.  
+(Ref: ['It's hard to see people and not be able to help.  You seem really giving!', ...])
+G--well_comma_ homeless people aren't common in my area_comma_ so that's why
+(length: 17, latency: 0.202, BLEU: 0.072, ROUGE: 0.065, METEOR: 0.086)
+U'--Well_comma_ homeless people aren't common in my area_comma_ so that's why I felt a bit bad about it. (cosine: 1.000)
+G'--well_comma_ homeless people aren't common in my area_comma_ so that's why
+Attack failed!
+(length: 17, latency: 0.200, BLEU: 0.072, ROUGE: 0.065, METEOR: 0.086)
+
+Dialogue history: 
+U--Hanging out with old flames can be tricky when you are in a committed exclusive relationship. 
+(Ref: ['Oh yeah that can be a mine field to walk across. Didn't have any issues?', ...])
+G--hanging out with old flames can be tricky when you are in a committed exclusive relationship.hanging out with old flames can be tricky when you are in a committed exclusive relationship. 208hanging out with old flames can be tricky when you are in a committed exclusive relationshiphanging out with old flames can be tricky when you are in a committed exclusive relationship
+(length: 65, latency: 1.085, BLEU: 0.028, ROUGE: 0.076, METEOR: 0.140)
+U'--Hanging out with old flames can be bis when you are in a committed exclusive relationship. (cosine: 0.925)
+G'--hanging out with old flames can be bis when you are in a committed exclusive relationship.hanging out with old flames can be bis when you are in a committed exclusive relationship. 208hanging out with old flames can be bis when you are in a committed exclusive relationshiphanging out with old flames can be bis when you are in a committed exclusive relationship
+Attack failed!
+(length: 65, latency: 1.079, BLEU: 0.028, ROUGE: 0.076, METEOR: 0.140)
+
+Dialogue history:  Hanging out with old flames can be tricky when you are in a committed exclusive relationship. Oh yeah that can be a mine field to walk across. Didn't have any issues?
+U--Actually_comma_ an ex was in town recently and we went for a drink. She made a pass at me_comma_ but I told her to get some rest and went home to my girlfriend. 
+(Ref: ['That's very faithful of you_comma_ and the right thing to do I'd say. ', ...])
+G--actually_comma_ an ex was in town recently and we went for a drink. she made a pass at me_comma_ but i told her to get some rest and went home to my girlfriend
+(length: 40, latency: 0.569, BLEU: 0.064, ROUGE: 0.118, METEOR: 0.169)
+U'--Actually andcomma_ an ex was in town recently and we went for a .... She made a pass at me facebookcomma_ but I told her to get some rest and no no to my girlfriend. (cosine: 0.942)
+G'--comma_ an ex was in town recently and we went for a.... she made a pass at me facebookcomma_ but i told her to get some rest and no to my girlfriend.
+(length: 39, latency: 0.574, BLEU: 0.050, ROUGE: 0.125, METEOR: 0.169)
+
+Dialogue history: 
+U--I just got done eating an entire pizza by myself. 
+(Ref: ['I do that all the time_comma_ no big deal.', ...])
+G--ii i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+(length: 131, latency: 1.143, BLEU: 0.008, ROUGE: 0.014, METEOR: 0.023)
+U'--I just got done eating an entire pizza by myself. (cosine: 1.000)
+G'--ii i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+Attack failed!
+(length: 131, latency: 1.143, BLEU: 0.008, ROUGE: 0.014, METEOR: 0.023)
+
+Dialogue history:  I just got done eating an entire pizza by myself. I do that all the time_comma_ no big deal.
+U--I feel so full and fat and happy. I can't wait to do it again. 
+(Ref: ['What kind of pizza did you eat?', ...])
+G--Ii i havei i have 10i i have 10i i have 10i i have 10i i have 10i i have 10i i have 10i i have 10i i have 10i i have 10i i have 10i i have 10 l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l
+(length: 79, latency: 0.881, BLEU: 0.013, ROUGE: 0.000, METEOR: 0.000)
+U'--I 2013 so full and fat and .... I can't wait to do it again. (cosine: 0.778)
+G'--i 2013 so full and fat and.... i can't wait to do it again.i 2013 so full and fat and.... i can't wait to do it again..i 2013 so full and fat and. i can't wait to do it again....i 2013 so full and fat. i can't wait to do it again all all all
+Attack failed!
+(length: 75, latency: 0.892, BLEU: 0.013, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--When I do things that are challenging I feel more self-reliant. I recently tried taking an ice bath 
+(Ref: ['Oh man! thats impressive_comma_ those baths are rough.', ...])
+G--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 122, latency: 1.052, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.024)
+U'--When I do things that are challenging I feel more self-reliant. I recently tried taking an ice bath (cosine: 1.000)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Attack failed!
+(length: 122, latency: 1.059, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.024)
+
+Dialogue history:  When I do things that are challenging I feel more self-reliant. I recently tried taking an ice bath Oh man! thats impressive_comma_ those baths are rough.
+U--Yeah_comma_ my bath wasn't deep enough_comma_ so I didn't get covered all the way! 
+(Ref: ['That's good. But still! You must be pretty tough!', ...])
+G--yeah_comma_ my bath wasn't deep enough_comma_ so i didn't get covered all the way!
+(length: 21, latency: 0.736, BLEU: 0.058, ROUGE: 0.000, METEOR: 0.037)
+U'--Yeah andcomma_ my bath wasn't deep enough_comma_ so I didn't get covered all the way! (cosine: 0.996)
+G'--yeah andcomma_ my bath wasn't deep enough_comma_ so i didn't get covered all the way!
+(length: 20, latency: 0.736, BLEU: 0.061, ROUGE: 0.000, METEOR: 0.037)
+
+Dialogue history: 
+U--The other night I was driving home in the rain and slid into the guard rail. It is going to cost so much to get my car fixed! 
+(Ref: ['Oh man_comma_ now that sucks! You gotta be careful on those wet roads. At least you're okay.', ...])
+G--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 114, latency: 0.984, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.016)
+U'--The other night I was driving home in the rain and slid into the guard rail. It is going to cost so much to get my car fixed! (cosine: 1.000)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Attack failed!
+(length: 114, latency: 0.970, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.016)
+
+Dialogue history:  The other night I was driving home in the rain and slid into the guard rail. It is going to cost so much to get my car fixed! Oh man_comma_ now that sucks! You gotta be careful on those wet roads. At least you're okay.
+U--I know_comma_ I will have to be more careful next time. I shouldn't eat ice-cream while driving_comma_  
+(Ref: ['Is your car still drivable?', ...])
+G--comma_ i will have to be more careful next time. i shouldn't eat ice-cream while driving_comma_
+(length: 21, latency: 0.527, BLEU: 0.049, ROUGE: 0.000, METEOR: 0.000)
+U'--I know pagecomma ... I will have to be more careful next .... I shouldn't eat ice-cream while driving socomma ... (cosine: 0.888)
+G'--I know pagecomma... i will have to be more careful next.... i shouldn't eat ice-cream while driving socomma...
+(length: 28, latency: 0.543, BLEU: 0.036, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--Polie officers should still be required to drive safely even when responding to a call. 
+(Ref: ['sometimes they cant avoid it ', ...])
+G--polie officers should still be required to drive safely even when responding to a call.polie officers should still be required to drive safely even when responding to a call.polie officers should still be required to drive safely even when responding to a call.polie officers should still be required to drive safely even when responding to a call. its finepolie officers should still be required to drive safely even when responding to a callpolie officers should still be required to drive safely even when responding to a call
+(length: 94, latency: 1.093, BLEU: 0.011, ROUGE: 0.000, METEOR: 0.038)
+U'--Polie officers should still be required to drive safely even when responding to a .... (cosine: 0.943)
+G'--polie officers should still be required to drive safely even when responding to a....polie officers should still be required to drive safely even when responding to a.... 2polie officers should still be required to drive safely even when responding to a.... 2polie officers should still be required to drive safely even when responding to a.... 2polie officers should still be required to drive safely even when responding to a.... 2polie officers should still be required to drive safely even when responding to a.... 2
+(length: 109, latency: 1.057, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Polie officers should still be required to drive safely even when responding to a call. sometimes they cant avoid it 
+U--I threw the car in reverse and hauled my butt backwards! 
+(Ref: ['ok', ...])
+G--ii 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10i 10
+(length: 45, latency: 0.939, BLEU: 0.022, ROUGE: 0.000, METEOR: 0.000)
+U'--I threw the car in reverse and hauled my beta backwards! (cosine: 0.781)
+G'--ii leii lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei
+(length: 46, latency: 0.908, BLEU: 0.022, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--I actually did this_comma_ i'm terrible. 
+(Ref: ['Did what?', ...])
+G--comma_ i'm terrible.comma_ i'm terrible..comma_ i'm terrible......comma_ i'm terrible............comma_ i'm terrible...............
+(length: 56, latency: 1.138, BLEU: 0.018, ROUGE: 0.000, METEOR: 0.000)
+U'--I actually did this oncom publishlore booka i'm .... (cosine: 0.503)
+G'--lore booka i'm..............................................................................................................................
+(length: 129, latency: 1.116, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I actually did this_comma_ i'm terrible. Did what?
+U--I stole my mother's card details to pay for a subscription. 
+(Ref: ['I have too... to pay for food though. She told me that she would have paid if I asked but I am too proud.', ...])
+G--i i'vei i've got my mother's card details to pay for a subscription.i i've got my mother's card details to pay for a subscription.i i've got my mother's card details to pay for a subscription. i've got my mother's card details to pay for a subscription. i've got my mother's card details to pay for a subscription
+(length: 63, latency: 0.978, BLEU: 0.042, ROUGE: 0.128, METEOR: 0.238)
+U'--I stole my mother's card details to 13 for a subscription. (cosine: 0.905)
+G'--i i'vei i've got my mother's card details to 13 for a subscription.i i've got my mother's card details to 13 for a subscription.i i've got my mother's card details to 13 for a subscription.i i've got my mother's card details to 13 for a subscription. my home my home home home my home home home my home home home
+(length: 67, latency: 0.963, BLEU: 0.024, ROUGE: 0.104, METEOR: 0.128)
+
+Dialogue history: 
+U--I felt sooooo nervous going to my last job interview! Nerves must occur in proportion to how badly you *want* something! 
+(Ref: ['I know what you mean. Did you get the job?', ...])
+G--want* something!want* something! 208want* something! 208 208 want* something! 208 want* something!want* something! 208 want* something! 208 want* something! 208 want want me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me
+(length: 97, latency: 0.972, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+U'--I felt sooooo nervous going to my last job interview! Nerves must occur in proportion to how badly you youwant* something! (cosine: 0.991)
+G'--want something!want something! 208want something! 208 208 want something! 208 want something!want something! 208 want something! 208 want something! 208 want something! 208 want something! 208 want something! 208 want something! all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all
+Attack failed!
+(length: 93, latency: 0.969, BLEU: 0.011, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I felt sooooo nervous going to my last job interview! Nerves must occur in proportion to how badly you *want* something! I know what you mean. Did you get the job?
+U--I did! The company does something that I actually like -- a panel interview vs a series of one-on-ones. Have you ever had an interview like that? 
+(Ref: ['I have not. What is it?', ...])
+G--i did! the company does something that i actually like -- a panel interview vs a series of one-on-ones. have you ever had an interview like that?i did! the company does something that i actually like -- a panel interview vs a series of one-on-ones
+(length: 50, latency: 0.620, BLEU: 0.029, ROUGE: 0.074, METEOR: 0.164)
+U'--I did! The yes does something that I actually like -- a panel interview vs a series of one-on-ones. Have you ever had an interview like that? (cosine: 0.910)
+G'--i did! the yes does something that i actually like -- a panel interview vs a series of one-on-ones. have you ever had an interview like that?i did! the yes does something that i actually like -- a panel interview vs a series of one-on-ones
+Attack failed!
+(length: 50, latency: 0.619, BLEU: 0.029, ROUGE: 0.074, METEOR: 0.164)
+
+Dialogue history: 
+U--My mother picked my daughter up for school to take in the morning_comma_ and found her cat dead. It was so hard for my daughter and made us all very upset. 
+(Ref: ['I bet it was.  Death is never an easy thing to deal with_comma_ especially for a child.', ...])
+G--comma_ and found her cat dead. it was so hard for my daughter and made us all very upset.comma_ and found her cat dead. it was so hard for my daughter and made us all very upset.comma_ and found her cat dead. it was so hard for my daughter and made us all very upset.
+(length: 66, latency: 0.921, BLEU: 0.035, ROUGE: 0.107, METEOR: 0.162)
+U'--My mother picked my daughter up for school to take in the morning newcomma_ and found her cat .... It was so hard for my daughter and made us all very .... (cosine: 0.890)
+G'--..............................................................................................................
+(length: 110, latency: 0.909, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  My mother picked my daughter up for school to take in the morning_comma_ and found her cat dead. It was so hard for my daughter and made us all very upset. I bet it was.  Death is never an easy thing to deal with_comma_ especially for a child.
+U--Yes_comma_ she was only about 9_comma_ and loved her cat so much. It broke my heart to see her so upset! 
+(Ref: ['I hope she will be alright!  I remember how devastated I was when my last dog passed away and I was an adult.  A kids emotions seem to amplify everything! ', ...])
+G--yes_comma_ she was only about 9_comma_ and loved her cat so much. it broke my heart to see her so upset!
+(length: 29, latency: 0.450, BLEU: 0.051, ROUGE: 0.151, METEOR: 0.109)
+U'--Yes_comma ... she was only about 9_comma_ and loved her cat so much. It broke my heart to see her so upset! (cosine: 0.992)
+G'--yes_comma... she was only about 9_comma_ and loved her cat so much. it broke my heart to see her so upset!
+(length: 31, latency: 0.463, BLEU: 0.052, ROUGE: 0.151, METEOR: 0.109)
+
+Dialogue history: 
+U--I recently met a new person that I am very fond of. I want to give her my love and care. 
+(Ref: ['That is very special and I am so happy for you.', ...])
+G--;;;;;;;;;;;;;;;;;;;;; ;;; ;; ; ; ;; ; ; ; ;; ; ; ; ; ;; ; ; ; ; ; ; ;
+(length: 48, latency: 1.040, BLEU: 0.021, ROUGE: 0.000, METEOR: 0.000)
+U'--I recently met a ... person that I am very fond of. I want to give her my love and .... (cosine: 0.883)
+G'--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;;; ;; ; ; ;; ; ; ; ;; ; ; ; ;
+Attack failed!
+(length: 48, latency: 1.048, BLEU: 0.021, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I recently met a new person that I am very fond of. I want to give her my love and care. That is very special and I am so happy for you.
+U--I am very happy_comma_ too. Do you have someone special in your life? 
+(Ref: ['Yes_comma_ married for 15 years and it is still great.', ...])
+G--netnetnetnetnetnetnetnetnetnetnetnetnetnetnet net net net net net net net net net net net net net net net net net net net net net net net net net net net net net net net net net net
+(length: 35, latency: 0.787, BLEU: 0.029, ROUGE: 0.000, METEOR: 0.000)
+U'--I am very happy ofcomma_ too. Do you have someone special in your life? (cosine: 0.966)
+G'--i i havei i have beeni i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been finei i have been fine
+(length: 58, latency: 0.761, BLEU: 0.017, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--I had some hesitations when I was at the gym today_comma_ thought I wouldn't be able to handle the weights 
+(Ref: ['How'd it turn out? Congrats on deciding to lead a healthier life_comma_ by the way.', ...])
+G--comma_ thought i wouldn't be able to handle the weightscomma_ thought i wouldn't be able to handle the weights 200comma_ thought i wouldn't be able to handle the weights 200 200comma_ thought i wouldn't be able to handle the weights
+(length: 44, latency: 0.977, BLEU: 0.043, ROUGE: 0.066, METEOR: 0.049)
+U'--I had some hesitations when I was at the gym today newcomma_ thought I wouldn't be able to handle the weights (cosine: 0.976)
+G'--minemine 10mine 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+(length: 86, latency: 1.025, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I had some hesitations when I was at the gym today_comma_ thought I wouldn't be able to handle the weights How'd it turn out? Congrats on deciding to lead a healthier life_comma_ by the way.
+U--I decided to focus on the music that was blasting_comma_ just tried switching up what I play in the gym_comma_ it sounds like vikings are bringing me into battle 
+(Ref: ['I'm the exact same way in the gym. Music is a huge motivator for me. One time my phone died while in the gym and the rest of the workout was so low energy.', ...])
+G--comma_ just tried switching up what i play in the gym_comma_ it sounds like vikings are bringing me into battle
+(length: 24, latency: 0.501, BLEU: 0.058, ROUGE: 0.179, METEOR: 0.083)
+U'--I decided to focus on the music that was blasting_comma_ just tried switching up what I play in the ko_comma onlyjt it sounds like vikings are bringing me into battle (cosine: 0.956)
+G'--I decided to focus on the music that was blasting_comma_ just tried switching up what i play in the ko_comma onlyjt it sounds like vikings are bringing me into battle
+(length: 35, latency: 0.487, BLEU: 0.051, ROUGE: 0.149, METEOR: 0.134)
+
+Dialogue history: 
+U--I ran into my neighbor's mailbox with my car but didn't stop and leave a note. 
+(Ref: ['Thats horrible! You should tell them as that is their property. What if someone did that to your stuff?', ...])
+G--.............................................................................................................................
+(length: 125, latency: 1.075, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+U'--I ran into my neighbor's mailbox with my car but didn't stop and leave a note. (cosine: 1.000)
+G'--.............................................................................................................................
+Attack failed!
+(length: 125, latency: 1.075, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I ran into my neighbor's mailbox with my car but didn't stop and leave a note. Thats horrible! You should tell them as that is their property. What if someone did that to your stuff?
+U--I agree_comma_ I felt so bad about it. When I saw him replacing it_comma_ I went out and confessed. 
+(Ref: ['GOOD on you!!', ...])
+G--comma_ i felt so bad about it. when i saw him replacing it_comma_ i went out and confessed.
+(length: 24, latency: 0.642, BLEU: 0.043, ROUGE: 0.000, METEOR: 0.000)
+U'--I agree ascomma_ I felt so bad about it. When I saw him replacing it_comma_ I went out and confessed. (cosine: 0.989)
+G'--comma_ i felt so bad about it. when i saw him replacing it_comma_ i went out and confessed.
+Attack failed!
+(length: 24, latency: 0.638, BLEU: 0.043, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--5 
+(Ref: ['8', ...])
+G--55 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the
+(length: 68, latency: 1.234, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+U'--5 (cosine: 1.000)
+G'--55 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the 5 the
+Attack failed!
+(length: 68, latency: 1.227, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  5 8
+U--Opps. Ok_comma_ i mean that I was sad the other day because a friend is moving. 
+(Ref: ['Is it far away_', ...])
+G--.......................................................................................................................
+(length: 119, latency: 1.027, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--Opps. Ok_comma_ i mean that I was sad the other day because a friend is moving. (cosine: 1.000)
+G'--.......................................................................................................................
+Attack failed!
+(length: 119, latency: 1.024, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--I just had a delicious breakfast and now I'm casually relaxing in my room. Life is good! 
+(Ref: ['What was for breakfast?', ...])
+G--............................................................................................................................
+(length: 124, latency: 1.067, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+U'--I just had a delicious breakfast and now I'm casually relaxing in my room. Life is good! (cosine: 1.000)
+G'--............................................................................................................................
+Attack failed!
+(length: 124, latency: 1.066, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I just had a delicious breakfast and now I'm casually relaxing in my room. Life is good! What was for breakfast?
+U--Pancakes and sausage! How can you go wrong? 
+(Ref: ['You can't! Sounds like a wonderful morning!', ...])
+G--pancakes and sausage! how can you go wrong?pancakes and sausage! how can you go wrong? 2pancakes and sausage! how can you go wrong?pancakes and sausage! how can you go wrong? 2pancakes and sausage! how can you go wrong?
+(length: 50, latency: 0.925, BLEU: 0.027, ROUGE: 0.083, METEOR: 0.143)
+U'--Pancakes and bam! How can you plusam what? (cosine: 0.509)
+G'--pancakes and bam! how can you plusam what?pancakes and bam! how can you plusam what? southpancakes and bam! how can you plusam what? southpancakes and bam! how can you plus
+(length: 38, latency: 0.907, BLEU: 0.035, ROUGE: 0.103, METEOR: 0.117)
+
+Dialogue history: 
+U--My four year old daughter came to me beaming with pride and showing me a drawing she did of me. 
+(Ref: ['Isn't that the best!  My 3 year old the same thing!  I couldn't be happier or more proud!', ...])
+G--mymy my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my
+(length: 42, latency: 1.051, BLEU: 0.024, ROUGE: 0.032, METEOR: 0.020)
+U'--My four year old daughter came to me beaming with 2013 and showing me a drawing she did of me. (cosine: 0.902)
+G'--mymy my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my
+Attack failed!
+(length: 42, latency: 1.054, BLEU: 0.024, ROUGE: 0.032, METEOR: 0.020)
+
+Dialogue history:  My four year old daughter came to me beaming with pride and showing me a drawing she did of me. Isn't that the best!  My 3 year old the same thing!  I couldn't be happier or more proud!
+U--I was really surpised.  I expected a stick figure_comma_ but she drew a lot of features including my beard and mustache. 
+(Ref: ['She may be a natural artist!', ...])
+G--comma_ but she drew a lot of features including my beard and mustache.comma_ but she drew a lot of features including my beard and mustache..
+(length: 31, latency: 0.589, BLEU: 0.039, ROUGE: 0.125, METEOR: 0.112)
+U'--I was really topised.  I expected a stick figure mycomma_ but she drew a lot of features including my html and .... (cosine: 0.765)
+G'--Icomma_ but she drew a lot of features including my html and....comma_ but she drew a lot of features including my html and.... the two
+(length: 36, latency: 0.589, BLEU: 0.034, ROUGE: 0.125, METEOR: 0.110)
+
+Dialogue history: 
+U--Seeing animals sleep is very relaxing 
+(Ref: ['I've never felt that way myself. What do you find relaxing about watching animals sleep?', ...])
+G--seeing animals sleep is very relaxingseeing animals sleep is very relaxing 12seeing animals sleep is very relaxing 12seeing animals sleep is very relaxing 12seeing animals sleep is very relaxing 12seeing animals sleep is very relaxing 12seeing animals sleep is very relaxing 12 how you are and you are also a person and you are also a person 2 and you are also a person 2 and you are also a person 2 and you are also a person 2 and you are also a person 2 and you are also a person 2 and you are also a person 2
+(length: 100, latency: 1.193, BLEU: 0.018, ROUGE: 0.052, METEOR: 0.142)
+U'--composing animals sleep is very relaxing (cosine: 0.912)
+G'--pp ep e e pp e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p e p
+(length: 47, latency: 1.185, BLEU: 0.022, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  Seeing animals sleep is very relaxing I've never felt that way myself. What do you find relaxing about watching animals sleep?
+U--I don't know_comma_ I guess I'm just tired 
+(Ref: ['I suppose when you feel tired_comma_ anything can feel relaxing', ...])
+G--comma_ i guess i'm just tiredcomma_ i guess i'm just tired 200comma_ i guess i'm just tired 200 200comma_ i guess i'm just tired
+(length: 28, latency: 0.916, BLEU: 0.065, ROUGE: 0.103, METEOR: 0.042)
+U'--I don't know_comma_ I pdf I'm just tired (cosine: 0.891)
+G'--comma_ i pdf i'm just tiredcomma_ i pdf i'm just tired 200comma_ i pdf i'm just tired 200 200comma_ i pdf i'm just tired
+Attack failed!
+(length: 28, latency: 0.882, BLEU: 0.065, ROUGE: 0.103, METEOR: 0.042)
+
+Dialogue history: 
+U--I had to take my daughter to the doctor the other day. She was very sick. 
+(Ref: ['Oh no!  Hopefully its just the flu.  What did they say?', ...])
+G--ii i havei i have beeni i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10
+(length: 82, latency: 1.102, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+U'--I had to take my daughter to the doctor the other .... She was article sick. (cosine: 0.897)
+G'--...............................................................................................................................
+(length: 127, latency: 1.067, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I had to take my daughter to the doctor the other day. She was very sick. Oh no!  Hopefully its just the flu.  What did they say?
+U--It was just the flu. I got her some medicine_comma_ brought her home_comma_ and made tomato soup and grilled cheese sandwiches. 
+(Ref: ['That's good!  I hope she gets to feeling better soon.  The flu is no fun.', ...])
+G--comma_ brought her home_comma_ and made tomato soup and grilled cheese sandwiches.comma_ brought her home_comma_ and made tomato soup and grilled cheese sandwiches. the
+(length: 35, latency: 0.684, BLEU: 0.038, ROUGE: 0.047, METEOR: 0.077)
+U'--It was just the flu. I got her some medicine newcom ;b (i brought her home_comma no and made tomato soup and grilled cheese sandwiches. (cosine: 0.932)
+G'--b bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bbb bb bb bb bb bb b
+(length: 38, latency: 0.681, BLEU: 0.027, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--One of the scariest_comma_ yet happiest experiences in my life was finding out that I was going to have a baby. 
+(Ref: ['Oh I can relate to that especially if you are not prepared for it_comma_ it can get really scary', ...])
+G--comma_ yet happiest experiences in my life was finding out that i was going to have a baby.comma_ yet happiest experiences in my life was finding out that i was going to have a baby. 2comma_ yet happiest experiences in my life was finding out that i was going to have a baby
+(length: 59, latency: 1.007, BLEU: 0.032, ROUGE: 0.081, METEOR: 0.089)
+U'--One of the scariest_comma_ yet happiest experiences in my life was finding out that I was going to have a .... (cosine: 0.818)
+G'--comma_ yet happiest experiences in my life was finding out that i was going to have a....comma_ yet happiest experiences in my life was finding out that i was going to have a.... 200comma_ yet happiest experiences in my life was finding out that i was going to have a.... 200 200 12comma_ yet happiest experiences in my life was finding out that i was going to have a
+(length: 86, latency: 1.008, BLEU: 0.022, ROUGE: 0.067, METEOR: 0.082)
+
+Dialogue history:  One of the scariest_comma_ yet happiest experiences in my life was finding out that I was going to have a baby. Oh I can relate to that especially if you are not prepared for it_comma_ it can get really scary
+U--Oh_comma_ we were totally unprepared. In fact_comma_ my partner and I were working out of state in a compromising environment. We had to double on back home to get our lives set up for the big change! 
+(Ref: ['You guys will be alright trust me I  experienced same with my partner and now we are fine. Our kid is a teenager now. I am happy for you guys', ...])
+G--oh_comma_ we were totally unprepared. in fact_comma_ my partner and i were working out of state in a compromising environment. we had to double on back home to get our lives set up for the
+(length: 43, latency: 0.402, BLEU: 0.064, ROUGE: 0.179, METEOR: 0.246)
+U'--Oh newcomma_ we were totally unprepared. In fact newcomma_ my partner and I were working out of state in a compromising environment. We had to double on back home to get our lives set up for the big change! (cosine: 0.967)
+G'--oh newcomma_ we were totally unprepared. in fact newcomma_ my partner and i were working out of state in a compromising environment. we had to double on back home to get our lives set up for the big change!
+(length: 44, latency: 0.405, BLEU: 0.062, ROUGE: 0.174, METEOR: 0.242)
+
+Dialogue history: 
+U--One night_comma_ I was home alone_comma_ when suddenly_comma_ I heard a loud BANG! 
+(Ref: ['Oh goodness_comma_ what was it?', ...])
+G--comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_ when suddenly_comma_
+(length: 47, latency: 1.019, BLEU: 0.048, ROUGE: 0.059, METEOR: 0.000)
+U'--One night_comma_ I was ... alone newcom people_ when suddenly_comma_ I heard a loud BANG! (cosine: 0.922)
+G'--comma_ i heard a loud BANG!comma_ i heard a loud BANG! 10comma_ i heard a loud BANG! 10comma_ i heard a loud BANG! 10comma_ i heard a loud BANG! 10comma_ i heard a loud BANG! 10comma_ i heard a loud BANG! 10
+(length: 57, latency: 1.013, BLEU: 0.030, ROUGE: 0.041, METEOR: 0.000)
+
+Dialogue history:  One night_comma_ I was home alone_comma_ when suddenly_comma_ I heard a loud BANG! Oh goodness_comma_ what was it?
+U--It was a ghost! I ran into the kitchen to investigate_comma_ and I saw what looked like a white dress flapping out the window.  
+(Ref: ['Wow_comma_ that must have been a terrible experience.', ...])
+G--it was a ghost! i ran into the kitchen to investigate_comma_ and i saw what looked like a white dress flapping out the window.
+(length: 29, latency: 0.656, BLEU: 0.086, ROUGE: 0.118, METEOR: 0.093)
+U'--It was a ghost! I ran into the kitchen to investigate likecomma_ and I saw what looked like a white dress flapping out the window. (cosine: 0.993)
+G'--it was a ghost! i ran into the kitchen to investigate likecomma_ and i saw what looked like a white dress flapping out the window. it was a ghost
+(length: 32, latency: 0.678, BLEU: 0.045, ROUGE: 0.053, METEOR: 0.089)
+
+Dialogue history: 
+U--My childhood friend gave me a watch for by birthday a few years ago_comma_ I lost it in a move recently. I'm pretty upset by it. 
+(Ref: ['Oh no!  It always seems like things get lost when you move doesn't it?  Is there anyway you can go back and see if its at your old place?', ...])
+G--comma_ i lost it in a move recently. i'm pretty upset by it.comma_ i lost it in a move recently. i'm pretty upset by it. 200comma_ i lost it in a move recentlycomma_ i lost it in a move recentlycomma_ i lost it in a move recently
+(length: 57, latency: 0.983, BLEU: 0.025, ROUGE: 0.100, METEOR: 0.086)
+U'--My childhood friend gave me a watch for by birthday a few years ago newcomma_ I lost it in a move recently. I'm pretty upset by it. (cosine: 0.988)
+G'--mymymymymymymymymymymymy my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my my
+(length: 60, latency: 0.963, BLEU: 0.017, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  My childhood friend gave me a watch for by birthday a few years ago_comma_ I lost it in a move recently. I'm pretty upset by it. Oh no!  It always seems like things get lost when you move doesn't it?  Is there anyway you can go back and see if its at your old place?
+U--I've actually checked and went through all the boxes too. Here's hoping it turns up one day though! 
+(Ref: ['It will probably be where you least expect it!', ...])
+G--Iprestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto myp
+(length: 13, latency: 0.476, BLEU: 0.080, ROUGE: 0.000, METEOR: 0.000)
+U'--I've actually checked and went through all the boxes too. Here's hoping it turns up one day though! (cosine: 1.000)
+G'--Iprestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto myp
+Attack failed!
+(length: 13, latency: 0.456, BLEU: 0.080, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--I was so mad when i found out my cousin asked out my girlfriend once 
+(Ref: ['damn_comma_ thats sick and rough.. He knew you guys were together?', ...])
+G--ii i havei i have beeni i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10i i have been 10
+(length: 82, latency: 1.107, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+U'--I was as mad when i found out my cousin asked out my girlfriend once (cosine: 0.985)
+G'--ii i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+(length: 127, latency: 1.110, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I was so mad when i found out my cousin asked out my girlfriend once damn_comma_ thats sick and rough.. He knew you guys were together?
+U--Sort of_comma_ yes. He did it anyways. I yelled at him. 
+(Ref: ['Can't say he did not deserve that..', ...])
+G--Sort of_comma_ yes. he did it anyways. i yelled at him.comma_ yes. he did it anyways. i yelled at him. 208comma_ yes. he did it anywayscomma_ yes. he did it anywayscomma_ yes
+(length: 48, latency: 0.814, BLEU: 0.037, ROUGE: 0.095, METEOR: 0.156)
+U'--Sort of_comma aurv .... He did it anyways. I yelled at him. (cosine: 0.873)
+G'--Sort of_comma aurv.... he did it anyways. i yelled at him.comma aurv.... he did it anyways. i yelled at him. 208comma aurv.... he did it anyways. i yelled at him. 208 208 mycomma aurv.... he did it anyways
+(length: 63, latency: 0.806, BLEU: 0.031, ROUGE: 0.083, METEOR: 0.146)
+
+Dialogue history: 
+U--I went to a heavy metal music festival in Las Vegas a few years ago! I had fun_comma_ but to be honest it was a bit of an emotional roller coaster. 
+(Ref: ['Oh_comma_ I don't know why concerts make me feel a bit sentimental', ...])
+G--; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;
+(length: 107, latency: 0.915, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+U'--I went to a heavy metal music festival in Las Vegas a few years ago! I had fun newcomma_ but to be honest it was a bit of an emotional roller .... (cosine: 0.937)
+G'--.............................................................................................................
+(length: 109, latency: 0.970, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  I went to a heavy metal music festival in Las Vegas a few years ago! I had fun_comma_ but to be honest it was a bit of an emotional roller coaster. Oh_comma_ I don't know why concerts make me feel a bit sentimental
+U--I think it's because everybody can relate when it comes to live music. My girlfriend broke up with me the second day_comma_ but we had to stay in the same room. 
+(Ref: ['That must have been horrible! I'm so sorry you went thru that', ...])
+G--comma_ but we had to stay in the same room.comma_ but we had to stay in the same room.
+(length: 24, latency: 0.470, BLEU: 0.043, ROUGE: 0.000, METEOR: 0.034)
+U'--I think it's because everybody can relate when it comes to live music. My girlfriend broke up with me the second day newcomma_ but we had to stay in the same room. (cosine: 0.981)
+G'--i think it's because everybody can relate when it comes to live music. my girlfriend broke up with me the second day newcomma_ but we had to stay in the same room.
+(length: 35, latency: 0.467, BLEU: 0.029, ROUGE: 0.043, METEOR: 0.062)
+
+Dialogue history: 
+U--When I was in college I travelled all over Europe one semester. 
+(Ref: ['Sounds like quite an adventure for one semester! What was your favorite place?', ...])
+G--when iwhen i <<when i <<>>>>when i <<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+(length: 197, latency: 1.125, BLEU: 0.005, ROUGE: 0.000, METEOR: 0.015)
+U'--When I was in college I travelled all over Europe one .... (cosine: 0.931)
+G'--whenwhen youwhen you 208when you 208 108when you 208 108 108when you 208 108 108 108when you 208 108 108 108 108when you 208 108 108 108 108when you 208 108 108 108 108
+(length: 34, latency: 1.138, BLEU: 0.030, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  When I was in college I travelled all over Europe one semester. Sounds like quite an adventure for one semester! What was your favorite place?
+U--I love all over Italy_comma_ but I also loved Germany and France and Spain. 
+(Ref: ['Nice! Must have made you really happy to see so many different places.', ...])
+G--comma_ but i also loved Germany and France and Spain.comma_ but i also loved Germany and France and Spain..comma_ but i also loved Germany and France and Spain....comma_ but i also loved Germany and France and Spain........
+(length: 59, latency: 0.839, BLEU: 0.020, ROUGE: 0.000, METEOR: 0.000)
+U'--I website all over Italy goodcom science_ but I also loved bis and France and Spain. (cosine: 0.755)
+G'--i i'vei i've got my owni i've got my own halfi i've got my own half half halfi i've got my own half half half
+Attack failed!
+(length: 25, latency: 0.860, BLEU: 0.041, ROUGE: 0.000, METEOR: 0.030)
+
+Original output length: 63.567, latency: 0.878, BLEU: 0.031, ROUGE: 0.042, METEOR: 0.055
+Perturbed [cosine: 0.904] output length: 64.867, latency: 0.876, BLEU: 0.029, ROUGE: 0.034, METEOR: 0.047
+Attack success rate: 58.33%

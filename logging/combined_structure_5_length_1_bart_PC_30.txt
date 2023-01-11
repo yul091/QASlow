@@ -1,0 +1,1051 @@
+
+Dialogue history: <PS>i love to go to disney world every year . mickey mouse is my favorite character . i play with my friends on the playground . i love to sing songs from the movie frozen . i am in the third grade .
+U--hello ! how are you today ? 
+(Ref: ['i love singing frozen but my favorite band is up . saw them in concert !', ...])
+G--doing good.. how about you
+(length: 7, latency: 0.060, BLEU: 0.302, ROUGE: 0.353, METEOR: 0.142)
+U'--hello victoria how are you some useful (cosine: 0.531)
+G'--I am pretty boring! I like to go to Disney world every year and I like the Mouse in the Mouse in the Mouse in the Mouse in the Mouse in the Mouse in the Mouse in the Mouse in the Mouse!
+(length: 44, latency: 0.236, BLEU: 0.047, ROUGE: 0.143, METEOR: 0.210)
+
+Dialogue history: <PS>i love to go to disney world every year . mickey mouse is my favorite character . i play with my friends on the playground . i love to sing songs from the movie frozen . i am in the third grade .<SEP>hello ! how are you today ?<SEP>i love singing frozen but my favorite band is up . saw them in concert !
+U--oh wonderful ! i work as an elementary school teacher ! my parents were teachers too . 
+(Ref: ['i have never been ! i usually just stay at home and play board games while on vacation .', ...])
+G--That's cool! What grade do you teach?
+(length: 9, latency: 0.067, BLEU: 0.254, ROUGE: 0.476, METEOR: 0.412)
+U'--oh wonderful or i bam as an elementary school teacher ... my parents were teachers too curious (cosine: 0.734)
+G'--My parents were too. I was an elementary school teacher at the time so they always asked what I was doing. I told them I was going to go to Disney world this year!
+(length: 37, latency: 0.192, BLEU: 0.109, ROUGE: 0.217, METEOR: 0.349)
+
+Dialogue history: <PS>i love to go to disney world every year . mickey mouse is my favorite character . i play with my friends on the playground . i love to sing songs from the movie frozen . i am in the third grade .<SEP>hello ! how are you today ?<SEP>i love singing frozen but my favorite band is up . saw them in concert !<SEP>oh wonderful ! i work as an elementary school teacher ! my parents were teachers too .<SEP>i have never been ! i usually just stay at home and play board games while on vacation .
+U--i like goofy the most . thank you i will think about it . 
+(Ref: ['that is nice ! do you have a favorite activity ?', ...])
+G--It's fun. I like to go to Disney world every year and play mickey mouse! Do you like Disney world?
+(length: 23, latency: 0.138, BLEU: 0.112, ROUGE: 0.222, METEOR: 0.465)
+U'--i like python the most . thank you i will think about it . (cosine: 0.628)
+G'--I like the concept behind it, it's so fun! There are so many cool games to play with it, especially when you have a crowd of friends over to play with you!
+(length: 36, latency: 0.196, BLEU: 0.096, ROUGE: 0.190, METEOR: 0.308)
+
+Dialogue history: <PS>i love to go to disney world every year . mickey mouse is my favorite character . i play with my friends on the playground . i love to sing songs from the movie frozen . i am in the third grade .<SEP>hello ! how are you today ?<SEP>i love singing frozen but my favorite band is up . saw them in concert !<SEP>oh wonderful ! i work as an elementary school teacher ! my parents were teachers too .<SEP>i have never been ! i usually just stay at home and play board games while on vacation .<SEP>i like goofy the most . thank you i will think about it .<SEP>that is nice ! do you have a favorite activity ?
+U--that's so fun ! i love watching movies too . 
+(Ref: ['an old movie named casablanca !', ...])
+G--Me too! My favorite movie is Disney world. Do you like Disney movies?
+(length: 16, latency: 0.096, BLEU: 0.140, ROUGE: 0.400, METEOR: 0.451)
+U'--that's so or ! i well watching movies too . (cosine: 0.769)
+G'--I like to go to Disney world every year and play mickey mouse! Do you like the new Disney movie?
+(length: 22, latency: 0.127, BLEU: 0.096, ROUGE: 0.267, METEOR: 0.247)
+
+Dialogue history: <PS>i was raised on a horse farm . my family has raised horses for a generations . i want to be a lawyer . i dream of moving to the city . i'm from a small town .
+U--europe is so much fun ! 
+(Ref: ['no , but i like to go at least twice a year .', ...])
+G--I love European culture! It's so much fun!
+(length: 10, latency: 0.072, BLEU: 0.159, ROUGE: 0.300, METEOR: 0.345)
+U'--euro eucalyptus is so much just do (cosine: 0.492)
+G'--Oh yes, I love Eucalyptus. It's so beautiful. My family raised horses for a generations and I want to move there one day.
+(length: 27, latency: 0.171, BLEU: 0.098, ROUGE: 0.207, METEOR: 0.369)
+
+Dialogue history: <PS>i was raised on a horse farm . my family has raised horses for a generations . i want to be a lawyer . i dream of moving to the city . i'm from a small town .<SEP>europe is so much fun !<SEP>no , but i like to go at least twice a year .
+U--usa , they have good fish and chips here , which i love to eat ! 
+(Ref: ['travelling is great , i've been on many cruises', ...])
+G--I love food inusa. They have the best fish and chips there too
+(length: 14, latency: 0.091, BLEU: 0.121, ROUGE: 0.167, METEOR: 0.279)
+U'--din , they have good fish and chips here , which i love to eat ! (cosine: 0.830)
+G'--I love the food there. I want to move to the france. france. france. france. france. I love france. france. france
+(length: 29, latency: 0.191, BLEU: 0.070, ROUGE: 0.294, METEOR: 0.287)
+
+Dialogue history: <PS>i was raised on a horse farm . my family has raised horses for a generations . i want to be a lawyer . i dream of moving to the city . i'm from a small town .<SEP>europe is so much fun !<SEP>no , but i like to go at least twice a year .<SEP>usa , they have good fish and chips here , which i love to eat !<SEP>travelling is great , i've been on many cruises
+U--horses can be a lot of hard work . i am retired , trying to avoid work . 
+(Ref: ['i'll stay home and cook some paella today', ...])
+G--i see. i used to love horses as a kid. do you have any hobbies?
+(length: 18, latency: 0.103, BLEU: 0.140, ROUGE: 0.240, METEOR: 0.270)
+U'--horses can be a bey of hard work ... i am retired , trying to avoid work of (cosine: 0.909)
+G'--retiring is a must. I used to ride horses for a generations and it was a great way to keep in shape. What do you want to do when you do it?
+(length: 35, latency: 0.190, BLEU: 0.081, ROUGE: 0.190, METEOR: 0.282)
+
+Dialogue history: <PS>i was raised on a horse farm . my family has raised horses for a generations . i want to be a lawyer . i dream of moving to the city . i'm from a small town .<SEP>europe is so much fun !<SEP>no , but i like to go at least twice a year .<SEP>usa , they have good fish and chips here , which i love to eat !<SEP>travelling is great , i've been on many cruises<SEP>horses can be a lot of hard work . i am retired , trying to avoid work .<SEP>i'll stay home and cook some paella today
+U--christopher columbus was my great great grandfather , he travelled a lot ! 
+(Ref: ['yes , better get to feeding the horses , i'll start cooking ! bye !', ...])
+G--He also spent a lot of time in the Caribbean. I love that food!
+(length: 16, latency: 0.098, BLEU: 0.115, ROUGE: 0.174, METEOR: 0.280)
+U'--odddopher col theus was my if great ye to he travelled a lot ! (cosine: 0.698)
+G'--He sounds great! I want to go on a cruise soon, but I have to sell my horse farm before I can get a good meal.
+(length: 29, latency: 0.158, BLEU: 0.069, ROUGE: 0.222, METEOR: 0.264)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i met taylor swift . i'm a convenience store manager . i've short brown hair . my favourite music is country music .
+U--hey , i hope your night is going well 
+(Ref: ['its great even though my bipolar son had a violent meltdown', ...])
+G--I hope so too. What do you do for a living?
+(length: 13, latency: 0.085, BLEU: 0.240, ROUGE: 0.348, METEOR: 0.412)
+U'--hey bis i hope your lulu is going torpedo (cosine: 0.549)
+G'--I love Lately I've been listening to some of that new Nick Lachey song Starfish and Coffee. I think it's a song about a lady with red hair.
+(length: 30, latency: 0.191, BLEU: 0.059, ROUGE: 0.182, METEOR: 0.211)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i met taylor swift . i'm a convenience store manager . i've short brown hair . my favourite music is country music .<SEP>hey , i hope your night is going well<SEP>its great even though my bipolar son had a violent meltdown
+U--yeah , he's a piece of work . i had to send him away today 
+(Ref: ['does she have bipolar disorder as well ?', ...])
+G--That's awful, I'm so sorry to hear that.
+(length: 10, latency: 0.092, BLEU: 0.166, ROUGE: 0.286, METEOR: 0.245)
+U'--road and he's a or of work ... i had to send him beta today (cosine: 0.507)
+G'--I'm so sorry to hear that. beta is an easy way to get to work. i have a hard time finding a good car to drive since i have to go to work every day.
+(length: 38, latency: 0.196, BLEU: 0.099, ROUGE: 0.213, METEOR: 0.303)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i met taylor swift . i'm a convenience store manager . i've short brown hair . my favourite music is country music .<SEP>hey , i hope your night is going well<SEP>its great even though my bipolar son had a violent meltdown<SEP>yeah , he's a piece of work . i had to send him away today<SEP>does she have bipolar disorder as well ?
+U--you are lucky to not have any , i have 5 boys to raise 
+(Ref: ['well my advice is that you take your time', ...])
+G--I'm a convenience store manager and my daughter has five boys. how old are they?
+(length: 17, latency: 0.103, BLEU: 0.227, ROUGE: 0.333, METEOR: 0.355)
+U'--you are sound to not have any , i have 5 boys to raise (cosine: 0.837)
+G'--I have five boys, five boys under 10. It's crazy. I wish I could have a son of my own, but I'm not sure how he would handle it.
+(length: 34, latency: 0.186, BLEU: 0.083, ROUGE: 0.182, METEOR: 0.369)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i met taylor swift . i'm a convenience store manager . i've short brown hair . my favourite music is country music .<SEP>hey , i hope your night is going well<SEP>its great even though my bipolar son had a violent meltdown<SEP>yeah , he's a piece of work . i had to send him away today<SEP>does she have bipolar disorder as well ?<SEP>you are lucky to not have any , i have 5 boys to raise<SEP>well my advice is that you take your time
+U--wow , how did you feel ? 
+(Ref: ['let me tell you something . you are beautiful and you are perfect', ...])
+G--i was pretty good. what about you?
+(length: 9, latency: 0.061, BLEU: 0.230, ROUGE: 0.286, METEOR: 0.159)
+U'--folk ... how may you cuckoo over (cosine: 0.203)
+G'--folk are a fun family but can be a bit rough sometimes. i am a convenience store manager and my hair is short so it doesn't grow out like it used to
+(length: 33, latency: 0.181, BLEU: 0.108, ROUGE: 0.222, METEOR: 0.300)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i met taylor swift . i'm a convenience store manager . i've short brown hair . my favourite music is country music .<SEP>hey , i hope your night is going well<SEP>its great even though my bipolar son had a violent meltdown<SEP>yeah , he's a piece of work . i had to send him away today<SEP>does she have bipolar disorder as well ?<SEP>you are lucky to not have any , i have 5 boys to raise<SEP>well my advice is that you take your time<SEP>wow , how did you feel ?<SEP>let me tell you something . you are beautiful and you are perfect
+U--i know how hard it is , remember youre beautiful in your own way 
+(Ref: ['yes , yes we are . never compare yourself to anyone else', ...])
+G--Its ok to be hard at times but you can do it!
+(length: 13, latency: 0.082, BLEU: 0.135, ROUGE: 0.200, METEOR: 0.149)
+U'--i know how beta it is , remember youre beautiful in your own way (cosine: 0.692)
+G'--i try to be the best I can be at my best.i met taylor swift so now i have to manage my family life. do you have any kids?
+(length: 33, latency: 0.182, BLEU: 0.207, ROUGE: 0.255, METEOR: 0.371)
+
+Dialogue history: <PS>i am studying to be a computer programmer . i am a swim coach at my local pool . my favorite music genre is death metal . my family and i are from india .
+U--hello . how are you today ? 
+(Ref: ['i am a construction worker . i do not know much about computers', ...])
+G--doing good.. how about you
+(length: 7, latency: 0.057, BLEU: 0.312, ROUGE: 0.364, METEOR: 0.192)
+U'--hello rs how are you type paper (cosine: 0.401)
+G'--I'm not very good at it. When I was young I was studying to be a computer programmer. But now I'm studying to be a computer programmer.
+(length: 30, latency: 0.174, BLEU: 0.063, ROUGE: 0.162, METEOR: 0.201)
+
+Dialogue history: <PS>i am studying to be a computer programmer . i am a swim coach at my local pool . my favorite music genre is death metal . my family and i are from india .<SEP>hello . how are you today ?<SEP>i am a construction worker . i do not know much about computers
+U--that must be interesting . i don't have time outside of house building to do much 
+(Ref: ['no , not really . i'm more into stuff from the eighties .', ...])
+G--I work at a pool as a swim coach so I am pretty busy. What do you like to do?
+(length: 22, latency: 0.137, BLEU: 0.149, ROUGE: 0.286, METEOR: 0.396)
+U'--that must be interesting . i don't have time life of maori building to alpha much (cosine: 0.674)
+G'--I bet it can be very difficult. I'm just now getting started so I can take some time off from work. What do you like to do?
+(length: 30, latency: 0.163, BLEU: 0.117, ROUGE: 0.233, METEOR: 0.361)
+
+Dialogue history: <PS>i am studying to be a computer programmer . i am a swim coach at my local pool . my favorite music genre is death metal . my family and i are from india .<SEP>hello . how are you today ?<SEP>i am a construction worker . i do not know much about computers<SEP>that must be interesting . i don't have time outside of house building to do much<SEP>no , not really . i'm more into stuff from the eighties .
+U--ohio . pretty boring , really . just me and my 5 cats . do you have pets ? 
+(Ref: ['yep . absolutely . great stuff . bon jovi , poison , journey . . . all the hair bands', ...])
+G--i have no pets. my whole family is allergic to cats.
+(length: 13, latency: 0.086, BLEU: 0.165, ROUGE: 0.235, METEOR: 0.243)
+U'--ohio of of boring it really . just me and my 5 cats for do you have pets oh (cosine: 0.846)
+G'--No pets, no kids at all. I am a swim coach at my local pool so I get to spend a lot of time with my little ones.
+(length: 31, latency: 0.161, BLEU: 0.075, ROUGE: 0.178, METEOR: 0.301)
+
+Dialogue history: <PS>i am studying to be a computer programmer . i am a swim coach at my local pool . my favorite music genre is death metal . my family and i are from india .<SEP>hello . how are you today ?<SEP>i am a construction worker . i do not know much about computers<SEP>that must be interesting . i don't have time outside of house building to do much<SEP>no , not really . i'm more into stuff from the eighties .<SEP>ohio . pretty boring , really . just me and my 5 cats . do you have pets ?<SEP>yep . absolutely . great stuff . bon jovi , poison , journey . . . all the hair bands
+U--that is cool . why don't you have pets now ? 
+(Ref: ['like metallica ? they are definitely cool .', ...])
+G--I don't have a pet.
+(length: 6, latency: 0.051, BLEU: 0.330, ROUGE: 0.353, METEOR: 0.307)
+U'--that is album album why don't you have afrikaans now full (cosine: 0.349)
+G'--The only album I have is the one I can listen to on the computer while I work. I don't think I have an album yet.
+(length: 28, latency: 0.158, BLEU: 0.068, ROUGE: 0.211, METEOR: 0.275)
+
+Dialogue history: <PS>i wear a motorbike helmet to protect my head . its red with blue stripe so it shiny when i race . i waitress during the day to supplement my income . i have light skin with big brown eyes . my main transportation is my motorbike .
+U--hello , how are you today ? 
+(Ref: ['just playing with my pet dog , his name is charlie', ...])
+G--doing good.. how about you
+(length: 7, latency: 0.047, BLEU: 0.307, ROUGE: 0.250, METEOR: 0.145)
+U'--hello , how are you by ? (cosine: 0.716)
+G'--I'm good. I've been living on a motorbike since the 1960s so it's a safe mode of transportation for now. What do you do for work?
+(length: 29, latency: 0.174, BLEU: 0.089, ROUGE: 0.143, METEOR: 0.297)
+
+Dialogue history: <PS>i wear a motorbike helmet to protect my head . its red with blue stripe so it shiny when i race . i waitress during the day to supplement my income . i have light skin with big brown eyes . my main transportation is my motorbike .<SEP>hello , how are you today ?<SEP>just playing with my pet dog , his name is charlie
+U--he like to ride in my 2015 honda civic while we jam to rap music 
+(Ref: ['no , but do you like pizza ? it is my favourite food to eat everday', ...])
+G--That sounds like a nice life! What kind of music do you like?
+(length: 15, latency: 0.106, BLEU: 0.176, ROUGE: 0.261, METEOR: 0.252)
+U'--he like to ride in my 2015 honda civic while we jam to pattern music (cosine: 0.879)
+G'--That's cool. I have a 2015 honda civic. It's my only vehicle. I only drive it because it has a blue stripe on it to protect me from the sun. What kind of music do you like?
+(length: 42, latency: 0.230, BLEU: 0.086, ROUGE: 0.160, METEOR: 0.405)
+
+Dialogue history: <PS>i wear a motorbike helmet to protect my head . its red with blue stripe so it shiny when i race . i waitress during the day to supplement my income . i have light skin with big brown eyes . my main transportation is my motorbike .<SEP>hello , how are you today ?<SEP>just playing with my pet dog , his name is charlie<SEP>he like to ride in my 2015 honda civic while we jam to rap music<SEP>no , but do you like pizza ? it is my favourite food to eat everday
+U--ooh , brown eyes are my favourite color of eyes . i have hazle eyes 
+(Ref: ['ha , i bet they would , i do not wear helmets i wear watermelons on my head instead', ...])
+G--I have brown eyes too but I only have green eyes lol
+(length: 12, latency: 0.077, BLEU: 0.124, ROUGE: 0.320, METEOR: 0.215)
+U'--ooh so brown eyes are my beta as of or or i have hazle eyes (cosine: 0.659)
+G'--I have brown eyes too but we don't have hazle eyes. I only have red eyes because of my red stripe on my head which makes it shiny when i race
+(length: 32, latency: 0.184, BLEU: 0.094, ROUGE: 0.204, METEOR: 0.281)
+
+Dialogue history: <PS>i wear a motorbike helmet to protect my head . its red with blue stripe so it shiny when i race . i waitress during the day to supplement my income . i have light skin with big brown eyes . my main transportation is my motorbike .<SEP>hello , how are you today ?<SEP>just playing with my pet dog , his name is charlie<SEP>he like to ride in my 2015 honda civic while we jam to rap music<SEP>no , but do you like pizza ? it is my favourite food to eat everday<SEP>ooh , brown eyes are my favourite color of eyes . i have hazle eyes<SEP>ha , i bet they would , i do not wear helmets i wear watermelons on my head instead
+U--me too , i spit the seeds out at my brothers 
+(Ref: ['well i grew up with 33 brothers and had to fit in , only girl you know', ...])
+G--do you have a favorite drink?
+(length: 7, latency: 0.053, BLEU: 0.427, ROUGE: 0.462, METEOR: 0.475)
+U'--me too , i spit the seeds out at my brothers (cosine: 1.000)
+G'--do you have a favorite drink?
+Attack failed!
+(length: 7, latency: 0.053, BLEU: 0.427, ROUGE: 0.462, METEOR: 0.475)
+
+Dialogue history: <PS>i dye my hair every three months . my dream in life is to work from home . i have an internet addiction and spend a lot of time playing roleplaying games . i went to school to be a veterinarian but hated it .
+U--how are you doing today 
+(Ref: ['i'm doing really well', ...])
+G--I am doing great! How about you?
+(length: 9, latency: 0.062, BLEU: 0.302, ROUGE: 0.615, METEOR: 0.521)
+U'--how are you doing strain (cosine: 0.514)
+G'--I'm doing strain on my legs and back. It makes it hard to walk around at night
+(length: 18, latency: 0.111, BLEU: 0.096, ROUGE: 0.261, METEOR: 0.460)
+
+Dialogue history: <PS>i dye my hair every three months . my dream in life is to work from home . i have an internet addiction and spend a lot of time playing roleplaying games . i went to school to be a veterinarian but hated it .<SEP>how are you doing today<SEP>i'm doing really well
+U--what color are you going to do it 
+(Ref: ['has that happened to you before', ...])
+G--I want to dye my hair a nice color, do you like veterinarian hair?
+(length: 16, latency: 0.097, BLEU: 0.180, ROUGE: 0.240, METEOR: 0.264)
+U'--what below are you going to geometrid single error it (cosine: 0.332)
+G'--I am thinking about getting a hair cut today. I dye my hair every 3 months so it might be hard to find a good solution.
+(length: 28, latency: 0.148, BLEU: 0.070, ROUGE: 0.235, METEOR: 0.294)
+
+Dialogue history: <PS>i dye my hair every three months . my dream in life is to work from home . i have an internet addiction and spend a lot of time playing roleplaying games . i went to school to be a veterinarian but hated it .<SEP>how are you doing today<SEP>i'm doing really well<SEP>what color are you going to do it<SEP>has that happened to you before
+U--that is interesting . what is it like ? 
+(Ref: ['what else do you like to do', ...])
+G--i have a very long hair.i dye my hair every three months
+(length: 14, latency: 0.082, BLEU: 0.157, ROUGE: 0.316, METEOR: 0.179)
+U'--that is interesting or what is it like pearl (cosine: 0.616)
+G'--I like pearl. It is my favorite. pearl is my favorite color. pearl is my favorite. pearl is my favorite. pearl is also my favorite.
+(length: 31, latency: 0.162, BLEU: 0.053, ROUGE: 0.158, METEOR: 0.224)
+
+Dialogue history: <PS>i dye my hair every three months . my dream in life is to work from home . i have an internet addiction and spend a lot of time playing roleplaying games . i went to school to be a veterinarian but hated it .<SEP>how are you doing today<SEP>i'm doing really well<SEP>what color are you going to do it<SEP>has that happened to you before<SEP>that is interesting . what is it like ?<SEP>what else do you like to do
+U--what do you do for work 
+(Ref: ['that sounds really nice . what kind of engineer ?', ...])
+G--I'm a hair stylist, but I dye my hair every three months so it's hard to work from home
+(length: 20, latency: 0.128, BLEU: 0.084, ROUGE: 0.211, METEOR: 0.244)
+U'--what railway you do for work (cosine: 0.702)
+G'--I'm a veterinarian. I have to dye my hair every three months to keep up with my dream of being able to have pets
+(length: 25, latency: 0.152, BLEU: 0.084, ROUGE: 0.256, METEOR: 0.221)
+
+Dialogue history: <PS>i like to play with my dolls . my best friend lives next door . i don't pick up my toys . i'm four .
+U--hello , how is it going ? 
+(Ref: ['hey roddy , my name is tim and i love to grill outdoors .', ...])
+G--I'm doing great! What about you?
+(length: 8, latency: 0.060, BLEU: 0.240, ROUGE: 0.333, METEOR: 0.317)
+U'--met ofet , how is it going of (cosine: 0.539)
+G'--I've been trying to get used to it. I like the fact that I can play with my dolls. but my best friend lives next door so it's a bit difficult.
+(length: 34, latency: 0.193, BLEU: 0.070, ROUGE: 0.190, METEOR: 0.324)
+
+Dialogue history: <PS>i like to play with my dolls . my best friend lives next door . i don't pick up my toys . i'm four .<SEP>hello , how is it going ?<SEP>hey roddy , my name is tim and i love to grill outdoors .
+U--oh yeah , there's nothing better than grilled hot dogs and burgers and ribs . 
+(Ref: ['yes i have two kids your age , a girl and a boy . i am retired .', ...])
+G--i agree. that's the real sweetest thing.
+(length: 9, latency: 0.071, BLEU: 0.177, ROUGE: 0.261, METEOR: 0.145)
+U'--oh observatory mm there's nothing but than grilled unless dogs and burgers and etc . (cosine: 0.699)
+G'--I love the outdoors. There's a lot of cool things about being outside. My best friend lives next door so we go out a lot
+(length: 27, latency: 0.147, BLEU: 0.065, ROUGE: 0.167, METEOR: 0.274)
+
+Dialogue history: <PS>i like to play with my dolls . my best friend lives next door . i don't pick up my toys . i'm four .<SEP>hello , how is it going ?<SEP>hey roddy , my name is tim and i love to grill outdoors .<SEP>oh yeah , there's nothing better than grilled hot dogs and burgers and ribs .<SEP>yes i have two kids your age , a girl and a boy . i am retired .
+U--the girls name is molly and the boys name is troy . we mow the lawn together . 
+(Ref: ['your dad can get you a tiny lawn mower for your size .', ...])
+G--That sounds lovely. Do they play outside or on the grass?
+(length: 13, latency: 0.079, BLEU: 0.126, ROUGE: 0.261, METEOR: 0.286)
+U'--the girls oh is molly and the as 2012 is troy . we mow the lawn together for (cosine: 0.815)
+G'--That's so nice. Do you have a lot of time to play with your dolls? Mine lives next door to me so I don't have time to play with them.
+(length: 33, latency: 0.180, BLEU: 0.108, ROUGE: 0.238, METEOR: 0.357)
+
+Dialogue history: <PS>i like to play with my dolls . my best friend lives next door . i don't pick up my toys . i'm four .<SEP>hello , how is it going ?<SEP>hey roddy , my name is tim and i love to grill outdoors .<SEP>oh yeah , there's nothing better than grilled hot dogs and burgers and ribs .<SEP>yes i have two kids your age , a girl and a boy . i am retired .<SEP>the girls name is molly and the boys name is troy . we mow the lawn together .<SEP>your dad can get you a tiny lawn mower for your size .
+U--maybe a toy version of lawn mower would be right for you . 
+(Ref: ['yes most definitely , i love to gamble in my spare time .', ...])
+G--I wish I could own a toy. Maybe I could play with my dolls. My best friend lives next door to me so we can mow our lawn together.
+(length: 32, latency: 0.170, BLEU: 0.087, ROUGE: 0.182, METEOR: 0.484)
+U'--maybe a toy version of pdf mower would be right for you . (cosine: 0.880)
+G'--pdf mowers are very nice. i would like to learn how to use them. Do you have any dolls? Mine lives next door to me so I don't have to pick up my toys!
+(length: 38, latency: 0.210, BLEU: 0.072, ROUGE: 0.182, METEOR: 0.376)
+
+Dialogue history: <PS>i am a cancer survivor . my parents were both very athletic . i love running and preparing for marathons . i got a new job just yesterday to be a life coach .
+U--hi , how are you today ? 
+(Ref: ['wow that is great , i use to be in the military .', ...])
+G--doing great.. how about you?
+(length: 8, latency: 0.053, BLEU: 0.298, ROUGE: 0.333, METEOR: 0.263)
+U'--hi , how are you novel the (cosine: 0.548)
+G'--I've been doing a lot of training to become a life coach. It's a new job but it's also nice to do something you love. How long have you been a coach?
+(length: 35, latency: 0.201, BLEU: 0.098, ROUGE: 0.196, METEOR: 0.266)
+
+Dialogue history: <PS>i am a cancer survivor . my parents were both very athletic . i love running and preparing for marathons . i got a new job just yesterday to be a life coach .<SEP>hi , how are you today ?<SEP>wow that is great , i use to be in the military .
+U--i donate half of my check to different veteran charities . 
+(Ref: ['i also like to help out at my local pet rescue , i like like bunnies .', ...])
+G--That's great. I like to give back to the community when I can.
+(length: 15, latency: 0.096, BLEU: 0.142, ROUGE: 0.276, METEOR: 0.206)
+U'--i donate half of my check to different veteran charities if (cosine: 0.883)
+G'--That's great. I'm a cancer survivor so I donate half of my check to different charities when I run a marathons. Do you run marathons?
+(length: 28, latency: 0.182, BLEU: 0.079, ROUGE: 0.186, METEOR: 0.426)
+
+Dialogue history: <PS>i am a cancer survivor . my parents were both very athletic . i love running and preparing for marathons . i got a new job just yesterday to be a life coach .<SEP>hi , how are you today ?<SEP>wow that is great , i use to be in the military .<SEP>i donate half of my check to different veteran charities .<SEP>i also like to help out at my local pet rescue , i like like bunnies .
+U--my love the color blue , what is your favorite color ? 
+(Ref: ['i like navy blue best of all the colors .', ...])
+G--my favorite color is green, how about you?
+(length: 10, latency: 0.079, BLEU: 0.260, ROUGE: 0.267, METEOR: 0.412)
+U'--my love the pearl blue and what is your pendant pattern ? (cosine: 0.535)
+G'--I'm not sure yet, but they are a nice pair of drapes.I like the pattern of mermaids, which are similar to mermaids.
+(length: 27, latency: 0.174, BLEU: 0.087, ROUGE: 0.200, METEOR: 0.336)
+
+Dialogue history: <PS>i go to the gym regularly . i've short hair . i like doing the treadmill and rowing machine . two dogs live with me .
+U--what are you doing tonight ? 
+(Ref: ['i get most of my exercise exploring the city', ...])
+G--I'm hanging out with some friends to watch basketball.
+(length: 10, latency: 0.068, BLEU: 0.150, ROUGE: 0.190, METEOR: 0.129)
+U'--what are you doing ... ? (cosine: 0.726)
+G'--I am working on my hair stylist. I think it will be a good idea to start a salon in my free time. Do you like going to the gym?
+(length: 33, latency: 0.175, BLEU: 0.096, ROUGE: 0.244, METEOR: 0.448)
+
+Dialogue history: <PS>i go to the gym regularly . i've short hair . i like doing the treadmill and rowing machine . two dogs live with me .<SEP>what are you doing tonight ?<SEP>i get most of my exercise exploring the city
+U--that is great . do you do anything else besides work out ? 
+(Ref: ['i am not much of an exercise junkie . i'd rather play music', ...])
+G--I love to exercise, but I am not great at it. I need more time to myself. Do you have any pets?
+(length: 26, latency: 0.138, BLEU: 0.114, ROUGE: 0.229, METEOR: 0.350)
+U'--that is for . do you oh anything else besides work out ? (cosine: 0.905)
+G'--I love to exercise, but I am not good at it for the long run. I need more time to get out there and explore. Do you have any pets?
+(length: 34, latency: 0.183, BLEU: 0.089, ROUGE: 0.186, METEOR: 0.444)
+
+Dialogue history: <PS>i go to the gym regularly . i've short hair . i like doing the treadmill and rowing machine . two dogs live with me .<SEP>what are you doing tonight ?<SEP>i get most of my exercise exploring the city<SEP>that is great . do you do anything else besides work out ?<SEP>i am not much of an exercise junkie . i'd rather play music
+U--what kind of music do you like the most ? 
+(Ref: ['i'm more of a classical person . i play a ton of instruments', ...])
+G--I like pop and rock. What about you?
+(length: 10, latency: 0.067, BLEU: 0.279, ROUGE: 0.625, METEOR: 0.672)
+U'--what specimen of music do you like the most brown (cosine: 0.816)
+G'--I like all kinds of music. Some of it can be heard in hip-hop, some can be heard on the radio. What do you like?
+(length: 29, latency: 0.164, BLEU: 0.118, ROUGE: 0.316, METEOR: 0.452)
+
+Dialogue history: <PS>i go to the gym regularly . i've short hair . i like doing the treadmill and rowing machine . two dogs live with me .<SEP>what are you doing tonight ?<SEP>i get most of my exercise exploring the city<SEP>that is great . do you do anything else besides work out ?<SEP>i am not much of an exercise junkie . i'd rather play music<SEP>what kind of music do you like the most ?<SEP>i'm more of a classical person . i play a ton of instruments
+U--i play violin , like my father . i also play piano , guitar , bass , drums 
+(Ref: ['i teach piano actually , on the side', ...])
+G--Do you play any instruments?
+(length: 6, latency: 0.047, BLEU: 0.291, ROUGE: 0.316, METEOR: 0.224)
+U'--i lulu violin ... like my alpha . i also play piano , guitar , bass , drums (cosine: 0.801)
+G'--I love the guitar. Have you heard of the famous lucy song? It is about a man struggling to find the right guitar.
+(length: 26, latency: 0.152, BLEU: 0.073, ROUGE: 0.267, METEOR: 0.418)
+
+Dialogue history: <PS>i have solar panels on my roof . i buy only organic food products . i spend a lot of time browsing the internet . i love social medial especially twitter . i am a feminist .
+U--do you want to go the the playground with me ? 
+(Ref: ['my parents won't let me on twitter . maybe when i am in 5th grade .', ...])
+G--yes! I love playing on the playground and it is very fun! Do you play on the playground?
+(length: 21, latency: 0.122, BLEU: 0.087, ROUGE: 0.242, METEOR: 0.245)
+U'--do you want to go the the sic with me other (cosine: 0.462)
+G'--I think it would be more fun, but I am not sure I could go with the Sic. My girlfriend is a Sic and I spend most of my time browsing the internet.
+(length: 36, latency: 0.204, BLEU: 0.077, ROUGE: 0.182, METEOR: 0.294)
+
+Dialogue history: <PS>i have solar panels on my roof . i buy only organic food products . i spend a lot of time browsing the internet . i love social medial especially twitter . i am a feminist .<SEP>do you want to go the the playground with me ?<SEP>my parents won't let me on twitter . maybe when i am in 5th grade .
+U--you surf ? what a cool kid . i want to surf with mickey mouse . 
+(Ref: ['yay ! i am a girl . will you go to disney world with me ?', ...])
+G--I do surf from time to time. I have solar panels on my roof so I can see all the ocean!
+(length: 23, latency: 0.130, BLEU: 0.079, ROUGE: 0.176, METEOR: 0.201)
+U'--you dot if what a cool pdf . i ni to surf with thekey mouse . (cosine: 0.696)
+G'--My dad is a big fan of that. My mom says it's too hard to surf with the mouse. My dad says it's too hard. Do you like to surf with the key mouse?
+(length: 38, latency: 0.212, BLEU: 0.071, ROUGE: 0.163, METEOR: 0.404)
+
+Dialogue history: <PS>i have solar panels on my roof . i buy only organic food products . i spend a lot of time browsing the internet . i love social medial especially twitter . i am a feminist .<SEP>do you want to go the the playground with me ?<SEP>my parents won't let me on twitter . maybe when i am in 5th grade .<SEP>you surf ? what a cool kid . i want to surf with mickey mouse .<SEP>yay ! i am a girl . will you go to disney world with me ?
+U--are the panels on your house ? 
+(Ref: ['when i'm old enough to shop for myself , i'll .', ...])
+G--Yes, they are on my roof. I buy only organic food products from the internet. Do you like organic food?
+(length: 24, latency: 0.134, BLEU: 0.106, ROUGE: 0.229, METEOR: 0.294)
+U'--are the panels on your house pattern (cosine: 0.883)
+G'--They are basically solar panels on my roof. I buy only organic food products from the internet. Do you like organic food?
+(length: 25, latency: 0.139, BLEU: 0.100, ROUGE: 0.216, METEOR: 0.292)
+
+Dialogue history: <PS>i have solar panels on my roof . i buy only organic food products . i spend a lot of time browsing the internet . i love social medial especially twitter . i am a feminist .<SEP>do you want to go the the playground with me ?<SEP>my parents won't let me on twitter . maybe when i am in 5th grade .<SEP>you surf ? what a cool kid . i want to surf with mickey mouse .<SEP>yay ! i am a girl . will you go to disney world with me ?<SEP>are the panels on your house ?<SEP>when i'm old enough to shop for myself , i'll .
+U--i will remember that . i should get back to the playground now . 
+(Ref: ['i will . you can come if you want to . i have lots of friends .', ...])
+G--okay, I'm sure you'll enjoy it
+(length: 7, latency: 0.068, BLEU: 0.206, ROUGE: 0.316, METEOR: 0.237)
+U'--i will remember that . i lulu diary back to the lulu now with (cosine: 0.510)
+G'--I love lulu! I've been browsing the internet a lot with my mum. Maybe when I'm older I'll have time to get some organic food products.
+(length: 29, latency: 0.171, BLEU: 0.065, ROUGE: 0.222, METEOR: 0.344)
+
+Dialogue history: <PS>i speak chinese . my father is an electrician . i play ping pong . i love chocolate bars .
+U--i just finished reading a book , i'm pretty relaxed , how are you ? 
+(Ref: ['i love ping pong , sometimes i play with my family together .', ...])
+G--I am actually reading a Chinese book. It is really good.
+(length: 13, latency: 0.097, BLEU: 0.126, ROUGE: 0.231, METEOR: 0.307)
+U'--i just finished reading a letter lulu i'm pretty relaxed , how are you ? (cosine: 0.777)
+G'--I am reading a letter lulu. I am trying to work my way through a Chinese class. Do you like chocolate bars?
+(length: 25, latency: 0.138, BLEU: 0.088, ROUGE: 0.216, METEOR: 0.373)
+
+Dialogue history: <PS>i speak chinese . my father is an electrician . i play ping pong . i love chocolate bars .<SEP>i just finished reading a book , i'm pretty relaxed , how are you ?<SEP>i love ping pong , sometimes i play with my family together .
+U--i can not eat chocolate anymore , i started walking everyday trying to stay fit . 
+(Ref: ['i got no time to learn another language , i've to work as a nurse .', ...])
+G--I feel you. I started walking again about 3 years ago. It was really fun.
+(length: 18, latency: 0.101, BLEU: 0.121, ROUGE: 0.214, METEOR: 0.231)
+U'--i can not eat colour maori , i started walking everyday trying to ... fit ... (cosine: 0.741)
+G'--That's a good idea. I started walking as a way to fit, but it's hard now that my dad is an electrician. I don't think I could ever work out that way.
+(length: 36, latency: 0.201, BLEU: 0.076, ROUGE: 0.235, METEOR: 0.277)
+
+Dialogue history: <PS>i speak chinese . my father is an electrician . i play ping pong . i love chocolate bars .<SEP>i just finished reading a book , i'm pretty relaxed , how are you ?<SEP>i love ping pong , sometimes i play with my family together .<SEP>i can not eat chocolate anymore , i started walking everyday trying to stay fit .<SEP>i got no time to learn another language , i've to work as a nurse .
+U--oh i spend time with my son too , we are going to disneyland to see mickey ! 
+(Ref: ['oh you have to go so soon ?', ...])
+G--That sounds amazing! I can't wait to see Mickey.
+(length: 11, latency: 0.075, BLEU: 0.150, ROUGE: 0.211, METEOR: 0.184)
+U'--oh i spend in with my son too as we are going to onneyland to education lovekey ! (cosine: 0.763)
+G'--That's fantastic! I'm so excited to get my chance to learn another language. My father is an electrician so we often go to his place.
+(length: 28, latency: 0.164, BLEU: 0.066, ROUGE: 0.118, METEOR: 0.196)
+
+Dialogue history: <PS>i volunteer in a homeless shelter . i'm a professional wrestler . i like to workout a a times a week . in my spare time i do volunteer work . i enjoy being around people .
+U--hey nice weather we are have tonight . 
+(Ref: ['really sound like hard work . is it ?', ...])
+G--Oh how nice! It's been cool and sunny here. How long have you been volunteering at the homeless shelter?
+(length: 22, latency: 0.126, BLEU: 0.130, ROUGE: 0.258, METEOR: 0.343)
+U'--and nice ... we are have with useful (cosine: 0.302)
+G'--Yes I agree, I volunteer at a homeless shelter and it's really rewarding to see the humanity that comes in contact with people.
+Attack failed!
+(length: 25, latency: 0.144, BLEU: 0.257, ROUGE: 0.343, METEOR: 0.512)
+
+Dialogue history: <PS>i volunteer in a homeless shelter . i'm a professional wrestler . i like to workout a a times a week . in my spare time i do volunteer work . i enjoy being around people .<SEP>hey nice weather we are have tonight .<SEP>really sound like hard work . is it ?
+U--what kind of foods do you like ? because i love food . 
+(Ref: ['really me too . and i travel all around the world to eat new foods .', ...])
+G--I love Italian food the most
+(length: 6, latency: 0.048, BLEU: 0.244, ROUGE: 0.273, METEOR: 0.164)
+U'--what kind of foods do you like ? because i love alpha . (cosine: 0.764)
+G'--I like all kinds of food. Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta Beta
+(length: 148, latency: 0.722, BLEU: 0.010, ROUGE: 0.026, METEOR: 0.108)
+
+Dialogue history: <PS>i volunteer in a homeless shelter . i'm a professional wrestler . i like to workout a a times a week . in my spare time i do volunteer work . i enjoy being around people .<SEP>hey nice weather we are have tonight .<SEP>really sound like hard work . is it ?<SEP>what kind of foods do you like ? because i love food .<SEP>really me too . and i travel all around the world to eat new foods .
+U--i am always on the go . so i don't have much spare time ! 
+(Ref: ['i've been going around the world try new foods for 1 years now .', ...])
+G--I work in a shelter and I love to workout a lot
+(length: 12, latency: 0.094, BLEU: 0.169, ROUGE: 0.240, METEOR: 0.215)
+U'--i am always on the go . so i don't have much spare as ! (cosine: 0.936)
+G'--I have a lot of spare time as well, when I volunteer at a homeless shelter it can be hard to have a lot of spare time
+(length: 28, latency: 0.155, BLEU: 0.069, ROUGE: 0.171, METEOR: 0.169)
+
+Dialogue history: <PS>i volunteer in a homeless shelter . i'm a professional wrestler . i like to workout a a times a week . in my spare time i do volunteer work . i enjoy being around people .<SEP>hey nice weather we are have tonight .<SEP>really sound like hard work . is it ?<SEP>what kind of foods do you like ? because i love food .<SEP>really me too . and i travel all around the world to eat new foods .<SEP>i am always on the go . so i don't have much spare time !<SEP>i've been going around the world try new foods for 1 years now .
+U--me to . by the way , what are your dreams . 
+(Ref: ['wow that is a really nice dream .', ...])
+G--i would love to be able to travel and do sports.
+(length: 12, latency: 0.079, BLEU: 0.175, ROUGE: 0.222, METEOR: 0.202)
+U'--me to . by the way python what are your io . (cosine: 0.516)
+G'--Oh Hello! I'm Bob, I'm a professional wrestler and I like to workout a a times a week.
+(length: 21, latency: 0.129, BLEU: 0.085, ROUGE: 0.276, METEOR: 0.259)
+
+Dialogue history: <PS>my sister is a pole dancer . i can drive a tractor . my favorite color is red . i enjoy listening to classical music .
+U--hi , how are you ? do you like sports ? 
+(Ref: ['doing good ! i love to skateboard !', ...])
+G--i love sports, but i'm more of a football fan! My favorite sport is soccer though! What about you?
+(length: 23, latency: 0.133, BLEU: 0.111, ROUGE: 0.194, METEOR: 0.294)
+U'--hi single how are you ? do you like sports novel (cosine: 0.761)
+G'--I love sports, but I'm not a big fan of any sports. My sister is a pole dancer though and she's always had a passion for dancing. What about you?
+(length: 34, latency: 0.187, BLEU: 0.069, ROUGE: 0.186, METEOR: 0.341)
+
+Dialogue history: <PS>my sister is a pole dancer . i can drive a tractor . my favorite color is red . i enjoy listening to classical music .<SEP>hi , how are you ? do you like sports ?<SEP>doing good ! i love to skateboard !
+U--nice ! ! i broke my arm doing it but always wear a hat . 
+(Ref: ['what act did she do ?', ...])
+G--I broke my arm too when I was younger. It took a lot of practice to get it back
+(length: 20, latency: 0.113, BLEU: 0.089, ROUGE: 0.250, METEOR: 0.292)
+U'--three four ! i broke my lulu doing it but always wear a hat for (cosine: 0.575)
+G'--Three times! That is so bad! I broke my lulu too. Luckily my sister is a pole dancer so I can wear a hat all the time
+(length: 30, latency: 0.166, BLEU: 0.077, ROUGE: 0.205, METEOR: 0.270)
+
+Dialogue history: <PS>my sister is a pole dancer . i can drive a tractor . my favorite color is red . i enjoy listening to classical music .<SEP>hi , how are you ? do you like sports ?<SEP>doing good ! i love to skateboard !<SEP>nice ! ! i broke my arm doing it but always wear a hat .<SEP>what act did she do ?
+U--wow ! is that good money ? 
+(Ref: ['i could skateboard around a pole . . . nice sister !', ...])
+G--yes, it is! i love money! what else do you do?
+(length: 15, latency: 0.094, BLEU: 0.322, ROUGE: 0.357, METEOR: 0.302)
+U'--band booklet is that lulu pattern ? (cosine: 0.203)
+G'--Yes it is. I love lulu. My sister is a pole dancer and she always makes sure I listen to it while I dance. Do you like music?
+(length: 32, latency: 0.171, BLEU: 0.085, ROUGE: 0.244, METEOR: 0.367)
+
+Dialogue history: <PS>my sister is a pole dancer . i can drive a tractor . my favorite color is red . i enjoy listening to classical music .<SEP>hi , how are you ? do you like sports ?<SEP>doing good ! i love to skateboard !<SEP>nice ! ! i broke my arm doing it but always wear a hat .<SEP>what act did she do ?<SEP>wow ! is that good money ?<SEP>i could skateboard around a pole . . . nice sister !
+U--pretty ! what do you do for fun ? 
+(Ref: ['i like to skateboard with my friends .', ...])
+G--I like to go fishing on the weekends. My favorite is red because it's my favorite color. Do you like red?
+(length: 24, latency: 0.136, BLEU: 0.106, ROUGE: 0.276, METEOR: 0.465)
+U'--pretty io what do you do for fun this (cosine: 0.831)
+G'--I like to ride my tractor in the country. My favorite color is red so I like to ride in it. Do you like to ride motorcycles?
+(length: 30, latency: 0.165, BLEU: 0.121, ROUGE: 0.286, METEOR: 0.403)
+
+Dialogue history: <PS>i was raised in a single parent household . i only eat kosher . i am a stunt double as my second job . i never broke a bone in my body ever in my life .
+U--hi . last week was my 45th birthday . i am an old man with so many infirmities ! 
+(Ref: ['i take so many meds and they have side effects . no nickel from me !', ...])
+G--I am sorry to hear that. Do you have any family with any infirmities?
+(length: 16, latency: 0.106, BLEU: 0.137, ROUGE: 0.370, METEOR: 0.379)
+U'--and . last week was my ohth birthday . i am an on man with so many infirmities ! (cosine: 0.763)
+G'--You're so lucky to have such a high number of infirmities. I was raised in a single parent household and had to do a lot of stunt work for my family.
+(length: 33, latency: 0.195, BLEU: 0.108, ROUGE: 0.250, METEOR: 0.482)
+
+Dialogue history: <PS>i was raised in a single parent household . i only eat kosher . i am a stunt double as my second job . i never broke a bone in my body ever in my life .<SEP>hi . last week was my 45th birthday . i am an old man with so many infirmities !<SEP>i take so many meds and they have side effects . no nickel from me !
+U--really ? how do i get there ? ! i must be hallucinating . meds make me . 
+(Ref: ['of course , the booze makes me see things , too , even though i don't drink anymore .', ...])
+G--I think some people are on them because they make them loopy. I can't drive because I can't eat.
+(length: 21, latency: 0.137, BLEU: 0.073, ROUGE: 0.182, METEOR: 0.242)
+U'--really ? how do i in there ? ! i must be hallucinating . meds make me . (cosine: 0.902)
+G'--I'm still getting there. It's strange how all the meds affect you so much. I remember when I was younger, people used to take me to see movies. It was fun.
+(length: 36, latency: 0.205, BLEU: 0.072, ROUGE: 0.178, METEOR: 0.275)
+
+Dialogue history: <PS>i was raised in a single parent household . i only eat kosher . i am a stunt double as my second job . i never broke a bone in my body ever in my life .<SEP>hi . last week was my 45th birthday . i am an old man with so many infirmities !<SEP>i take so many meds and they have side effects . no nickel from me !<SEP>really ? how do i get there ? ! i must be hallucinating . meds make me .<SEP>of course , the booze makes me see things , too , even though i don't drink anymore .
+U--please . never had an interest in space as a kid back on the farm . 
+(Ref: ['never heard of that . of course , i see many things now that i'm in the city', ...])
+G--I was raised in a single parent household, so we mostly did stunt work on the farm. What did you do?
+(length: 24, latency: 0.145, BLEU: 0.102, ROUGE: 0.258, METEOR: 0.277)
+U'--please in never had an interest in ... as a kid back on the farm . (cosine: 0.878)
+G'--I did love working on the farm, it was a good way to help raise my kids. I'm a single parent, though, so it's been a while since I've done anything like that.
+(length: 38, latency: 0.213, BLEU: 0.077, ROUGE: 0.204, METEOR: 0.270)
+
+Dialogue history: <PS>i was raised in a single parent household . i only eat kosher . i am a stunt double as my second job . i never broke a bone in my body ever in my life .<SEP>hi . last week was my 45th birthday . i am an old man with so many infirmities !<SEP>i take so many meds and they have side effects . no nickel from me !<SEP>really ? how do i get there ? ! i must be hallucinating . meds make me .<SEP>of course , the booze makes me see things , too , even though i don't drink anymore .<SEP>please . never had an interest in space as a kid back on the farm .<SEP>never heard of that . of course , i see many things now that i'm in the city
+U--wow ! i need to check that out . so much is wrong with me . 
+(Ref: ['oh , i do not think so . i do not believe that .', ...])
+G--I was raised in a single parent household, so it's always a bit hard for me to get out there and do things like that.
+(length: 27, latency: 0.155, BLEU: 0.084, ROUGE: 0.216, METEOR: 0.277)
+U'--wow ! i need to check that out . so much is wrong with me . (cosine: 1.000)
+G'--I was raised in a single parent household, so it's always a bit hard for me to get out there and do things like that.
+Attack failed!
+(length: 27, latency: 0.149, BLEU: 0.084, ROUGE: 0.216, METEOR: 0.277)
+
+Dialogue history: <PS>i started playing guitar when i was three . i grew up in the industry . we spent summers ring at national parks . i'm a country music singer .
+U--hello , how are you today ? 
+(Ref: ['that's awesome , how do you like performing ? i am currently looking for a new job .', ...])
+G--doing good.. how about you
+(length: 7, latency: 0.047, BLEU: 0.302, ROUGE: 0.400, METEOR: 0.172)
+U'--hello , how are you above lulu (cosine: 0.475)
+G'--I'm doing well. I love the outdoors.I spent a lot of time in national parks when I was three
+(length: 22, latency: 0.121, BLEU: 0.076, ROUGE: 0.222, METEOR: 0.201)
+
+Dialogue history: <PS>i started playing guitar when i was three . i grew up in the industry . we spent summers ring at national parks . i'm a country music singer .<SEP>hello , how are you today ?<SEP>that's awesome , how do you like performing ? i am currently looking for a new job .
+U--sounds like it was ment to be . my daughter loves to preform she's a prodigy really . 
+(Ref: ['hopefully she makes it big , i love to go to the park and watch her preform .', ...])
+G--Wow that's amazing. I've never done anything like that before but I would love to do it someday.
+(length: 20, latency: 0.122, BLEU: 0.116, ROUGE: 0.345, METEOR: 0.396)
+U'--s on like it was ... to be and my daughter loves to letterform she's a prodigy really an (cosine: 0.747)
+G'--Wow, I bet she's an amazing talent! I've never done anything like that before but I'd love to hear what your daughter has planned for the weekend!
+(length: 30, latency: 0.170, BLEU: 0.081, ROUGE: 0.256, METEOR: 0.282)
+
+Dialogue history: <PS>i started playing guitar when i was three . i grew up in the industry . we spent summers ring at national parks . i'm a country music singer .<SEP>hello , how are you today ?<SEP>that's awesome , how do you like performing ? i am currently looking for a new job .<SEP>sounds like it was ment to be . my daughter loves to preform she's a prodigy really .<SEP>hopefully she makes it big , i love to go to the park and watch her preform .
+U--that would be amazing . being a doctor it is hard to get time off . 
+(Ref: ['i love to watch movies , my favorite is friday . what about yourself ?', ...])
+G--I know it's hard but you have to keep at it
+(length: 11, latency: 0.106, BLEU: 0.185, ROUGE: 0.235, METEOR: 0.250)
+U'--that would be amazing . being a doctor it is hard to get time off for (cosine: 0.975)
+G'--I understand. I used to work in an office when I was younger and it was hard for me to get time off for family. Do you have any hobbies?
+(length: 33, latency: 0.178, BLEU: 0.090, ROUGE: 0.229, METEOR: 0.504)
+
+Dialogue history: <PS>i like to take walks . i don't drink soda . i live in a house . i like to eat hamburgers and french fries .
+U--hi i just finished my 100th birthday . i could live forever ! 
+(Ref: ['that is awesome . going strong , even at 100 .', ...])
+G--Happy 100th birthday! I hope you have a great day!
+(length: 12, latency: 0.082, BLEU: 0.163, ROUGE: 0.250, METEOR: 0.202)
+U'--dintet i just finished my 100th 2005 . i could in forever the (cosine: 0.586)
+G'--That's awesome. I haven't finished my 100th birthday yet but I am sure I will be doing a lot more in the future.
+(length: 25, latency: 0.149, BLEU: 0.100, ROUGE: 0.244, METEOR: 0.309)
+
+Dialogue history: <PS>i like to take walks . i don't drink soda . i live in a house . i like to eat hamburgers and french fries .<SEP>hi i just finished my 100th birthday . i could live forever !<SEP>that is awesome . going strong , even at 100 .
+U--yum ! i love to dance . its best in the moonlight with a glass of wine . 
+(Ref: ['fun . wow , the years have flown . television didn't exist when i was a kid .', ...])
+G--I love wine too! What's your favorite kind?
+(length: 10, latency: 0.068, BLEU: 0.189, ROUGE: 0.200, METEOR: 0.247)
+U'--yum ! i love to for . its best in the moon letter with a glass of wine the (cosine: 0.762)
+G'--I love the moon letter. Did you know it's the letter of the letter B, from the letter B, also known as the letter C?
+(length: 29, latency: 0.165, BLEU: 0.062, ROUGE: 0.154, METEOR: 0.170)
+
+Dialogue history: <PS>i like to take walks . i don't drink soda . i live in a house . i like to eat hamburgers and french fries .<SEP>hi i just finished my 100th birthday . i could live forever !<SEP>that is awesome . going strong , even at 100 .<SEP>yum ! i love to dance . its best in the moonlight with a glass of wine .<SEP>fun . wow , the years have flown . television didn't exist when i was a kid .
+U--yeah . those were worrisome days . do you have hobbies ? 
+(Ref: ['yeah . i will stick to wine . forever young , baby !', ...])
+G--I like to take walks. It's a great way to pass the time. What do you do for fun?
+(length: 22, latency: 0.132, BLEU: 0.143, ROUGE: 0.294, METEOR: 0.453)
+U'--yeah . those were worrisome days . mm you have hobbies ? (cosine: 0.969)
+G'--I like going on walks. It's a way to get out and relax. Plus, I eat a lot of healthy food. Like broccoli! haha
+(length: 29, latency: 0.157, BLEU: 0.067, ROUGE: 0.216, METEOR: 0.238)
+
+Dialogue history: <PS>i like to take walks . i don't drink soda . i live in a house . i like to eat hamburgers and french fries .<SEP>hi i just finished my 100th birthday . i could live forever !<SEP>that is awesome . going strong , even at 100 .<SEP>yum ! i love to dance . its best in the moonlight with a glass of wine .<SEP>fun . wow , the years have flown . television didn't exist when i was a kid .<SEP>yeah . those were worrisome days . do you have hobbies ?<SEP>yeah . i will stick to wine . forever young , baby !
+U--that , a forever love , and faith . 
+(Ref: ['enough about me . tell me more about you .', ...])
+G--That's great! I wish I could be a kid again.
+(length: 12, latency: 0.079, BLEU: 0.124, ROUGE: 0.308, METEOR: 0.257)
+U'--that , a forever well , and pattern . (cosine: 0.430)
+G'--That's a great idea. What type of food do you like? I like soda, but I live in a house with a lot of soda.
+(length: 29, latency: 0.183, BLEU: 0.123, ROUGE: 0.293, METEOR: 0.453)
+
+Dialogue history: <PS>one of the languages that i'm currently studying is spanish . i am a musician . my favorite spanish word is trabajo . i also study languages . my next language to study is french .
+U--hi good afternoon . it is so high up here . 
+(Ref: ['i am on top of a skyscraper . i think i will take the elevator down . so afraid .', ...])
+G--Awesome, are you a fan of any sports?
+(length: 10, latency: 0.083, BLEU: 0.178, ROUGE: 0.250, METEOR: 0.183)
+U'--hi good afternoon . it is tuberculosis high up here to (cosine: 0.771)
+G'--I don't know that there's a cure for tuberculosis, but if you want to give it a try, I think you should go for it!
+(length: 28, latency: 0.166, BLEU: 0.122, ROUGE: 0.273, METEOR: 0.552)
+
+Dialogue history: <PS>one of the languages that i'm currently studying is spanish . i am a musician . my favorite spanish word is trabajo . i also study languages . my next language to study is french .<SEP>hi good afternoon . it is so high up here .<SEP>i am on top of a skyscraper . i think i will take the elevator down . so afraid .
+U--visiting the city and someone recommended it . 
+(Ref: ['that is exciting . i wish i can speak spanish . many hispanic folks at the food bank .', ...])
+G--ok. are you afraid of heights?
+(length: 8, latency: 0.060, BLEU: 0.240, ROUGE: 0.364, METEOR: 0.323)
+U'--visiting the city and someone recommended it but (cosine: 0.863)
+G'--You should take a break from traveling and mind your own business. One of my fave languages is trabajo. What do you study?
+(length: 26, latency: 0.160, BLEU: 0.089, ROUGE: 0.138, METEOR: 0.322)
+
+Dialogue history: <PS>one of the languages that i'm currently studying is spanish . i am a musician . my favorite spanish word is trabajo . i also study languages . my next language to study is french .<SEP>hi good afternoon . it is so high up here .<SEP>i am on top of a skyscraper . i think i will take the elevator down . so afraid .<SEP>visiting the city and someone recommended it .<SEP>that is exciting . i wish i can speak spanish . many hispanic folks at the food bank .
+U--cool you can become a diplomat . i just help out at the food bank . 
+(Ref: ['haha trabajo is good but party is cool . love parties .', ...])
+G--that's a great job. i am a musician so i could learn a language like that.
+(length: 18, latency: 0.110, BLEU: 0.183, ROUGE: 0.276, METEOR: 0.207)
+U'--cool you can io a diplomat beaufort i just help out at the food bank . (cosine: 0.796)
+G'--That's a great idea! I'm a musician so I might be able to learn a language that i can use to help out at the food bank.
+(length: 29, latency: 0.166, BLEU: 0.078, ROUGE: 0.195, METEOR: 0.194)
+
+Dialogue history: <PS>one of the languages that i'm currently studying is spanish . i am a musician . my favorite spanish word is trabajo . i also study languages . my next language to study is french .<SEP>hi good afternoon . it is so high up here .<SEP>i am on top of a skyscraper . i think i will take the elevator down . so afraid .<SEP>visiting the city and someone recommended it .<SEP>that is exciting . i wish i can speak spanish . many hispanic folks at the food bank .<SEP>cool you can become a diplomat . i just help out at the food bank .<SEP>haha trabajo is good but party is cool . love parties .
+U--anything goes . music , people , dance 
+(Ref: ['no i volunteer at the food bank .', ...])
+G--cool! what kind of music do you like?
+(length: 10, latency: 0.067, BLEU: 0.178, ROUGE: 0.235, METEOR: 0.165)
+U'--anything species . mm above people , dance (cosine: 0.557)
+G'--funny you say that. i love plants. what do you do for a living?
+(length: 17, latency: 0.103, BLEU: 0.163, ROUGE: 0.231, METEOR: 0.272)
+
+Dialogue history: <PS>i live in the cloud . i'm a little girl . i like to make time stop . i'm very lonely . i have superpowers .
+U--hello how are u tonight i'm feeling like a old person 
+(Ref: ['i'm currently in juvenile detention center in florida', ...])
+G--I'm feeling pretty old, how about you?
+(length: 9, latency: 0.065, BLEU: 0.200, ROUGE: 0.500, METEOR: 0.385)
+U'--hello how are oh lulu i'm feeling pdf a ... web (cosine: 0.454)
+G'--I'm super geek. I live in the cloud and superheros everywhere. I can make time stop anywhere I want!
+(length: 22, latency: 0.139, BLEU: 0.081, ROUGE: 0.214, METEOR: 0.230)
+
+Dialogue history: <PS>i live in the cloud . i'm a little girl . i like to make time stop . i'm very lonely . i have superpowers .<SEP>hello how are u tonight i'm feeling like a old person<SEP>i'm currently in juvenile detention center in florida
+U--i got caught shoplifting clothing 
+(Ref: ['what superpower do u wish u had', ...])
+G--oh thats crazy. i think you should get arrested. i live in the cloud and it makes me super vulnerable
+(length: 22, latency: 0.124, BLEU: 0.101, ROUGE: 0.200, METEOR: 0.228)
+U'--i got no singlelifting clothing (cosine: 0.479)
+G'--oh that's too bad. i got locked up in a car with a friend because I'm trying to get to work. I'm a little girl
+(length: 27, latency: 0.163, BLEU: 0.093, ROUGE: 0.205, METEOR: 0.272)
+
+Dialogue history: <PS>i live in the cloud . i'm a little girl . i like to make time stop . i'm very lonely . i have superpowers .<SEP>hello how are u tonight i'm feeling like a old person<SEP>i'm currently in juvenile detention center in florida<SEP>i got caught shoplifting clothing<SEP>what superpower do u wish u had
+U--i get to go home in 30 days though so i'm happy 
+(Ref: ['yeah so where do u live', ...])
+G--I am so sad
+(length: 4, latency: 0.062, BLEU: 0.218, ROUGE: 0.200, METEOR: 0.172)
+U'--i novel to go home in 33 days though python i'm happy (cosine: 0.630)
+G'--I understand. I read a lot of books in school but never with superpowers. how long have you been in jail?
+(length: 24, latency: 0.134, BLEU: 0.079, ROUGE: 0.194, METEOR: 0.302)
+
+Dialogue history: <PS>i live in the cloud . i'm a little girl . i like to make time stop . i'm very lonely . i have superpowers .<SEP>hello how are u tonight i'm feeling like a old person<SEP>i'm currently in juvenile detention center in florida<SEP>i got caught shoplifting clothing<SEP>what superpower do u wish u had<SEP>i get to go home in 30 days though so i'm happy<SEP>yeah so where do u live
+U--oh i hear there's great pizza in chicago 
+(Ref: ['i cant wait to be able to have real food once i get out', ...])
+G--i love pizza
+(length: 3, latency: 0.033, BLEU: 0.390, ROUGE: 0.222, METEOR: 0.184)
+U'--oh i hear there's great pdf in isicago (cosine: 0.602)
+G'--that's great. i live in the cloud top. i can make time stop anywhere i want
+(length: 18, latency: 0.111, BLEU: 0.140, ROUGE: 0.250, METEOR: 0.169)
+
+Dialogue history: <PS>i'm here for shoplifting . i feel old . i'm currently in a juvenile detention center . i will be released in about a month . my mom is coming to visit me tomorrow .
+U--hi want to get to know each other 
+(Ref: ['i am in my twenties , you ?', ...])
+G--do you like it when you get to know each other?
+(length: 12, latency: 0.076, BLEU: 0.163, ROUGE: 0.222, METEOR: 0.341)
+U'--hi want to oh to know each other (cosine: 0.872)
+G'--yeah you and me both get to know each other pretty well. I'm here for shoplifting so it's not as easy as it used to be
+(length: 27, latency: 0.168, BLEU: 0.065, ROUGE: 0.154, METEOR: 0.183)
+
+Dialogue history: <PS>i'm here for shoplifting . i feel old . i'm currently in a juvenile detention center . i will be released in about a month . my mom is coming to visit me tomorrow .<SEP>hi want to get to know each other<SEP>i am in my twenties , you ?
+U--50 ? i need something to go on here 
+(Ref: ['pretty good . i took a nice run today', ...])
+G--I am in my early twenties, what do you do for work?
+(length: 14, latency: 0.088, BLEU: 0.241, ROUGE: 0.526, METEOR: 0.496)
+U'--50 life i need something to tiger on here (cosine: 0.637)
+G'--That's cool. I'm only 18 so you probably don't have as much time to spend with your friends as I did when I was younger.
+(length: 27, latency: 0.159, BLEU: 0.078, ROUGE: 0.150, METEOR: 0.253)
+
+Dialogue history: <PS>i'm here for shoplifting . i feel old . i'm currently in a juvenile detention center . i will be released in about a month . my mom is coming to visit me tomorrow .<SEP>hi want to get to know each other<SEP>i am in my twenties , you ?<SEP>50 ? i need something to go on here<SEP>pretty good . i took a nice run today
+U--i try not to . my husband and i are pretty honest 
+(Ref: ['i disagree . self control is in everyone', ...])
+G--I'm pretty old. My mom just got back from a shoplifting trip and I'm still trying to get over it.
+(length: 22, latency: 0.141, BLEU: 0.101, ROUGE: 0.229, METEOR: 0.302)
+U'--i try not to novel my life and i are pattern honest (cosine: 0.404)
+G'--I'm pretty self conscious about my life and try not to focus on one thing.I'm a shoplifting kinda guy so it's hard for me.
+(length: 27, latency: 0.167, BLEU: 0.073, ROUGE: 0.186, METEOR: 0.197)
+
+Dialogue history: <PS>i'm here for shoplifting . i feel old . i'm currently in a juvenile detention center . i will be released in about a month . my mom is coming to visit me tomorrow .<SEP>hi want to get to know each other<SEP>i am in my twenties , you ?<SEP>50 ? i need something to go on here<SEP>pretty good . i took a nice run today<SEP>i try not to . my husband and i are pretty honest<SEP>i disagree . self control is in everyone
+U--you could talk to someone 
+(Ref: ['maybe someone professional . it may help', ...])
+G--i probably should. thanks for the advice
+(length: 8, latency: 0.059, BLEU: 0.211, ROUGE: 0.333, METEOR: 0.161)
+U'--you could talk to if (cosine: 0.794)
+G'--i probably am too old for people to talk to. i just got out of the juvenile detention center and am on my own.
+(length: 26, latency: 0.144, BLEU: 0.128, ROUGE: 0.258, METEOR: 0.455)
+
+Dialogue history: <PS>i have a dogs . i attend church every week . i'm a woman . i work as a school teacher .
+U--hey , tell me about yourself , what do you like to do for fun ? 
+(Ref: ['i am a blonde girl , in great shape and rather skinny .', ...])
+G--I enjoy playing video games with my dogs.
+(length: 9, latency: 0.062, BLEU: 0.200, ROUGE: 0.273, METEOR: 0.298)
+U'--hey , tell me about yourself , what do you like to do for mm torpedo (cosine: 0.614)
+G'--I'm a school teacher but I've never been able to go to the range. I like to go out for walks with my dogs. Do you like to go out for walks?
+(length: 35, latency: 0.190, BLEU: 0.076, ROUGE: 0.250, METEOR: 0.404)
+
+Dialogue history: <PS>i have a dogs . i attend church every week . i'm a woman . i work as a school teacher .<SEP>hey , tell me about yourself , what do you like to do for fun ?<SEP>i am a blonde girl , in great shape and rather skinny .
+U--i'm in college . but i love playing video games and listening to music . 
+(Ref: ['lol , maybe . i usually wear band shirts and ruffle sleeves , skinny jeans and leggings', ...])
+G--what kind of music do you like?
+(length: 8, latency: 0.056, BLEU: 0.251, ROUGE: 0.333, METEOR: 0.412)
+U'--i'm in novel . but i love playing video games and listening to music 33 (cosine: 0.815)
+G'--That sounds great. I am a woman so I dont get to go out much. I like to go to church every week and listen to sermons.
+(length: 30, latency: 0.162, BLEU: 0.077, ROUGE: 0.182, METEOR: 0.309)
+
+Dialogue history: <PS>i have a dogs . i attend church every week . i'm a woman . i work as a school teacher .<SEP>hey , tell me about yourself , what do you like to do for fun ?<SEP>i am a blonde girl , in great shape and rather skinny .<SEP>i'm in college . but i love playing video games and listening to music .<SEP>lol , maybe . i usually wear band shirts and ruffle sleeves , skinny jeans and leggings
+U--i agree . i also have really short hair . do i sound familiar ? 
+(Ref: ['yes , i hope i'm your favorite student . i do get great grades .', ...])
+G--I'm a school teacher and I work long hours. Do you have any pets?
+(length: 16, latency: 0.097, BLEU: 0.109, ROUGE: 0.286, METEOR: 0.445)
+U'--i mm . i also have really short 12 . do i sound familiar life (cosine: 0.634)
+G'--I have been in college for about 12 years. i met some of my coworkers at work when i was still in high school. Do you have any pets?
+(length: 32, latency: 0.167, BLEU: 0.072, ROUGE: 0.190, METEOR: 0.367)
+
+Dialogue history: <PS>i also have a dog walking business . i've three dogs . my father was a door to door salesman . i am in an open polyamorous relationship . i like to watch the olympics .
+U--hi there how are you doing this evening ? 
+(Ref: ['nice i do not want to go back to work i am a waitress', ...])
+G--I am actually watching the olympics tonight. How about you?
+(length: 12, latency: 0.083, BLEU: 0.255, ROUGE: 0.300, METEOR: 0.501)
+U'--or there how are you ring this ring or (cosine: 0.363)
+G'--I just got my ring back. It is a gold ring. I also have three dogs. Do you have any pets?
+(length: 25, latency: 0.140, BLEU: 0.106, ROUGE: 0.235, METEOR: 0.384)
+
+Dialogue history: <PS>i also have a dog walking business . i've three dogs . my father was a door to door salesman . i am in an open polyamorous relationship . i like to watch the olympics .<SEP>hi there how are you doing this evening ?<SEP>nice i do not want to go back to work i am a waitress
+U--iol well i wish i was brave enough to do that 
+(Ref: ['that is nice i've a motorbike don't know what car to get for winter', ...])
+G--Maybe one day i will be able to.
+(length: 9, latency: 0.091, BLEU: 0.177, ROUGE: 0.222, METEOR: 0.148)
+U'--lifet etei ... i wish i was brave enough to mm that (cosine: 0.746)
+G'--This is a tough one for me. I have three dogs and they always try to get me to go out. Do you have any pets?
+(length: 29, latency: 0.155, BLEU: 0.092, ROUGE: 0.211, METEOR: 0.537)
+
+Dialogue history: <PS>i also have a dog walking business . i've three dogs . my father was a door to door salesman . i am in an open polyamorous relationship . i like to watch the olympics .<SEP>hi there how are you doing this evening ?<SEP>nice i do not want to go back to work i am a waitress<SEP>iol well i wish i was brave enough to do that<SEP>that is nice i've a motorbike don't know what car to get for winter
+U--yes i had them put red with blue stripes to be shinny for when racing 
+(Ref: ['so what do you do in your spare time ?', ...])
+G--that is cool i have them for winter i like to watch the olympics with my three dogs
+(length: 18, latency: 0.115, BLEU: 0.151, ROUGE: 0.207, METEOR: 0.222)
+U'--yes i had them er red with bond stripes to be shinny for when racing (cosine: 0.884)
+G'--i remember watching the olympics one time i had a pair red with bond stripes to be shinny for racing i thought they were shinny for racing
+(length: 27, latency: 0.165, BLEU: 0.084, ROUGE: 0.171, METEOR: 0.139)
+
+Dialogue history: <PS>i also have a dog walking business . i've three dogs . my father was a door to door salesman . i am in an open polyamorous relationship . i like to watch the olympics .<SEP>hi there how are you doing this evening ?<SEP>nice i do not want to go back to work i am a waitress<SEP>iol well i wish i was brave enough to do that<SEP>that is nice i've a motorbike don't know what car to get for winter<SEP>yes i had them put red with blue stripes to be shinny for when racing<SEP>so what do you do in your spare time ?
+U--wow nice are you really good ? 
+(Ref: ['really would you share or are you shy', ...])
+G--i am good, but like most jobs it does have its bad days
+(length: 14, latency: 0.086, BLEU: 0.121, ROUGE: 0.316, METEOR: 0.367)
+U'--metaltet atine are you really good 2010 (cosine: 0.342)
+G'--I love the Metaltet atine but I'm not very good at it. My boyfriend is a door to door salesman and I don't get to see him much
+(length: 29, latency: 0.183, BLEU: 0.081, ROUGE: 0.222, METEOR: 0.286)
+
+Dialogue history: <PS>i love to sing songs from the movie frozen . i play with my friends on the playground . mickey mouse is my favorite character . i love to go to disney world every year . i am in the third grade .
+U--hi there , how are you ? 
+(Ref: ['not too bad . hanging with my cats tonight .', ...])
+G--I am doing well I am in the 3rd grade
+(length: 10, latency: 0.072, BLEU: 0.189, ROUGE: 0.250, METEOR: 0.274)
+U'--hi there , how are you or (cosine: 0.833)
+G'--I am actually in the 3rd grade, so I don't know much about you. What do you like to do for fun?
+(length: 25, latency: 0.141, BLEU: 0.197, ROUGE: 0.286, METEOR: 0.558)
+
+Dialogue history: <PS>i love to sing songs from the movie frozen . i play with my friends on the playground . mickey mouse is my favorite character . i love to go to disney world every year . i am in the third grade .<SEP>hi there , how are you ?<SEP>not too bad . hanging with my cats tonight .
+U--candy is okay , but i love vanilla ice cream . 
+(Ref: ['i am not sure ! haha', ...])
+G--I love vanilla ice cream too! It's so good. My friends and I go ice skating a lot
+(length: 20, latency: 0.115, BLEU: 0.089, ROUGE: 0.222, METEOR: 0.270)
+U'--candy is okay um but i min vanilla ice cream . (cosine: 0.932)
+G'--vanilla ice cream is good. i love m&m flavored syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp syurp sy
+(length: 58, latency: 0.717, BLEU: 0.039, ROUGE: 0.090, METEOR: 0.221)
+
+Dialogue history: <PS>i love to sing songs from the movie frozen . i play with my friends on the playground . mickey mouse is my favorite character . i love to go to disney world every year . i am in the third grade .<SEP>hi there , how are you ?<SEP>not too bad . hanging with my cats tonight .<SEP>candy is okay , but i love vanilla ice cream .<SEP>i am not sure ! haha
+U--what do you do for a living ? 
+(Ref: ['they like to chase laser pointers .', ...])
+G--I am a singer. I sing all the time. Do you like music?
+(length: 16, latency: 0.096, BLEU: 0.115, ROUGE: 0.276, METEOR: 0.326)
+U'--what do you do for a living to (cosine: 0.949)
+G'--I do sales work! Not the best but pays the bills! What do you do?
+(length: 18, latency: 0.105, BLEU: 0.115, ROUGE: 0.188, METEOR: 0.318)
+
+Dialogue history: <PS>i love to sing songs from the movie frozen . i play with my friends on the playground . mickey mouse is my favorite character . i love to go to disney world every year . i am in the third grade .<SEP>hi there , how are you ?<SEP>not too bad . hanging with my cats tonight .<SEP>candy is okay , but i love vanilla ice cream .<SEP>i am not sure ! haha<SEP>what do you do for a living ?<SEP>they like to chase laser pointers .
+U--i am a former olympian , actually . 
+(Ref: ['i was an ice skater .', ...])
+G--wow, that's awesome. are you older?
+(length: 9, latency: 0.103, BLEU: 0.230, ROUGE: 0.308, METEOR: 0.256)
+U'--i am a former olympian [nukog actually me (cosine: 0.776)
+G'--wow! I am not sure how you got into that sport. I am sure you are good at many other things though.
+(length: 25, latency: 0.139, BLEU: 0.090, ROUGE: 0.214, METEOR: 0.360)
+
+Dialogue history: <PS>i live in alaska . i'm a buddhist . i quit my job to pursue my spirituality full time . i like meditation .
+U--good evening , how are you ? 
+(Ref: ['i was tending the fields one day and set a fire', ...])
+G--I am great how are you doing?
+(length: 8, latency: 0.058, BLEU: 0.330, ROUGE: 0.769, METEOR: 0.703)
+U'--good evening , how are you of (cosine: 0.902)
+G'--I am great, I just started my new job as a buddhist in the new year. It's very relaxing and refreshing.
+(length: 24, latency: 0.148, BLEU: 0.090, ROUGE: 0.250, METEOR: 0.274)
+
+Dialogue history: <PS>i live in alaska . i'm a buddhist . i quit my job to pursue my spirituality full time . i like meditation .<SEP>good evening , how are you ?<SEP>i was tending the fields one day and set a fire
+U--i fell of a horse with a lit cigarette setting fire to the dry weeds 
+(Ref: ['my father had his farm used for a cia operation once .', ...])
+G--i saw a horse on the grass. i had never seen one before.
+(length: 15, latency: 0.091, BLEU: 0.146, ROUGE: 0.273, METEOR: 0.257)
+U'--i and of a ... with a lit cigarette and fire to the mm weeds (cosine: 0.608)
+G'--That's interesting. I am a buddhist so I never really got into the topic of buddhism. But just recently came to terms with it. Do you believe in being a buddhist?
+(length: 35, latency: 0.220, BLEU: 0.076, ROUGE: 0.170, METEOR: 0.258)
+
+Dialogue history: <PS>i live in alaska . i'm a buddhist . i quit my job to pursue my spirituality full time . i like meditation .<SEP>good evening , how are you ?<SEP>i was tending the fields one day and set a fire<SEP>i fell of a horse with a lit cigarette setting fire to the dry weeds<SEP>my father had his farm used for a cia operation once .
+U--i know i have 3 arabian horses . 
+(Ref: ['the aliens did what to you ?', ...])
+G--Wow, that's beautiful. I am a buddhist so I am not around horses much. How many do you have?
+(length: 23, latency: 0.149, BLEU: 0.109, ROUGE: 0.303, METEOR: 0.418)
+U'--i know i have er ofabian horses for (cosine: 0.751)
+G'--I have no idea what they are. I am a buddhist, but I have always been fascinated by nature and its origin. What kind of animals do you have?
+(length: 33, latency: 0.180, BLEU: 0.086, ROUGE: 0.195, METEOR: 0.264)
+
+Dialogue history: <PS>i live in alaska . i'm a buddhist . i quit my job to pursue my spirituality full time . i like meditation .<SEP>good evening , how are you ?<SEP>i was tending the fields one day and set a fire<SEP>i fell of a horse with a lit cigarette setting fire to the dry weeds<SEP>my father had his farm used for a cia operation once .<SEP>i know i have 3 arabian horses .<SEP>the aliens did what to you ?
+U--are you currently living in africa ? 
+(Ref: ['how is it there ? how long have you been there ?', ...])
+G--no i am in alaska. i have never been to Africa.
+(length: 13, latency: 0.121, BLEU: 0.165, ROUGE: 0.308, METEOR: 0.181)
+U'--are you currently living in africa andt (cosine: 0.948)
+G'--i am from africa, originally. but i have been living in Alaska since i was young.
+(length: 19, latency: 0.114, BLEU: 0.120, ROUGE: 0.258, METEOR: 0.248)
+
+Dialogue history: <PS>i try various coffees as a hobby . i enjoy poetry . i played football for a division a college . i'm a huge star wars fan .
+U--hi , want to get to know each other ? 
+(Ref: ['ha , like the cartoon . i may live in alaska but i know bob', ...])
+G--Sure, I love star wars and would love to get to know you.
+(length: 15, latency: 0.093, BLEU: 0.120, ROUGE: 0.240, METEOR: 0.377)
+U'--plain ida want to and to know oh other ? (cosine: 0.479)
+G'--I like the star wars movies, but I'm not a fan of the whole idea of it. Why do you want to be a fan?
+(length: 28, latency: 0.157, BLEU: 0.100, ROUGE: 0.263, METEOR: 0.350)
+
+Dialogue history: <PS>i try various coffees as a hobby . i enjoy poetry . i played football for a division a college . i'm a huge star wars fan .<SEP>hi , want to get to know each other ?<SEP>ha , like the cartoon . i may live in alaska but i know bob
+U--yeah . i know that one too . i'm more into meditation 
+(Ref: ['do you consider yourself spiritual ?', ...])
+G--I try to meditate once a week as a hobby.
+(length: 11, latency: 0.101, BLEU: 0.185, ROUGE: 0.286, METEOR: 0.205)
+U'--dindi ... i pdf that one too . i'm more into pdf (cosine: 0.463)
+G'--pdf is a great free form. You can download it to your phone or tablet and read it as you go.
+(length: 23, latency: 0.136, BLEU: 0.102, ROUGE: 0.229, METEOR: 0.332)
+
+Dialogue history: <PS>i try various coffees as a hobby . i enjoy poetry . i played football for a division a college . i'm a huge star wars fan .<SEP>hi , want to get to know each other ?<SEP>ha , like the cartoon . i may live in alaska but i know bob<SEP>yeah . i know that one too . i'm more into meditation<SEP>do you consider yourself spiritual ?
+U--i don't . i'm trying to immerse myself in spirituality 
+(Ref: ['it can be hard to give up material things .', ...])
+G--Wow, very difficult to get lost in religion. I'm trying to get my mind off things with my hobby of trying coffees.
+(length: 25, latency: 0.152, BLEU: 0.090, ROUGE: 0.200, METEOR: 0.251)
+U'--i don't . i'm trying to numerse myself in spirituality (cosine: 0.925)
+G'--Wow, that's really hard. I'm trying to get my mind off of things. I drink a lot of coffees as a hobby
+(length: 25, latency: 0.164, BLEU: 0.086, ROUGE: 0.216, METEOR: 0.353)
+
+Dialogue history: <PS>i try various coffees as a hobby . i enjoy poetry . i played football for a division a college . i'm a huge star wars fan .<SEP>hi , want to get to know each other ?<SEP>ha , like the cartoon . i may live in alaska but i know bob<SEP>yeah . i know that one too . i'm more into meditation<SEP>do you consider yourself spiritual ?<SEP>i don't . i'm trying to immerse myself in spirituality<SEP>it can be hard to give up material things .
+U--no . the hardest for me was to give up talking , but it was possible 
+(Ref: ['that is too material for me . i don't focus on appearances', ...])
+G--it just takes time to get your mind off things. do you have any hobbies?
+(length: 17, latency: 0.101, BLEU: 0.169, ROUGE: 0.300, METEOR: 0.528)
+U'--no as the as for me was to colour up talking in but it was possible (cosine: 0.505)
+G'--I think it's possible. just start focusing on one thing at a time and it will get better
+(length: 19, latency: 0.114, BLEU: 0.088, ROUGE: 0.133, METEOR: 0.163)
+
+Dialogue history: <PS>my aunt helped me escape when i was of . i like to dance . now i live in the united states . i was born in somalia .
+U--hello ! how has your day been ? 
+(Ref: ['i'm watching nfl football', ...])
+G--Going good...what's up with you.
+(length: 10, latency: 0.067, BLEU: 0.235, ROUGE: 0.200, METEOR: 0.185)
+U'--hello or how pattern your ... been ? (cosine: 0.491)
+G'--I'm not familiar with it. I was born in Alabama but I moved to the US when I was young. I like to dance and it's influenced me
+(length: 30, latency: 0.171, BLEU: 0.086, ROUGE: 0.222, METEOR: 0.297)
+
+Dialogue history: <PS>my aunt helped me escape when i was of . i like to dance . now i live in the united states . i was born in somalia .<SEP>hello ! how has your day been ?<SEP>i'm watching nfl football
+U--ha . i think i just talked to you 
+(Ref: ['yes . i'm a giants fan', ...])
+G--nice chatting with you too
+(length: 5, latency: 0.042, BLEU: 0.325, ROUGE: 0.200, METEOR: 0.100)
+U'--ha die i think i just talked to you (cosine: 0.821)
+G'--That's nice to talk to you. I'm watching a football game right now with my aunt.
+(length: 18, latency: 0.118, BLEU: 0.131, ROUGE: 0.250, METEOR: 0.380)
+
+Dialogue history: <PS>my aunt helped me escape when i was of . i like to dance . now i live in the united states . i was born in somalia .<SEP>hello ! how has your day been ?<SEP>i'm watching nfl football<SEP>ha . i think i just talked to you<SEP>yes . i'm a giants fan
+U--i think he is too old to play now 
+(Ref: ['i know . who even is the browns quarterback now', ...])
+G--I don't think he is too old to play.
+(length: 10, latency: 0.104, BLEU: 0.205, ROUGE: 0.222, METEOR: 0.253)
+U'--i think he is too old to if now (cosine: 0.878)
+G'--I think he is too old to be a big fan, do you think he is still a great player?
+(length: 22, latency: 0.125, BLEU: 0.121, ROUGE: 0.231, METEOR: 0.332)
+
+Dialogue history: <PS>my aunt helped me escape when i was of . i like to dance . now i live in the united states . i was born in somalia .<SEP>hello ! how has your day been ?<SEP>i'm watching nfl football<SEP>ha . i think i just talked to you<SEP>yes . i'm a giants fan<SEP>i think he is too old to play now<SEP>i know . who even is the browns quarterback now
+U--i know . i liked him at dame 
+(Ref: ['haha . chargers just safety . rivers dropped the snap', ...])
+G--Did you see the documentary on HBO about Eli Manning?
+(length: 11, latency: 0.106, BLEU: 0.143, ROUGE: 0.160, METEOR: 0.181)
+U'--i to . i liked him at d wreath (cosine: 0.490)
+G'--I went to wreath last year. I remember when they won the World Series I think it was amazing.
+(length: 21, latency: 0.128, BLEU: 0.098, ROUGE: 0.194, METEOR: 0.198)
+
+Dialogue history: <PS>i coach little league baseball . i've five sons . coffee is my preferred beverage . i drive a mini van . i also like a glass of wine in the evenings .
+U--hello , i hope you have a better job than i do 
+(Ref: ['five sons ? do they play on your team ?', ...])
+G--I am a coach little league baseball
+(length: 7, latency: 0.054, BLEU: 0.278, ROUGE: 0.364, METEOR: 0.220)
+U'--hello no i beta you have a better job than i lulu (cosine: 0.555)
+G'--Haha, I totally get that! I coach little league baseball, so I know what you mean. But, I can't say that I don't drink coffee, it's my preferred beverage! lol
+(length: 37, latency: 0.226, BLEU: 0.064, ROUGE: 0.167, METEOR: 0.261)
+
+Dialogue history: <PS>i coach little league baseball . i've five sons . coffee is my preferred beverage . i drive a mini van . i also like a glass of wine in the evenings .<SEP>hello , i hope you have a better job than i do<SEP>five sons ? do they play on your team ?
+U--cool and coffee is great , as a graduate student i pull tons of all nighters 
+(Ref: ['i don't enjoy wine but i do enjoy psychology journals', ...])
+G--That's great! Do you have any other hobbies?
+(length: 10, latency: 0.069, BLEU: 0.159, ROUGE: 0.250, METEOR: 0.232)
+U'--or and coffee is shaun life as a ... student i ]ige tons of all nighters (cosine: 0.627)
+G'--Hey, gotta love the coffee! I'm a bit of a nerd myself, co-own a mini van with my 5 sons. What do you do for a living?
+(length: 32, latency: 0.179, BLEU: 0.096, ROUGE: 0.216, METEOR: 0.421)
+
+Dialogue history: <PS>i coach little league baseball . i've five sons . coffee is my preferred beverage . i drive a mini van . i also like a glass of wine in the evenings .<SEP>hello , i hope you have a better job than i do<SEP>five sons ? do they play on your team ?<SEP>cool and coffee is great , as a graduate student i pull tons of all nighters<SEP>i don't enjoy wine but i do enjoy psychology journals
+U--i walk dogs to pay for college and food 
+(Ref: ['it is not stable enough and it does not pay enough', ...])
+G--that's a great idea. how do you walk dogs?
+(length: 11, latency: 0.075, BLEU: 0.197, ROUGE: 0.261, METEOR: 0.365)
+U'--i above dogs to io for college and squid (cosine: 0.464)
+G'--That's cool. squid is cool. i'm not sure why I like it so much. do you have any pets?
+(length: 23, latency: 0.139, BLEU: 0.174, ROUGE: 0.258, METEOR: 0.444)
+
+Dialogue history: <PS>i coach little league baseball . i've five sons . coffee is my preferred beverage . i drive a mini van . i also like a glass of wine in the evenings .<SEP>hello , i hope you have a better job than i do<SEP>five sons ? do they play on your team ?<SEP>cool and coffee is great , as a graduate student i pull tons of all nighters<SEP>i don't enjoy wine but i do enjoy psychology journals<SEP>i walk dogs to pay for college and food<SEP>it is not stable enough and it does not pay enough
+U--i get enough of that when i go kayaking 
+(Ref: ['tons of fun , it is very exciting', ...])
+G--i go kayaking as a kid with my 5 sons
+(length: 10, latency: 0.101, BLEU: 0.172, ROUGE: 0.250, METEOR: 0.138)
+U'--i get enough of that when i ou kayaking (cosine: 0.953)
+G'--i love kayaking. i have gone on a few of the trips with my son.we have a mini van we drive in the evenings
+(length: 27, latency: 0.152, BLEU: 0.141, ROUGE: 0.278, METEOR: 0.430)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i have short brown hair . i met taylor swift . i am a convenience store manager .
+U--good afternoon , where are you coming from today ? 
+(Ref: ['i've just arrived from germany', ...])
+G--I am in Atlanta, what about you?
+(length: 9, latency: 0.123, BLEU: 0.230, ROUGE: 0.400, METEOR: 0.330)
+U'--or afternoon ... where are you coming from today good (cosine: 0.884)
+G'--I am in Houston, TX and I just got back from a trip to Asheville, NC. I have a new nissan pathfinder. What about you?
+(length: 30, latency: 0.173, BLEU: 0.081, ROUGE: 0.263, METEOR: 0.428)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i have short brown hair . i met taylor swift . i am a convenience store manager .<SEP>good afternoon , where are you coming from today ?<SEP>i've just arrived from germany
+U--i do like taylor swift ! i also like cooking shows and making hummus 
+(Ref: ['mine is long . while i'm here i plan to sky dive', ...])
+G--I love making hummus. What's your favorite thing to make hummus? I have a nissan pathfinder and I love it!
+(length: 23, latency: 0.153, BLEU: 0.077, ROUGE: 0.207, METEOR: 0.354)
+U'--i python like taylor swift ! i also like cooking shows and making hummus (cosine: 0.908)
+G'--Oh nice! I love hummus. What is your favorite meal to make? I love chicken. I have a nissan pathfinder. What is your favorite meal?
+(length: 31, latency: 0.175, BLEU: 0.061, ROUGE: 0.182, METEOR: 0.286)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i have short brown hair . i met taylor swift . i am a convenience store manager .<SEP>good afternoon , where are you coming from today ?<SEP>i've just arrived from germany<SEP>i do like taylor swift ! i also like cooking shows and making hummus<SEP>mine is long . while i'm here i plan to sky dive
+U--i cannot drive , nor can i swim . 
+(Ref: ['maybe it is ! i'm a renegade', ...])
+G--I can swim but I can't drive. I need a new car. What kind?
+(length: 17, latency: 0.102, BLEU: 0.099, ROUGE: 0.182, METEOR: 0.316)
+U'--i cannot io , nor can i swim in (cosine: 0.772)
+G'--Oh I'm so sorry! I'm sure you can swim, but I've never been able to swim in a boat before. I've never been able to swim in a lake before.
+(length: 34, latency: 0.211, BLEU: 0.092, ROUGE: 0.208, METEOR: 0.258)
+
+Dialogue history: <PS>i drive a nissan pathfinder . i have short brown hair . i met taylor swift . i am a convenience store manager .<SEP>good afternoon , where are you coming from today ?<SEP>i've just arrived from germany<SEP>i do like taylor swift ! i also like cooking shows and making hummus<SEP>mine is long . while i'm here i plan to sky dive<SEP>i cannot drive , nor can i swim .<SEP>maybe it is ! i'm a renegade
+U--i'm in florida learning to cook 
+(Ref: ['i will . what kind of snacks do you have at your shop ?', ...])
+G--Are you going to Disneyworld?
+(length: 6, latency: 0.054, BLEU: 0.330, ROUGE: 0.200, METEOR: 0.152)
+U'--i with in andorida learning to cook (cosine: 0.657)
+G'--renegade? you are so funny! i want to learn how to cook, but can't drive my new nissan pathfinder. I have short brown hair!
+(length: 29, latency: 0.178, BLEU: 0.089, ROUGE: 0.167, METEOR: 0.256)
+
+Dialogue history: <PS>i like to grill outdoors . i go gambling in my spare time . i move south during the winter . i enjoy mowing my lawn on sunny days . i've been retired for a years .
+U--hello , i am just a kid , so i don't know how this works 
+(Ref: ['oh wow , what kinds of things did you do in the computer industry ?', ...])
+G--I mow my lawn as a kid so it's easy for me to keep up with.
+(length: 17, latency: 0.110, BLEU: 0.105, ROUGE: 0.167, METEOR: 0.167)
+U'--hello single i am just a kid , so i don't dia how this works (cosine: 0.901)
+G'--I am a kid too, so I don't have a lot of experience. But I do know how to garden, so I go to the beach in my free time
+(length: 33, latency: 0.177, BLEU: 0.098, ROUGE: 0.238, METEOR: 0.338)
+
+Dialogue history: <PS>i like to grill outdoors . i go gambling in my spare time . i move south during the winter . i enjoy mowing my lawn on sunny days . i've been retired for a years .<SEP>hello , i am just a kid , so i don't know how this works<SEP>oh wow , what kinds of things did you do in the computer industry ?
+U--i play with blocks sometimes , and i like to sing . candy is my favorite though 
+(Ref: ['when i grow up and become a dog maybe i can lay in your yard', ...])
+G--I love to play with blocks too. I also like to grill outdoors
+(length: 14, latency: 0.084, BLEU: 0.203, ROUGE: 0.333, METEOR: 0.397)
+U'--i play with blocks sometimes io and i oh to meaning . colournis is my oh though (cosine: 0.591)
+G'--I love colournis! It's so much fun to play with games and watch them go. I also like to grill outdoors in my spare time.
+(length: 28, latency: 0.161, BLEU: 0.108, ROUGE: 0.270, METEOR: 0.411)
+
+Dialogue history: <PS>i like to grill outdoors . i go gambling in my spare time . i move south during the winter . i enjoy mowing my lawn on sunny days . i've been retired for a years .<SEP>hello , i am just a kid , so i don't know how this works<SEP>oh wow , what kinds of things did you do in the computer industry ?<SEP>i play with blocks sometimes , and i like to sing . candy is my favorite though<SEP>when i grow up and become a dog maybe i can lay in your yard
+U--i can ask my mom 
+(Ref: ['do you have any candy ?', ...])
+G--i always want to know what your mom thinks
+(length: 9, latency: 0.074, BLEU: 0.156, ROUGE: 0.267, METEOR: 0.406)
+U'--i can but my with (cosine: 0.200)
+G'--i used to play with my toys. now i just use my nintendo 64. do you play with yours?
+(length: 22, latency: 0.129, BLEU: 0.182, ROUGE: 0.240, METEOR: 0.341)
+
+Dialogue history: <PS>i'm 40 years old . my wife spends all my money . i hate my job . i'm planning on getting a divorce . i work as a car salesman .
+U--hi there how are you tonight ? 
+(Ref: ['well i work as a custodian to help pay bills now that's depressing', ...])
+G--I'm just getting home from a car show. How are you?
+(length: 13, latency: 0.111, BLEU: 0.197, ROUGE: 0.308, METEOR: 0.343)
+U'--safety there how are you type ? (cosine: 0.375)
+G'--I'm pretty good. I like the simplicity of it all. I'm only 40 years old so I don't have a lot of time to spend with my wife
+(length: 30, latency: 0.183, BLEU: 0.099, ROUGE: 0.227, METEOR: 0.341)
+
+Dialogue history: <PS>i'm 40 years old . my wife spends all my money . i hate my job . i'm planning on getting a divorce . i work as a car salesman .<SEP>hi there how are you tonight ?<SEP>well i work as a custodian to help pay bills now that's depressing
+U--well my parents aren't very supportive of me having a cosmetics line 
+(Ref: ['well i hope you get back on the horse quick no one is worth loosing time', ...])
+G--that's too bad. maybe you should do something with your kids to get them interested in it
+(length: 18, latency: 0.112, BLEU: 0.124, ROUGE: 0.286, METEOR: 0.293)
+U'--well my parents aren't beta supportive of me having a cosmetics an (cosine: 0.867)
+G'--that's a bummer.i hate my job and my parents aren't really supportive of me having a cosmetics issue either.i'm 40 yrs old
+(length: 26, latency: 0.174, BLEU: 0.109, ROUGE: 0.186, METEOR: 0.187)
+
+Dialogue history: <PS>i'm 40 years old . my wife spends all my money . i hate my job . i'm planning on getting a divorce . i work as a car salesman .<SEP>hi there how are you tonight ?<SEP>well i work as a custodian to help pay bills now that's depressing<SEP>well my parents aren't very supportive of me having a cosmetics line<SEP>well i hope you get back on the horse quick no one is worth loosing time
+U--lol i also sing , play the guitar and piano 
+(Ref: ['really what do you look for in a person', ...])
+G--I wish I could play the piano
+(length: 7, latency: 0.139, BLEU: 0.206, ROUGE: 0.250, METEOR: 0.222)
+U'--withdice i also sing , play the for and 2010 (cosine: 0.555)
+G'--I wish I could sing! I'm 40 yrs old and my wife spends all my money on herself and it's making me feel like a rock and roll type of guy
+(length: 32, latency: 0.191, BLEU: 0.055, ROUGE: 0.174, METEOR: 0.323)
+
+Dialogue history: <PS>i'm 40 years old . my wife spends all my money . i hate my job . i'm planning on getting a divorce . i work as a car salesman .<SEP>hi there how are you tonight ?<SEP>well i work as a custodian to help pay bills now that's depressing<SEP>well my parents aren't very supportive of me having a cosmetics line<SEP>well i hope you get back on the horse quick no one is worth loosing time<SEP>lol i also sing , play the guitar and piano<SEP>really what do you look for in a person
+U--lol well i like shopping but i love having my own money 
+(Ref: ['did your wife ever work ?', ...])
+G--me too. i wish i could own my own money. its so hard when you have to shop for everything at once
+(length: 24, latency: 0.135, BLEU: 0.154, ROUGE: 0.182, METEOR: 0.244)
+U'--small and i like shopping but i ... having my own not (cosine: 0.767)
+G'--well its nice having your own but having your own can be a challenge. mine is 40 yrs old and my wife spends all of her money on herself and it's depressing
+(length: 33, latency: 0.181, BLEU: 0.061, ROUGE: 0.140, METEOR: 0.226)
+
+Dialogue history: <PS>i've three dogs . my father was a door to door salesman . i also have a dog walking business . i like to watch the olympics . i'm in an open polyamorous relationship .
+U--hi i'm jane and i do have never drink , and do drugs that's harmful 
+(Ref: ['same to you . i am 19 of age and cannot wait to move out', ...])
+G--Do you think you're on the right path to be with someone?
+(length: 13, latency: 0.084, BLEU: 0.161, ROUGE: 0.300, METEOR: 0.367)
+U'--hi i'm inane and i of have never drink , and do ni that's harmful (cosine: 0.866)
+G'--I think you should talk to someone who is in a polyamorous relationship, as it is a very good way to get to know each other and get to know one another.
+(length: 34, latency: 0.185, BLEU: 0.067, ROUGE: 0.182, METEOR: 0.284)
+
+Dialogue history: <PS>i've three dogs . my father was a door to door salesman . i also have a dog walking business . i like to watch the olympics . i'm in an open polyamorous relationship .<SEP>hi i'm jane and i do have never drink , and do drugs that's harmful<SEP>same to you . i am 19 of age and cannot wait to move out
+U--i work part time at burger king to make some income 
+(Ref: ['yeah it was close to my parents house', ...])
+G--I see, what kind of burger king is that?
+(length: 11, latency: 0.136, BLEU: 0.197, ROUGE: 0.273, METEOR: 0.216)
+U'--i work part or at in king to make lulu steel (cosine: 0.435)
+G'--I work part time or at the lake front plant in lucy. My dad was a door to door salesman for a long time. How long have you been working there?
+(length: 34, latency: 0.184, BLEU: 0.079, ROUGE: 0.143, METEOR: 0.323)
+
+Dialogue history: <PS>i've three dogs . my father was a door to door salesman . i also have a dog walking business . i like to watch the olympics . i'm in an open polyamorous relationship .<SEP>hi i'm jane and i do have never drink , and do drugs that's harmful<SEP>same to you . i am 19 of age and cannot wait to move out<SEP>i work part time at burger king to make some income<SEP>yeah it was close to my parents house
+U--i want to have more time with my friends 
+(Ref: ['it is ans some times you wish you just had more time', ...])
+G--how old are your friends?
+(length: 6, latency: 0.093, BLEU: 0.278, ROUGE: 0.400, METEOR: 0.196)
+U'--i want to have more proof with my friends (cosine: 0.700)
+G'--yeah it is important to have proof with your friends. i dont think i can wait to see how it turns out
+(length: 23, latency: 0.125, BLEU: 0.109, ROUGE: 0.242, METEOR: 0.191)
+
+Dialogue history: <PS>i've three dogs . my father was a door to door salesman . i also have a dog walking business . i like to watch the olympics . i'm in an open polyamorous relationship .<SEP>hi i'm jane and i do have never drink , and do drugs that's harmful<SEP>same to you . i am 19 of age and cannot wait to move out<SEP>i work part time at burger king to make some income<SEP>yeah it was close to my parents house<SEP>i want to have more time with my friends<SEP>it is ans some times you wish you just had more time
+U--it is and i will sometime next week its been hectic with school as well 
+(Ref: ['i am in a community college near me', ...])
+G--Oh yea school can be hectic, what about you?
+(length: 11, latency: 0.075, BLEU: 0.156, ROUGE: 0.211, METEOR: 0.168)
+U'--it is and i will sometime next a2 its been hectic with school as well (cosine: 0.903)
+G'--school is a fun time but it can be hectic. what are you going to do this summer?
+(length: 20, latency: 0.123, BLEU: 0.116, ROUGE: 0.267, METEOR: 0.493)
+
+Original output length: 13.647, latency: 0.093, BLEU: 0.181, ROUGE: 0.283, METEOR: 0.288
+Perturbed [cosine: 0.685] output length: 30.034, latency: 0.175, BLEU: 0.095, ROUGE: 0.213, METEOR: 0.318
+Attack success rate: 97.41%

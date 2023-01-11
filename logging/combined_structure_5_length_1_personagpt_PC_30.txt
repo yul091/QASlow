@@ -1,0 +1,557 @@
+
+Dialogue history: 
+U--hello ! how are you today ? 
+(Ref: ['i love singing frozen but my favorite band is up . saw them in concert !', ...])
+G--hello! how are you today?hello! how are you today? truehello! how are you today? true true true truehello! how are you today? true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true
+(length: 76, latency: 1.193, BLEU: 0.034, ROUGE: 0.075, METEOR: 0.178)
+U'--folk ! how are you lulu ? (cosine: 0.463)
+G'--folkfolk arefolk are the samefolk are the same 10folk are the same 10 allfolk are the same 10 all all allfolk are the same 10 all all all all all allfolk are the same 10 all all all all all all all all
+(length: 43, latency: 1.177, BLEU: 0.031, ROUGE: 0.073, METEOR: 0.075)
+
+Dialogue history:  hello ! how are you today ? i love singing frozen but my favorite band is up . saw them in concert !
+U--oh wonderful ! i work as an elementary school teacher ! my parents were teachers too . 
+(Ref: ['i have never been ! i usually just stay at home and play board games while on vacation .', ...])
+G--oh wonderful! i work as an elementary school teacher! my parents were teachers too.oh wonderful! i work as an elementary school teacher! my parents were teachers too. 2oh wonderful! i work as an elementary school teacher! my parents were teachers too. 2oh wonderful! i work as an elementary school teacher! my parents were teachers too. 2
+(length: 69, latency: 0.899, BLEU: 0.053, ROUGE: 0.108, METEOR: 0.195)
+U'--among wonderful ! i work as an elementary school teacher ! my parents were teachers too . (cosine: 0.985)
+G'--SEP> among wonderful! i work as an elementary school teacher! my parents were teachers too. SEP> among wonderful! i work as an elementary school teacher! my parents were teachers too.. SEP> among wonderful! i work as an elementary school teacher!
+Attack failed!
+(length: 52, latency: 0.859, BLEU: 0.070, ROUGE: 0.140, METEOR: 0.209)
+
+Dialogue history: 
+U--europe is so much fun ! 
+(Ref: ['no , but i like to go at least twice a year .', ...])
+G--europe is so much fun!europe is so much fun! youeurope is so much fun! you are europeeurope is so much fun! you are europe 20europe is so much fun! you are europe 20 20 12europe is so much fun! you are europe 20 20 12 12 12 10europe is so much fun! you are europe 20
+(length: 64, latency: 1.129, BLEU: 0.030, ROUGE: 0.065, METEOR: 0.092)
+U'--tinpe is so much fun ! (cosine: 0.686)
+G'--pp ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep p ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep ep
+(length: 67, latency: 1.179, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  europe is so much fun ! no , but i like to go at least twice a year .
+U--usa , they have good fish and chips here , which i love to eat ! 
+(Ref: ['travelling is great , i've been on many cruises', ...])
+G--usa, they have good fish and chips here, which i love to eat!usa, they have good fish and chips here, which i love to eat! 2usa all all all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the all the
+(length: 87, latency: 0.933, BLEU: 0.026, ROUGE: 0.067, METEOR: 0.170)
+U'--music , they have good fish and chips here , which i love to eat ! (cosine: 0.837)
+G'--SEP> music, they have good fish and chips here, which i love to eat!sep> music, they have good fish and chips here, which i love to eat! 2sep> music, they have good fish and chips here, which i love to eat! 2sep> music, they have good fish and chips here, which i love to eat!
+(length: 72, latency: 0.937, BLEU: 0.025, ROUGE: 0.092, METEOR: 0.185)
+
+Dialogue history: 
+U--hey , i hope your night is going well 
+(Ref: ['its great even though my bipolar son had a violent meltdown', ...])
+G--hey, i hope your night is going wellhey, i hope your night is going wellhey, i hope your night is going wellhey, i hope your night is going well well enoughhey, i hope your night is going well enough to behey, i hope your night is going well enough to be ablehey, i hope your night is going well enough to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able to be able
+(length: 121, latency: 1.165, BLEU: 0.019, ROUGE: 0.076, METEOR: 0.162)
+U'--composition , i hope your night is going well (cosine: 0.848)
+G'--pp p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p
+(length: 89, latency: 1.162, BLEU: 0.011, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hey , i hope your night is going well its great even though my bipolar son had a violent meltdown
+U--yeah , he's a piece of work . i had to send him away today 
+(Ref: ['does she have bipolar disorder as well ?', ...])
+G--yeah, he's a piece of work. i had to send him away todayyeah, he's a piece of work. i had to send him away today 208yeah, he's a piece of work. i had to send him away today 208 208 justyeah, he's a piece of work. i had to send him away todayyeah, he's a piece of work. i had to send him away today
+(length: 75, latency: 0.936, BLEU: 0.063, ROUGE: 0.078, METEOR: 0.272)
+U'--composition , he's a piece of work . i had to send him away today (cosine: 0.893)
+G'--prestprest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>>prest>> all all the all the local all the local all the local all
+(length: 91, latency: 0.908, BLEU: 0.017, ROUGE: 0.077, METEOR: 0.048)
+
+Dialogue history: 
+U--hello . how are you today ? 
+(Ref: ['i am a construction worker . i do not know much about computers', ...])
+G--hello. how are you today?hello. how are you today? truehello. how are you today? true true true true truehello. how are you today? true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true
+(length: 74, latency: 1.179, BLEU: 0.041, ROUGE: 0.139, METEOR: 0.385)
+U'--life . how are you victoria tin (cosine: 0.447)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 122, latency: 1.169, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.026)
+
+Dialogue history:  hello . how are you today ? i am a construction worker . i do not know much about computers
+U--that must be interesting . i don't have time outside of house building to do much 
+(Ref: ['no , not really . i'm more into stuff from the eighties .', ...])
+G--that must be interesting. i don't have time outside of house building to do muchthat must be interesting. i don't have time outside of house building to do much 208 that isthat must be interesting. i don't have time outside of house building to do much 208 108 that is fine that is fine that is fine all that is fine all you are all you are all you are all you are all you are all you are all you are all you are
+(length: 88, latency: 0.925, BLEU: 0.040, ROUGE: 0.099, METEOR: 0.235)
+U'--that must be interesting . i don't have time outside of house building to for much (cosine: 0.974)
+G'--that must be interesting. i don't have time outside of house building to for muchthat must be interesting. i don't have time outside of house building to for much less thanthat must be interesting. i don't have time outside of house building to for much less than the moon
+Attack failed!
+(length: 52, latency: 0.919, BLEU: 0.043, ROUGE: 0.154, METEOR: 0.265)
+
+Dialogue history: 
+U--hello , how are you today ? 
+(Ref: ['just playing with my pet dog , his name is charlie', ...])
+G--hello, how are you today?hello, how are you today? 208hello, how are you today? 208 208 208hello, how are you today? 208 208 208 208hello, how are you today? 208 208 208 208 208 funhello, how are you today? 208 208 208 208 fun fun homehello, how are you today? 208 208 208 fun home home home thehello, how are you today? 208 208 208 fun home the home the home
+(length: 88, latency: 1.176, BLEU: 0.022, ROUGE: 0.068, METEOR: 0.171)
+U'--school io how are you 1884 tin (cosine: 0.314)
+G'--schoolsschools areschools are trueschools are true true schoolchildrenschools are true true schoolchildren are true schoolchildren are true schoolchildren are true schoolchildren are true schoolchildren schoolchildren are true schoolchildren are true schoolchildren are true schoolchildren are true schoolchildren schoolchildren are true schoolchildren are true schoolchildren schoolchildren are true schoolchildren schoolchildren are true schoolchildren schoolchildren are true schoolchildren schoolchildren
+(length: 57, latency: 1.130, BLEU: 0.021, ROUGE: 0.029, METEOR: 0.046)
+
+Dialogue history:  hello , how are you today ? just playing with my pet dog , his name is charlie
+U--he like to ride in my 2015 honda civic while we jam to rap music 
+(Ref: ['no , but do you like pizza ? it is my favourite food to eat everday', ...])
+G--he like to ride in my 2015 honda civic while we jam to rap musiche like to ride in my 2015 honda civic while we jam to rap music 12he like to ride in my 2015 honda civic while we jam to rap
+(length: 43, latency: 0.945, BLEU: 0.046, ROUGE: 0.111, METEOR: 0.106)
+U'--he and to ride in my 2015 honda civic while we python to rap music (cosine: 0.813)
+G'--he and to ride in my 2015 honda civic while we python to rap musiche and to ride in my 2015 honda civic while we python to rap music 20he and to ride in my 2015 honda civic while we python to rap music 20 12he and to ride in my 2015 honda
+(length: 53, latency: 0.937, BLEU: 0.031, ROUGE: 0.094, METEOR: 0.099)
+
+Dialogue history: 
+U--how are you doing today 
+(Ref: ['i'm doing really well', ...])
+G--how are you doing todayhow are you doing today howhow are you doing today how wellhow are you doing today how well enoughhow are you doing today how well enough tohow are you doing today how well enough to fallhow are you doing today how well enough to fall to fall to how well enough to fall to fall to the how well enough to fall to the top how well enough to fall to the top how well enough to fall to the top how well enough to fall to the top how well enough to fall to the top
+(length: 101, latency: 1.193, BLEU: 0.030, ROUGE: 0.070, METEOR: 0.192)
+U'--how are you doing not (cosine: 0.535)
+G'--how are you doing nothow are you doing not 10how are you doing not 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+(length: 89, latency: 1.186, BLEU: 0.030, ROUGE: 0.078, METEOR: 0.179)
+
+Dialogue history:  how are you doing today i'm doing really well
+U--what color are you going to do it 
+(Ref: ['has that happened to you before', ...])
+G--what color are you going to do itwhat color are you going to do it 208what color are you going to do it 208 208 whatwhat color are you going to do it 208 what about mewhat color are you going to do it 208 what about me home
+(length: 49, latency: 1.085, BLEU: 0.044, ROUGE: 0.156, METEOR: 0.182)
+U'--what and are you going to above it (cosine: 0.538)
+G'--what and are you going to above itwhat and are you going to above it 108what and are you going to above it 108what and are you going to above it 108what and are you going to above it 108what and are you going to above it 108 what what you are about what you are about what you are about what you are about what you are about what you are about what you are about what you are about what you are
+(length: 84, latency: 1.074, BLEU: 0.027, ROUGE: 0.081, METEOR: 0.138)
+
+Dialogue history: 
+U--hello , how is it going ? 
+(Ref: ['hey roddy , my name is tim and i love to grill outdoors .', ...])
+G--hello, how is it going?hello, how is it going? truehello, how is it going? true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true
+(length: 121, latency: 1.187, BLEU: 0.023, ROUGE: 0.033, METEOR: 0.172)
+U'--tin , how is it going ? (cosine: 0.670)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 119, latency: 1.160, BLEU: 0.008, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hello , how is it going ? hey roddy , my name is tim and i love to grill outdoors .
+U--oh yeah , there's nothing better than grilled hot dogs and burgers and ribs . 
+(Ref: ['yes i have two kids your age , a girl and a boy . i am retired .', ...])
+G--oh yeah, there's nothing better than grilled hot dogs and burgers and ribs.oh yeah, there's nothing better than grilled hot dogs and burgers and ribs...oh yeah, there's nothing better than grilled hot dogs and burgers and ribs.... the all all all
+(length: 54, latency: 0.892, BLEU: 0.051, ROUGE: 0.037, METEOR: 0.090)
+U'--oh from , there's nothing better than grilled hot dogs and burgers and ribs the (cosine: 0.906)
+G'--oh from, there's nothing better than grilled hot dogs and burgers and ribs theoh from, there's nothing better than grilled hot dogs and burgers and ribs the 2oh from, there's nothing better than grilled hot dogs and burgersoh from, there's nothing better than grilled hot dogs and burgers the 2oh from, there's nothing better than grilled hot dogs and burgers the 2
+(length: 67, latency: 0.924, BLEU: 0.025, ROUGE: 0.048, METEOR: 0.109)
+
+Dialogue history: 
+U--hi , how are you today ? 
+(Ref: ['wow that is great , i use to be in the military .', ...])
+G--hihihihihihihi truehi true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true true
+(length: 107, latency: 1.132, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+U'--of for how are you today ? (cosine: 0.796)
+G'--pp pp p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p
+Attack failed!
+(length: 84, latency: 1.174, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi , how are you today ? wow that is great , i use to be in the military .
+U--i donate half of my check to different veteran charities . 
+(Ref: ['i also like to help out at my local pet rescue , i like like bunnies .', ...])
+G--i donate half of my check to different veteran charities.i donate half of my check to different veteran charities..i donate half of my check to different veteran charities....i donate half of my check to different veteran charities.................. home home.............
+(length: 80, latency: 0.976, BLEU: 0.024, ROUGE: 0.140, METEOR: 0.101)
+U'--i rs half of my check to innis veteran charities . (cosine: 0.765)
+G'--i rs half of my check to innis veteran charities.i rs half of my check to innis veteran charities..i rs half of my check to innis veteran charities....i rs half of my check to innis veteran charities................
+Attack failed!
+(length: 63, latency: 0.972, BLEU: 0.031, ROUGE: 0.145, METEOR: 0.103)
+
+Dialogue history: 
+U--what are you doing tonight ? 
+(Ref: ['i get most of my exercise exploring the city', ...])
+G--what are you doing tonight?what are you doing tonight? whatwhat are you doing tonight? what 208what are you doing tonight? what 208 208 whatwhat are you doing tonight? what 208 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what 208 what
+(length: 72, latency: 1.180, BLEU: 0.029, ROUGE: 0.077, METEOR: 0.159)
+U'--what are you doing tonight meyrick (cosine: 0.862)
+G'--yrickyrick theyrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yrick the 12yr m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m
+(length: 61, latency: 1.182, BLEU: 0.020, ROUGE: 0.029, METEOR: 0.035)
+
+Dialogue history:  what are you doing tonight ? i get most of my exercise exploring the city
+U--that is great . do you do anything else besides work out ? 
+(Ref: ['i am not much of an exercise junkie . i'd rather play music', ...])
+G--that is great. do you do anything else besides work out?that is great. do you do anything else besides work out? 208that is great. do you do anything else besides work out? 208 208 fine that isthat is great. do you do anything else besides work out? 208 fine fine half that is home that is home that is home home
+(length: 70, latency: 0.999, BLEU: 0.033, ROUGE: 0.114, METEOR: 0.266)
+U'--that is great . do you as anything else besides life out min (cosine: 0.694)
+G'--that is great. do you as anything else besides life out minthat that isthat is great. do you as anything else besides life out minthat is great. do you as anything else besides life out min
+(length: 39, latency: 1.021, BLEU: 0.058, ROUGE: 0.182, METEOR: 0.245)
+
+Dialogue history: 
+U--do you want to go the the playground with me ? 
+(Ref: ['my parents won't let me on twitter . maybe when i am in 5th grade .', ...])
+G--do youdo you want to go the playground with me?do you want to go the playground with me??do you want to go the playground with me???do you want to go the playground with me????do you want to go the playground with me?????do you want to go the playground with me??????do you want to go the playground with me???????do you want to go the playground with me??????
+(length: 107, latency: 1.145, BLEU: 0.016, ROUGE: 0.112, METEOR: 0.131)
+U'--do you want to go the the playground with me stitch (cosine: 0.868)
+G'--do you want to go the playground with me stitchdo you want to go the playground with me stitch 10do you want to go the playground with me stitch 10do you want to go the playground with me stitch 10do you want to go the playground with me stitch 10do you want to go the playground with me crochetdo you want to go the playground with me crochet 12do you want to go the playground with me crochet 12 12 the playground with me crochet 12 the playground with me crochet 12 the playground with me crochet 12 the playground with me crochetdo you want to go the playground with me crochet 12 the playground with
+(length: 116, latency: 1.147, BLEU: 0.015, ROUGE: 0.076, METEOR: 0.110)
+
+Dialogue history:  do you want to go the the playground with me ? my parents won't let me on twitter . maybe when i am in 5th grade .
+U--you surf ? what a cool kid . i want to surf with mickey mouse . 
+(Ref: ['yay ! i am a girl . will you go to disney world with me ?', ...])
+G--you surf? what a cool kid. i want to surf with mickey mouse.you surf? what a cool kid. i want to surf with mickey mouse. the twoyou surf? what a cool kid. i want to surf with mickey mouse. the two two half
+(length: 53, latency: 0.842, BLEU: 0.037, ROUGE: 0.140, METEOR: 0.179)
+U'--you surf ? what a cool kid . i want to surf with mickey on . (cosine: 0.938)
+G'--you surf? what a cool kid. i want to surf with mickey on. you you have no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no
+(length: 72, latency: 0.815, BLEU: 0.025, ROUGE: 0.078, METEOR: 0.162)
+
+Dialogue history: 
+U--i just finished reading a book , i'm pretty relaxed , how are you ? 
+(Ref: ['i love ping pong , sometimes i play with my family together .', ...])
+G--ii have beeni have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208 home home home home home home home home home home home home
+(length: 78, latency: 1.117, BLEU: 0.017, ROUGE: 0.022, METEOR: 0.062)
+U'--i just finished reading a book , i'm pretty relaxed 11 how are you ? (cosine: 0.942)
+G'--ii have beeni have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208i have been 208 home home home home home home home home home home home home
+Attack failed!
+(length: 78, latency: 1.103, BLEU: 0.017, ROUGE: 0.022, METEOR: 0.062)
+
+Dialogue history:  i just finished reading a book , i'm pretty relaxed , how are you ? i love ping pong , sometimes i play with my family together .
+U--i can not eat chocolate anymore , i started walking everyday trying to stay fit . 
+(Ref: ['i got no time to learn another language , i've to work as a nurse .', ...])
+G--i can not eat chocolate anymore, i started walking everyday trying to stay fit.i can not eat chocolate anymore, i started walking everyday trying to stay fit. 2i can not eat chocolate anymore, i started walking everyday trying to stay fit. 2 two sc
+(length: 51, latency: 0.851, BLEU: 0.049, ROUGE: 0.133, METEOR: 0.218)
+U'--i can not io chocolate anymore , i started walking everyday trying to stay 12 . (cosine: 0.829)
+G'--i can not io chocolate anymore, i started walking everyday trying to stay 12.i can not io chocolate anymore, i started walking everyday trying to stay 12. finei can not io chocolate anymore, i started walking everyday trying to stay 12. fine fine fine fine fine finei can not io chocolate anymore, i started walking everyday trying to stay 12.
+(length: 69, latency: 0.824, BLEU: 0.036, ROUGE: 0.105, METEOR: 0.196)
+
+Dialogue history: 
+U--hey nice weather we are have tonight . 
+(Ref: ['really sound like hard work . is it ?', ...])
+G--hey nice weather we are have tonight.hey nice weather we are have tonight.hey nice weather we are have tonight..hey nice weather we are have tonight....hey nice weather we are have tonight........ home home home home home home home home home home home home home home home home home home home home home home home home home home home home home home home
+(length: 82, latency: 1.165, BLEU: 0.021, ROUGE: 0.077, METEOR: 0.078)
+U'--band nice weather we are have tonight taluk (cosine: 0.850)
+G'--band nice weather we are have tonight talukband nice weather we are have tonight taluk k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k
+Attack failed!
+(length: 60, latency: 1.194, BLEU: 0.026, ROUGE: 0.083, METEOR: 0.081)
+
+Dialogue history:  hey nice weather we are have tonight . really sound like hard work . is it ?
+U--what kind of foods do you like ? because i love food . 
+(Ref: ['really me too . and i travel all around the world to eat new foods .', ...])
+G--what kind of foods do you like? because i love food.what kind of foods do you like? because i love food..what kind of foods do you like? because i love food..... home home home home home home home home home home home home
+(length: 56, latency: 0.989, BLEU: 0.062, ROUGE: 0.200, METEOR: 0.283)
+U'--what kind of foods in you like ? bam i love ... mm (cosine: 0.757)
+G'--what kind of foods in you like? bam i love... mmwhat kind of foods in you like? bam i love... mm 10what kind of foods in you like? bam i love... mm 10 what what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what is what
+(length: 109, latency: 0.977, BLEU: 0.025, ROUGE: 0.089, METEOR: 0.176)
+
+Dialogue history: 
+U--hi , how are you ? do you like sports ? 
+(Ref: ['doing good ! i love to skateboard !', ...])
+G--hi, how are you? do you like sports?hi, how are you? do you like sports? 10hi, how are you? do you like sports? 10hi, how are you? do you like sports? 10hi, how are you? do you like sports? 10 Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily Lily
+(length: 100, latency: 1.146, BLEU: 0.042, ROUGE: 0.089, METEOR: 0.242)
+U'--hi novel how are you ni ni you like sports ? (cosine: 0.785)
+G'--hi novel how are you ni you like sports?hi novel how are you ni you like sports? 10hi novel how are you ni you like sports? 10hi novel how are you ni you like sports? 10hi novel how are you ni you like sports? 10 you you you like sports? 10 your you like sports? you you like sports?
+(length: 68, latency: 1.107, BLEU: 0.039, ROUGE: 0.123, METEOR: 0.305)
+
+Dialogue history:  hi , how are you ? do you like sports ? doing good ! i love to skateboard !
+U--nice ! ! i broke my arm doing it but always wear a hat . 
+(Ref: ['what act did she do ?', ...])
+G--nice!! i broke my arm doing it but always wear a hat.nice!! i broke my arm doing it but always wear a hat..nice!! i broke my arm doing it but always wear a hat.... nice nice. nice....... nice..... nice.... nice..... nice..... nice.... nice....
+(length: 93, latency: 0.903, BLEU: 0.024, ROUGE: 0.140, METEOR: 0.161)
+U'--on ! ! i broke my arm doing it but always wear a hat . (cosine: 0.941)
+G'--SEP> on!! i broke my arm doing it but always wear a hat. SEP> on!! i broke my arm doing it but always wear a hat. SEP> on!! i broke my arm doing it but always wear a hat.
+Attack failed!
+(length: 51, latency: 0.942, BLEU: 0.045, ROUGE: 0.157, METEOR: 0.169)
+
+Dialogue history: 
+U--hi . last week was my 45th birthday . i am an old man with so many infirmities ! 
+(Ref: ['i take so many meds and they have side effects . no nickel from me !', ...])
+G--hi. last week was my 45th birthday. i am an old man with so many infirmities!hi. last week was my 45th birthday. i am an old man with so many infirmities! 2hi. last week was my 45th birthday. i am an old man with so many infirmities! 2hi. last week was my 45th birthday. i am an old man with so many infirmities!
+(length: 76, latency: 1.076, BLEU: 0.044, ROUGE: 0.100, METEOR: 0.179)
+U'--folk . last week was my orth birthday . i am an old man with so many infirmities ! (cosine: 0.733)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 123, latency: 1.060, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.019)
+
+Dialogue history:  hi . last week was my 45th birthday . i am an old man with so many infirmities ! i take so many meds and they have side effects . no nickel from me !
+U--really ? how do i get there ? ! i must be hallucinating . meds make me . 
+(Ref: ['of course , the booze makes me see things , too , even though i don't drink anymore .', ...])
+G--really? how do i get there?! i must be hallucinating. meds make me. really really all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of all of
+(length: 78, latency: 0.739, BLEU: 0.030, ROUGE: 0.073, METEOR: 0.182)
+U'--other ? how do i get there ? ! i must be hallucinating . meds make me . (cosine: 0.973)
+G'--sep> other? how do i get there?! i must be hallucinating. meds make me.sep> other? how do i get there?! i must be hallucinating. meds make me. home
+Attack failed!
+(length: 41, latency: 0.707, BLEU: 0.048, ROUGE: 0.146, METEOR: 0.225)
+
+Dialogue history: 
+U--hello , how are you today ? 
+(Ref: ['that's awesome , how do you like performing ? i am currently looking for a new job .', ...])
+G--hello, how are you today?hello, how are you today? 208hello, how are you today? 208 208 208hello, how are you today? 208 208 208 208hello, how are you today? 208 208 208 208 208 funhello, how are you today? 208 208 208 208 fun fun homehello, how are you today? 208 208 208 fun home home home thehello, how are you today? 208 208 208 fun home the home the home
+(length: 88, latency: 1.198, BLEU: 0.070, ROUGE: 0.104, METEOR: 0.390)
+U'--folk io how are you today tin (cosine: 0.628)
+G'--folk io how are you today tinfolk io how are you today tin 2folk io how are you todayfolk io how are you todayfolk io how are you todayfolk io how are you today
+Attack failed!
+(length: 34, latency: 1.224, BLEU: 0.103, ROUGE: 0.205, METEOR: 0.409)
+
+Dialogue history:  hello , how are you today ? that's awesome , how do you like performing ? i am currently looking for a new job .
+U--sounds like it was ment to be . my daughter loves to preform she's a prodigy really . 
+(Ref: ['hopefully she makes it big , i love to go to the park and watch her preform .', ...])
+G--sounds like it was ment to be. my daughter loves to preform she's a prodigy really.sounds like it was ment to be. my daughter loves to preform she's a prodigy really. her her
+(length: 38, latency: 0.861, BLEU: 0.051, ROUGE: 0.192, METEOR: 0.225)
+U'--sounds like it was ment to be . my daughter loves to preform she's a pro above really an (cosine: 0.867)
+G'--sounds like it was ment to be. my daughter loves to preform she's a pro above really ansounds like it was ment to be. my daughter loves to preform she's a pro above really an her
+(length: 38, latency: 0.831, BLEU: 0.052, ROUGE: 0.185, METEOR: 0.223)
+
+Dialogue history: 
+U--hi i just finished my 100th birthday . i could live forever ! 
+(Ref: ['that is awesome . going strong , even at 100 .', ...])
+G--hihi i just finished my 100th birthday. i could live forever!hi i just finished my 100th birthday. i could live forever! twohi i just finished my 100th birthday. i could live forever! two two 208hi i just finished my 100th birthday. i could live forever! two 208 108hi i just finished my 100th birthday. i could live forever! two 208 108 home
+(length: 73, latency: 1.118, BLEU: 0.028, ROUGE: 0.076, METEOR: 0.149)
+U'--ion i just finished my 100th birthday . i could live forever ! (cosine: 0.983)
+G'--pp thep the pp the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10p the p 10
+(length: 46, latency: 1.115, BLEU: 0.026, ROUGE: 0.039, METEOR: 0.055)
+
+Dialogue history:  hi i just finished my 100th birthday . i could live forever ! that is awesome . going strong , even at 100 .
+U--yum ! i love to dance . its best in the moonlight with a glass of wine . 
+(Ref: ['fun . wow , the years have flown . television didn't exist when i was a kid .', ...])
+G--yum! i love to dance. its best in the moonlight with a glass of wine.yum! i love to dance. its best in the moonlight with a glass of wine.yum! i love to dance. its best in the moonlight with a glass of wine.
+(length: 54, latency: 0.847, BLEU: 0.058, ROUGE: 0.230, METEOR: 0.341)
+U'--yum .tb i love to dance . its best in the moonlight with a glass of wine . (cosine: 0.960)
+G'--yum.tb i love to dance. its best in the moonlight with a glass of wine.yum.tb i love to dance. its best in the moonlight with a glass of wine.yum.tb i love to dance. its best in the moonlight with a glass of wine.
+(length: 57, latency: 0.829, BLEU: 0.047, ROUGE: 0.219, METEOR: 0.255)
+
+Dialogue history: 
+U--hi good afternoon . it is so high up here . 
+(Ref: ['i am on top of a skyscraper . i think i will take the elevator down . so afraid .', ...])
+G--hi good afternoon. it is so high up here.hi good afternoon. it is so high up here..hi good afternoon. it is so high up here.....hi good afternoon. it is so high up here.........hi good afternoon. it is so high up here............. two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two
+(length: 111, latency: 1.143, BLEU: 0.027, ROUGE: 0.071, METEOR: 0.169)
+U'--village good afternoon . it is so high up here . (cosine: 0.870)
+G'--!!!!!!!!!!!!!!!! two!!!!!!! two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two
+(length: 70, latency: 1.146, BLEU: 0.019, ROUGE: 0.000, METEOR: 0.059)
+
+Dialogue history:  hi good afternoon . it is so high up here . i am on top of a skyscraper . i think i will take the elevator down . so afraid .
+U--visiting the city and someone recommended it . 
+(Ref: ['that is exciting . i wish i can speak spanish . many hispanic folks at the food bank .', ...])
+G--visiting the city and someone recommended it.visiting the city and someone recommended it................................................................................
+(length: 95, latency: 0.890, BLEU: 0.023, ROUGE: 0.091, METEOR: 0.058)
+U'--compositioniting the city and someone recommended it . (cosine: 0.806)
+G'--sep> compositioniting the city and someone recommended it.sep> compositioniting the city and someone recommended it..sep> compositioniting the city and someone recommended it... darksep> compositioniting the city and someone recommended it... darksep> compositioniting the city and someone recommended it.
+(length: 55, latency: 0.849, BLEU: 0.039, ROUGE: 0.042, METEOR: 0.089)
+
+Dialogue history: 
+U--hello how are u tonight i'm feeling like a old person 
+(Ref: ['i'm currently in juvenile detention center in florida', ...])
+G--hello how are u tonight i'm feeling like a old personhello how are u tonight i'm feeling like a old personhello how are u tonight i'm feeling like a old personhello how are u tonight i'm feeling like a old person schello how are u tonight i'm feeling like a old person sc 10 hello how are u tonight i'm feeling like a old person hello how are u tonight i'm feeling like a old person
+(length: 76, latency: 1.085, BLEU: 0.042, ROUGE: 0.132, METEOR: 0.330)
+U'--with how are u tonight i'm feeling like a old person (cosine: 0.956)
+G'--;; the; the 208; the 208 208; the 208 208; the 208 208 208; the 208 208; the 208 208 208 10; the 208 208 10 10 10 10; the 208 208
+(length: 41, latency: 1.123, BLEU: 0.029, ROUGE: 0.051, METEOR: 0.041)
+
+Dialogue history:  hello how are u tonight i'm feeling like a old person i'm currently in juvenile detention center in florida
+U--i got caught shoplifting clothing 
+(Ref: ['what superpower do u wish u had', ...])
+G--ii have beeni have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been finei have been fine
+(length: 66, latency: 0.987, BLEU: 0.018, ROUGE: 0.027, METEOR: 0.044)
+U'--i got not shoplifting clothing (cosine: 0.633)
+G'--i got not shoplifting clothingi got not shoplifting clothing 20i got not shoplifting clothing 20i got not shoplifting clothing 20i got not shoplifting clothing 20i got not shoplifting clothing 20
+Attack failed!
+(length: 30, latency: 0.971, BLEU: 0.045, ROUGE: 0.105, METEOR: 0.090)
+
+Dialogue history: 
+U--hi want to get to know each other 
+(Ref: ['i am in my twenties , you ?', ...])
+G--hihi mhihi mhi mhihi mhi mhi mhihi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi mhi
+(length: 29, latency: 1.160, BLEU: 0.035, ROUGE: 0.000, METEOR: 0.000)
+U'--tin want to get to know each other (cosine: 0.890)
+G'--pp.p..................................................................................................................................
+(length: 133, latency: 1.162, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi want to get to know each other i am in my twenties , you ?
+U--50 ? i need something to go on here 
+(Ref: ['pretty good . i took a nice run today', ...])
+G--50505050505050505050505050505050505050505050505050505050505050505050505050505050505050 bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar
+(length: 71, latency: 0.988, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.000)
+U'--50 ? i need something to go on here (cosine: 1.000)
+G'--50505050505050505050505050505050505050505050505050505050505050505050505050505050505050 bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar
+Attack failed!
+(length: 71, latency: 1.018, BLEU: 0.014, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--hey , tell me about yourself , what do you like to do for fun ? 
+(Ref: ['i am a blonde girl , in great shape and rather skinny .', ...])
+G--hey, tell me about yourself, what do you like to do for fun?hey, tell me about yourself, what do you like to do for fun? 208hey, tell me about yourself, what do you like to do for fun? 208 108hey, tell me about yourself, what do you like to do for fun?hey, tell me about yourself, what do you like to do for fun? 208 108 half
+(length: 84, latency: 1.083, BLEU: 0.029, ROUGE: 0.076, METEOR: 0.194)
+U'--hey , tell me about yourself , what do you like to do for to ? (cosine: 0.861)
+G'--hey, tell me about yourself, what do you like to do for to?hey, tell me about yourself, what do you like to do for to? 208hey, tell me about yourself, what do you like to do for to? 208 208 my all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all
+(length: 83, latency: 1.101, BLEU: 0.030, ROUGE: 0.071, METEOR: 0.195)
+
+Dialogue history:  hey , tell me about yourself , what do you like to do for fun ? i am a blonde girl , in great shape and rather skinny .
+U--i'm in college . but i love playing video games and listening to music . 
+(Ref: ['lol , maybe . i usually wear band shirts and ruffle sleeves , skinny jeans and leggings', ...])
+G--i'm in college. but i love playing video games and listening to music.i'm in college. but i love playing video games and listening to music..i'm in college. but i love playing video games and listening to music... the two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two
+(length: 80, latency: 0.859, BLEU: 0.045, ROUGE: 0.092, METEOR: 0.248)
+U'--i km in college . but i love playing and games and listening to music . (cosine: 0.893)
+G'--i km in college. but i love playing and games and listening to music.i km in college. but i love playing and games and listening to music..i km in college. but i love playing and games and listening to music....i km in college. but i love playing and games and listening to music.
+(length: 68, latency: 0.857, BLEU: 0.066, ROUGE: 0.092, METEOR: 0.223)
+
+Dialogue history: 
+U--hi there how are you doing this evening ? 
+(Ref: ['nice i do not want to go back to work i am a waitress', ...])
+G--hi there how are you doing this evening?hi there how are you doing this evening? howhi there how are you doing this evening? how muchhi there how are you doing this evening? how much waterhi there how are you doing this evening? how much water water youhi there how are you doing this evening? how much home home home home home home home home home
+(length: 72, latency: 1.162, BLEU: 0.036, ROUGE: 0.110, METEOR: 0.230)
+U'--of there how are you doing this evening ? (cosine: 0.979)
+G'--pp pp p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p
+(length: 113, latency: 1.145, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi there how are you doing this evening ? nice i do not want to go back to work i am a waitress
+U--iol well i wish i was brave enough to do that 
+(Ref: ['that is nice i've a motorbike don't know what car to get for winter', ...])
+G--iol well i wish i was brave enough to do thatiol well i wish i was brave enough to do that 2iol well i wish i was brave enough to do that 2 4iol well i wish i was brave enough to do that
+(length: 44, latency: 0.925, BLEU: 0.047, ROUGE: 0.167, METEOR: 0.143)
+U'--melody well i wish i was brave enough to do that (cosine: 0.929)
+G'--SEP> melody well i wish i was brave enough to do that SEP> melody well i wish i was brave enough to do that 208 SEP> melody well i wish i was brave enough to do that 208 108
+(length: 42, latency: 1.007, BLEU: 0.050, ROUGE: 0.157, METEOR: 0.144)
+
+Dialogue history: 
+U--hi there , how are you ? 
+(Ref: ['not too bad . hanging with my cats tonight .', ...])
+G--hi there, how are you?hi there, how are you? howhi there, how are you? how muchhi there, how are you? how much moneyhi there, how are you? how much money moneyhi there, how are you? how much money money money
+(length: 53, latency: 1.176, BLEU: 0.073, ROUGE: 0.167, METEOR: 0.312)
+U'--odd there , how are you ? (cosine: 0.702)
+G'--?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+(length: 137, latency: 1.151, BLEU: 0.009, ROUGE: 0.000, METEOR: 0.026)
+
+Dialogue history:  hi there , how are you ? not too bad . hanging with my cats tonight .
+U--candy is okay , but i love vanilla ice cream . 
+(Ref: ['i am not sure ! haha', ...])
+G--candy is okay, but i love vanilla ice cream.candy is okay, but i love vanilla ice cream. oncandy is okay, but i love vanilla ice cream. oncandy is okay, but i love vanilla ice cream. oncandy is okay, but i love vanilla ice cream. oncandy is okay, but i love vanilla ice cream.
+(length: 66, latency: 0.997, BLEU: 0.047, ROUGE: 0.088, METEOR: 0.190)
+U'--candy is okay andy but i love vanilla ice no . (cosine: 0.844)
+G'--candy is okay andy but i love vanilla ice no.candy is okay andy but i love vanilla ice no.. candy is okay andy but i love vanilla ice no.. candy is okay andy but i love vanilla ice no.. candy is okay andy but i love vanilla ice no.. candy is okay andy but i love vanilla ice no.. candy is okay andy but i love vanilla ice no.
+(length: 82, latency: 0.957, BLEU: 0.031, ROUGE: 0.071, METEOR: 0.144)
+
+Dialogue history: 
+U--good evening , how are you ? 
+(Ref: ['i was tending the fields one day and set a fire', ...])
+G--good evening, how are you?good evening, how are you? 2good evening, how are you? 2 2 2 2good evening, how are you? 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3
+(length: 71, latency: 1.136, BLEU: 0.053, ROUGE: 0.116, METEOR: 0.338)
+U'--good evening , how are you as (cosine: 0.916)
+G'--good evening, how are you as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as as
+(length: 95, latency: 1.179, BLEU: 0.026, ROUGE: 0.080, METEOR: 0.225)
+
+Dialogue history:  good evening , how are you ? i was tending the fields one day and set a fire
+U--i fell of a horse with a lit cigarette setting fire to the dry weeds 
+(Ref: ['my father had his farm used for a cia operation once .', ...])
+G--ii leii lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei lei
+(length: 40, latency: 0.962, BLEU: 0.025, ROUGE: 0.000, METEOR: 0.000)
+U'--i 28 of a horse with a lit cigarette setting fire to the dry weeds (cosine: 0.869)
+G'--ii 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28i 28
+(length: 47, latency: 0.966, BLEU: 0.022, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--hi , want to get to know each other ? 
+(Ref: ['ha , like the cartoon . i may live in alaska but i know bob', ...])
+G--hi, want to get to know each other?hi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other? ihi, want to get to know each other?
+(length: 110, latency: 1.161, BLEU: 0.018, ROUGE: 0.040, METEOR: 0.079)
+U'--withdice , want to get to know each other ? (cosine: 0.727)
+G'--.....................................................................................................................................
+(length: 133, latency: 1.150, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi , want to get to know each other ? ha , like the cartoon . i may live in alaska but i know bob
+U--yeah . i know that one too . i'm more into meditation 
+(Ref: ['do you consider yourself spiritual ?', ...])
+G--yeah. i know that one too. i'm more into meditationyeah. i know that one too. i'm more into meditation 200yeah. i know that one too. i'm more into meditation 200 200 200yeah. i know that one too. i'm more into meditationyeah. i know that one too. all all all all all all all all all all all all all all all all all all all all all
+(length: 77, latency: 0.942, BLEU: 0.030, ROUGE: 0.094, METEOR: 0.144)
+U'--junction . i know that one too . i'm more into meditation (cosine: 0.907)
+G'--prestopresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto mypresto myp
+(length: 26, latency: 0.914, BLEU: 0.039, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history: 
+U--hello ! how has your day been ? 
+(Ref: ['i'm watching nfl football', ...])
+G--hello! how has your day been?hello! how has your day been??hello! how has your day been??? twohello! how has your day been??? two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two
+(length: 69, latency: 1.149, BLEU: 0.024, ROUGE: 0.087, METEOR: 0.106)
+U'--life ! how has your day been ? (cosine: 0.910)
+G'--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(length: 119, latency: 1.164, BLEU: 0.010, ROUGE: 0.000, METEOR: 0.026)
+
+Dialogue history:  hello ! how has your day been ? i'm watching nfl football
+U--ha . i think i just talked to you 
+(Ref: ['yes . i'm a giants fan', ...])
+G--ha. i think i just talked to youha. i think i just talked to you 108ha. i think i just talked to you 108ha. i think i just talked to you 108ha. i think i just talked to you 108ha. i think i just talked to you 108ha. all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all all
+(length: 96, latency: 1.087, BLEU: 0.021, ROUGE: 0.058, METEOR: 0.090)
+U'--ha as i think i just talked to you (cosine: 0.928)
+G'--ha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think i just talked to youha as i think
+(length: 108, latency: 1.042, BLEU: 0.014, ROUGE: 0.049, METEOR: 0.103)
+
+Dialogue history: 
+U--hello , i hope you have a better job than i do 
+(Ref: ['five sons ? do they play on your team ?', ...])
+G--hello, i hope you have a better job than i dohello, i hope you have a better job than i do 10hello, i hope you have a better job than i do 10 20hello, i hope you have a better job than i do 10 20 20 2hello, i hope you have a better job than i do 10 20 2 2 2 homehello, i hope you have a better job than i do 10 20hello, i hope you have a better job than i do 10 20
+(length: 95, latency: 1.204, BLEU: 0.024, ROUGE: 0.097, METEOR: 0.179)
+U'--t more , i hope you have a better job than i do (cosine: 0.917)
+G'--tottot 10tot 10 10 tot 10 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot 10 tot
+(length: 52, latency: 1.110, BLEU: 0.019, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hello , i hope you have a better job than i do five sons ? do they play on your team ?
+U--cool and coffee is great , as a graduate student i pull tons of all nighters 
+(Ref: ['i don't enjoy wine but i do enjoy psychology journals', ...])
+G--cool and coffee is great, as a graduate student i pull tons of all nighterscool and coffee is great, as a graduate student i pull tons of all nighters _cool and coffee is great, as a graduate student i pull tons of all nighters _ _ _cool and coffee is great, as a graduate student i pull tons of all nighters
+(length: 67, latency: 0.920, BLEU: 0.029, ROUGE: 0.111, METEOR: 0.131)
+U'--music and coffee is great , as a graduate student i pull tons of all nighters (cosine: 0.929)
+G'--SEP> music and coffee is great, as a graduate student i pull tons of all nighterssep> music and coffee is great, as a graduate student i pull tons of all nighters scsep> music and coffee is great, as a graduate student i pull tons of all nighters scsep> music and coffee is great, as a graduate student
+Attack failed!
+(length: 65, latency: 0.876, BLEU: 0.029, ROUGE: 0.114, METEOR: 0.131)
+
+Dialogue history: 
+U--good afternoon , where are you coming from today ? 
+(Ref: ['i've just arrived from germany', ...])
+G--good afternoon, where are you coming from today?good afternoon, where are you coming from today? goodgood afternoon, where are you coming from today? good 208good afternoon, where are you coming from today? good 208 208 _good afternoon, where are you coming from today? good 208 _ _ _ _ _
+(length: 62, latency: 1.138, BLEU: 0.038, ROUGE: 0.105, METEOR: 0.154)
+U'--odd afternoon , where are you coming from today ? (cosine: 0.938)
+G'--pp p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p
+(length: 88, latency: 1.122, BLEU: 0.011, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  good afternoon , where are you coming from today ? i've just arrived from germany
+U--i do like taylor swift ! i also like cooking shows and making hummus 
+(Ref: ['mine is long . while i'm here i plan to sky dive', ...])
+G--i do noti do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200i do not 200 home home home home home home
+(length: 54, latency: 0.948, BLEU: 0.033, ROUGE: 0.091, METEOR: 0.083)
+U'--i km like taylor swift oh i also like cooking shows and making hummus (cosine: 0.944)
+G'--i m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m
+(length: 51, latency: 0.958, BLEU: 0.024, ROUGE: 0.070, METEOR: 0.044)
+
+Dialogue history: 
+U--hello , i am just a kid , so i don't know how this works 
+(Ref: ['oh wow , what kinds of things did you do in the computer industry ?', ...])
+G--hello, i am just a kid, so i don't know how this workshello, i am just a kid, so i don't know how this works 208hello, i am just a kid, so i don't know how this works 208 108hello, i am just a kid, so i don't know how this workshello, i am just a kid, so i don't know how this works 208 108 108 myhello, i am just a kid, so i don't know how this works 208
+(length: 93, latency: 1.103, BLEU: 0.025, ROUGE: 0.085, METEOR: 0.230)
+U'--composition , i am just a kid , so i don't know how this works (cosine: 0.849)
+G'--!!!!!!!!!!!!! two!!!! two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two two
+(length: 54, latency: 1.098, BLEU: 0.029, ROUGE: 0.000, METEOR: 0.130)
+
+Dialogue history:  hello , i am just a kid , so i don't know how this works oh wow , what kinds of things did you do in the computer industry ?
+U--i play with blocks sometimes , and i like to sing . candy is my favorite though 
+(Ref: ['when i grow up and become a dog maybe i can lay in your yard', ...])
+G--i play with blocks sometimes, and i like to sing. candy is my favorite thoughi play with blocks sometimes, and i like to sing. candy is my favorite though 10i play with blocks sometimes, and i like to sing. candy is my favorite though 10 12
+(length: 52, latency: 0.833, BLEU: 0.062, ROUGE: 0.159, METEOR: 0.283)
+U'--i play with blocks sometimes , and i like to sing . life is my favorite though (cosine: 0.848)
+G'--i play with blocks sometimes, and i like to sing. life is my favorite thoughi play with blocks sometimes, and i like to sing. life is my favorite though thei play with blocks sometimes, and i like to sing. life is my favorite though the hill all all all all all all all all all all all all all all all all all
+(length: 69, latency: 0.851, BLEU: 0.047, ROUGE: 0.125, METEOR: 0.263)
+
+Dialogue history: 
+U--hi there how are you tonight ? 
+(Ref: ['well i work as a custodian to help pay bills now that's depressing', ...])
+G--hi there how are you tonight?hi there how are you tonight?hi there how are you tonight? truehi there how are you tonight? true true true true truehi there how are you tonight? true true true true true true true true true true true true true true true true true true true true true true true true true true true
+(length: 66, latency: 1.232, BLEU: 0.040, ROUGE: 0.108, METEOR: 0.222)
+U'--of there how are you tonight ? (cosine: 0.963)
+G'--pp pp p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p p
+(length: 82, latency: 1.176, BLEU: 0.012, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi there how are you tonight ? well i work as a custodian to help pay bills now that's depressing
+U--well my parents aren't very supportive of me having a cosmetics line 
+(Ref: ['well i hope you get back on the horse quick no one is worth loosing time', ...])
+G--well my parents aren't very supportive of me having a cosmetics linewell my parents aren't very supportive of me having a cosmetics line Lilywell my parents aren't very supportive of me having a cosmetics line Lily Lily Lily Lily
+(length: 39, latency: 0.964, BLEU: 0.044, ROUGE: 0.077, METEOR: 0.108)
+U'--gradually my parents aren't very supportive of me having a cosmetics line (cosine: 0.944)
+G'--SEP> gradually my parents aren't very supportive of me having a cosmetics line SEP> gradually my parents aren't very supportive of me having a cosmetics line Lily SEP> gradually my parents aren't very supportive of me having a cosmetics line Lily Lily Lily Lily
+(length: 47, latency: 0.936, BLEU: 0.035, ROUGE: 0.070, METEOR: 0.103)
+
+Dialogue history: 
+U--hi i'm jane and i do have never drink , and do drugs that's harmful 
+(Ref: ['same to you . i am 19 of age and cannot wait to move out', ...])
+G--hihi 2hi 2 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2
+(length: 68, latency: 1.075, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+U'--hi i'm jane and i do have never drink , and do drugs that's harmful (cosine: 1.000)
+G'--hihi 2hi 2 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2hi 2
+Attack failed!
+(length: 68, latency: 1.088, BLEU: 0.015, ROUGE: 0.000, METEOR: 0.000)
+
+Dialogue history:  hi i'm jane and i do have never drink , and do drugs that's harmful same to you . i am 19 of age and cannot wait to move out
+U--i work part time at burger king to make some income 
+(Ref: ['yeah it was close to my parents house', ...])
+G--i work part time at burger king to make some incomei work part time at burger king to make some income 12i work part time at burger king to make some income 12 12 me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me me
+(length: 77, latency: 0.864, BLEU: 0.026, ROUGE: 0.067, METEOR: 0.149)
+U'--i 14 part time at burger king to make some income (cosine: 0.859)
+G'--i 14 part time at burger king to make some incomei 14 part time at burger king to make some income 2i 14 part time at burger king to make some income 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+(length: 96, latency: 0.868, BLEU: 0.021, ROUGE: 0.055, METEOR: 0.137)
+
+Original output length: 74.150, latency: 1.038, BLEU: 0.035, ROUGE: 0.092, METEOR: 0.169
+Perturbed [cosine: 0.832] output length: 73.183, latency: 1.032, BLEU: 0.029, ROUGE: 0.065, METEOR: 0.106
+Attack success rate: 78.33%
